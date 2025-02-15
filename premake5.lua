@@ -26,29 +26,31 @@ project "Engine"
 
 	includedirs
 	{
-		"%{prj.name}/Vendor/include"
+		"Vendor/include/SPDLOG"
 	}
 
 	libdirs
 	{
-		"%{prj.name}/Vendor/bin"
+		"Vendor/bin"
 	}
 
 	filter "system:windows"
 		cppdialect "C++20"
 		staticruntime "On"
 		systemversion "latest"
+		characterset ("Unicode")
+
+		buildoptions
+		{
+			"/utf-8"
+		}
 
 		defines
 		{
 			"ENGINE_PLATFORM_WINDOWS",
 			"ENGINE_BUILD_DLL",
-			"_WINDLL"
-		}
-
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Game")
+			"_WINDLL",
+			"FMT_USE_UTF8=1"
 		}
 
 	filter "configurations:Debug"
@@ -75,12 +77,17 @@ project "Game"
 	includedirs
 	{
 		"Engine/src",
-		"%{prj.name}/Vendor/include/spdlog"
+		"Vendor/include/SPDLOG"
 	}
 
 	links
 	{
 		"Engine"
+	}
+
+	postbuildcommands
+	{
+		"{COPY} ../bin/" .. outputdir .. "/Engine/Engine.dll ../bin/" .. outputdir .. "/Game"
 	}
 
 	libdirs
@@ -92,10 +99,17 @@ project "Game"
 		cppdialect "C++20"
 		staticruntime "On"
 		systemversion "latest"
+		characterset ("Unicode")
+
+		buildoptions
+		{
+			"/utf-8"
+		}
 
 		defines
 		{
-			"ENGINE_PLATFORM_WINDOWS"
+			"ENGINE_PLATFORM_WINDOWS",
+			"FMT_USE_UTF8=1"
 		}
 
 	filter "configurations:Debug"

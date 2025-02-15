@@ -1,8 +1,8 @@
 #pragma once
-
 #include "Core.h"
+#include "Logger.h"
 
 namespace Engine
 {
-	__declspec(dllexport) void Print();
+	ENGINE_API int func();
 }
