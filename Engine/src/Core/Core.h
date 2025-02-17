@@ -11,4 +11,3 @@
 #else
 	#error Sorry! ONLY SUPPORTED ON WINDOWS!
 #endif
-

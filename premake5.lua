@@ -17,6 +17,7 @@ project "Engine"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-intermediates/" .. outputdir .. "/%{prj.name}")
+	debugdir ("bin/" .. outputdir .. "/Game")
 
 	files
 	{
@@ -26,12 +27,24 @@ project "Engine"
 
 	includedirs
 	{
-		"Vendor/include/SPDLOG"
+		"Engine/src",
+		"Vendor/include/SPDLOG",
+		"Vendor/include/SDL2"
+	}
+
+	links
+	{
+		"winmm",
+		"setupapi",
+		"version",
+		"Imm32",
+		"SDL2-static",
+		"SDL2main"
 	}
 
 	libdirs
 	{
-		"Vendor/bin"
+		"Vendor/bin/sdl2"
 	}
 
 	filter "system:windows"
@@ -50,7 +63,8 @@ project "Engine"
 			"ENGINE_PLATFORM_WINDOWS",
 			"ENGINE_BUILD_DLL",
 			"_WINDLL",
-			"FMT_USE_UTF8=1"
+			"FMT_USE_UTF8=1",
+			"SDL_MAIN_HANDLED"
 		}
 
 	filter "configurations:Debug"
@@ -68,6 +82,8 @@ project "Game"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-intermediates/" .. outputdir .. "/%{prj.name}")
 
+	
+
 	files
 	{
 		"%{prj.name}/src/**.h",
@@ -77,7 +93,8 @@ project "Game"
 	includedirs
 	{
 		"Engine/src",
-		"Vendor/include/SPDLOG"
+		"Vendor/include/SPDLOG",
+		"Vendor/include/SDL2"
 	}
 
 	links
@@ -85,15 +102,22 @@ project "Game"
 		"Engine"
 	}
 
-	postbuildcommands
-	{
-		"{COPY} ../bin/" .. outputdir .. "/Engine/Engine.dll ../bin/" .. outputdir .. "/Game"
-	}
-
 	libdirs
 	{
 		"bin/" .. outputdir .. "/Engine/Engine.lib"
 	}
+
+	filter "configurations:Debug"
+		postbuildcommands
+		{
+			"{COPY} ../bin/" .. outputdir .. "/Engine/Engine.dll ../bin/" .. outputdir .. "/Game",
+			"{COPY} ../bin/" .. outputdir .. "/Engine/Engine.pdb ../bin/" .. outputdir .. "/Game"
+		}
+	filter "configurations:Release"
+		postbuildcommands
+		{
+			"{COPY} ../bin/" .. outputdir .. "/Engine/Engine.dll ../bin/" .. outputdir .. "/Game"
+		}
 
 	filter "system:windows"
 		cppdialect "C++20"

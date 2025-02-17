@@ -12,15 +12,20 @@
 #include <spdlog/spdlog.h>
 
 
+//Logger Detection
+#ifdef EG_PRJ
+#define GET_LOGGER() ::Engine::Logger::GetEngineLogger()
+#else
+#define GET_LOGGER() ::Engine::Logger::GetGameLogger()
+#endif
+
 
 //Log Type Macros
-namespace
-{
-	#define LOG_MESSAGE(...)  ::Engine::Logger::GetLogger()->info(__VA_ARGS__)
-	#define LOG_Warning(...)  ::Engine::Logger::GetLogger()->warn(__VA_ARGS__)
-	#define LOG_ERROR(...)    ::Engine::Logger::GetLogger()->error(__VA_ARGS__)
-	#define LOG_FATAL(...)    ::Engine::Logger::GetLogger()->critical(__VA_ARGS__)
-}
+#define LOG_MESSAGE(...)	GET_LOGGER()->info(__VA_ARGS__) 
+#define LOG_Warning(...)	GET_LOGGER()->warn(__VA_ARGS__)
+#define LOG_ERROR(...)		GET_LOGGER()->error(__VA_ARGS__)
+#define LOG_FATAL(...)		GET_LOGGER()->critical(__VA_ARGS__)
+
 
 namespace Engine
 {
@@ -43,6 +48,7 @@ namespace Engine
 		{
 			try
 			{
+				
 				std::string formattedMsg = fmt::vformat(message, fmt::make_format_args(std::forward<t>(args)...));
 
 				switch (type)
@@ -59,7 +65,8 @@ namespace Engine
 			}
 		};
 
-		static std::shared_ptr<spdlog::logger> GetLogger();
+		static std::shared_ptr<spdlog::logger> GetEngineLogger() { return s_EngineLogger; };
+		static std::shared_ptr<spdlog::logger> GetGameLogger() { return s_GameLogger; };
 
 	private:
 		static std::shared_ptr<spdlog::logger> s_EngineLogger;
