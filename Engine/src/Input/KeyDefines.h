@@ -1,19 +1,30 @@
 #pragma once
 
-#include "sdl2/SDL.h"
+//VENDOR
+#include <glfw/glfw3.h>
 
 namespace Engine
 {
 	enum class EngineKeys
 	{
-		LeftClick	=		SDL_BUTTON_LEFT,
-		RightClick  =		SDL_BUTTON_RIGHT,
-		W			=		SDL_KeyCode(SDLK_w),
-		A			=		SDL_KeyCode(SDLK_a),
-		S			=		SDL_KeyCode(SDLK_s),
-		D			=		SDL_KeyCode(SDLK_d),
-		Space		=		SDL_KeyCode(SDLK_SPACE),
-		Enter		=		SDL_KeyCode(SDLK_RETURN),
-		BackSpace	=		SDL_KeyCode(SDLK_BACKSPACE)
+		//coorelate supported keys to glfw's key system
+		LeftClick	=		GLFW_MOUSE_BUTTON_1,
+		RightClick  =		GLFW_MOUSE_BUTTON_2,
+		W			=		GLFW_KEY_W,
+		A			=		GLFW_KEY_A,
+		S			=		GLFW_KEY_S,
+		D			=		GLFW_KEY_D,
+		Space		=		GLFW_KEY_SPACE,
+		Enter		=		GLFW_KEY_ENTER,
+		BackSpace	=		GLFW_KEY_BACKSPACE
+	};
+
+	enum class KeyState
+	{
+		Pressed,		//key was just pressed on the current frame
+		Released,		//key was just released on the current frame
+		Held,			//key is being held down across multiple frames
+		Moved,			//key (mouse) is being moved on the current frame
+		Scrolled		//key (mouse) is being scrolled on the current frame
 	};
 }

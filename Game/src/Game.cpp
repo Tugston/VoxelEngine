@@ -20,6 +20,7 @@ namespace VoxelGame
 
 		void Start() override
 		{
+			Engine::Logger::LogMessage(Engine::Logger::LogType::Warning, "Started!");
 			Tick();
 		}
 
@@ -28,9 +29,6 @@ namespace VoxelGame
 			while (gameIsRunning)
 			{
 				Engine::Application::Tick();
-
-				Engine::Logger::LogMessage(Engine::Logger::LogType::Warning, "Tick Called");
-
 				Draw(GetDeltaTime());
 			}
 		}

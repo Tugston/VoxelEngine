@@ -5,10 +5,17 @@ workspace "VoxelGame"
 	configurations
 	{
 		"Debug",
-		"Release"
+		"Release",
+		"Share"
 	}
 
+
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+
+
+function CopyPDB()
+	return "{COPY} ../bin/" .. outputdir .. "/Engine/Engine.pdb ../bin/" .. outputdir .. "/Game"
+end
 
 project "Engine"
 	location "Engine"
@@ -29,22 +36,23 @@ project "Engine"
 	{
 		"Engine/src",
 		"Vendor/include/SPDLOG",
-		"Vendor/include/SDL2"
+		"Vendor/include/GLFW",
+		"Vendor/include/GLM"
 	}
 
 	links
 	{
-		"winmm",
-		"setupapi",
-		"version",
-		"Imm32",
-		"SDL2-static",
-		"SDL2main"
+		--"winmm",
+		--"setupapi",
+		--"version",
+		--"Imm32",
+		"glfw3_mt",
+		"opengl32"
 	}
 
 	libdirs
 	{
-		"Vendor/bin/sdl2"
+		"Vendor/bin/glfw"
 	}
 
 	filter "system:windows"
@@ -64,14 +72,17 @@ project "Engine"
 			"ENGINE_BUILD_DLL",
 			"_WINDLL",
 			"FMT_USE_UTF8=1",
-			"SDL_MAIN_HANDLED"
+			"GLFW_STATIC"
 		}
 
 	filter "configurations:Debug"
 		defines "EG_DEBUG"
 		symbols "On"
 	filter "configurations:Release"
-		defines "EG_RELEASE"
+		defines "EG_DEBUG"
+		optimize "On"
+	filter "configurations:Share"
+		defines "EG_SHARE"
 		optimize "On"
 
 project "Game"
@@ -81,8 +92,6 @@ project "Game"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-intermediates/" .. outputdir .. "/%{prj.name}")
-
-	
 
 	files
 	{
@@ -94,10 +103,16 @@ project "Game"
 	{
 		"Engine/src",
 		"Vendor/include/SPDLOG",
-		"Vendor/include/SDL2"
+		"Vendor/include/GLFW",
+		"Vendor/include/GLM"
 	}
 
 	links
+	{
+		"Engine"
+	}
+
+	dependson
 	{
 		"Engine"
 	}
@@ -107,17 +122,23 @@ project "Game"
 		"bin/" .. outputdir .. "/Engine/Engine.lib"
 	}
 
+	-- copy engine dll
+	prebuildcommands
+	{
+		"{COPY} ../bin/" .. outputdir .. "/Engine/Engine.dll ../bin/" .. outputdir .. "/Game"
+	}
+
 	filter "configurations:Debug"
-		postbuildcommands
+		prebuildcommands
 		{
-			"{COPY} ../bin/" .. outputdir .. "/Engine/Engine.dll ../bin/" .. outputdir .. "/Game",
-			"{COPY} ../bin/" .. outputdir .. "/Engine/Engine.pdb ../bin/" .. outputdir .. "/Game"
+			CopyPDB()
 		}
 	filter "configurations:Release"
-		postbuildcommands
+		prebuildcommands
 		{
-			"{COPY} ../bin/" .. outputdir .. "/Engine/Engine.dll ../bin/" .. outputdir .. "/Game"
+			CopyPDB()
 		}
+	
 
 	filter "system:windows"
 		cppdialect "C++20"
@@ -137,8 +158,11 @@ project "Game"
 		}
 
 	filter "configurations:Debug"
-		defines "EG_DEBUG"
+		defines "APP_DEBUG"
 		symbols "On"
 	filter "configurations:Release"
-		defines "EG_RELEASE"
+		defines "APP_DEBUG"
+		optimize "On"
+	filter "configurations:Share"
+		defines "APP_SHARE"
 		optimize "On"

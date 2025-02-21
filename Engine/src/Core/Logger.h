@@ -41,7 +41,7 @@ namespace Engine
 			Critical
 		};
 
-		static void Init();
+		static bool Init();
 
 		template <typename... t>
 		static inline void LogMessage(LogType type, const std::string& message, t&&... args)
@@ -71,6 +71,7 @@ namespace Engine
 	private:
 		static std::shared_ptr<spdlog::logger> s_EngineLogger;
 		static std::shared_ptr<spdlog::logger> s_GameLogger;
+
 	};
 
 }
