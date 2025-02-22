@@ -22,21 +22,30 @@ namespace Engine
 		virtual void Tick();
 		void Draw(float deltaTime);
 
+
+		inline static Window* GetWindow() { return s_Instance->m_Window.get(); };
+
 	protected:
 		void CalculateDeltaTime();
 		inline const float GetDeltaTime() const { return m_DeltaTime; };
+
+		bool gameIsRunning = true;
 
 	private:
 		void InitializeEngineRootSystems() const;
 		void GeneralSetup();
 
-	protected:
-		bool gameIsRunning = true;
 	private:
 		float m_DeltaTime;
 		uint32_t m_PreviousTime;
 
 		std::unique_ptr<Window> m_Window;
+		bool m_Running = true;
+
+
+	//class instance just hidden away
+	public:
+		static Application* s_Instance;
 	};
 
 	//needs to be defined in the game

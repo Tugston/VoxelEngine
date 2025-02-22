@@ -1,14 +1,15 @@
 #pragma once
 
-//VENDOR
-#include <glfw/glfw3.h>
 
 //STND
 #include <memory>
 #include <string>
 
+class GLFWwindow;
+
 namespace Engine
 {
+
 	class Window
 	{
 	public:
@@ -19,8 +20,8 @@ namespace Engine
 
 		inline unsigned short GetWidth() const { return m_Width; };
 		inline unsigned short GetHeight() const { return m_Height; };
+		inline GLFWwindow* GetGLFWWindow() const { return m_RenderWindow; };
 
-		void SwapBuffer();
 		void Draw();
 
 	private:

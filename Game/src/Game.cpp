@@ -3,6 +3,7 @@
 #include<Engine.h>
 #include<Core/EntryPoint.h>  //ENTRY POINT CAN ONLY INCLUDE ONCE
 
+//this class serves as a bridge between the engine and game objects, scenes, etc
 namespace VoxelGame
 {
 	class Game : public Engine::Application
@@ -29,6 +30,7 @@ namespace VoxelGame
 			while (gameIsRunning)
 			{
 				Engine::Application::Tick();
+
 				Draw(GetDeltaTime());
 			}
 		}

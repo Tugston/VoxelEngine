@@ -37,22 +37,21 @@ project "Engine"
 		"Engine/src",
 		"Vendor/include/SPDLOG",
 		"Vendor/include/GLFW",
-		"Vendor/include/GLM"
+		"Vendor/include/GLM",
+		"Vendor/include/GLEW"
 	}
 
 	links
 	{
-		--"winmm",
-		--"setupapi",
-		--"version",
-		--"Imm32",
 		"glfw3_mt",
-		"opengl32"
+		"opengl32",
+		"glew32s"
 	}
 
 	libdirs
 	{
-		"Vendor/bin/glfw"
+		"Vendor/bin/glfw",
+		"Vendor/bin/glew"
 	}
 
 	filter "system:windows"
@@ -72,7 +71,8 @@ project "Engine"
 			"ENGINE_BUILD_DLL",
 			"_WINDLL",
 			"FMT_USE_UTF8=1",
-			"GLFW_STATIC"
+			"GLFW_STATIC",
+			"GLEW_STATIC"
 		}
 
 	filter "configurations:Debug"
@@ -104,7 +104,8 @@ project "Game"
 		"Engine/src",
 		"Vendor/include/SPDLOG",
 		"Vendor/include/GLFW",
-		"Vendor/include/GLM"
+		"Vendor/include/GLM",
+		"Vendor/include/GLEW"
 	}
 
 	links

@@ -11,66 +11,81 @@
 #include "Core/Logger.h"
 #include "Input/Input.h"
 
-Engine::Application::Application() : m_DeltaTime(0.f), m_PreviousTime(0)
+namespace Engine
 {
-	InitializeEngineRootSystems();
-	GeneralSetup();
-}
+	//instantiate static reference
+	Application* Application::s_Instance = nullptr;
 
-Engine::Application::~Application()
-{
-	glfwTerminate();
-}
-
-void Engine::Application::Start()
-{
-}
-
-void Engine::Application::Tick()
-{
-	CalculateDeltaTime();
-}
-
-void Engine::Application::Draw(float deltaTime)
-{
-	
-}
-
-void Engine::Application::CalculateDeltaTime()
-{
-	uint32_t currentTime = glfwGetTime();
-	m_DeltaTime = (currentTime - m_PreviousTime) / 1000.f;
-	m_PreviousTime = currentTime;
-}
-
-void Engine::Application::InitializeEngineRootSystems() const
-{
-	//terminate the engine if a system failed to initialize
-	auto InitializeCheck = [](bool status, std::string_view message)
-		{
-			if (status)
-			{
-				Logger::LogMessage(Logger::LogType::Message, std::string(message).append(" Initialized!"));
-			}
-			else
-			{
-				Logger::LogMessage(Logger::LogType::Critical, std::string(message).append(" Failed!"));
-				assert(false && ": Engine Root Initialization Aborted");
-			}
-		};
-	
-	InitializeCheck(Logger::Init(), "Logger");
-	InitializeCheck(InputSystem::Init(), "Input System");
-}
-
-void Engine::Application::GeneralSetup()
-{
-	//initialize glfw
-	if (!glfwInit())
+	Application::Application() : m_DeltaTime(0.f), m_PreviousTime(0)
 	{
-		Logger::LogMessage(Logger::LogType::Critical, "GLFW Failed To Initialize!");
-		assert(true && ": Engine General Setup Aborted");
+		InitializeEngineRootSystems();
+		GeneralSetup();
+
+		s_Instance = this;
 	}
 
-	m_Window = std::make_unique<Window>("My Window");
+	Application::~Application()
+	{
+		glfwTerminate();
+	}
+
+	void Application::Start()
+	{
+	}
+
+	void Application::Tick()
+	{
+		CalculateDeltaTime();
+
+		if (InputSystem::KeyPressed(EngineKeys::ESC))
+		{
+			gameIsRunning = false;
+		}
+
+		glfwPollEvents();
+	}
+
+	void Application::Draw(float deltaTime)
+	{
+		m_Window.get()->Draw();
+	}
+
+	void Application::CalculateDeltaTime()
+	{
+		uint32_t currentTime = glfwGetTime();
+		m_DeltaTime = (currentTime - m_PreviousTime) / 1000.f;
+		m_PreviousTime = currentTime;
+	}
+
+	void Application::InitializeEngineRootSystems() const
+	{
+		//terminate the engine if a system failed to initialize
+		auto InitializeCheck = [](bool status, std::string_view message)
+			{
+				if (status)
+				{
+					Logger::LogMessage(Logger::LogType::Message, std::string(message).append(" Initialized!"));
+				}
+				else
+				{
+					Logger::LogMessage(Logger::LogType::Critical, std::string(message).append(" Failed!"));
+					assert(false && ": Engine Root Initialization Aborted");
+				}
+			};
+
+		InitializeCheck(Logger::Init(), "Logger");
+		InitializeCheck(InputSystem::Init(), "Input System");
+	}
+
+	void Application::GeneralSetup()
+	{
+		//initialize glfw
+		if (!glfwInit())
+		{
+			Logger::LogMessage(Logger::LogType::Critical, "GLFW Failed To Initialize!");
+			assert(true && ": Engine General Setup Aborted");
+		}
+
+		m_Window = std::make_unique<Window>("My Window");
+	}
 }

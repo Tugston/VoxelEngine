@@ -1,34 +1,37 @@
 #include "Input.h"
 
 //ENGINE
-#include "InputManager.h"
+#include "Application.h"
 
 namespace Engine
 {
-    std::unique_ptr<InputManager> InputSystem::s_InputManager = nullptr;
+	
 
-    bool InputSystem::Init()
-    {
-        s_InputManager = std::make_unique<InputManager>();
-        return s_InputManager.get();
-    }
+	bool InputSystem::Init()
+	{
 
-    bool InputSystem::IsKeyPressed(EngineKeys key)
-    {
-        return false;
-    }
+		//initialize glfw
+		if (!glfwInit())
+		{
+			return false;
+		};
 
-    bool InputSystem::IsKeyReleased(EngineKeys key)
-    {
-        return false;
-    }
+		return true;
+	}
 
-    bool InputSystem::IsKeyHeld(EngineKeys key)
-    {
-        return false;
-    }
+	bool InputSystem::KeyPressed(EngineKeys key)
+	{
+		Window* window = Application::GetWindow();
 
-    void InputSystem::ProcessEvents()
-    {
-    }
+		auto keyState = glfwGetKey(window->GetGLFWWindow(), static_cast<int>(key));
+		return keyState == GLFW_PRESS;
+	}
+
+	bool InputSystem::KeyReleased(EngineKeys key)
+	{
+		Window* window = Application::GetWindow();
+
+		auto keyState = glfwGetKey(window->GetGLFWWindow(), static_cast<int>(key));
+		return keyState == GLFW_RELEASE;
+	}
 }

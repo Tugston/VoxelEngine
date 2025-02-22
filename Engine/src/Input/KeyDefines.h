@@ -16,15 +16,8 @@ namespace Engine
 		D			=		GLFW_KEY_D,
 		Space		=		GLFW_KEY_SPACE,
 		Enter		=		GLFW_KEY_ENTER,
-		BackSpace	=		GLFW_KEY_BACKSPACE
-	};
-
-	enum class KeyState
-	{
-		Pressed,		//key was just pressed on the current frame
-		Released,		//key was just released on the current frame
-		Held,			//key is being held down across multiple frames
-		Moved,			//key (mouse) is being moved on the current frame
-		Scrolled		//key (mouse) is being scrolled on the current frame
+		BackSpace	=		GLFW_KEY_BACKSPACE,
+		TAB			=		GLFW_KEY_TAB,
+		ESC			=		GLFW_KEY_ESCAPE
 	};
 }
