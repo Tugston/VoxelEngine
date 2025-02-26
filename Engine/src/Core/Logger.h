@@ -43,26 +43,18 @@ namespace Engine
 
 		static bool Init();
 
-		template <typename... t>
-		static inline void LogMessage(LogType type, const std::string& message, t&&... args)
+		template <typename... Args>
+		static inline void LogMessage(LogType type, const std::string& message, Args&&... args)
 		{
-			try
+			std::string formattedMsg = std::vformat(message, std::make_format_args(std::forward<Args>(args)...));
+	
+			switch (type)
 			{
-				
-				std::string formattedMsg = fmt::vformat(message, fmt::make_format_args(std::forward<t>(args)...));
-
-				switch (type)
-				{
 				case LogType::Message:		LOG_MESSAGE(formattedMsg); break;
 				case LogType::Warning:		LOG_Warning(formattedMsg); break;
 				case LogType::Error:		LOG_ERROR(formattedMsg); break;
 				case LogType::Critical:		LOG_FATAL(formattedMsg); break;
-				};
-			}
-			catch (const std::exception& x)
-			{
-				std::cerr << "Logging Failed: " << x.what() << std::endl;
-			}
+			};
 		};
 
 		static std::shared_ptr<spdlog::logger> GetEngineLogger() { return s_EngineLogger; };

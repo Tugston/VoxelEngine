@@ -29,9 +29,13 @@ namespace VoxelGame
 		{
 			while (gameIsRunning)
 			{
-				Engine::Application::Tick();
+				if (Engine::InputSystem::KeyPressed(Engine::EngineKeys::Enter))
+				{
+					Engine::Logger::LogMessage(Engine::Logger::LogType::Message, "Mouse Pos ({}, {})", mousex, mousey);
+					Engine::Logger::LogMessage(Engine::Logger::LogType::Message, "Scroll Dir = {}", scrolldir);
+				}
 
-				Draw(GetDeltaTime());
+				Engine::Application::Tick();
 			}
 		}
 

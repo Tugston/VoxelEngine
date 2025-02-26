@@ -11,3 +11,9 @@
 #else
 	#error Sorry! ONLY SUPPORTED ON WINDOWS!
 #endif
+
+//I need to make a custom (debug only) assertion soon, before assertions get out of hand
+#ifndef EG_ASSERT
+#define EG_ASSERT
+#endif
+

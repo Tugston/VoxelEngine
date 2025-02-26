@@ -1,7 +1,8 @@
 #pragma once
 
-#include	"Application.h" //Required Application Class, has helper functions that could be useful
-#include	"Core/Logger.h" //Logging System
+#include	"Core/Application.h" //Required Application Class
+#include	"Core/Logger.h"		//Logging System
+#include	"Input/Input.h"		//Input System
 
 
 

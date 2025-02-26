@@ -3,10 +3,6 @@
 //STND
 #include <assert.h>
 
-//VENDOR
-#include <glfw/glfw3.h>
-#include <glfw/glfw3native.h>
-
 //ENGINE
 #include "Core/Logger.h"
 #include "Input/Input.h"
@@ -16,10 +12,12 @@ namespace Engine
 	//instantiate static reference
 	Application* Application::s_Instance = nullptr;
 
-	Application::Application() : m_DeltaTime(0.f), m_PreviousTime(0)
+	Application::Application() :
+		m_DeltaTime(0.f), m_PreviousTime(0), m_Window("Voxel Game")
 	{
 		InitializeEngineRootSystems();
-		GeneralSetup();
+		
+		m_Window.SetEventCallback([this](CallBackEvent& e) { OnEvent(e); });
 
 		s_Instance = this;
 	}
@@ -41,13 +39,27 @@ namespace Engine
 		{
 			gameIsRunning = false;
 		}
-
-		glfwPollEvents();
+		
+		m_Window.PollEvents();
+		Draw(GetDeltaTime());
 	}
 
 	void Application::Draw(float deltaTime)
 	{
-		m_Window.get()->Draw();
+		m_Window.Draw();
+	}
+
+	void Application::OnEvent(CallBackEvent& event)
+	{
+		if (auto* mouseEvent = dynamic_cast<MouseMoveEvent*>(&event))
+		{
+			mousex = mouseEvent->GetX();
+			mousey = mouseEvent->GetY();
+		}
+		else if (auto* scrollEvent = dynamic_cast<MouseScrollEvent*>(&event))
+		{
+			scrolldir = scrollEvent->GetScrollAmount();
+		}
 	}
 
 	void Application::CalculateDeltaTime()
@@ -61,31 +73,19 @@ namespace Engine
 	{
 		//terminate the engine if a system failed to initialize
 		auto InitializeCheck = [](bool status, std::string_view message)
+		{
+			if (status)
 			{
-				if (status)
-				{
-					Logger::LogMessage(Logger::LogType::Message, std::string(message).append(" Initialized!"));
-				}
-				else
-				{
-					Logger::LogMessage(Logger::LogType::Critical, std::string(message).append(" Failed!"));
-					assert(false && ": Engine Root Initialization Aborted");
-				}
-			};
+				Logger::LogMessage(Logger::LogType::Message, std::string(message).append(" Initialized!"));
+			}
+			else
+			{
+				Logger::LogMessage(Logger::LogType::Critical, std::string(message).append(" Failed!"));
+				assert(true && ": Engine Root Initialization Aborted");
+			}
+		};
 
-		InitializeCheck(Logger::Init(), "Logger");
 		InitializeCheck(InputSystem::Init(), "Input System");
 	}
 
-	void Application::GeneralSetup()
-	{
-		//initialize glfw
-		if (!glfwInit())
-		{
-			Logger::LogMessage(Logger::LogType::Critical, "GLFW Failed To Initialize!");
-			assert(true && ": Engine General Setup Aborted");
-		}
-
-		m_Window = std::make_unique<Window>("My Window");
-	}
 }

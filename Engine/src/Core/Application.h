@@ -2,10 +2,11 @@
 
 //ENGINE
 #include "Core/Core.h"
-#include "Renderer/Window.h"
+#include "Window.h"
 
 //STND
 #include <cstdint>
+#include <functional>
 
 //engine application class meant to be inheritted by the game
 //this class handles all the backend engine tasks such as rendering, etc
@@ -16,14 +17,15 @@ namespace Engine
 	public:
 		Application();
 		virtual ~Application();
-
+	
 	public:
 		virtual void Start();
 		virtual void Tick();
 		void Draw(float deltaTime);
 
+		//mouse events
+		void OnEvent(CallBackEvent& event); 
 
-		inline static Window* GetWindow() { return s_Instance->m_Window.get(); };
 
 	protected:
 		void CalculateDeltaTime();
@@ -31,21 +33,28 @@ namespace Engine
 
 		bool gameIsRunning = true;
 
+		int mousex = 0;
+		int mousey = 0;
+		int scrolldir = 0;
+
 	private:
+		
+		//setup input, and future root systems
 		void InitializeEngineRootSystems() const;
-		void GeneralSetup();
 
 	private:
 		float m_DeltaTime;
-		uint32_t m_PreviousTime;
+		float m_PreviousTime;
 
-		std::unique_ptr<Window> m_Window;
+
+		Window m_Window;
 		bool m_Running = true;
 
 
-	//class instance just hidden away
+	//class instance just hidden away down here
 	public:
 		static Application* s_Instance;
+		inline const static Window* GetWindow() { return &s_Instance->m_Window; };
 	};
 
 	//needs to be defined in the game
