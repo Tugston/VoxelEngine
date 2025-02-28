@@ -73,7 +73,7 @@ namespace Engine
 		{
 			glfwTerminate();
 			Logger::LogMessage(Logger::LogType::Critical, "<Window.cpp> glfw Did Not Create Window!");
-			assert(false);
+			EG_ASSERT(false);
 		}
 
 		//buffer size
@@ -83,33 +83,13 @@ namespace Engine
 		glfwMakeContextCurrent(m_RenderWindow);
 		glfwSetWindowUserPointer(m_RenderWindow, &m_Info);
 
-		//setup the callbacks for events
-		glfwSetCursorPosCallback(m_RenderWindow, [](GLFWwindow* window, double xPos, double yPos)
-			{
-				WindowInfo& data = *(WindowInfo*)glfwGetWindowUserPointer(window);
-
-				MouseMoveEvent event((float)xPos, (float)yPos);
-				data.eventCallBack(event);
-			});
-
-		glfwSetScrollCallback(m_RenderWindow, [](GLFWwindow* window, double xOffset, double yOffset)
-			{
-				WindowInfo& data = *(WindowInfo*)glfwGetWindowUserPointer(window);
-				
-				//I do not want to support horizontal mouse scroll wheel movement, so I am just not going to use the xOffset
-				//I get an error if I don't include it :(
-				MouseScrollEvent event((float)yOffset);
-				data.eventCallBack(event);
-			});
-
-
 		glewExperimental = GL_TRUE;
 		if (glewInit() != GLEW_OK)
 		{
 			glfwDestroyWindow(m_RenderWindow);
 			glfwTerminate();
 			Logger::LogMessage(Logger::LogType::Critical, "<Window.cpp> glew Did Not Initialize!");
-			assert(false);
+			EG_ASSERT(false);
 		}
 
 		glViewport(0, 0, bufferWidth, bufferHeight);
@@ -122,7 +102,7 @@ namespace Engine
 		if (glfwInit() == GL_FALSE)
 		{
 			Logger::LogMessage(Logger::LogType::Critical, "<Window.cpp> glfw Is Not Initialized!");
-			assert(false);
+			EG_ASSERT(false);
 		}
 	}
 }

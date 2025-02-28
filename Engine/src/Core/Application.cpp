@@ -15,11 +15,8 @@ namespace Engine
 	Application::Application() :
 		m_DeltaTime(0.f), m_PreviousTime(0), m_Window("Voxel Game")
 	{
-		InitializeEngineRootSystems();
-		
-		m_Window.SetEventCallback([this](CallBackEvent& e) { OnEvent(e); });
-
 		s_Instance = this;
+		InitializeEngineRootSystems();
 	}
 
 	Application::~Application()
@@ -39,7 +36,7 @@ namespace Engine
 		{
 			gameIsRunning = false;
 		}
-		
+
 		m_Window.PollEvents();
 		Draw(GetDeltaTime());
 	}
@@ -49,18 +46,6 @@ namespace Engine
 		m_Window.Draw();
 	}
 
-	void Application::OnEvent(CallBackEvent& event)
-	{
-		if (auto* mouseEvent = dynamic_cast<MouseMoveEvent*>(&event))
-		{
-			mousex = mouseEvent->GetX();
-			mousey = mouseEvent->GetY();
-		}
-		else if (auto* scrollEvent = dynamic_cast<MouseScrollEvent*>(&event))
-		{
-			scrolldir = scrollEvent->GetScrollAmount();
-		}
-	}
 
 	void Application::CalculateDeltaTime()
 	{
@@ -81,7 +66,7 @@ namespace Engine
 			else
 			{
 				Logger::LogMessage(Logger::LogType::Critical, std::string(message).append(" Failed!"));
-				assert(true && ": Engine Root Initialization Aborted");
+				EG_ASSERT(false && ": Engine Root Initialization Aborted");
 			}
 		};
 

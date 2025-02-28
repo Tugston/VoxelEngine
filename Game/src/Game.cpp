@@ -22,6 +22,7 @@ namespace VoxelGame
 		void Start() override
 		{
 			Engine::Logger::LogMessage(Engine::Logger::LogType::Warning, "Started!");
+			Engine::Application::Start();
 			Tick();
 		}
 
@@ -31,8 +32,8 @@ namespace VoxelGame
 			{
 				if (Engine::InputSystem::KeyPressed(Engine::EngineKeys::Enter))
 				{
-					Engine::Logger::LogMessage(Engine::Logger::LogType::Message, "Mouse Pos ({}, {})", mousex, mousey);
-					Engine::Logger::LogMessage(Engine::Logger::LogType::Message, "Scroll Dir = {}", scrolldir);
+					Engine::Logger::LogMessage(Engine::Logger::LogType::Message, "Mouse Pos ({}, {})", Engine::InputSystem::GetMouseX(),
+						Engine::InputSystem::GetMouseY());
 				}
 
 				Engine::Application::Tick();

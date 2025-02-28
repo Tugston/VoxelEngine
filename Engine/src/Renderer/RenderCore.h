@@ -27,6 +27,7 @@
 
 namespace Core
 {
+	//NOTE: OPENGL ERRS DON'T ASSERT
 	void CheckOpenGLError(const char* statement, const char* fileName, int line)
 	{
 		GLenum err = glGetError();

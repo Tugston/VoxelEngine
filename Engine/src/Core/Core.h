@@ -1,4 +1,5 @@
 #pragma once
+#include <cassert>
 
 //premake system config check
 #ifdef ENGINE_PLATFORM_WINDOWS
@@ -13,7 +14,9 @@
 #endif
 
 //I need to make a custom (debug only) assertion soon, before assertions get out of hand
-#ifndef EG_ASSERT
-#define EG_ASSERT
+#ifdef EG_DEBUG
+	#ifndef EG_ASSERT
+		#define EG_ASSERT(...) assert(__VA_ARGS__)
+	#endif
 #endif
 

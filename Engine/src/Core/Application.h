@@ -23,19 +23,11 @@ namespace Engine
 		virtual void Tick();
 		void Draw(float deltaTime);
 
-		//mouse events
-		void OnEvent(CallBackEvent& event); 
-
-
 	protected:
 		void CalculateDeltaTime();
 		inline const float GetDeltaTime() const { return m_DeltaTime; };
 
 		bool gameIsRunning = true;
-
-		int mousex = 0;
-		int mousey = 0;
-		int scrolldir = 0;
 
 	private:
 		
@@ -45,7 +37,6 @@ namespace Engine
 	private:
 		float m_DeltaTime;
 		float m_PreviousTime;
-
 
 		Window m_Window;
 		bool m_Running = true;

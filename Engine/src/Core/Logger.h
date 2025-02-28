@@ -14,17 +14,32 @@
 
 //Logger Detection
 #ifdef EG_PRJ
-#define GET_LOGGER() ::Engine::Logger::GetEngineLogger()
+	#ifdef EG_DEBUG
+		#define GET_LOGGER() ::Engine::Logger::GetEngineLogger()
+	#else
+		#define GET_LOGGER(x) 
+	#endif //EG_DEBUG
 #else
-#define GET_LOGGER() ::Engine::Logger::GetGameLogger()
+	#ifdef APP_DEBUG
+		#define GET_LOGGER() ::Engine::Logger::GetGameLogger()
+	#else
+		#define GET_LOGGER(x)
+	#endif //APP_DEBUG
 #endif
 
 
 //Log Type Macros
+#if defined(EG_DEBUG) || defined(APP_DEBUG)
 #define LOG_MESSAGE(...)	GET_LOGGER()->info(__VA_ARGS__) 
-#define LOG_Warning(...)	GET_LOGGER()->warn(__VA_ARGS__)
+#define LOG_WARNING(...)	GET_LOGGER()->warn(__VA_ARGS__)
 #define LOG_ERROR(...)		GET_LOGGER()->error(__VA_ARGS__)
 #define LOG_FATAL(...)		GET_LOGGER()->critical(__VA_ARGS__)
+#else
+#define LOG_MESSAGE(x)
+#define LOG_WARNING(x)
+#define LOG_ERROR(x)
+#define LOG_FATAL(x)
+#endif
 
 
 namespace Engine
@@ -51,7 +66,7 @@ namespace Engine
 			switch (type)
 			{
 				case LogType::Message:		LOG_MESSAGE(formattedMsg); break;
-				case LogType::Warning:		LOG_Warning(formattedMsg); break;
+				case LogType::Warning:		LOG_WARNING(formattedMsg); break;
 				case LogType::Error:		LOG_ERROR(formattedMsg); break;
 				case LogType::Critical:		LOG_FATAL(formattedMsg); break;
 			};
