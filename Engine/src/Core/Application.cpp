@@ -2,10 +2,14 @@
 
 //STND
 #include <assert.h>
+#include <ranges>
 
 //ENGINE
 #include "Core/Logger.h"
 #include "Input/Input.h"
+#include "Core/LayerStack.h"
+
+//this cpp file is a mess, and will always be, using the find tool (ctrl-f) is advised
 
 namespace Engine
 {
@@ -22,6 +26,7 @@ namespace Engine
 	Application::~Application()
 	{
 		glfwTerminate();
+		LayerStack::Destroy();
 	}
 
 	void Application::Start()
@@ -36,6 +41,8 @@ namespace Engine
 		{
 			gameIsRunning = false;
 		}
+
+		ProcessInput();
 
 		m_Window.PollEvents();
 		Draw(GetDeltaTime());
@@ -71,6 +78,23 @@ namespace Engine
 		};
 
 		InitializeCheck(InputSystem::Init(), "Input System");
+		InitializeCheck(LayerStack::Init(), "Layer Stack");
+	}
+
+	void Application::ProcessInput() const
+	{
+		for (int i = LayerStack::GetLayers().size() - 1; i >= 0; i--)
+		{
+			LayerStack::GetLayers().at(i)->InputEvent();
+		}
+	}
+
+	void Application::AddLayer(Layer* newLayer, bool isUI)
+	{
+		if (isUI)
+			LayerStack::PushUILayer(newLayer);
+		else
+			LayerStack::PushSpaceLayer(newLayer);
 	}
 
 }

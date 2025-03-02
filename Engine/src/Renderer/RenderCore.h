@@ -17,11 +17,11 @@
 		#define GL_Check(statement) do { \
 				statement; \
 				Core::CheckOpenGLError(#statement, __FILE__, __LINE__); \
-				} while (0)
+				} while (glGetError())
 	#endif
 #else
 	#ifndef GL_Check
-		#define GL_Check(statement) statement
+		#define GL_Check(x)
 	#endif
 #endif
 
