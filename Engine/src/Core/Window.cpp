@@ -45,7 +45,7 @@ namespace Engine
 	{
 		glClearColor(.5f, .9f, 1.f, 1.f);
 		glClear(GL_COLOR_BUFFER_BIT);
-		glfwSwapBuffers(m_RenderWindow);
+	//	glfwSwapBuffers(m_RenderWindow);
 	}
 
 	void Window::PollEvents()
@@ -58,7 +58,6 @@ namespace Engine
 		Logger::LogMessage(Logger::LogType::Message, "Initializing Window...");
 
 		//window properties
-	
 		m_RenderWindow = glfwCreateWindow(m_Info.width, m_Info.height, m_Info.name.c_str(), NULL, NULL);
 
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -93,6 +92,9 @@ namespace Engine
 		}
 
 		glViewport(0, 0, bufferWidth, bufferHeight);
+
+		//enable / disable vsync
+		glfwSwapInterval(1);
 
 		Logger::LogMessage(Logger::LogType::Message, "Window Created...");
 	}

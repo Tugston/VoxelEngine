@@ -13,10 +13,10 @@
 
 namespace VoxelGame
 {
-	class Game : public Engine::Application
+	class Game : public Application
 	{
 	public:
-		Game() : Engine::Application()
+		Game() : Application()
 		{
 		}
 
@@ -27,12 +27,16 @@ namespace VoxelGame
 
 		void Start() override
 		{
-			Engine::Logger::LogMessage(Engine::Logger::LogType::Warning, "Started!");
+			Logger::LogMessage(Logger::LogType::Warning, "Started!");
 
-			Engine::Application::AddLayer(new UILayer, true);
-			Engine::Application::AddLayer(new WorldLayer, false);
+			//I want to create a simpler system for the game to add new layers
+			//this is temporary, the scenes will automatically add layers when it is instantiated
+			Application::AddLayer(new UILayer, true);
+			Application::AddLayer(new Engine::UILayer, true);
+			Application::AddLayer(new WorldLayer, false);
+			Application::AddLayer(new Engine::WorldLayer, false);
 
-			Engine::Application::Start();
+			Application::Start();
 			Tick();
 		}
 
@@ -40,13 +44,13 @@ namespace VoxelGame
 		{
 			while (gameIsRunning)
 			{
-				if (Engine::InputSystem::KeyPressed(Engine::EngineKeys::Enter))
+				if (InputSystem::KeyPressed(EngineKeys::Enter))
 				{
-					Engine::Logger::LogMessage(Engine::Logger::LogType::Message, "Mouse Pos ({}, {})", Engine::InputSystem::GetMouseX(),
-						Engine::InputSystem::GetMouseY());
+					Logger::LogMessage(Logger::LogType::Message, "Mouse Pos ({}, {})", InputSystem::GetMouseX(),
+						InputSystem::GetMouseY());
 				}
 
-				Engine::Application::Tick();
+				Application::Tick();
 			}
 		}
 
@@ -55,7 +59,7 @@ namespace VoxelGame
 	};
 }
 
-Engine::Application* Engine::CreateApplication()
+Application* Engine::CreateApplication()
 {
 	return new VoxelGame::Game();
 }

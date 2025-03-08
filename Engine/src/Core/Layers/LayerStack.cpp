@@ -34,14 +34,17 @@ namespace Engine
 		layer->Attach();
 	}
 
-	void LayerStack::PopLayer(Layer* layer)
+	void LayerStack::RemoveLayer(const std::vector<Layer*>::iterator& LayerPosition)
 	{
-		std::vector<Layer*>::iterator it = std::find(Top(), Bottom(), layer);
-		std::size_t index = std::distance(Top(), it);
+		//grab the index for the layer
+		std::size_t index = std::distance(std::begin(m_Layers), LayerPosition);
+		
+		delete *LayerPosition;
+		m_Layers.erase(LayerPosition);
 
-		layer->Detach();
-		delete m_Layers.at(index);
-		m_Layers.erase(it);
+		//if the layer is a world layer, reduce the emplace index
+		if(index < m_emplaceIdex)
+			m_emplaceIdex--;
 	}
 
 	std::vector<Layer*>::iterator LayerStack::Top()

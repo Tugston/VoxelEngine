@@ -7,7 +7,7 @@
 //ENGINE
 #include "Core/Logger.h"
 #include "Input/Input.h"
-#include "Core/LayerStack.h"
+#include "Core/Layers/LayerStack.h"
 
 //this cpp file is a mess, and will always be, using the find tool (ctrl-f) is advised
 
@@ -17,7 +17,7 @@ namespace Engine
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application() :
-		m_DeltaTime(0.f), m_PreviousTime(0), m_Window("Voxel Game")
+		m_Window("Voxel Game")
 	{
 		s_Instance = this;
 		InitializeEngineRootSystems();
@@ -36,12 +36,6 @@ namespace Engine
 	void Application::Tick()
 	{
 		CalculateDeltaTime();
-
-		if (InputSystem::KeyPressed(EngineKeys::ESC))
-		{
-			gameIsRunning = false;
-		}
-
 		ProcessInput();
 
 		m_Window.PollEvents();
@@ -51,14 +45,37 @@ namespace Engine
 	void Application::Draw(float deltaTime)
 	{
 		m_Window.Draw();
+
+		DebugUI::Refresh();
+
+		for (int i = 0; i < LayerStack::GetLayers().size(); i++)
+		{
+			LayerStack::GetLayers().at(i)->Draw();
+		}
+	
+		DebugUI::Render();
+		glfwSwapBuffers(m_Window.GetGLFWWindow());
+	//	m_Window.Draw();
 	}
 
 
 	void Application::CalculateDeltaTime()
 	{
-		uint32_t currentTime = glfwGetTime();
-		m_DeltaTime = (currentTime - m_PreviousTime) / 1000.f;
+		float currentTime = (float)glfwGetTime();
+		m_DeltaTime = (currentTime - m_PreviousTime); //get delta time
 		m_PreviousTime = currentTime;
+
+		static unsigned int CurrentFrames = 0;
+		CurrentFrames++;
+
+		static double fpsTimer = currentTime;
+		if (currentTime - fpsTimer >= 1)
+		{
+			m_FrameRate = CurrentFrames;
+			CurrentFrames = 0;
+			fpsTimer = currentTime;
+			m_DeltaTime *= 1000;
+		}
 	}
 
 	void Application::InitializeEngineRootSystems() const
@@ -79,6 +96,7 @@ namespace Engine
 
 		InitializeCheck(InputSystem::Init(), "Input System");
 		InitializeCheck(LayerStack::Init(), "Layer Stack");
+		InitializeCheck(DebugUI::Init(), "Debug UI");
 	}
 
 	void Application::ProcessInput() const

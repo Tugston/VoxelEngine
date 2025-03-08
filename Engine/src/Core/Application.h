@@ -3,6 +3,7 @@
 //ENGINE
 #include "Core/Core.h"
 #include "Window.h"
+#include "Debug/DebugUI.h"
 
 //STND
 #include <cstdint>
@@ -47,6 +48,15 @@ namespace Engine
 		void AddLayer(Layer* newLayer, bool isUI);
 
 
+	public:
+		//simply quits the game
+		//sets the game loop boolean value to false
+		static inline void QuitGame() { s_Instance->gameIsRunning = false; };
+		
+		//Returns the frame rate
+		static const inline unsigned int GetFrameRate() { return s_Instance->m_FrameRate; };
+
+		//TEMPORARY
 
 
 		//*************//
@@ -64,8 +74,9 @@ namespace Engine
 	protected:
 		
 	private:
-		float m_DeltaTime;
-		float m_PreviousTime;
+		float m_DeltaTime = 0;
+		float m_PreviousTime = 0;
+		unsigned int m_FrameRate = 0;
 
 		Window m_Window;
 		bool m_Running = true;

@@ -1,5 +1,6 @@
 #include "GameLayers.h"
 
+
 namespace VoxelGame
 {
 	//***********//
@@ -24,7 +25,7 @@ namespace VoxelGame
 
 	void WorldLayer::Draw()
 	{
-		Engine::Logger::LogMessage(Engine::Logger::LogType::Message, "World Layer Draw!");
+	//	Engine::Logger::LogMessage(Engine::Logger::LogType::Message, "World Layer Draw!");
 	}
 
 	void WorldLayer::InputEvent()
@@ -37,8 +38,34 @@ namespace VoxelGame
 			}
 			else if (InputSystem::KeyPressed(Engine::EngineKeys::S))
 			{
-				Logger::LogMessage(Logger::LogType::Warning, "Leaving World Layer!");
+				Logger::LogMessage(Logger::LogType::Error, "Leaving Game World Layer! Entering Game UI Layer!");
 				InputSystem::SetCurrentInputMode(InputSystem::InputMode::UIOnly);
+			}
+			else if (InputSystem::KeyPressed(Engine::EngineKeys::BackSpace))
+			{
+				Logger::LogMessage(Logger::LogType::Error, "Leaving Game World Layer! Entering Engine Layer!");
+				InputSystem::SetCurrentInputMode(InputSystem::InputMode::Debug);
+			}
+			else if (InputSystem::KeyPressed(Engine::EngineKeys::Space))
+			{
+				Logger::LogMessage(Logger::LogType::Warning, "Removed Engine Layers");
+
+				REMOVE_ENGINE_DEBUG_LAYER;
+				REMOVE_ENGINE_UI_LAYER;
+			}
+			else if (InputSystem::GetScrollDirection() == 1)
+			{
+				Logger::LogMessage(Logger::LogType::Warning, "Positive Scroll Direction");
+				Logger::LogMessage(Logger::LogType::Message, "{}", InputSystem::GetScrollDirection());
+			}
+			else if (InputSystem::KeyPressed(EngineKeys::LSHIFT) && InputSystem::KeyPressed(EngineKeys::P))
+			{
+				Logger::LogMessage(Logger::LogType::Message, "Compound keys work");
+			}
+			else if (InputSystem::KeyTapped(EngineKeys::C))
+			{
+				Engine::LayerStack::PushSpaceLayer(new Engine::WorldLayer);
+				Engine::LayerStack::PushUILayer(new Engine::UILayer);
 			}
 		}
 	}
@@ -66,7 +93,6 @@ namespace VoxelGame
 
 	void UILayer::Draw()
 	{
-		Engine::Logger::LogMessage(Engine::Logger::LogType::Message, "UI Layer Draw!");
 	}
 
 	void UILayer::InputEvent()

@@ -105,7 +105,7 @@ project "Game"
 		"Vendor/include/SPDLOG",
 		"Vendor/include/GLFW",
 		"Vendor/include/GLM",
-		"Vendor/include/GLEW"
+		"Vendor/include/GLEW",
 	}
 
 	links

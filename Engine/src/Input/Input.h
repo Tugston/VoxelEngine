@@ -27,14 +27,28 @@ namespace Engine
 			Debug
 		};
 
+		static enum class ScrollDirection
+		{
+			Up = 1,
+			Down = -1
+		};
+
 	public:
 		static bool Init();
+
+		//polls the first frame the key is held
+		//resets once key is released
+		static bool KeyTapped(EngineKeys key);
+
+		//polls the entire time the key is held
 		static bool KeyPressed(EngineKeys key);
 		static bool KeyReleased(EngineKeys key);
 
 		static glm::vec2 GetMousePos();
 		static float GetMouseX();
 		static float GetMouseY();
+
+		static float GetScrollDirection();
 
 		static void SetCurrentInputMode(InputMode newInputMode);
 		static inline InputMode GetInputMode() { return m_CurrentInputMode; };

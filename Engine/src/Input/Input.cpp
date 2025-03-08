@@ -25,33 +25,43 @@ namespace Engine
 		return true;
 	}
 
+	bool InputSystem::KeyTapped(EngineKeys key)
+	{
+		if (KeyReleased(key))
+		{
+			//remove the key for KeyTapped()
+			//it should be guranteed to be in the map
+			m_HandledMap.erase(key);
+		}
+		else if (KeyPressed(key))
+		{
+			//check if the key is currently (in a series of frames) being handled
+			if (m_HandledMap.find(key) == m_HandledMap.end())
+				m_HandledMap.emplace(key, false);
+
+			if (m_HandledMap.at(key) == false)
+			{
+				m_HandledMap.at(key) = true;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		return false;
+	}
+
 	bool InputSystem::KeyPressed(EngineKeys key)
 	{
-		//check if key input has been handled
-	//	if (m_HandledMap.at(key) == false)
-	//	{
-//			m_HandledMap.at(key) = true;
-			auto keyState = glfwGetKey(Application::GetWindow()->GetGLFWWindow(), (int)key);
-			return keyState == GLFW_PRESS;
-//		}
-//		else
-	//	{
-	//		return false
-	//	}
+		auto keyState = glfwGetKey(Application::GetWindow()->GetGLFWWindow(), (int)key);
+		return keyState == GLFW_PRESS;
 	}
 
 	bool InputSystem::KeyReleased(EngineKeys key)
 	{
-		if (m_HandledMap.at(key) == true)
-		{
-			m_HandledMap.at(key) = false;
-			auto keyState = glfwGetKey(Application::GetWindow()->GetGLFWWindow(), (int)key);
-			return keyState == GLFW_RELEASE;
-		}
-		else
-		{
-			return false;
-		}
+		auto keyState = glfwGetKey(Application::GetWindow()->GetGLFWWindow(), (int)key);
+		return keyState == GLFW_RELEASE;
 	}
 
 	glm::vec2 InputSystem::GetMousePos()
@@ -67,6 +77,13 @@ namespace Engine
 	float InputSystem::GetMouseY()
 	{
 		return m_MousePos.y;
+	}
+
+	float InputSystem::GetScrollDirection()
+	{
+		float scrollDir = std::clamp((float)m_ScrollDir, -1.f, 1.f);
+		m_ScrollDir = 0; //reset back to 0 for stop scrolling
+		return scrollDir;
 	}
 
 	void InputSystem::SetCurrentInputMode(InputMode newInputMode)
