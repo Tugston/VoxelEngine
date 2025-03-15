@@ -12,7 +12,7 @@
 //this is really only a system for the Game's UI to be layered on top of the Game's 3d rendering
 //and it will be like that in every scene, which is why I made this static
 
-//this class should only be engine sided
+//THIS CLASS SHOULD ONLY BE ENGINE SIDED, SO REMOVE "ENGING_API" IN THE FUTURE
 
 namespace Engine
 {
@@ -49,41 +49,60 @@ namespace Engine
 	//basically, the engine application needs to control these, and they are used for debugging
 
 #if defined(EG_DEBUG) || defined(APP_DEBUG)
-#define REMOVE_ENGINE_UI_LAYER \
+	#ifndef REMOVE_ENGINE_UI_LAYER
+	#define REMOVE_ENGINE_UI_LAYER \
 		for(std::vector<Layer*>::iterator i = Engine::LayerStack::CurrentLocation(); i < Engine::LayerStack::Bottom(); i++){\
 			if((*i)->GetID() == 2){\
 				Engine::LayerStack::RemoveLayer(i);\
 				break;\
 			}\
 		};
+	#endif
 
 	//remove the engine render layer from the layer stack
-#define REMOVE_ENGINE_DEBUG_LAYER \
+	#ifndef REMOVE_ENGINE_DEBUG_LAYER
+	#define REMOVE_ENGINE_DEBUG_LAYER \
 		for(std::vector<Layer*>::iterator i = Engine::LayerStack::Top(); i < Engine::LayerStack::CurrentLocation(); i++){\
 			if((*i)->GetID() == 1){\
 				Engine::LayerStack::RemoveLayer(i);\
 				break;\
 			}\
 		};
+	#endif
 
-#define REMOVE_GAME_WORLD_LAYER(x)\
-	for(std::vector<Layer*>::iterator i = Engine::LayerStack::Top(); i < Engine::LayerStack::CurrentLocation(); i++){\
-		if((*i)->GetID() == x){\
-			Engine::LayerStack::RemoveLayer(i);\
-			break;\
+	//maybe the game world layer will need to be removed to test engine debug features 
+	//so adding it just in case, debug only obviously
+	#ifndef REMOVE_GAME_WORLD_LAYER
+	#define REMOVE_GAME_WORLD_LAYER(x)\
+		for(std::vector<Layer*>::iterator i = Engine::LayerStack::Top(); i < Engine::LayerStack::CurrentLocation(); i++){\
+			if((*i)->GetID() == x){\
+				Engine::LayerStack::RemoveLayer(i);\
+				break;\
 			}\
-	};
+		};
+	#endif
+#else
+	#ifndef REMOVE_ENGINE_UI_LAYER
+	#define REMOVE_ENGINE_UI_LAYER
+	#endif
+	#ifndef REMOVE_ENGINE_DEBGUG_LAYER
+	#define REMOVE_ENGINE_DEBUG_LAYER
+	#endif
+	#ifndef REMOVE_GAME_WORLD_LAYER(x)
+	#define REMOVE_GAME_WORLD_LAYER(x)
+	#endif
 #endif
 
-	//this macro is the only one available in the share build so I am not having the api refer to layers
-
+//this macro is the only one available in the share build so I am not having the world readably refer to layers
+#ifndef REMOVE_UI(x)
 	//completely removes all ui from the screen
 	//this includes rendering and input
-#define REMOVE_UI(x)\
-	for(std::vector<Layer*>::iterator i = Engine::LayerStack::CurrentLocation(); i < Engine::LayerStack::Bottom(); i++){\
-		if((*i)->GetID() == x){\
-			Engine::LayerStack::RemoveLayer(i);\
-			break;\
-		}\
-	};
+	#define REMOVE_UI(x)\
+		for(std::vector<Layer*>::iterator i = Engine::LayerStack::CurrentLocation(); i < Engine::LayerStack::Bottom(); i++){\
+			if((*i)->GetID() == x){\
+				Engine::LayerStack::RemoveLayer(i);\
+				break;\
+			}\
+		};
+#endif
 }

@@ -40,9 +40,9 @@ namespace Engine
 
 	void WorldLayer::Draw()
 	{
-		DebugUI::BeginUI("Engine World Layer");
-		DebugUI::AddElement(DebugUI::ElementType::Text, "Layer Text");
-		DebugUI::EndUI();
+	//	DebugUI::BeginUI("Engine World Layer");
+	//	DebugUI::AddElement(DebugUI::ElementType::Text, "Layer Text");
+	//	DebugUI::EndUI();
 	}
 
 	void WorldLayer::InputEvent()
@@ -88,22 +88,49 @@ namespace Engine
 
 	void UILayer::Draw()
 	{
-		DebugUI::BeginUI("Engine UI");
-		DebugUI::AddElement(DebugUI::ElementType::Text, ("FPS: " + std::to_string(Application::GetFrameRate())).c_str());
-		DebugUI::AddElement(DebugUI::ElementType::Text, "A - Log Message");
-		DebugUI::AddElement(DebugUI::ElementType::Text, "Space - Remove Engine Layers");
-		DebugUI::AddElement(DebugUI::ElementType::Text, "C - Add Engine Layers");
-		DebugUI::AddElement(DebugUI::ElementType::Text, "S - Enter Game UI Layer From Game World Layer");
-		DebugUI::AddElement(DebugUI::ElementType::Text, "BackSpace - Enter Engine Debug Layers From Game World Layer");
-		DebugUI::AddElement(DebugUI::ElementType::Text, "D - Return To Game World Layer From Game UI Layer");
-		DebugUI::AddElement(DebugUI::ElementType::Text, "Return To Game Layer From Engine Debug Layer - Space");
-		DebugUI::AddElement(DebugUI::ElementType::Text, "Esc - Quit, When In Debug Layer");
-		DebugUI::EndUI();
+		
+		Debug::UI::BeginUI("Engine UI");
+		const std::string& frameRate = std::to_string(Application::GetFrameRate());
+		const unsigned int& frameRateVal = Application::GetFrameRate();
+		if (frameRateVal > 50)
+		{
+			unsigned int color = 0x00FF00FF;
+			Debug::UI::AddElement<std::string, char>(Debug::ElementType::ColoredText, frameRate, nullptr, color);
+		}
+		else if (frameRateVal <= 50 && frameRateVal > 20)
+		{
+			unsigned int color = 0xFFFF00FF;
+			Debug::UI::AddElement<std::string, char>(Debug::ElementType::ColoredText, frameRate, nullptr, color);
+		}
+		else if (frameRateVal <= 20)
+		{
+			unsigned int color = 0xFF0000FF;
+			Debug::UI::AddElement<std::string, char>(Debug::ElementType::ColoredText, frameRate, nullptr, color);
+		}
+		
+		if (m_ShowAllData)
+		{
+			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "A - Log Message", nullptr, NULL);
+			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "Space - Remove Engine Layers", nullptr, NULL);
+			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "C - Add Engine Layers", nullptr, NULL);
+			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "S - Enter Engine Debug Layer From Game World Layer", nullptr, NULL);
+			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "Backspace - Enter Engine Debug Layers From Game World Layer", nullptr, NULL);
+			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "D - Return To Game World Layer From Game UI Layer", nullptr, NULL);
+			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "Return To Game Layer From Engine Debug Layer - Space", nullptr, NULL);
+			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "Esc - Quit, When In Debug Layer", nullptr, NULL);
+
+			Debug::UI::AddElement<std::string, float>(Debug::ElementType::DragFloat, "Test Float", &m_TestFloat, 1.f, -5.f, 10.f, "%.3f", 0);
+		}
+
+		
+		Debug::UI::AddElement<std::string, bool>(Debug::ElementType::CheckBox, "Show Controls and Dev Tests", &m_ShowAllData, NULL);
+
+	
+		Debug::UI::EndUI();
 	}
 
 	void UILayer::InputEvent()
 	{
-		//Logger::LogMessage(Logger::LogType::Message, "Engine UI Layer Input!");
 	}
 
 

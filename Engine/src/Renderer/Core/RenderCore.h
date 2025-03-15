@@ -14,7 +14,7 @@
 //opengl error debug msg
 #ifdef EG_DEBUG
 	#ifndef GL_Check
-		#define GL_Check(statement) do { \
+		#define GL_CHECK(statement) do { \
 				statement; \
 				Core::CheckOpenGLError(#statement, __FILE__, __LINE__); \
 				} while (glGetError())
@@ -38,4 +38,16 @@ namespace Core
 		}
 	}
 }
+
+//disable integrated graphics, incase a graphics card and integrated gpu are present
+//intel cpus must handle this themselves in their system settings
+#ifdef __cplusplus
+extern "C" {
+#endif
+	__declspec(dllexport) DWORD NvOptimusEnablement = 1;
+	__declspec(dllexport) DWORD AmdPowerXpressRequestHighPerformance = 1;
+	__declspec(dllexport) int AmdPowerXpressRequestHighPerformance = 0;
+#ifdef __cplusplus
+}
+#endif
 

@@ -25,7 +25,7 @@ namespace Engine
 		inline GLFWwindow* GetGLFWWindow() const { return m_RenderWindow; };
 
 		
-		void Draw();
+		void Clear();
 		void PollEvents();
 
 

@@ -2,9 +2,9 @@
 
 #include "Core/Application.h"
 
-namespace Engine
+namespace Engine::Debug
 {
-	bool DebugUI::Init()
+	bool UI::Init()
 	{
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -17,31 +17,31 @@ namespace Engine
 		return success;
 	}
 
-	void DebugUI::Destroy()
+	void UI::Destroy()
 	{
 		ImGui_ImplOpenGL3_Shutdown();
 		ImGui_ImplGlfw_Shutdown();
 		ImGui::DestroyContext();
 	}
 
-	void DebugUI::BeginUI(const std::string& name)
+	void UI::BeginUI(const std::string& name)
 	{
 		ImGui::Begin(name.c_str());
 	}
 
-	void DebugUI::EndUI()
+	void UI::EndUI()
 	{
 		ImGui::End();
 	}
 
-	void DebugUI::Refresh()
+	void UI::Refresh()
 	{
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 	}
 
-	void DebugUI::Render()
+	void UI::Render()
 	{
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

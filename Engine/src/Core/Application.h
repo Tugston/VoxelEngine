@@ -4,6 +4,8 @@
 #include "Core/Core.h"
 #include "Window.h"
 #include "Debug/DebugUI.h"
+#include "Renderer/RendererAPI.h"
+#include "Scene/Scene.h"
 
 //STND
 #include <cstdint>
@@ -11,7 +13,7 @@
 
 //engine application class meant to be inheritted by the game
 //this class handles all the backend engine tasks such as rendering, etc
-//IT IS A SINGLETON, BE SURE TO DEFINE CREATE APPLICATION IN GAME AS WELL!
+//IT IS A SINGLETON, BE SURE TO DEFINE CREATEAPPLICATION() IN GAME AS WELL!
 namespace Engine
 {
 	class Layer;
@@ -79,6 +81,9 @@ namespace Engine
 		unsigned int m_FrameRate = 0;
 
 		Window m_Window;
+		Renderer::RenderAPI m_Renderer;
+		Scene m_CurrentScene;
+		
 		bool m_Running = true;
 
 

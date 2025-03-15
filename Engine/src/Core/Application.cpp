@@ -20,6 +20,7 @@ namespace Engine
 		m_Window("Voxel Game")
 	{
 		s_Instance = this;
+		srand(time(NULL));
 		InitializeEngineRootSystems();
 	}
 
@@ -44,18 +45,16 @@ namespace Engine
 
 	void Application::Draw(float deltaTime)
 	{
-		m_Window.Draw();
+		//previous frame reset
+		m_Window.Clear();
+		Debug::UI::Refresh();
 
-		DebugUI::Refresh();
 
-		for (int i = 0; i < LayerStack::GetLayers().size(); i++)
-		{
-			LayerStack::GetLayers().at(i)->Draw();
-		}
-	
-		DebugUI::Render();
+		m_CurrentScene.Render();
+
+		Debug::UI::Render();
 		glfwSwapBuffers(m_Window.GetGLFWWindow());
-	//	m_Window.Draw();
+		
 	}
 
 
@@ -96,7 +95,7 @@ namespace Engine
 
 		InitializeCheck(InputSystem::Init(), "Input System");
 		InitializeCheck(LayerStack::Init(), "Layer Stack");
-		InitializeCheck(DebugUI::Init(), "Debug UI");
+		InitializeCheck(Debug::UI::Init(), "Debug UI");
 	}
 
 	void Application::ProcessInput() const

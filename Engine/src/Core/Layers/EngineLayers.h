@@ -28,6 +28,11 @@ namespace Engine
 		virtual void Detach();
 		virtual void Draw();
 		virtual void InputEvent();
+
+	private:
+		bool m_ShowAllData = false;
+		int m_TestInt = 0;
+		float m_TestFloat = 0;
 	};
 
 }
