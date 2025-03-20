@@ -1,4 +1,7 @@
+#include "egpch.h"
 #include "LayerStack.h"
+
+#include "Core/Logger.h"
 
 namespace Engine
 {
@@ -13,12 +16,8 @@ namespace Engine
 
 	void LayerStack::Destroy()
 	{
-		for (int i = 0; i < m_Layers.size(); i++)
-		{
-			delete m_Layers[i];
-		}
-
-		m_Layers.clear();
+		Clear();
+		Logger::LogMessage(Logger::LogType::Warning, "Layer Stack Destroyed!");
 	}
 
 	void LayerStack::PushSpaceLayer(Layer* layer)
@@ -26,12 +25,27 @@ namespace Engine
 		m_Layers.emplace(CurrentLocation(), layer);
 		layer->Attach();
 		m_emplaceIdex++;
+		Logger::LogMessage(Logger::LogType::Message, "Space Layer Added (Total of: {} Layers)", m_Layers.size());
 	}
 
 	void LayerStack::PushUILayer(Layer* layer)
 	{
 		m_Layers.emplace_back(layer);
 		layer->Attach();
+		Logger::LogMessage(Logger::LogType::Message, "UI Layer Added (Total of: {} Layers)", m_Layers.size());
+	}
+
+	void LayerStack::Clear()
+	{
+		if (m_Layers.size() == 0)
+			return;
+
+		for (auto i : m_Layers)
+		{
+			delete i;
+		}
+
+		m_Layers.clear();
 	}
 
 	void LayerStack::RemoveLayer(const std::vector<Layer*>::iterator& LayerPosition)
@@ -45,6 +59,21 @@ namespace Engine
 		//if the layer is a world layer, reduce the emplace index
 		if(index < m_emplaceIdex)
 			m_emplaceIdex--;
+	}
+
+	const bool LayerStack::CheckLayerExists(unsigned char id)
+	{
+		for (auto i : m_Layers)
+		{
+			if (i->GetID() == id)
+			{
+				return true;
+			}
+		}
+		
+		//could be a serious issue in some cases if the layer with the id does not exist, but in some cases it's ok, so guess this log covers that??
+		Logger::LogMessage(Logger::LogType::Critical, "LAYER NOT FOUND! Ignore if it was intended to not be found.");
+		return false;
 	}
 
 	std::vector<Layer*>::iterator LayerStack::Top()

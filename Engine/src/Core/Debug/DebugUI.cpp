@@ -1,3 +1,4 @@
+#include "egpch.h"
 #include "DebugUI.h"
 
 #include "Core/Application.h"

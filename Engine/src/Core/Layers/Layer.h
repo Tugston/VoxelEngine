@@ -21,8 +21,7 @@ namespace Engine
 		inline unsigned char GetID() const { return m_ID; };
 
 	protected:
-		//there will only be at most 4 layers 
-		//so I just need the number 1-4 for identifying layers to be added or removed
+		//there will only be a few layers
 		//this can be stored in a byte obviously
 		unsigned char m_ID = 0;
 	};

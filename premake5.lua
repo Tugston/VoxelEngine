@@ -26,6 +26,9 @@ project "Engine"
 	objdir ("bin-intermediates/" .. outputdir .. "/%{prj.name}")
 	debugdir ("bin/" .. outputdir .. "/Game")
 
+	pchheader "egpch.h"
+	pchsource "%{prj.name}/src/egpch.cpp"	
+
 	files
 	{
 		"%{prj.name}/src/**.h",
@@ -53,6 +56,10 @@ project "Engine"
 		"Vendor/bin/glfw",
 		"Vendor/bin/glew"
 	}
+
+	--vendor src should not add my pch
+	filter "files:Engine/src/Vendor/**.cpp"
+		flags {"NoPCH"}
 
 	filter "system:windows"
 		cppdialect "C++20"

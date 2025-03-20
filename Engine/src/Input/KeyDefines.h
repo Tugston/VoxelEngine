@@ -1,5 +1,8 @@
 #pragma once
 
+//ENGINE
+#include "Core/Core.h"
+
 //VENDOR
 #include <glfw/glfw3.h>
 

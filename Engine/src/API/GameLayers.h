@@ -1,12 +1,11 @@
 #pragma once
 
-//this class serves as a bridge between the engine and game objects, scenes, etc
-//ideally the game would only make game objects, but I want the game to have a little more control
-//may change in the future, but this just makes sense to me currently
+//this class serves as a bridge between the engine and game for the layers
+//the game should only have to deal with the game objects and the game class
+//however I am seperating this from the engine layers just to add some potential flexibility
+#include "Core/Layers/LayerStack.h"
 
-#include<Engine.h>
-
-namespace VoxelGame
+namespace Engine::API
 {
 	class WorldLayer : public Engine::Layer
 	{

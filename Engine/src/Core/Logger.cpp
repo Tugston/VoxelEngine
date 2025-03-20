@@ -1,7 +1,5 @@
+#include "egpch.h"
 #include "Logger.h"
-
-//STND
-#include<iostream>
 
 //VENDOR
 #include "spdlog/sinks/stdout_color_sinks.h"

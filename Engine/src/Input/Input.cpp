@@ -1,7 +1,10 @@
-#include "Input.h"
+#include "egpch.h"
+#include "Input/Input.h"
 
 //ENGINE
 #include "Core/Application.h"
+
+#include <GL/GL.h>
 
 namespace Engine
 {

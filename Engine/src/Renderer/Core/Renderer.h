@@ -2,8 +2,7 @@
 
 //just some common things I feel each renderer would need, so making a base class
 
-#include "Renderer/Core/RenderCore.h"
-#include "Core/Application.h"
+#include "Core/Core.h"
 
 namespace Engine::Renderer
 {
@@ -18,7 +17,6 @@ namespace Engine::Renderer
 		virtual void SetID(unsigned char id) { m_RendererID = id; };
 		virtual unsigned char GetID() { return m_RendererID; };
 	private:
-		unsigned char m_RendererID;
-
+		unsigned char m_RendererID = -1;
 	};
 }

@@ -1,15 +1,13 @@
 #pragma once
 
-//STND
-#include<string>
-#include<memory>
-#include<iostream>
-
 //ENGINE
-#include "Core.h"
+#include "Core/Core.h"
 
 //VENDOR
 #include <spdlog/spdlog.h>
+
+//STND
+#include <memory>
 
 
 //Logger Detection

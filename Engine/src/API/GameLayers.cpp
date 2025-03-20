@@ -1,12 +1,18 @@
+#include "egpch.h"
 #include "GameLayers.h"
 
+//ENGINE
+#include "Core/Core.h"
+#include "Core/Logger.h"
+#include "Core/Layers/EngineLayers.h"
+#include "Input/Input.h" //temporary include, game objects should handle the actual inputs
 
-namespace VoxelGame
+namespace Engine::API
 {
 	//***********//
 	//WORLD LAYER//
 	//***********//
-	WorldLayer::WorldLayer()
+	WorldLayer::WorldLayer() : Layer(3)
 	{
 	}
 
@@ -66,6 +72,7 @@ namespace VoxelGame
 			{
 				Engine::LayerStack::PushSpaceLayer(new Engine::WorldLayer);
 				Engine::LayerStack::PushUILayer(new Engine::UILayer);
+				
 			}
 		}
 	}
@@ -74,7 +81,7 @@ namespace VoxelGame
 	//********//
 	//UI LAYER//
 	//********//
-	UILayer::UILayer()
+	UILayer::UILayer() : Layer(4)
 	{
 	}
 

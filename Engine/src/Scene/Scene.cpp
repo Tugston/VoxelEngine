@@ -1,24 +1,60 @@
+#include "egpch.h"
 #include "Scene.h"
 
-#include "Core/Layers/LayerStack.h"
+//ENGINE
+#include "API/GameLayers.h"
+#include "Core/Logger.h"
 
-Engine::Scene::Scene()
-{
-}
 
-Engine::Scene::~Scene()
+namespace Engine::Scene
 {
-}
 
-void Engine::Scene::Render()
-{
-	for (size_t i = 0; i < LayerStack::GetLayers().size(); i++)
+	Scene::Scene()
 	{
-		LayerStack::GetLayers().at(i)->Draw();
-	}
-}
 
-void Engine::Scene::EnableFullDebugView() const
-{
+		Logger::LogMessage(Logger::LogType::Message, "New Scene Created!");
+		
+		//layer setup
+		LayerStack::Clear(); //clear the layer stack to refresh for the new scene
+		LayerStack::PushSpaceLayer(new API::WorldLayer);
+		LayerStack::PushUILayer(new WorldLayer);
+		LayerStack::PushSpaceLayer(new API::UILayer);
+		LayerStack::PushUILayer(new UILayer);
+	}
+
+	Scene::Scene(const std::string_view& name) : m_Name(name)
+	{
+		Scene();
+	}
+
+	Scene::~Scene()
+	{
+	}
+
+	Renderer::RenderData Scene::CollectRenderData()
+	{
+		Renderer::RenderData test;
+
+		for (size_t i = 0; i < LayerStack::GetLayers().size(); i++)
+		{
+			LayerStack::GetLayers().at(i)->GetDrawData();
+		}
+
+		return test;
+	}
+
+	void Scene::AddUI() const
+	{
+		//check if the layer exists already, if not add it
+		if (!(LayerStack::CheckLayerExists(4)))
+		{
+			LayerStack::PushUILayer(new API::UILayer);
+		}
+	}
+
+	void Scene::RemoveUI() const
+	{
+		REMOVE_UI;
+	}
 
 }

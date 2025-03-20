@@ -1,17 +1,16 @@
 #pragma once
 
 //ENGINE
-#include "KeyDefines.h"
-#include "Core/Core.h"
+#include "Input/KeyDefines.h"
 #include "Core/Logger.h"
 
 //STND
-#include <memory>
-#include <map>
+#include <unordered_map>
 
 //VENDOR
 #include <glm/glm.hpp>
-#include <glfw/glfw3.h>
+
+struct GLFWwindow;
 
 namespace Engine
 {

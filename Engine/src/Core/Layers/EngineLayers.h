@@ -13,6 +13,7 @@ namespace Engine
 
 		virtual void Attach();
 		virtual void Detach();
+
 		virtual void Draw();
 		virtual void InputEvent();
 	
@@ -26,6 +27,7 @@ namespace Engine
 
 		virtual void Attach();
 		virtual void Detach();
+
 		virtual void Draw();
 		virtual void InputEvent();
 

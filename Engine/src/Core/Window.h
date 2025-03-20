@@ -6,11 +6,11 @@
 //STND
 #include <string>
 
-
 struct GLFWwindow;
 
 namespace Engine
 {
+	using WindowResizeCallback = std::function<void(int, int)>;
 
 	class ENGINE_API Window
 	{
@@ -25,27 +25,36 @@ namespace Engine
 		inline GLFWwindow* GetGLFWWindow() const { return m_RenderWindow; };
 
 		
-		void Clear();
 		void PollEvents();
+		void DestroyWindow();
+		void SwapBuffers();
 
+		//resize callback
+		void SetFrameSize(WindowResizeCallback callbackFunction);
+
+		inline const WindowResizeCallback GetResizeCallback() { return m_Info.resizeCallback; };
+		inline const std::pair<int, int> GetBufferSize() { return m_Info.bufferSize; };
 
 	private:
 		void SetupWindow();
-		void InitializeGLFW(); //to allow the window to be created in any order
+		void InitializeGLFW(); //to allow the window to be created in any order, probably not the best to Initialize glfw multiple times though
 
 	private:
 		GLFWwindow* m_RenderWindow;
 
+		//struct for glfw user pointer
 		struct WindowInfo
 		{
 		public:
 			std::string name = "Voxel Game";
 			unsigned short width = 800;
 			unsigned short height = 500;
+			WindowResizeCallback resizeCallback; //store the resize callback for the future
+			std::pair<int, int> bufferSize;
 		};
 
 
 		WindowInfo m_Info;
-
+	
 	};
 }

@@ -1,6 +1,11 @@
 #pragma once
 
-//FILE CANNOT BE INCLUDED ANYWHERE
+//---------------------------------------------------------------------
+// ENTRY POINT
+// FILE CAN ONLY BE INCLUDED ONCE
+// NEEDS TO BE INCLUDED AT THE START OF THE GAME'S APPLICATION CPP FILE
+// ENTRY POINT
+//---------------------------------------------------------------------
 
 //ENGINE
 #include "Application.h"

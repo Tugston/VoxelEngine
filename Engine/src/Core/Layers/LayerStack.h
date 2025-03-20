@@ -12,8 +12,6 @@
 //this is really only a system for the Game's UI to be layered on top of the Game's 3d rendering
 //and it will be like that in every scene, which is why I made this static
 
-//THIS CLASS SHOULD ONLY BE ENGINE SIDED, SO REMOVE "ENGING_API" IN THE FUTURE
-
 namespace Engine
 {
 	class ENGINE_API LayerStack
@@ -24,11 +22,14 @@ namespace Engine
 
 		static void PushSpaceLayer(Layer* layer);	//actual "world" layers
 		static void PushUILayer(Layer* layer);		//ui layers
+		static void Clear();						//clear all layers
 
 		static void RemoveLayer(const std::vector<Layer*>::iterator& LayerPosition);
 
 
 		//take advantage of the layer "stack" actually being an underlying vector
+
+		static const bool CheckLayerExists(unsigned char id);
 
 		static std::vector<Layer*>::iterator Top();
 		static std::vector<Layer*>::iterator Bottom();
@@ -39,7 +40,7 @@ namespace Engine
 
 		static const inline std::vector<Layer*> GetLayers() { return m_Layers; };
 	private:
-		static std::vector<Layer*> m_Layers; //Layer Stack will have full control over layers
+		static std::vector<Layer*> m_Layers; //Layer Stack will have full control over layers, so not worrying about smart pointers
 		static unsigned int m_emplaceIdex;
 	};
 
@@ -94,15 +95,13 @@ namespace Engine
 #endif
 
 //this macro is the only one available in the share build so I am not having the world readably refer to layers
-#ifndef REMOVE_UI(x)
+#ifndef REMOVE_UI
 	//completely removes all ui from the screen
-	//this includes rendering and input
-	#define REMOVE_UI(x)\
+	//this includes disabling the rendering and input
+	#define REMOVE_UI\
 		for(std::vector<Layer*>::iterator i = Engine::LayerStack::CurrentLocation(); i < Engine::LayerStack::Bottom(); i++){\
-			if((*i)->GetID() == x){\
-				Engine::LayerStack::RemoveLayer(i);\
-				break;\
-			}\
+			Engine::LayerStack::RemoveLayer(i);\
+			break;\
 		};
 #endif
 }

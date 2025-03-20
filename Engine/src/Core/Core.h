@@ -4,12 +4,8 @@
 //premake system config check
 #ifdef ENGINE_PLATFORM_WINDOWS
 	#ifdef ENGINE_BUILD_DLL
-		#ifndef ENGINE_API
 		#define ENGINE_API __declspec(dllexport)
-		#endif
-		#ifndef EG_PRJ
-		#define EG_PRJ //Engine Project
-		#endif
+		#define EG_PRJ //Engine Project (used as an easy way to differentiate the projects for other macros, without needing to check ENGINE_BUILD_DLL)
 	#else
 		#ifndef ENGINE_API
 		#define ENGINE_API __declspec(dllimport)
@@ -30,3 +26,8 @@
 	#endif
 #endif
 
+
+//allow the application to handle gl.h
+#ifndef GLFW_INCLUDE_NONE
+#define GLFW_INCLUDE_NONE
+#endif

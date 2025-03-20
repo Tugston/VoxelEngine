@@ -1,15 +1,12 @@
+#include "egpch.h"
 #include "EngineLayers.h"
 
 //ENGINE
+#include "Core/Application.h"
 #include "Core/Logger.h"
 #include "Input/Input.h"
-#include "Core/Application.h"
+#include "Core/Debug/DebugUI.h"
 
-//VENDOR
-#include "VENDOR/IMGUI/imgui.h"
-#include "VENDOR/IMGUI/imgui_impl_glfw.h"
-#include "VENDOR/IMGUI/imgui_impl_opengl3.h"
-//#include "VENDOR/IMGUI/imgui_impl_opengl3_loader.h"
 
 namespace Engine
 {

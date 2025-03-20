@@ -1,12 +1,8 @@
+#include "egpch.h"
 #include "Application.h"
-
-//STND
-#include <assert.h>
-#include <ranges>
 
 //ENGINE
 #include "Core/Logger.h"
-#include "Input/Input.h"
 #include "Core/Layers/LayerStack.h"
 
 //this cpp file is a mess, and will always be, using the find tool (ctrl-f) is advised
@@ -17,21 +13,31 @@ namespace Engine
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application() :
-		m_Window("Voxel Game")
+		m_Window("Voxel Game"), m_CurrentScene(nullptr), m_Renderer(m_Window.GetBufferSize())
 	{
 		s_Instance = this;
 		srand(time(NULL));
 		InitializeEngineRootSystems();
+
+		m_Window.SetFrameSize(m_Renderer.Resize());
 	}
 
 	Application::~Application()
 	{
 		glfwTerminate();
 		LayerStack::Destroy();
+		Logger::LogMessage(Logger::LogType::Critical, "Application Stopped!");
 	}
 
 	void Application::Start()
 	{
+		Logger::LogMessage(Logger::LogType::Warning, "Started!");
+
+		m_Renderer.Setup();
+
+		//create a level for the engine to automatically use
+		//can obviously be overwrote in the game app
+		CreateLevel("Test Level");
 	}
 
 	void Application::Tick()
@@ -43,18 +49,33 @@ namespace Engine
 		Draw(GetDeltaTime());
 	}
 
+	void Application::CreateLevel(const std::string_view& levelName)
+	{
+		if (m_CurrentScene)
+			m_CurrentScene.reset();
+
+		m_CurrentScene = std::make_unique<Scene::Scene>(Scene::Scene(levelName));
+	}
+
+	//need to somehow save scenes and everything else, this is on the back burner for a while
+	//just want to get the level structure setup so I can contain everything
+	void Application::LoadLevel(const std::string_view& levelName)
+	{
+	}
+
 	void Application::Draw(float deltaTime)
 	{
 		//previous frame reset
-		m_Window.Clear();
+		m_Renderer.Clear();
 		Debug::UI::Refresh();
 
 
-		m_CurrentScene.Render();
+		m_CurrentScene->CollectRenderData();
+		m_Renderer.Render();
 
 		Debug::UI::Render();
-		glfwSwapBuffers(m_Window.GetGLFWWindow());
-		
+
+		m_Window.SwapBuffers();
 	}
 
 
@@ -105,13 +126,4 @@ namespace Engine
 			LayerStack::GetLayers().at(i)->InputEvent();
 		}
 	}
-
-	void Application::AddLayer(Layer* newLayer, bool isUI)
-	{
-		if (isUI)
-			LayerStack::PushUILayer(newLayer);
-		else
-			LayerStack::PushSpaceLayer(newLayer);
-	}
-
 }

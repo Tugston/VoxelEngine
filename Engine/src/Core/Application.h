@@ -2,9 +2,10 @@
 
 //ENGINE
 #include "Core/Core.h"
-#include "Window.h"
-#include "Debug/DebugUI.h"
 #include "Renderer/RendererAPI.h"
+#include "Input/Input.h"
+#include "Core/Window.h"
+#include "Core/Debug/DebugUI.h"
 #include "Scene/Scene.h"
 
 //STND
@@ -42,24 +43,23 @@ namespace Engine
 		//returns the time between the last and current frame
 		inline const float GetDeltaTime() const { return m_DeltaTime; };
 
-		//game run control
-		bool gameIsRunning = true;
+		//run control
+		bool m_Running = true;
+		
+		//create a completely new level
+		void CreateLevel(const std::string_view& levelName);
 
-		//Adds a layer for inputs, drawing, etc to be handled in specific order
-		//isUI: simple flag for positioning ui layers in the back, because they need to go first for events
-		void AddLayer(Layer* newLayer, bool isUI);
+		//open an existing level 
+		void LoadLevel(const std::string_view& levelName); 
 
 
 	public:
 		//simply quits the game
 		//sets the game loop boolean value to false
-		static inline void QuitGame() { s_Instance->gameIsRunning = false; };
+		static inline void QuitGame() { s_Instance->m_Running = false; };
 		
 		//Returns the frame rate
 		static const inline unsigned int GetFrameRate() { return s_Instance->m_FrameRate; };
-
-		//TEMPORARY
-
 
 		//*************//
 		//*ENGINE API*//
@@ -74,7 +74,7 @@ namespace Engine
 		void ProcessInput() const;
 
 	protected:
-		
+		std::unique_ptr<Scene::Scene> m_CurrentScene; //heap allocate, because the scene will contain a lot of stuff
 	private:
 		float m_DeltaTime = 0;
 		float m_PreviousTime = 0;
@@ -82,10 +82,6 @@ namespace Engine
 
 		Window m_Window;
 		Renderer::RenderAPI m_Renderer;
-		Scene m_CurrentScene;
-		
-		bool m_Running = true;
-
 
 	//class instance just hidden away down here
 	public:
