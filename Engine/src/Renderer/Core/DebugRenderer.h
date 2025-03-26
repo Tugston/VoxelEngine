@@ -11,8 +11,10 @@ namespace Engine::Renderer
 	public:
 		DebugRenderer();
 		~DebugRenderer();
-
+		
+		void Setup();
 		virtual void Render();
+		void Clear();
 
 	};
 }

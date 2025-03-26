@@ -3,16 +3,9 @@
 
 //premake system config check
 #ifdef ENGINE_PLATFORM_WINDOWS
-	#ifdef ENGINE_BUILD_DLL
-		#define ENGINE_API __declspec(dllexport)
 		#define EG_PRJ //Engine Project (used as an easy way to differentiate the projects for other macros, without needing to check ENGINE_BUILD_DLL)
-	#else
-		#ifndef ENGINE_API
-		#define ENGINE_API __declspec(dllimport)
-		#endif
-	#endif
 #else
-	#error Sorry! ONLY SUPPORTED ON WINDOWS!
+	#error Sorry! ONLY SUPPORTED ON WINDOWS! (FUTURE ME HERE: MAY ADD MORE IN THE FUTURE, BUT ITS A PAIN AT THIS POINT!, I AM HAVING TO STATIC LINK INSTEAD OF DYNAMIC LINK AND THIS ALONE IS PAINFUL)
 #endif
 
 //I need to make a custom (debug only) assertion soon, before assertions get out of hand

@@ -20,7 +20,7 @@ namespace Core
 		GLenum err = glGetError();
 		if (err != GL_NO_ERROR)
 		{
-			std::string errmsg = std::format("OpenGL error %08x, at %s:%i - for %s\n", err, fileName, line, statement);
+			std::string errmsg = std::format("OpenGL error {}, at {}:{} - for {}\n", err, fileName, line, statement);
 			Engine::Logger::LogMessage(Engine::Logger::LogType::Critical, errmsg);
 		}
 	}

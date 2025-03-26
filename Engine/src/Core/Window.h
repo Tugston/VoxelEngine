@@ -12,7 +12,7 @@ namespace Engine
 {
 	using WindowResizeCallback = std::function<void(int, int)>;
 
-	class ENGINE_API Window
+	class Window
 	{
 	public:
 		Window();

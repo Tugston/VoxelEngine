@@ -14,6 +14,7 @@ namespace VoxelGame
 	public:
 		Game() : Application()
 		{
+			m_Shader = new Renderer::Shader("TestShader");
 		}
 
 		~Game() override
@@ -25,8 +26,7 @@ namespace VoxelGame
 		{
 			Application::Start();
 
-
-
+			m_Shader->Create();
 			Tick();
 		}
 
@@ -34,18 +34,24 @@ namespace VoxelGame
 		{
 			while (m_Running)
 			{
-				if (InputSystem::KeyPressed(EngineKeys::Enter))
-				{
-					Logger::LogMessage(Logger::LogType::Message, "Mouse Pos ({}, {})", InputSystem::GetMouseX(),
-						InputSystem::GetMouseY());
-				}
+				//ALL TEST STUFF
+				Debug::UI::Refresh();
+				Debug::UI::BeginUI("Engine Menu");
+				Debug::UI::AddElement<std::string, glm::vec3>(Debug::ElementType::ColorEdit3, "Color", &m_Color);
+				Debug::UI::EndUI();
 
+
+				m_Shader->Use();
+
+				m_Shader->SetUniformVec3("uColor", m_Color);
+				//***
 				Application::Tick();
 			}
 		}
 
 	private:
-
+		glm::vec3 m_Color = glm::vec3(0);
+		Renderer::Shader* m_Shader;
 	};
 }
 

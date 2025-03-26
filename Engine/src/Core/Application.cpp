@@ -67,14 +67,11 @@ namespace Engine
 	{
 		//previous frame reset
 		m_Renderer.Clear();
-		Debug::UI::Refresh();
-
 
 		m_CurrentScene->CollectRenderData();
+
 		m_Renderer.Render();
-
-		Debug::UI::Render();
-
+			
 		m_Window.SwapBuffers();
 	}
 

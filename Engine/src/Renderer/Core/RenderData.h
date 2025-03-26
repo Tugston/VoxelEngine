@@ -5,11 +5,15 @@
 
 namespace Engine::Renderer
 {
-	struct RenderData
+	struct SceneRenderData
 	{
 	public:
 		std::vector<float> vertices;
 		std::vector<unsigned int> indices;
 	};
 
+	struct UIRenderData
+	{
+
+	};
 }

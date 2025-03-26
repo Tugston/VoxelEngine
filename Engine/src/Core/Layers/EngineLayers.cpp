@@ -6,6 +6,7 @@
 #include "Core/Logger.h"
 #include "Input/Input.h"
 #include "Core/Debug/DebugUI.h"
+#include "Renderer/Core/RenderData.h"
 
 
 namespace Engine
@@ -35,11 +36,12 @@ namespace Engine
 
 	}
 
-	void WorldLayer::Draw()
+	void WorldLayer::GetDrawData()
 	{
 	//	DebugUI::BeginUI("Engine World Layer");
 	//	DebugUI::AddElement(DebugUI::ElementType::Text, "Layer Text");
 	//	DebugUI::EndUI();
+		return;
 	}
 
 	void WorldLayer::InputEvent()
@@ -83,7 +85,7 @@ namespace Engine
 		Logger::LogMessage(Logger::LogType::Error, "Engine UI Layer Removed!");
 	}
 
-	void UILayer::Draw()
+	void UILayer::GetDrawData()
 	{
 		
 		Debug::UI::BeginUI("Engine UI");
@@ -124,6 +126,7 @@ namespace Engine
 
 	
 		Debug::UI::EndUI();
+		return;
 	}
 
 	void UILayer::InputEvent()

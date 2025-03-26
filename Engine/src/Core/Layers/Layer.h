@@ -2,10 +2,11 @@
 
 //ENGINE
 #include "Core/Core.h"
+#include "Renderer/Core/RenderData.h"
 
 namespace Engine
 {
-	class ENGINE_API Layer
+	class Layer
 	{
 	protected:
 		Layer() {};
@@ -15,7 +16,7 @@ namespace Engine
 
 		virtual void Attach() = 0;
 		virtual void Detach() = 0;
-		virtual void Draw() = 0;
+		virtual void GetDrawData() = 0;
 		virtual void InputEvent() = 0;
 
 		inline unsigned char GetID() const { return m_ID; };

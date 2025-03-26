@@ -15,7 +15,7 @@ struct GLFWwindow;
 namespace Engine
 {
 
-	class ENGINE_API InputSystem
+	class InputSystem
 	{
 	public:
 		static enum class InputMode

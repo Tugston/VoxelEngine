@@ -14,7 +14,7 @@
 
 namespace Engine
 {
-	class ENGINE_API LayerStack
+	class LayerStack
 	{
 	public:
 		static bool Init();
@@ -97,7 +97,7 @@ namespace Engine
 //this macro is the only one available in the share build so I am not having the world readably refer to layers
 #ifndef REMOVE_UI
 	//completely removes all ui from the screen
-	//this includes disabling the rendering and input
+	//this includes disabling the rendering, input, and hit detection
 	#define REMOVE_UI\
 		for(std::vector<Layer*>::iterator i = Engine::LayerStack::CurrentLocation(); i < Engine::LayerStack::Bottom(); i++){\
 			Engine::LayerStack::RemoveLayer(i);\

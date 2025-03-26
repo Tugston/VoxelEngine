@@ -1,6 +1,7 @@
 #pragma once
 
 //ENGINE
+#include "Core/Core.h"
 #include "Core/Debug/ElementType.h"
 #include "Core/Logger.h"
 
@@ -9,9 +10,13 @@
 #include <tuple>
 
 //VENDOR
-#include "VENDOR/IMGUI/imgui.h"
-#include "VENDOR/IMGUI/imgui_impl_glfw.h"
-#include "VENDOR/IMGUI/imgui_impl_opengl3.h"
+#include "../VENDOR/imgui/imgui.h"
+#include "../VENDOR/imgui/imgui.h"
+#include "../VENDOR/imgui/imgui_impl_glfw.h"
+#include "../VENDOR/imgui/imgui_impl_opengl3.h"
+
+#include <glm/glm.hpp>
+#include <glm/ext.hpp>
 
 namespace Engine::Debug
 {
@@ -58,7 +63,6 @@ namespace Engine::Debug
 					}
 				}
 				break;
-				
 			}
 			case ElementType::ColoredText:
 			{				
@@ -194,13 +198,38 @@ namespace Engine::Debug
 				}
 				break;
 			}
+			case ElementType::ColorEdit3:
+			{
+				if constexpr (argCheck(0))
+				{
+					static float imguiColor3[3];
+
+					if constexpr (std::is_convertible_v<t, char>)
+					{
+						ImGui::ColorPicker3(displayValue, imguiColor3);
+					}
+					else if constexpr (std::is_convertible_v<t, std::string>)
+					{
+						ImGui::ColorPicker3(static_cast<std::string>(displayValue).c_str(), imguiColor3);
+					}
+				
+					if constexpr (std::is_convertible_v<v*, glm::vec3*>)
+					{
+						static_cast<glm::vec3*>(modifyvalue)->r = imguiColor3[0];
+						static_cast<glm::vec3*>(modifyvalue)->g = imguiColor3[1];
+						static_cast<glm::vec3*>(modifyvalue)->b = imguiColor3[2];
+					}
+				}
+
+				break;
+			}
 			default:
-				Logger::LogMessage(Logger::LogType::Warning, "Debuui.h - switch, Unkown imgui element type");
+				Logger::LogMessage(Logger::LogType::Warning, "Debugui.h - switch, Unkown imgui element type");
 				break;
 			}
 
 		}
-
+	private:
 	};
 }
 

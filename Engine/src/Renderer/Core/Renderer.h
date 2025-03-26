@@ -6,12 +6,12 @@
 
 namespace Engine::Renderer
 {
-	class ENGINE_API Renderer
+	class Renderer
 	{
 	public:
 		virtual ~Renderer() = default;
 	protected:
-		Renderer() {};
+		Renderer();
 	public:
 		virtual void Render() = 0;
 		virtual void SetID(unsigned char id) { m_RendererID = id; };

@@ -12,7 +12,7 @@
 
 //Logger Detection
 #ifdef EG_PRJ
-	#ifdef EG_DEBUG
+	#if defined(EG_DEBUG) || defined(APP_DEBUG)
 		#define GET_LOGGER() ::Engine::Logger::GetEngineLogger()
 	#else
 		#define GET_LOGGER(x) 
@@ -42,7 +42,7 @@
 
 namespace Engine
 {
-	class ENGINE_API Logger
+	class Logger
 	{
 	public:
 

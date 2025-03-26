@@ -1,5 +1,8 @@
 #pragma once
 
+//VENDOR
+#include "entt/entt.hpp"
+
 //ENGINE
 #include "Core/Core.h"
 #include "Renderer/Core/RenderData.h"
@@ -12,14 +15,14 @@
 
 namespace Engine::Scene
 {
-	class ENGINE_API Scene
+	class Scene
 	{
 	public:
 		Scene();
 		Scene(const std::string_view& name);
 		~Scene();
 
-		Renderer::RenderData CollectRenderData();
+		void CollectRenderData(); //collects all the rendering components data
 
 		void AddUI() const;
 		void RemoveUI() const;
@@ -36,8 +39,11 @@ namespace Engine::Scene
 	#endif
 
 	private:
-		std::string m_Name = "Example Scene";
+		void SetupScene();
 
+	private:
+		std::string m_Name = "Example Scene";
+	//	entt::registry m_Registry;
 	};
 
 }

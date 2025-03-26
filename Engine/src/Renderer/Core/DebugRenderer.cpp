@@ -3,6 +3,7 @@
 
 //ENGINE
 #include "Renderer/Core/RenderCore.h"
+#include "Core/Debug/DebugUI.h"
 
 namespace Engine::Renderer
 {
@@ -16,8 +17,18 @@ namespace Engine::Renderer
 
 	}
 
-	void DebugRenderer::Render()
+	void DebugRenderer::Setup()
 	{
 
+	}
+
+	void DebugRenderer::Render()
+	{
+		Debug::UI::Render();
+	}
+
+	void DebugRenderer::Clear()
+	{
+		Debug::UI::Refresh();
 	}
 }

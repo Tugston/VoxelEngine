@@ -19,7 +19,7 @@ end
 
 project "Engine"
 	location "Engine"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -32,7 +32,9 @@ project "Engine"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/VENDOR/**.h",
+		"%{prj.name}/VENDOR/**.cpp"
 	}
 
 	includedirs
@@ -41,7 +43,8 @@ project "Engine"
 		"Vendor/include/SPDLOG",
 		"Vendor/include/GLFW",
 		"Vendor/include/GLM",
-		"Vendor/include/GLEW"
+		"Vendor/include/GLEW",
+		"Vendor/include/ENTT",
 	}
 
 	links
@@ -54,7 +57,7 @@ project "Engine"
 	libdirs
 	{
 		"Vendor/bin/glfw",
-		"Vendor/bin/glew"
+		"Vendor/bin/glew",
 	}
 
 	--vendor src should not add my pch
@@ -113,6 +116,7 @@ project "Game"
 		"Vendor/include/GLFW",
 		"Vendor/include/GLM",
 		"Vendor/include/GLEW",
+		"Vendor/include/ENTT"
 	}
 
 	links
@@ -128,12 +132,6 @@ project "Game"
 	libdirs
 	{
 		"bin/" .. outputdir .. "/Engine/Engine.lib"
-	}
-
-	-- copy engine dll
-	prebuildcommands
-	{
-		"{COPY} ../bin/" .. outputdir .. "/Engine/Engine.dll ../bin/" .. outputdir .. "/Game"
 	}
 
 	filter "configurations:Debug"

@@ -4,12 +4,14 @@
 
 namespace Engine::Renderer
 {
-	class ENGINE_API Renderer2D : public Renderer
+	class UIRenderer : public Renderer
 	{
 	public:
-		Renderer2D();
-		~Renderer2D();
+		UIRenderer();
+		~UIRenderer();
 
+		void Setup();
 		virtual void Render();
+		
 	};
 }

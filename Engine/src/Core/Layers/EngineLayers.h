@@ -5,7 +5,7 @@
 
 namespace Engine
 {
-	class ENGINE_API WorldLayer : public Layer
+	class WorldLayer : public Layer
 	{
 	public:
 		WorldLayer();
@@ -14,12 +14,12 @@ namespace Engine
 		virtual void Attach();
 		virtual void Detach();
 
-		virtual void Draw();
+		virtual void GetDrawData();
 		virtual void InputEvent();
 	
 	};
 
-	class ENGINE_API UILayer : public Layer
+	class UILayer : public Layer
 	{
 	public:
 		UILayer();
@@ -28,7 +28,7 @@ namespace Engine
 		virtual void Attach();
 		virtual void Detach();
 
-		virtual void Draw();
+		virtual void GetDrawData();
 		virtual void InputEvent();
 
 	private:

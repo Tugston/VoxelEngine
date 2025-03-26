@@ -9,11 +9,12 @@ namespace Engine::Debug
 	{
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
+		ImGui::StyleColorsDark();
 
 		bool success = true;
 
 		success = ImGui_ImplGlfw_InitForOpenGL(Application::GetWindow()->GetGLFWWindow(), true) &&
-		ImGui_ImplOpenGL3_Init();
+		ImGui_ImplOpenGL3_Init("#version 410");
 
 		return success;
 	}

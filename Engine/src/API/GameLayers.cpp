@@ -29,9 +29,10 @@ namespace Engine::API
 	{
 	}
 
-	void WorldLayer::Draw()
+	void WorldLayer::GetDrawData()
 	{
 	//	Engine::Logger::LogMessage(Engine::Logger::LogType::Message, "World Layer Draw!");
+		return;
 	}
 
 	void WorldLayer::InputEvent()
@@ -98,8 +99,9 @@ namespace Engine::API
 	{		
 	}
 
-	void UILayer::Draw()
+	void UILayer::GetDrawData()
 	{
+		return;
 	}
 
 	void UILayer::InputEvent()

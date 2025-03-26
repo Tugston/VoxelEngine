@@ -10,6 +10,7 @@ namespace Engine::Debug
 		DragFloat,
 		DragInt,
 		InputFloat,
-		InputInt
+		InputInt,
+		ColorEdit3
 	};
 }

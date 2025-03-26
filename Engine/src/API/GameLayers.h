@@ -15,7 +15,7 @@ namespace Engine::API
 
 		virtual void Attach();
 		virtual void Detach();
-		virtual void Draw();
+		virtual void GetDrawData();
 		virtual void InputEvent();
 	};
 
@@ -28,7 +28,7 @@ namespace Engine::API
 
 		virtual void Attach();
 		virtual void Detach();
-		virtual void Draw();
+		virtual void GetDrawData();
 		virtual void InputEvent();
 	};
 }
