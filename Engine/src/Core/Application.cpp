@@ -13,13 +13,13 @@ namespace Engine
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application() :
-		m_Window("Voxel Game"), m_CurrentScene(nullptr), m_Renderer(m_Window.GetBufferSize())
+		m_Window("Voxel Game"), m_CurrentScene(nullptr)
 	{
 		s_Instance = this;
 		srand(time(NULL));
 		InitializeEngineRootSystems();
 
-		m_Window.SetFrameSize(m_Renderer.Resize());
+		m_Renderer = new Renderer::RenderAPI(m_Window.GetBufferSize());
 	}
 
 	Application::~Application()
@@ -33,7 +33,7 @@ namespace Engine
 	{
 		Logger::LogMessage(Logger::LogType::Warning, "Started!");
 
-		m_Renderer.Setup();
+		m_Renderer->Setup();
 
 		//create a level for the engine to automatically use
 		//can obviously be overwrote in the game app
@@ -66,11 +66,11 @@ namespace Engine
 	void Application::Draw(float deltaTime)
 	{
 		//previous frame reset
-		m_Renderer.Clear();
+		m_Renderer->Clear();
 
 		m_CurrentScene->CollectRenderData();
 
-		m_Renderer.Render();
+		m_Renderer->Render();
 			
 		m_Window.SwapBuffers();
 	}

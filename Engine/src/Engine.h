@@ -7,6 +7,7 @@
 
 //test
 #include	"Renderer/Architecture/Shader.h"
+#include	"Renderer/Architecture/Camera/PerspectiveCamera.h"
 
 
 #include	"../VENDOR/imgui/imconfig.h"

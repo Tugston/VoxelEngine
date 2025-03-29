@@ -81,7 +81,7 @@ namespace Engine
 		unsigned int m_FrameRate = 0;
 
 		Window m_Window;
-		Renderer::RenderAPI m_Renderer;
+		Renderer::RenderAPI* m_Renderer;
 
 	//class instance just hidden away down here
 	public:

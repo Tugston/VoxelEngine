@@ -12,6 +12,9 @@
 
 struct GLFWwindow;
 
+
+//TRYING TO GET THE MOUSE MOVE DIRECTION WORKING, SO THAT I CAN CONTROL THE CAMERA TO SEE WHERE THE QUAD IS LOCATED THAT THE RENDERER IS TEMPORARILY DRAWING
+
 namespace Engine
 {
 
@@ -32,10 +35,20 @@ namespace Engine
 			Down = -1
 		};
 
+		//bit flag
+		static enum class MouseMoveDirection
+		{
+			//Stationary = 0,		//storing as char and enum is int obviously, so just handling the 0 manually to avoid cast
+			Left	   = 1 << 0,	//0001
+			Right	   = 1 << 1,	//0010
+			Up		   = 1 << 2,	//0100
+			Down	   = 1 << 3		//1000
+		};
+
 	public:
 		static bool Init();
 
-		//polls the first frame the key is held
+		//polls the first frame the key is pressed
 		//resets once key is released
 		static bool KeyTapped(EngineKeys key);
 
@@ -52,11 +65,20 @@ namespace Engine
 		static void SetCurrentInputMode(InputMode newInputMode);
 		static inline InputMode GetInputMode() { return m_CurrentInputMode; };
 
+		//returns the current byte data of the mouse position
+		static inline char GetRawMouseDirection() { return m_MouseDirection; };
+
 	private:
 		static void MousePositionCallBack(GLFWwindow* window, double x, double y);
 		static void ScrollWheelCallBack(GLFWwindow* window, double x, double y);
 
 		static glm::vec2 m_MousePos;
+		static glm::vec2 m_PreviousMousePos;
+		static unsigned char m_MouseMoveTolerance;	//screen coords are posotive whole numbers
+
+		//can store the direction data in a byte
+		static unsigned char m_MouseDirection;
+
 		static double m_ScrollDir;
 
 		//determines if the input was handled or not
@@ -66,3 +88,10 @@ namespace Engine
 		static InputMode m_CurrentInputMode;
 	};
 }
+
+//these appropriately simplify the api ( imo :/ )
+#define ENGINE_MOUSE_IDLE	Engine::InputSystem::GetRawMouseDirection() == 0
+#define ENGINE_MOUSE_UP		Engine::InputSystem::GetRawMouseDirection() & (char)Engine::InputSystem::MouseMoveDirection::Up
+#define ENGINE_MOUSE_DOWN	Engine::InputSystem::GetRawMouseDirection() & (char)Engine::InputSystem::MouseMoveDirection::Down
+#define ENGINE_MOUSE_LEFT	Engine::InputSystem::GetRawMouseDirection() & (char)Engine::InputSystem::MouseMoveDirection::Left
+#define ENGINE_MOUSE_RIGHT  Engine::InputSystem::GetRawMouseDirection() & (char)Engine::InputSystem::MouseMoveDirection::Right

@@ -42,6 +42,48 @@ namespace Engine::Renderer
 		GL_CHECK(glUseProgram(m_Program));
 	}
 
+	void Shader::SetUniformFloat(const std::string& name, const float value)
+	{
+		Use();
+		int location = glGetUniformLocation(m_Program, name.c_str());
+
+		if (location < 0)
+		{
+			LogError("(Float)");
+			return;
+		}
+
+		GL_CHECK(glUniform1f(location, value));
+	}
+
+	void Shader::SetUniformInt(const std::string& name, const int value)
+	{
+		Use();
+		int location = glGetUniformLocation(m_Program, name.c_str());
+
+		if (location < 0)
+		{
+			LogError("(Int)");
+			return;
+		}
+
+		GL_CHECK(glUniform1i(location, value));
+	}
+
+	void Shader::SetUniformVec2(const std::string& name, const glm::vec2& value)
+	{
+		Use();
+		int location = glGetUniformLocation(m_Program, name.c_str());
+
+		if (location < 0)
+		{
+			LogError("(Vec2");
+			return;
+		}
+
+		GL_CHECK(glUniform2fv(location, 1, glm::value_ptr(value)));
+	}
+
 	void Shader::SetUniformVec3(const std::string& name, const glm::vec3& value)
 	{
 		Use();
@@ -49,10 +91,66 @@ namespace Engine::Renderer
 
 		if (location < 0)
 		{
-			Logger::LogMessage(Logger::LogType::Warning, "<Shader.cpp> (line 52) Shader does not have a valid location");
+			LogError("(Vec 3)");
+			return;
 		}
 
 		GL_CHECK(glUniform3fv(location, 1, glm::value_ptr(value)));
+	}
+
+	void Shader::SetUniformVec4(const std::string& name, const glm::vec4& value)
+	{
+		Use();
+		int location = glGetUniformLocation(m_Program, name.c_str());
+
+		if (location < 0)
+		{
+			LogError("(Vec 4)");
+		}
+
+		GL_CHECK(glUniform4fv(location, 1, glm::value_ptr(value)));
+	}
+
+	void Shader::SetUniformMat2(const std::string& name, const glm::mat2& value, bool transpose)
+	{
+		Use();
+		int location = glGetUniformLocation(m_Program, name.c_str());
+
+		if (location < 0)
+		{
+			LogError("(Mat 2)");
+			return;
+		}
+
+		GL_CHECK(glUniformMatrix4fv(location, 1, transpose, glm::value_ptr(value)));
+	}
+
+	void Shader::SetUniformMat3(const std::string& name, const glm::mat3& value, bool transpose)
+	{
+		Use();
+		int location = glGetUniformLocation(m_Program, name.c_str());
+
+		if (location < 0)
+		{
+			LogError("(Mat 3)");
+			return;
+		}
+
+		GL_CHECK(glUniformMatrix3fv(location, 1, transpose, glm::value_ptr(value)));
+	}
+
+	void Shader::SetUniformMat4(const std::string& name, const glm::mat4& value, bool transpose)
+	{
+		Use();
+		int location = glGetUniformLocation(m_Program, name.c_str());
+
+		if (location < 0)
+		{
+			LogError("(Mat 4)");
+			return;
+		}
+
+		glUniformMatrix4fv(location, 1, transpose, glm::value_ptr(value));
 	}
 
 	std::string Shader::ReadSrcFromFile(ShaderType type)
@@ -139,5 +237,10 @@ namespace Engine::Renderer
 
 		glDeleteShader(vertProgram);
 		glDeleteShader(fragProgram);
+	}
+
+	void Shader::LogError(const std::string& lineData)
+	{
+		Logger::LogMessage(Logger::LogType::Warning, "<Shader.cpp> " + lineData + " Shader does not have the valid location");
 	}
 }

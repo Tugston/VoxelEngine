@@ -37,6 +37,7 @@ namespace Engine::API
 
 	void WorldLayer::InputEvent()
 	{
+		/*
 		if (InputSystem::GetInputMode() == InputSystem::InputMode::GameOnly)
 		{
 			if (Engine::InputSystem::KeyPressed(Engine::EngineKeys::A))
@@ -75,7 +76,7 @@ namespace Engine::API
 				Engine::LayerStack::PushUILayer(new Engine::UILayer);
 				
 			}
-		}
+		}*/
 	}
 
 

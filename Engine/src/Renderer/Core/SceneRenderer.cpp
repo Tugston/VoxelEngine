@@ -8,7 +8,7 @@
 
 namespace Engine::Renderer
 {
-	SceneRenderer::SceneRenderer() : Renderer()
+	SceneRenderer::SceneRenderer() : Renderer(), m_Camera(glm::vec3(0.f, 0.f, 0.f))
 	{
 		//m_TestShader = new Shader("TestShader.txt");
 	}

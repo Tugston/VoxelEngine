@@ -8,10 +8,15 @@
 
 namespace Engine
 {
+	unsigned char InputSystem::m_MouseMoveTolerance = 1;
+
 	glm::vec2 InputSystem::m_MousePos = glm::vec2(0.f, 0.f);
+	glm::vec2 InputSystem::m_PreviousMousePos = glm::vec2(0.f, 0.f);
+	unsigned char InputSystem::m_MouseDirection = 0;
 	double InputSystem::m_ScrollDir = 0.0f;
 	std::unordered_map<EngineKeys, bool> InputSystem::m_HandledMap = {};
 	InputSystem::InputMode InputSystem::m_CurrentInputMode = InputSystem::InputMode::GameOnly;
+
 
 	bool InputSystem::Init()
 	{
@@ -96,8 +101,29 @@ namespace Engine
 
 	void InputSystem::MousePositionCallBack(GLFWwindow* window, double x, double y)
 	{
+		//reset the mouse state each call
+		//unless there is a way to detect the last callback call and just set the direction stationary then
+		m_MouseDirection = 0;
+
+		m_PreviousMousePos = m_MousePos;
 		m_MousePos.x = (float)x;
 		m_MousePos.y = (float)y;
+
+		if (m_MousePos.x - m_PreviousMousePos.x < m_MouseMoveTolerance) m_MouseDirection |= (char)MouseMoveDirection::Left;
+		else if (m_MousePos.x - m_PreviousMousePos.x > m_MouseMoveTolerance) m_MouseDirection |= (char)MouseMoveDirection::Right;
+		else
+		{
+			m_MouseDirection = 0 << 0;
+			m_MouseDirection = 0 << 1;
+		}
+
+		if (m_MousePos.y - m_PreviousMousePos.y > m_MouseMoveTolerance) m_MouseDirection |= (char)MouseMoveDirection::Down;
+		else if (m_MousePos.y - m_PreviousMousePos.y < m_MouseMoveTolerance) m_MouseDirection |= (char)MouseMoveDirection::Up;
+		else
+		{
+			m_MouseDirection = 0 << 2;
+			m_MouseDirection = 0 << 3;
+		}
 	}
 
 	void InputSystem::ScrollWheelCallBack(GLFWwindow* window, double x, double y)

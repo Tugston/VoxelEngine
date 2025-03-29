@@ -4,6 +4,7 @@
 #include "Renderer/Architecture/Shader.h"
 #include "Renderer/Architecture/Buffer.h"
 #include "Renderer/Architecture/ArrayObject.h"
+#include "Renderer/Architecture/Camera/PerspectiveCamera.h"
 
 namespace Engine::Renderer
 {
@@ -21,6 +22,7 @@ namespace Engine::Renderer
 		VertexBuffer m_VertexBuffer;
 		IndexBuffer m_IndexBuffer;
 		ArrayObject m_ArrayObject;
+		PerspectiveCamera m_Camera;
 
 
 		unsigned int m_Vao = 0;
