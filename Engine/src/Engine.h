@@ -1,5 +1,9 @@
 #pragma once
 
+//STND
+#include	<numbers>
+
+//ENGINE
 #include	"Core/Application.h"	//Required Application Class
 #include	"Core/Logger.h"			//Logging System
 #include	"Input/Input.h"			//Input System
@@ -17,6 +21,13 @@
 #include	"../VENDOR/imgui/imgui_impl_opengl3.h"
 #include	"../VENDOR/imgui/imgui_impl_opengl3_loader.h"
 
+//VENDOR
 #include	"glm/glm.hpp"
+#include	"glm/gtx/string_cast.hpp"
 
 using namespace Engine;
+
+
+//API MACROS
+#define EG_PI			std::numbers::pi
+#define EG_PI_FLOAT		(float)std::numbers::pi

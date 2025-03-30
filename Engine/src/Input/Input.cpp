@@ -13,7 +13,8 @@ namespace Engine
 	glm::vec2 InputSystem::m_MousePos = glm::vec2(0.f, 0.f);
 	glm::vec2 InputSystem::m_PreviousMousePos = glm::vec2(0.f, 0.f);
 	unsigned char InputSystem::m_MouseDirection = 0;
-	double InputSystem::m_ScrollDir = 0.0f;
+	double InputSystem::m_ScrollDir = 0.f;
+	float InputSystem::m_IdleTime = 0.f;
 	std::unordered_map<EngineKeys, bool> InputSystem::m_HandledMap = {};
 	InputSystem::InputMode InputSystem::m_CurrentInputMode = InputSystem::InputMode::GameOnly;
 
@@ -99,17 +100,28 @@ namespace Engine
 		m_CurrentInputMode = newInputMode;
 	}
 
+	void InputSystem::MouseIdleDetection(float deltaTime)
+	{
+		m_IdleTime += deltaTime;
+
+		if (m_IdleTime >= 0.1)
+			m_MouseDirection = 0;
+	}
+
 	void InputSystem::MousePositionCallBack(GLFWwindow* window, double x, double y)
 	{
 		//reset the mouse state each call
 		//unless there is a way to detect the last callback call and just set the direction stationary then
 		m_MouseDirection = 0;
 
+		//reset the idle time
+		m_IdleTime = 0.f;
+
 		m_PreviousMousePos = m_MousePos;
 		m_MousePos.x = (float)x;
 		m_MousePos.y = (float)y;
 
-		if (m_MousePos.x - m_PreviousMousePos.x < m_MouseMoveTolerance) m_MouseDirection |= (char)MouseMoveDirection::Left;
+		if (m_MousePos.x - m_PreviousMousePos.x < -m_MouseMoveTolerance) m_MouseDirection |= (char)MouseMoveDirection::Left;
 		else if (m_MousePos.x - m_PreviousMousePos.x > m_MouseMoveTolerance) m_MouseDirection |= (char)MouseMoveDirection::Right;
 		else
 		{
@@ -118,7 +130,7 @@ namespace Engine
 		}
 
 		if (m_MousePos.y - m_PreviousMousePos.y > m_MouseMoveTolerance) m_MouseDirection |= (char)MouseMoveDirection::Down;
-		else if (m_MousePos.y - m_PreviousMousePos.y < m_MouseMoveTolerance) m_MouseDirection |= (char)MouseMoveDirection::Up;
+		else if (m_MousePos.y - m_PreviousMousePos.y < -m_MouseMoveTolerance) m_MouseDirection |= (char)MouseMoveDirection::Up;
 		else
 		{
 			m_MouseDirection = 0 << 2;

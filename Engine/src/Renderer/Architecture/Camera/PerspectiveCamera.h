@@ -6,19 +6,31 @@
 
 namespace Engine::Renderer{
 
+	//this enum needs to be apart of the ecs
+	enum class MoveDirection
+	{
+		Forward = 1 << 0,
+		Backwards = 1 << 2,
+		Left = 1 << 3,
+		Right = 1 << 4
+	};
+
+	//NOTE FOR LATER:
+	//MAKE A DEFAULT CONSTRUCTOR, I"M TIRED OF HAVING TO PASS IN 0, 0, 0 POSITION
+
 	class PerspectiveCamera
 	{
 	public:
 		//vec3 rotation is just an easy way to store the data, it is not trying to be a rotation matrix
 		//rotation = (pitch, roll, yaw)
-		PerspectiveCamera(const glm::vec3& position, const glm::vec3& rotation, const glm::vec3& forwardVector, float fov, float speed);
+		PerspectiveCamera(const glm::vec3& position, const glm::vec3& rotation, float fov, float speed);
 
-		PerspectiveCamera(const glm::vec3& position, float fov, const glm::vec3& forwardVector);
 		PerspectiveCamera(const glm::vec3& position, float fov);
 		PerspectiveCamera(const glm::vec3& position);
 		~PerspectiveCamera() {};
 
-		void Update(glm::vec3 direction, glm::vec3 rotationAxis, float deltaTime);
+		void ProcessLocation(MoveDirection direction, float deltaTime);
+		void ProcessRotation(glm::vec3 axis, bool constrainPitch);
 
 		void SetFov(float fov);
 
@@ -33,24 +45,32 @@ namespace Engine::Renderer{
 		//returns normalized
 		const inline glm::vec3 GetUpVector() const { return m_UpVector; };
 		const inline glm::vec3 GetRightVector() const { return m_RightVector; };
+
+		const inline glm::vec3 GetEulerRotation() const { return m_EulerRotation; };
+		const inline glm::quat GetQuatRotation() const { return m_Rotation; };
+
+		void UpdateProjection(float width, float height);
 		
 
 	private:
 		glm::vec3 CalculateUpVector() const;
 		glm::vec3 CalculateRightVector() const;
 
-		//helper function that easily allows camera settings to change
-		void UpdateProjection();
+		//helper functions that easily allows camera settings to change
+		void UpdateVectors();
+		void UpdateRotation(const glm::vec3& newRotation);
 	
 	private:
 		Settings::CameraSettings m_Settings;
 		
 		glm::quat m_Rotation = glm::quat(glm::vec3(0.f, 0.f, 0.f));
+		glm::vec3 m_EulerRotation = glm::vec3(0.f, 0.f, 0.f);
 		glm::vec3 m_Location;
 
-		glm::vec3 m_ForwardVector = glm::vec3(1, 0, 0);
+		glm::vec3 m_ForwardVector = glm::vec3(0.f, 0.f, -1.f);
 		glm::vec3 m_RightVector;
-		glm::vec3 m_UpVector;
+		glm::vec3 m_UpVector = glm::vec3(0.f, 1.f, 0.f);
+		glm::vec3 m_WorldUpVector = glm::vec3(0.f, 1.f, 0.f);
 	
 		glm::mat4 m_ProjectionMatrix;
 	};

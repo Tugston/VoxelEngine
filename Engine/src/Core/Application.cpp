@@ -19,6 +19,7 @@ namespace Engine
 		srand(time(NULL));
 		InitializeEngineRootSystems();
 
+		m_Camera = new Renderer::PerspectiveCamera(glm::vec3(0.f, 0.f, 0.f));
 		m_Renderer = new Renderer::RenderAPI(m_Window.GetBufferSize());
 	}
 
@@ -34,6 +35,8 @@ namespace Engine
 		Logger::LogMessage(Logger::LogType::Warning, "Started!");
 
 		m_Renderer->Setup();
+		m_Window.SetFrameSize(m_Renderer->Resize()); //send the resize function to the window for resize callback
+
 
 		//create a level for the engine to automatically use
 		//can obviously be overwrote in the game app
@@ -44,6 +47,7 @@ namespace Engine
 	{
 		CalculateDeltaTime();
 		ProcessInput();
+		InputSystem::MouseIdleDetection(m_DeltaTime);
 
 		m_Window.PollEvents();
 		Draw(GetDeltaTime());
@@ -123,4 +127,5 @@ namespace Engine
 			LayerStack::GetLayers().at(i)->InputEvent();
 		}
 	}
+
 }

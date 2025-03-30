@@ -1,7 +1,9 @@
 #include "egpch.h"
 #include "RendererAPI.h"
 
+//ENGINE
 #include "Core/Logger.h"
+#include "Core/Application.h"
 
 //VENDOR
 #include "GL/GL.h"
@@ -9,6 +11,7 @@
 Engine::Renderer::RenderAPI::RenderAPI(std::pair<unsigned int, unsigned int> viewportSize)
 {
 	glViewport(0, 0, viewportSize.first, viewportSize.second);
+	m_CurrentActiveCamera = Application::GetCamera();
 }
 
 Engine::Renderer::RenderAPI::~RenderAPI()
@@ -41,10 +44,12 @@ void Engine::Renderer::RenderAPI::Clear()
 
 std::function<void(int, int)> Engine::Renderer::RenderAPI::Resize()
 {
-	return [](int width, int height)
+	return [this](int width, int height)
 		{
-			//test logging
-			//Logger::LogMessage(Logger::LogType::Message, "(Window Resize Event) X: {}, Y: {}", width, height);
+			//update the viewport
 			glViewport(0, 0, width, height);
+
+			//use the updated viewport to update the camera's projection
+			m_CurrentActiveCamera->UpdateProjection(width, height);
 		};
 }

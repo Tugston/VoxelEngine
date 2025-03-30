@@ -68,6 +68,8 @@ namespace Engine
 		//returns the current byte data of the mouse position
 		static inline char GetRawMouseDirection() { return m_MouseDirection; };
 
+		static void MouseIdleDetection(float deltaTime);
+
 	private:
 		static void MousePositionCallBack(GLFWwindow* window, double x, double y);
 		static void ScrollWheelCallBack(GLFWwindow* window, double x, double y);
@@ -78,6 +80,9 @@ namespace Engine
 
 		//can store the direction data in a byte
 		static unsigned char m_MouseDirection;
+
+		//idle mouse time
+		static float m_IdleTime;
 
 		static double m_ScrollDir;
 

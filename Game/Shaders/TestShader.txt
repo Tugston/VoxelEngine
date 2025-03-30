@@ -8,7 +8,7 @@ uniform mat4 uModel;
 
 void main()
 {
-	gl_Position = uProjection * uView * uModel * vec4(aPos, 1.0);
+	gl_Position = uView * uProjection * uModel * vec4(aPos, 1.f);
 }
 ###
 FRAG

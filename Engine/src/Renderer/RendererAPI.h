@@ -11,6 +11,10 @@
 #include "Renderer/Core/DebugRenderer.h"
 #include "Renderer/Core/RenderData.h"
 
+
+//#include "Renderer/Architecture/Camera/PerspectiveCamera.h"
+class Engine::Renderer::PerspectiveCamera;
+
 //helper class that will sort where everything needs to be rendererd
 
 namespace Engine::Renderer
@@ -33,5 +37,8 @@ namespace Engine::Renderer
 		UIRenderer m_UIRenderer;
 		SceneRenderer m_WorldRenderer;
 		DebugRenderer m_DebugRenderer;
+
+		PerspectiveCamera* m_CurrentActiveCamera;
+		
 	};
 }
