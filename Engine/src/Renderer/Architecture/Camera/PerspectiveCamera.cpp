@@ -35,13 +35,11 @@ namespace Engine::Renderer
 	void PerspectiveCamera::ProcessLocation(MoveDirection direction, float deltaTime)
 	{
 		float velocity = m_Settings.speed * deltaTime;
-		m_Location += m_ForwardVector * (((unsigned int)direction & (unsigned int)MoveDirection::Forward) * velocity); //forward
-		m_Location -= m_ForwardVector * (((unsigned int)direction & (unsigned int)MoveDirection::Backwards) * velocity); //backwards
-		m_Location += m_RightVector * (((unsigned int)direction & (unsigned int)MoveDirection::Right) * velocity); //right
-		m_Location -= m_RightVector * (((unsigned int)direction & (unsigned int)MoveDirection::Left) * velocity); //left
-	
-	//	Logger::LogMessage(Logger::LogType::Message, "Camera Rotation: {}, {}, {}", m_Rotation.x, m_Rotation.y, m_Rotation.z);
-	//	Logger::LogMessage(Logger::LogType::Message, "Camera Position: {}, {}, {}", m_Location.x, m_Location.y, m_Location.z);
+
+		m_Location += m_ForwardVector * ((((unsigned int)direction & (unsigned int)MoveDirection::Forward) ? m_Settings.speed : 0.f) * velocity); //forward
+		m_Location -= m_ForwardVector * ((((unsigned int)direction & (unsigned int)MoveDirection::Backwards) ? m_Settings.speed : 0.f) * velocity); //backwards
+		m_Location += m_RightVector * ((((unsigned int)direction & (unsigned int)MoveDirection::Right) ? m_Settings.speed : 0.f) * velocity); //right
+		m_Location -= m_RightVector * ((((unsigned int)direction & (unsigned int)MoveDirection::Left) ? m_Settings.speed : 0.f) * velocity); //left
 	}
 
 	void PerspectiveCamera::UpdateProjection(float width, float height)
@@ -57,9 +55,9 @@ namespace Engine::Renderer
 
 		//forward vector recalculation
 		glm::vec3 tempForward;
-		tempForward.x = cos(glm::radians(m_EulerRotation.z)) * cos(glm::radians(m_EulerRotation.x));
+		tempForward.x = cos(glm::radians(m_EulerRotation.y)) * cos(glm::radians(m_EulerRotation.x));
 		tempForward.y = sin(glm::radians(m_EulerRotation.x));
-		tempForward.z = sin(glm::radians(m_EulerRotation.z)) * cos(glm::radians(m_EulerRotation.x));
+		tempForward.z = sin(glm::radians(m_EulerRotation.y)) * cos(glm::radians(m_EulerRotation.x));
 		m_ForwardVector = glm::normalize(tempForward);
 
 		//update the new right and up vectors as well
@@ -70,7 +68,7 @@ namespace Engine::Renderer
 	void PerspectiveCamera::UpdateRotation(const glm::vec3& newRotation)
 	{
 		//QUATERNION STUFF
-		/* 
+		/*
 		glm::vec3 halfAngles = glm::vec3(newRotation.x / 2, newRotation.y / 2, newRotation.z / 2);
 		glm::vec3 cosAngles = cos(halfAngles);
 		glm::vec3 sinAngles = sin(halfAngles);
@@ -83,18 +81,18 @@ namespace Engine::Renderer
 		m_EulerRotation = newRotation;
 	}
 
-	void PerspectiveCamera::ProcessRotation(glm::vec3 axis, bool constrainPitch)
+	void PerspectiveCamera::ProcessRotation(const glm::vec2& mouseDelta, bool constrainPitch)
 	{
-		axis *= m_Settings.sensitivity;
-	
-		m_EulerRotation += axis;
+		//x yaw, y pitch
+		const glm::vec2 calculatedDelta = mouseDelta * m_Settings.sensitivity;
+
+		m_EulerRotation.y += calculatedDelta.x;
+		m_EulerRotation.x += calculatedDelta.y;
 
 		if (constrainPitch)
 		{
-			if (axis.x > 89.f)
-				axis.x = 89.f;
-			if (axis.x < -89.f)
-				axis.x = 89.f;
+			if (m_EulerRotation.x > 89.f) m_EulerRotation.x = 89.f;
+			if (m_EulerRotation.x < -89.f) m_EulerRotation.x = -89.f;
 		}
 
 		UpdateVectors();

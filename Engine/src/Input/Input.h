@@ -38,7 +38,7 @@ namespace Engine
 		//bit flag
 		static enum class MouseMoveDirection
 		{
-			//Stationary = 0,		//storing as char and enum is int obviously, so just handling the 0 manually to avoid cast
+			Stationary = 0,		//storing as char and enum is uint obviously, so just handling the 0 manually to avoid cast
 			Left	   = 1 << 0,	//0001
 			Right	   = 1 << 1,	//0010
 			Up		   = 1 << 2,	//0100
@@ -57,8 +57,11 @@ namespace Engine
 		static bool KeyReleased(EngineKeys key);
 
 		static glm::vec2 GetMousePos();
+		static glm::vec2 GetMouseDelta();
 		static float GetMouseX();
 		static float GetMouseY();
+
+		static void SetPreviousMousePos(const glm::vec2& pos);
 
 		static float GetScrollDirection();
 

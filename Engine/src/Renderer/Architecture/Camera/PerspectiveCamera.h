@@ -30,7 +30,11 @@ namespace Engine::Renderer{
 		~PerspectiveCamera() {};
 
 		void ProcessLocation(MoveDirection direction, float deltaTime);
-		void ProcessRotation(glm::vec3 axis, bool constrainPitch);
+
+		//used for user input controls
+		void ProcessRotation(const glm::vec2& mouseDelta, bool constrainPitch);
+
+		void UpdateProjection(float width, float height);
 
 		void SetFov(float fov);
 
@@ -49,7 +53,7 @@ namespace Engine::Renderer{
 		const inline glm::vec3 GetEulerRotation() const { return m_EulerRotation; };
 		const inline glm::quat GetQuatRotation() const { return m_Rotation; };
 
-		void UpdateProjection(float width, float height);
+		inline Settings::CameraSettings* GetSettings() { return &m_Settings; };
 		
 
 	private:

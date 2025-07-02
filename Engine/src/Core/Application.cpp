@@ -75,7 +75,8 @@ namespace Engine
 		m_CurrentScene->CollectRenderData();
 
 		m_Renderer->Render();
-			
+		
+		Debug::UI::UpdateContext();
 		m_Window.SwapBuffers();
 	}
 
@@ -95,7 +96,6 @@ namespace Engine
 			m_FrameRate = CurrentFrames;
 			CurrentFrames = 0;
 			fpsTimer = currentTime;
-			m_DeltaTime *= 1000;
 		}
 	}
 

@@ -3,13 +3,21 @@
 
 #include "Core/Application.h"
 
+#define IMGUI_HAS_DOCK
+
 namespace Engine::Debug
 {
+	ImGuiID UI::id;
+
 	bool UI::Init()
 	{
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
 		ImGui::StyleColorsDark();
+
+		ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_::ImGuiConfigFlags_DockingEnable;
+		ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_::ImGuiConfigFlags_ViewportsEnable;
+
 
 		bool success = true;
 
@@ -26,9 +34,17 @@ namespace Engine::Debug
 		ImGui::DestroyContext();
 	}
 
-	void UI::BeginUI(const std::string& name)
+	void UI::BeginUI(const std::string& name, bool docking)
 	{
-		ImGui::Begin(name.c_str());
+		ImGui::Begin(name.c_str(), nullptr, ImGuiWindowFlags_::ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_::ImGuiWindowFlags_AlwaysAutoResize);
+	}
+
+	void UI::UpdateContext()
+	{
+		GLFWwindow* backupContext = glfwGetCurrentContext();
+		ImGui::UpdatePlatformWindows();
+		ImGui::RenderPlatformWindowsDefault();
+		glfwMakeContextCurrent(backupContext);
 	}
 
 	void UI::EndUI()

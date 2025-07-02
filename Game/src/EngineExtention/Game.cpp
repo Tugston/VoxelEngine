@@ -40,8 +40,12 @@ namespace VoxelGame
 			{
 				//ALL TEST STUFF
 				Debug::UI::Refresh();
-				Debug::UI::BeginUI("Engine Menu");
+				Debug::UI::BeginUI("Engine Menu", false);
 				Debug::UI::AddElement<std::string, glm::vec3>(Debug::ElementType::ColorEdit3, "Color", &m_Color);
+				Debug::UI::AddElement<std::string, float>(Debug::ElementType::InputFloat, "Camera Rot Sensitivity",
+					&m_Camera->GetSettings()->sensitivity, 0.005f, 1.f, "%.005f", 0);
+				Debug::UI::AddElement<std::string, float>(Debug::ElementType::InputFloat, "Camera Move Speed",
+					&m_Camera->GetSettings()->speed, 0.f, 3.f, "%.01f", 0);
 				Debug::UI::EndUI();
 
 
@@ -78,36 +82,9 @@ namespace VoxelGame
 					Logger::LogMessage(Logger::LogType::Message, "Camera Matrix: {}", glm::to_string(m_Camera->GetProjectionMatrix()));
 				}
 				
-				if (ENGINE_MOUSE_IDLE)
-				{
-				//	Logger::LogMessage(Logger::LogType::Message, "Mouse Idle");
-				}
-				else if (ENGINE_MOUSE_UP)
-				{
-				//	m_Camera.ProcessRotation(glm::vec3(1, 0, 0), true);
-				//	Logger::LogMessage(Logger::LogType::Message, "Mouse UP!");
-				}
-				else if (ENGINE_MOUSE_DOWN)
-				{
-				//	m_Camera.ProcessRotation(glm::vec3(-1, 0, 0), true);
-				//	Logger::LogMessage(Logger::LogType::Message, "Mouse Down!");
-				}
-
-				if (ENGINE_MOUSE_IDLE)
-				{
-					
-				}
-				else if (ENGINE_MOUSE_LEFT)
-				{
-				//	m_Camera.ProcessRotation(glm::vec3(0, 0, 1), false);
-				//	Logger::LogMessage(Logger::LogType::Message, "Mouse Left!");
-				}
-				else if (ENGINE_MOUSE_RIGHT)
-				{
-				//	m_Camera.ProcessRotation(glm::vec3(0, 0, -1), false);
-				//	Logger::LogMessage(Logger::LogType::Message, "Mouse Right!");
-				}
-				//***
+				m_Camera->ProcessRotation(InputSystem::GetMouseDelta(), false);
+				InputSystem::SetPreviousMousePos(InputSystem::GetMousePos());
+			
 
 				Application::Tick();
 			}

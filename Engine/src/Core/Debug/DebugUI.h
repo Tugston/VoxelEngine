@@ -27,12 +27,15 @@ namespace Engine::Debug
 		static bool Init();
 		static void Destroy();
 
-		static void BeginUI(const std::string& name);
+		static void BeginUI(const std::string& name, bool docking);
+		static void UpdateContext();
 		static void EndUI();
 
 		static void Refresh();
 
 		static void Render();
+
+		static ImGuiID id;
 
 		//type is the type of element to be added (see imgui api)
 		//displayValue is  what is shows as is (ie text shows displayValue)

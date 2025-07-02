@@ -88,7 +88,7 @@ namespace Engine
 	void UILayer::GetDrawData()
 	{
 		
-		Debug::UI::BeginUI("Engine UI");
+		Debug::UI::BeginUI("Engine UI", false);
 		const std::string& frameRate = std::to_string(Application::GetFrameRate());
 		const unsigned int& frameRateVal = Application::GetFrameRate();
 		if (frameRateVal > 50)
