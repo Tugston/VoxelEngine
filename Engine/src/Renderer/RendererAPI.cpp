@@ -22,9 +22,9 @@ namespace Engine::Renderer
 
 	void RenderAPI::Render()
 	{
-		m_WorldRenderer.Render();
-		m_DebugRenderer.Render();
-		m_UIRenderer.Render();
+		m_WorldRenderer.Render(Renderer::RenderTarget::Window);
+		m_DebugRenderer.Render(Renderer::RenderTarget::Window);
+		m_UIRenderer.Render(Renderer::RenderTarget::Window);
 	}
 
 	void RenderAPI::Setup()

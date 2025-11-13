@@ -20,7 +20,7 @@ namespace Engine
 		static bool Init();
 		static void Destroy();
 
-		static void PushSpaceLayer(Layer* layer);	//actual "world" layers
+		static void PushWorldLayer(Layer* layer);	//actual 3d layers for both engine debug 3d and game world
 		static void PushUILayer(Layer* layer);		//ui layers
 		static void Clear();						//clear all layers
 
@@ -28,7 +28,6 @@ namespace Engine
 
 
 		//take advantage of the layer "stack" actually being an underlying vector
-
 		static const bool CheckLayerExists(unsigned char id);
 
 		static std::vector<Layer*>::iterator Top();

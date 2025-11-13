@@ -39,6 +39,18 @@
 #define LOG_FATAL(x)
 #endif
 
+//internal use only, tired of writing out these logs everywhere
+#if defined(EG_DEBUG) || defined(EDITOR_DEBUG)
+#define LOG_MSG(...)	Engine::Logger::LogMessage(Engine::Logger::LogType::Message, __VA_ARGS__)
+#define LOG_WARN(...)	Engine::Logger::LogMessage(Engine::Logger::LogType::Warning, __VA_ARGS__)
+#define LOG_ERR(...)	Engine::Logger::LogMessage(Engine::Logger::LogType::Error, __VA_ARGS__)
+#define LOG_CRIT(...)	Engine::Logger::LogMessage(Engine::Logger::LogType::Critical, __VA_ARGS__)
+#else
+#define LOG_MSG(...)
+#define LOG_Warn(...)
+#define LOG_ERR(...)
+#define LOG_CRIT(...)
+#endif
 
 namespace Engine
 {

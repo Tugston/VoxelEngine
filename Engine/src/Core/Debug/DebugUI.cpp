@@ -1,4 +1,5 @@
 #include "egpch.h"
+/*
 #include "DebugUI.h"
 
 #include "Core/Application.h"
@@ -23,7 +24,7 @@ namespace Engine::Debug
 
 		success = ImGui_ImplGlfw_InitForOpenGL(Application::GetWindow()->GetGLFWWindow(), true) &&
 		ImGui_ImplOpenGL3_Init("#version 410");
-
+		
 		return success;
 	}
 
@@ -62,7 +63,8 @@ namespace Engine::Debug
 	void UI::Render()
 	{
 		ImGui::Render();
+		ImGui::DockSpaceOverViewport();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	}
 }
-
+*/

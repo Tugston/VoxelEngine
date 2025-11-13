@@ -24,3 +24,15 @@
 #ifndef GLFW_INCLUDE_NONE
 #define GLFW_INCLUDE_NONE
 #endif
+
+
+//type defines
+//lots of these are competing with basetsd.h, so carefully use these
+//could consider making macros, but typenames are cleaner imo and serving their designed purpose
+namespace Engine {
+	using UINT8 = uint8_t;
+	using UINT16 = uint16_t;
+	using UINT32 = uint32_t;
+	using UINT64 = uint64_t;
+}
+

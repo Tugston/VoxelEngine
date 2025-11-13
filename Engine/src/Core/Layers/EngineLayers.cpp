@@ -14,48 +14,45 @@ namespace Engine
 	//***********//
 	//WORLD LAYER//
 	//***********//
-	WorldLayer::WorldLayer() : Layer(1)
+	EngineWorldLayer::EngineWorldLayer() : Layer(1)
 	{
 
 	}
 
-	WorldLayer::~WorldLayer()
+	EngineWorldLayer::~EngineWorldLayer()
 	{
 
 	}
 
-	void WorldLayer::Attach()
+	void EngineWorldLayer::Attach()
 	{
-
+		//theres probably some sort of debug line drawing subsystem that needs to go here
 		Logger::LogMessage(Logger::LogType::Error, "Engine World Layer Attached!");
-
 	}
 
-	void WorldLayer::Detach()
+	void EngineWorldLayer::Detach()
 	{
 
 	}
 
-	void WorldLayer::GetDrawData()
+	void EngineWorldLayer::GetDrawData()
 	{
-	//	DebugUI::BeginUI("Engine World Layer");
-	//	DebugUI::AddElement(DebugUI::ElementType::Text, "Layer Text");
-	//	DebugUI::EndUI();
+		//need to collect all the verts, textures, etc from ecs so then the renderer can draw them
 		return;
 	}
 
-	void WorldLayer::InputEvent()
+	void EngineWorldLayer::InputEvent()
 	{
 		if (InputSystem::GetInputMode() == InputSystem::InputMode::Debug)
 		{
-			if (InputSystem::KeyPressed(EngineKeys::Space))
+			if (InputSystem::KeyTapped(EngineKeys::F1))
 			{
-				Logger::LogMessage(Logger::LogType::Message, "Leaving Engine Layer! Entering Game World Layer!");
+				Logger::LogMessage(Logger::LogType::Message, "Leaving Debug Mode");
 				InputSystem::SetCurrentInputMode(InputSystem::InputMode::GameOnly);
 			}
-			
-			if (InputSystem::KeyPressed(EngineKeys::ESC))
+			else if (InputSystem::KeyPressed(EngineKeys::ESC))
 			{
+				//game should handle pause menu with escape, so quitting application for engine layer
 				Application::QuitGame();
 			}
 		}
@@ -65,29 +62,29 @@ namespace Engine
 	//UI LAYER//
 	//********//
 
-	UILayer::UILayer() : Layer(2)
+	EngineUILayer::EngineUILayer() : Layer(2)
 	{
 
 	}
 
-	UILayer::~UILayer()
+	EngineUILayer::~EngineUILayer()
 	{
 
 	}
 
-	void UILayer::Attach()
+	void EngineUILayer::Attach()
 	{
 		Logger::LogMessage(Logger::LogType::Error, "Engine UI Layer Attached!");
 	}
 
-	void UILayer::Detach()
+	void EngineUILayer::Detach()
 	{
 		Logger::LogMessage(Logger::LogType::Error, "Engine UI Layer Removed!");
 	}
 
-	void UILayer::GetDrawData()
+	void EngineUILayer::GetDrawData()
 	{
-		
+	/*
 		Debug::UI::BeginUI("Engine UI", false);
 		const std::string& frameRate = std::to_string(Application::GetFrameRate());
 		const unsigned int& frameRateVal = Application::GetFrameRate();
@@ -107,16 +104,16 @@ namespace Engine
 			Debug::UI::AddElement<std::string, char>(Debug::ElementType::ColoredText, frameRate, nullptr, color);
 		}
 		
-		if (m_ShowAllData)
+		if (!m_ShowAllData)
 		{
-			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "A - Log Message", nullptr, NULL);
-			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "Space - Remove Engine Layers", nullptr, NULL);
-			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "C - Add Engine Layers", nullptr, NULL);
-			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "S - Enter Engine Debug Layer From Game World Layer", nullptr, NULL);
-			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "Backspace - Enter Engine Debug Layers From Game World Layer", nullptr, NULL);
-			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "D - Return To Game World Layer From Game UI Layer", nullptr, NULL);
-			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "Return To Game Layer From Engine Debug Layer - Space", nullptr, NULL);
-			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "Esc - Quit, When In Debug Layer", nullptr, NULL);
+			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "A - Log Message", nullptr);
+			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "Space - Remove Engine Layers", nullptr);
+			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "C - Add Engine Layers", nullptr);
+			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "S - Enter Engine Debug Layer From Game World Layer", nullptr);
+			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "Backspace - Enter Engine Debug Layers From Game World Layer", nullptr);
+			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "D - Return To Game World Layer From Game UI Layer", nullptr);
+			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "Return To Game Layer From Engine Debug Layer - Space", nullptr);
+			Debug::UI::AddElement<std::string, char>(Debug::ElementType::Text, "Esc - Quit, When In Debug Layer", nullptr);
 
 			Debug::UI::AddElement<std::string, float>(Debug::ElementType::DragFloat, "Test Float", &m_TestFloat, 1.f, -5.f, 10.f, "%.3f", 0);
 		}
@@ -127,9 +124,10 @@ namespace Engine
 	
 		Debug::UI::EndUI();
 		return;
+		*/
 	}
 
-	void UILayer::InputEvent()
+	void EngineUILayer::InputEvent()
 	{
 	}
 

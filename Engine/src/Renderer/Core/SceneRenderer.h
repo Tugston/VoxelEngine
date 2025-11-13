@@ -15,7 +15,7 @@ namespace Engine::Renderer
 		~SceneRenderer();
 		
 		void Setup(); //temp function to manage when the renderer calls all the opengl stuff
-		virtual void Render();
+		virtual void Render(RenderTarget target) override;
 
 	private:
 		//Shader* m_TestShader;

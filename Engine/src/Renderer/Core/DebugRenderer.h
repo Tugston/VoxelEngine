@@ -13,7 +13,7 @@ namespace Engine::Renderer
 		~DebugRenderer();
 		
 		void Setup();
-		virtual void Render();
+		virtual void Render(RenderTarget target) override;
 		void Clear();
 
 	};

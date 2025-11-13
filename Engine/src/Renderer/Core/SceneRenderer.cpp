@@ -23,7 +23,6 @@ namespace Engine::Renderer
 			
 		//m_TestShader->Create();
 	
-
 		//setting up buffers
 		m_ArrayObject.Bind();
 		m_VertexBuffer.BufferData(m_VertData, GL_STATIC_DRAW);
@@ -34,7 +33,7 @@ namespace Engine::Renderer
 		m_ArrayObject.SetAttribData(AttribData(ShaderDataType::Float3, GL_FALSE));
 	}
 
-	void SceneRenderer::Render()
+	void SceneRenderer::Render(RenderTarget target)
 	{
 		//m_TestShader->Use();
 		m_ArrayObject.Bind();

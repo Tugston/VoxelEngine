@@ -53,7 +53,7 @@ namespace Engine
 		Draw(GetDeltaTime());
 	}
 
-	void Application::CreateLevel(const std::string_view& levelName)
+	void Application::CreateLevel(std::string_view levelName)
 	{
 		if (m_CurrentScene)
 			m_CurrentScene.reset();
@@ -63,7 +63,7 @@ namespace Engine
 
 	//need to somehow save scenes and everything else, this is on the back burner for a while
 	//just want to get the level structure setup so I can contain everything
-	void Application::LoadLevel(const std::string_view& levelName)
+	void Application::LoadLevel(std::string_view levelName)
 	{
 	}
 
@@ -76,7 +76,7 @@ namespace Engine
 
 		m_Renderer->Render();
 		
-		Debug::UI::UpdateContext();
+		//Debug::UI::UpdateContext();
 		m_Window.SwapBuffers();
 	}
 
@@ -117,15 +117,15 @@ namespace Engine
 
 		InitializeCheck(InputSystem::Init(), "Input System");
 		InitializeCheck(LayerStack::Init(), "Layer Stack");
-		InitializeCheck(Debug::UI::Init(), "Debug UI");
+		//InitializeCheck(Debug::UI::Init(), "Debug UI");
 	}
 
 	void Application::ProcessInput() const
 	{
-		for (int i = LayerStack::GetLayers().size() - 1; i >= 0; i--)
-		{
-			LayerStack::GetLayers().at(i)->InputEvent();
-		}
+		//engine layers have debug inputs, maybe the game layers need to somehow dispatch input into the layers?? idk
+		//probably not though. But for sure this controls debug stuff and what not.
+		for (auto layer : LayerStack::GetLayers())
+			layer->InputEvent();
 	}
 
 }

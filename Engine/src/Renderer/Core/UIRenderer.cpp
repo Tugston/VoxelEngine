@@ -18,7 +18,7 @@ namespace Engine::Renderer
 	{
 	}
 
-	void UIRenderer::Render()
+	void UIRenderer::Render(RenderTarget target)
 	{
 	}
 }

@@ -22,13 +22,11 @@ namespace Engine::Renderer
 
 	}
 
-	void DebugRenderer::Render()
+	void DebugRenderer::Render(RenderTarget target)
 	{
-		Debug::UI::Render();
 	}
 
 	void DebugRenderer::Clear()
 	{
-		Debug::UI::Refresh();
 	}
 }

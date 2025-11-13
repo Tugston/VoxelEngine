@@ -10,13 +10,14 @@
 #include <tuple>
 
 //VENDOR
-#include "../VENDOR/imgui/imgui.h"
-#include "../VENDOR/imgui/imgui.h"
-#include "../VENDOR/imgui/imgui_impl_glfw.h"
-#include "../VENDOR/imgui/imgui_impl_opengl3.h"
-
+//#include "../VENDOR/imgui/imgui.h"
+//#include "../VENDOR/imgui/imgui_impl_glfw.h"
+//#include "../VENDOR/imgui/imgui_impl_opengl3.h"
+/*
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
+
+//wrapping imgui is an absolute pain... I CANNOT STAND WORKING WITH VARIADIC TEMPLATES
 
 namespace Engine::Debug
 {
@@ -46,7 +47,7 @@ namespace Engine::Debug
 			//compile time check
 			constexpr auto argCheck = [](size_t x) constexpr
 				{
-					return sizeof...(args) >= x;
+					return sizeof...(args) == x;
 				};
 			
 			switch (type)
@@ -69,7 +70,6 @@ namespace Engine::Debug
 			}
 			case ElementType::ColoredText:
 			{				
-				//upack the color arg
 				if constexpr (argCheck(1))
 				{
 					unsigned int hexColor = std::get<0>(std::forward_as_tuple(std::forward<Args>(args)...));
@@ -100,10 +100,8 @@ namespace Engine::Debug
 			}
 			case ElementType::CheckBox:
 			{
-				//NO ADDITIONAL ARGUMENTS NEEDED
 				if (argCheck(0))
 				{
-
 					if constexpr (std::is_convertible_v<t, char> && std::is_convertible_v<v*, bool*>)
 					{
 						ImGui::Checkbox(displayValue, modifyvalue);
@@ -117,86 +115,84 @@ namespace Engine::Debug
 			}
 			case ElementType::DragFloat:
 			{
-				//unpack the args
 				if constexpr (argCheck(5))
 				{
 					float v_speed = std::get<0>(std::forward_as_tuple(std::forward<Args>(args)...));
 					float v_min = std::get<1>(std::forward_as_tuple(std::forward<Args>(args)...));
 					float v_max = std::get<2>(std::forward_as_tuple(std::forward<Args>(args)...));
-					const char* format = std::get<3>(std::forward_as_tuple(std::forward<Args>(args)...));
+					const char* format = std::get<3>(std::make_tuple(std::forward<Args>(args)...));
 					ImGuiSliderFlags flags = std::get<4>(std::forward_as_tuple(std::forward<Args>(args)...));
 
 					if constexpr (std::is_convertible_v<t, char> && std::is_convertible_v<v*, float*>)
 					{
-						ImGui::DragFloat(displayValue, modifyvalue, v_speed, v_min, v_max, format, flags);
+						ImGui::DragFloat(displayValue, modifyvalue, v_speed, v_min, v_max, "%.3f", flags);
 					}
 					else if constexpr (std::is_convertible_v<t, std::string> && std::is_convertible_v<v*, float*>)
 					{
-						ImGui::DragFloat(static_cast<std::string>(displayValue).c_str(), modifyvalue, v_speed, v_min, v_max, format, flags);
+						ImGui::DragFloat(static_cast<std::string>(displayValue).c_str(), modifyvalue, v_speed, v_min, v_max, "%.3f", flags);
 					}
 				}
 				break;
 			}
 			case ElementType::DragInt:
 			{
-				//unpack the args
 				if constexpr (argCheck(5))
 				{
 					float v_speed = std::get<0>(std::forward_as_tuple(std::forward<Args>(args)...));
 					float v_min = std::get<1>(std::forward_as_tuple(std::forward<Args>(args)...));
 					float v_max = std::get<2>(std::forward_as_tuple(std::forward<Args>(args)...));
-					const char* format = std::get<3>(std::forward_as_tuple(std::forward<Args>(args)...));
-					int flags = std::get<4>(std::forward_as_tuple(std::forward<Args>(args)...));
+					const char* format = std::get<3>(std::make_tuple(std::forward<Args>(args)...));
+					ImGuiSliderFlags flags = std::get<4>(std::forward_as_tuple(std::forward<Args>(args)...));
 
-					if constexpr (std::is_convertible_v<t, char> && std::is_convertible_v<v*, int*>)
+					if constexpr (std::is_convertible_v<t, char*> && std::is_convertible_v<v*, int*>)
 					{
-						ImGui::DragInt(displayValue, modifyvalue, v_speed, v_min, v_max, &format, flags);
+						ImGui::DragInt(displayValue, modifyvalue, v_speed, v_min, v_max, format, flags);
 					}
 					else if constexpr (std::is_convertible_v<t, std::string> && std::is_convertible_v<v*, int*>)
 					{
-						ImGui::DragInt(static_cast<std::string>(displayValue).c_str(), modifyvalue, v_speed, v_min, v_max, &format, flags);
+						ImGui::DragInt(static_cast<std::string>(displayValue).c_str(), modifyvalue, v_speed, v_min, v_max, format, flags);
 					}
 				}
 				break;
 			}
 			case ElementType::InputFloat:
 			{
-				//unpack args
+				//same arguments as the Input Int, so the compiler passes past the argcheck successfully
+				//both are the exact same so there are no issues
 				if constexpr (argCheck(4))
 				{
 					float step = std::get<0>(std::forward_as_tuple(std::forward<Args>(args)...));
 					float step_fast = std::get<1>(std::forward_as_tuple(std::forward<Args>(args)...));
-					const char format = (char)(std::get<2>(std::forward_as_tuple(std::forward<Args>(args)...)));
+					const char* format = std::get<2>(std::make_tuple(std::forward<Args>(args)...));
 					ImGuiInputTextFlags flags = (ImGuiInputTextFlags)(std::get<3>(std::forward_as_tuple(std::forward<Args>(args)...)));
 
 					if constexpr (std::is_convertible_v<t, char> && std::is_convertible_v<v*, float*>)
 					{
-						ImGui::InputFloat(displayValue, modifyvalue, step, step_fast, &format, flags);
+						ImGui::InputFloat(displayValue, modifyvalue, step, step_fast, format, flags);
 					}
 					else if constexpr (std::is_convertible_v<t, std::string> && std::is_convertible_v<v*, float*>)
 					{
-						ImGui::InputFloat(static_cast<std::string>(displayValue).c_str(), modifyvalue, step, step_fast, &format, flags);
+						ImGui::InputFloat(static_cast<std::string>(displayValue).c_str(), modifyvalue, step, step_fast, format, flags);
 					}
 				}
 				break;
 			}
 			case ElementType::InputInt:
 			{
-				//unpack args
-				if constexpr (argCheck(3))
+				if constexpr (argCheck(4))
 				{
 					float step = std::get<0>(std::forward_as_tuple(std::forward<Args>(args)...));
 					float step_fast = std::get<1>(std::forward_as_tuple(std::forward<Args>(args)...));
-					const char format = (char)(std::get<2>(std::forward_as_tuple(std::forward<Args>(args)...)));
+					const char* format = std::get<2>(std::make_tuple(std::forward<Args>(args)...));
 					ImGuiInputTextFlags flags = (ImGuiInputTextFlags)(std::get<3>(std::forward_as_tuple(std::forward<Args>(args)...)));
 
 					if constexpr (std::is_convertible_v<t, char> && std::is_convertible_v<v*, int*>)
 					{
-						ImGui::InputFloat(displayValue, modifyvalue, step, step_fast, &format, flags);
+						ImGui::InputFloat(displayValue, modifyvalue, step, step_fast, format, flags);
 					}
 					else if constexpr (std::is_convertible_v<t, std::string> && std::is_convertible_v<v*, int*>)
 					{
-						ImGui::InputFloat(static_cast<std::string>(displayValue).c_str(), modifyvalue, step, step_fast, &format, flags);
+						ImGui::InputFloat(static_cast<std::string>(displayValue).c_str(), modifyvalue, step, step_fast, format, flags);
 					}
 				}
 				break;
@@ -235,4 +231,6 @@ namespace Engine::Debug
 	private:
 	};
 }
+
+*/
 

@@ -3,6 +3,7 @@
 //ENGINE
 #include "Input/KeyDefines.h"
 #include "Core/Logger.h"
+#include "Core/Core.h"
 
 //STND
 #include <unordered_map>
@@ -12,8 +13,6 @@
 
 struct GLFWwindow;
 
-
-//TRYING TO GET THE MOUSE MOVE DIRECTION WORKING, SO THAT I CAN CONTROL THE CAMERA TO SEE WHERE THE QUAD IS LOCATED THAT THE RENDERER IS TEMPORARILY DRAWING
 
 namespace Engine
 {
@@ -29,14 +28,14 @@ namespace Engine
 			Debug
 		};
 
-		static enum class ScrollDirection
+		static enum class ScrollDirection: UINT8
 		{
 			Up = 1,
 			Down = -1
 		};
 
 		//bit flag
-		static enum class MouseMoveDirection
+		static enum class MouseMoveDirection: UINT8
 		{
 			Stationary = 0,		//storing as char and enum is uint obviously, so just handling the 0 manually to avoid cast
 			Left	   = 1 << 0,	//0001

@@ -21,9 +21,9 @@ namespace VoxelGame
 
 		}
 
-		~Game() override
+		~Game()
 		{
-
+			delete m_Shader;
 		}
 
 		virtual void Start() override
@@ -38,7 +38,9 @@ namespace VoxelGame
 		{
 			while (m_Running)
 			{
+
 				//ALL TEST STUFF
+				/*
 				Debug::UI::Refresh();
 				Debug::UI::BeginUI("Engine Menu", false);
 				Debug::UI::AddElement<std::string, glm::vec3>(Debug::ElementType::ColorEdit3, "Color", &m_Color);
@@ -46,7 +48,7 @@ namespace VoxelGame
 					&m_Camera->GetSettings()->sensitivity, 0.005f, 1.f, "%.005f", 0);
 				Debug::UI::AddElement<std::string, float>(Debug::ElementType::InputFloat, "Camera Move Speed",
 					&m_Camera->GetSettings()->speed, 0.f, 3.f, "%.01f", 0);
-				Debug::UI::EndUI();
+				Debug::UI::EndUI(); */
 
 
 				m_Shader->Use();
@@ -60,17 +62,26 @@ namespace VoxelGame
 				{
 					m_Camera->ProcessLocation(Renderer::MoveDirection::Forward, GetDeltaTime());
 				}
-				else if (InputSystem::KeyPressed(EngineKeys::S))
+				
+				if (InputSystem::KeyPressed(EngineKeys::S))
 				{
 					m_Camera->ProcessLocation(Renderer::MoveDirection::Backwards, GetDeltaTime());
 				}
-				else if (InputSystem::KeyPressed(EngineKeys::A))
+				
+				if (InputSystem::KeyPressed(EngineKeys::A))
 				{
 					m_Camera->ProcessLocation(Renderer::MoveDirection::Left, GetDeltaTime());
 				}
-				else if (InputSystem::KeyPressed(EngineKeys::D))
+				
+				if (InputSystem::KeyPressed(EngineKeys::D))
 				{
 					m_Camera->ProcessLocation(Renderer::MoveDirection::Right, GetDeltaTime());
+				}
+
+				if (InputSystem::KeyTapped(EngineKeys::TAB))
+				{
+					m_GameFocus = !m_GameFocus;
+					Logger::LogMessage(Logger::LogType::Message, "tab pressed");
 				}
 
 				if (InputSystem::KeyTapped(EngineKeys::Space))
@@ -82,8 +93,11 @@ namespace VoxelGame
 					Logger::LogMessage(Logger::LogType::Message, "Camera Matrix: {}", glm::to_string(m_Camera->GetProjectionMatrix()));
 				}
 				
-				m_Camera->ProcessRotation(InputSystem::GetMouseDelta(), false);
-				InputSystem::SetPreviousMousePos(InputSystem::GetMousePos());
+				if (m_GameFocus)
+				{
+					m_Camera->ProcessRotation(InputSystem::GetMouseDelta(), false);
+					InputSystem::SetPreviousMousePos(InputSystem::GetMousePos());
+				}
 			
 
 				Application::Tick();
@@ -95,7 +109,8 @@ namespace VoxelGame
 		Renderer::Shader* m_Shader;
 
 		//Renderer::PerspectiveCamera m_Camera;
-
+		
+		bool m_GameFocus = true;
 
 		//temp model matrix
 		glm::mat4 m_ModelMatrix = glm::mat4(1.f);

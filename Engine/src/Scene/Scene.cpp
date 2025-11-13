@@ -2,7 +2,7 @@
 #include "Scene.h"
 
 //ENGINE
-#include "API/GameLayers.h"
+#include "../Core/Layers/GameLayers.h"
 #include "Core/Logger.h"
 
 
@@ -14,7 +14,7 @@ namespace Engine::Scene
 		SetupScene();
 	}
 
-	Scene::Scene(const std::string_view& name) : m_Name(name)
+	Scene::Scene(std::string_view name) : m_Name(name)
 	{
 		SetupScene();
 	}
@@ -38,7 +38,7 @@ namespace Engine::Scene
 		//4 is the game ui layer id
 		if (!(LayerStack::CheckLayerExists(4)))
 		{
-			LayerStack::PushUILayer(new API::UILayer);
+			LayerStack::PushUILayer(new UILayer);
 		}
 	}
 
@@ -53,10 +53,12 @@ namespace Engine::Scene
 		
 		//layer setup
 		LayerStack::Clear(); //clear the layer stack to refresh for the new scene
-		LayerStack::PushSpaceLayer(new API::WorldLayer);
-		LayerStack::PushUILayer(new WorldLayer);
-		LayerStack::PushSpaceLayer(new API::UILayer);
+		LayerStack::PushWorldLayer(new EngineWorldLayer);
 		LayerStack::PushUILayer(new UILayer);
+		LayerStack::PushWorldLayer(new WorldLayer);
+		LayerStack::PushUILayer(new EngineUILayer);
+
+		m_Registry = std::make_shared<ECS::Registry>();
 	}
 
 }

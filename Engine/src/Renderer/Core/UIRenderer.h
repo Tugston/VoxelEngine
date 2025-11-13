@@ -11,7 +11,7 @@ namespace Engine::Renderer
 		~UIRenderer();
 
 		void Setup();
-		virtual void Render();
+		virtual void Render(RenderTarget target) override;
 		
 	};
 }

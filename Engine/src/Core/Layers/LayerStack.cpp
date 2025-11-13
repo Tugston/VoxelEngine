@@ -20,12 +20,12 @@ namespace Engine
 		Logger::LogMessage(Logger::LogType::Warning, "Layer Stack Destroyed!");
 	}
 
-	void LayerStack::PushSpaceLayer(Layer* layer)
+	void LayerStack::PushWorldLayer(Layer* layer)
 	{
 		m_Layers.emplace(CurrentLocation(), layer);
 		layer->Attach();
 		m_emplaceIdex++;
-		Logger::LogMessage(Logger::LogType::Message, "Space Layer Added (Total of: {} Layers)", m_Layers.size());
+		Logger::LogMessage(Logger::LogType::Message, "World Layer Added (Total of: {} Layers)", m_Layers.size());
 	}
 
 	void LayerStack::PushUILayer(Layer* layer)
@@ -63,6 +63,7 @@ namespace Engine
 
 	const bool LayerStack::CheckLayerExists(unsigned char id)
 	{
+		//o(n), idc, there is only 4 layers
 		for (auto i : m_Layers)
 		{
 			if (i->GetID() == id)

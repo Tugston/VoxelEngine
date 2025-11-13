@@ -6,16 +6,102 @@ workspace "VoxelGame"
 	{
 		"Debug",
 		"Release",
-		"Share"
+		"Dist"
 	}
 
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 
-function CopyPDB()
-	return "{COPY} ../bin/" .. outputdir .. "/Engine/Engine.pdb ../bin/" .. outputdir .. "/Game"
+function CopyPDB(folderName)
+	return "{COPY} ../bin/" .. outputdir .. "/Engine/Engine.pdb ../bin/" .. outputdir .. "/" .. folderName
 end
+
+project "Editor"
+	location "Editor"
+	kind "ConsoleApp"
+	language "C++"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-intermediates/" .. outputdir .. "/%{prj.name}")
+
+	files 
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/VENDOR/**.h",
+		"%{prj.name}/VENDOR/**.cpp"
+	}
+
+	-- Imgui src is directly included in the project --
+	includedirs
+	{
+		"Engine/src",
+		"Vendor/include/GLFW",
+		"Vendor/include/GLEW",
+		"Vendor/include/GLM",
+		"Vendor/include/SPDLOG"
+	}
+
+	links
+	{
+		"Engine"
+	}
+
+	dependson 
+	{
+		"Engine"
+	}
+
+	libdirs
+	{
+		"bin/" .. outputdir .. "/Engine/Engine.lib"
+	}
+
+	--imgui src should not add my pch
+	filter "files:Engine/src/Vendor/**.cpp"
+		flags {"NoPCH"}
+
+
+	filter "configurations:Debug"
+		prebuildcommands
+		{
+			CopyPDB("Editor")
+		}
+	filter "configurations:Release"
+		prebuildcommands
+		{
+			CopyPDB("Editor")
+		}
+
+	filter "system:windows"
+		cppdialect "C++20"
+		staticruntime "On"
+		systemversion "latest"
+		characterset ("Unicode")
+
+		buildoptions
+		{
+			"/utf-8"
+		}
+
+		defines
+		{
+			"ENGINE_PLATFORM_WINDOWS",
+			"FMT_USE_UTF8=1"
+		}
+
+	filter "configurations:Debug"
+		defines "EDITOR_DEBUG"
+		symbols "On"
+
+	filter "configurations:Release"
+		defines "EDITOR_DEBUG"
+		optimize "On"
+
+	filter "configurations:Dist"
+		defines "EDITOR_Share"
+		optimize "On"
 
 project "Engine"
 	location "Engine"
@@ -33,8 +119,6 @@ project "Engine"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
-		"%{prj.name}/VENDOR/**.h",
-		"%{prj.name}/VENDOR/**.cpp"
 	}
 
 	includedirs
@@ -44,7 +128,6 @@ project "Engine"
 		"Vendor/include/GLFW",
 		"Vendor/include/GLM",
 		"Vendor/include/GLEW",
-		"Vendor/include/ENTT",
 	}
 
 	links
@@ -59,10 +142,6 @@ project "Engine"
 		"Vendor/bin/glfw",
 		"Vendor/bin/glew",
 	}
-
-	--vendor src should not add my pch
-	filter "files:Engine/src/Vendor/**.cpp"
-		flags {"NoPCH"}
 
 	filter "system:windows"
 		cppdialect "C++20"
@@ -91,7 +170,7 @@ project "Engine"
 	filter "configurations:Release"
 		defines "EG_DEBUG"
 		optimize "On"
-	filter "configurations:Share"
+	filter "configurations:Dist"
 		defines "EG_SHARE"
 		optimize "On"
 
@@ -116,7 +195,6 @@ project "Game"
 		"Vendor/include/GLFW",
 		"Vendor/include/GLM",
 		"Vendor/include/GLEW",
-		"Vendor/include/ENTT"
 	}
 
 	links
@@ -137,12 +215,12 @@ project "Game"
 	filter "configurations:Debug"
 		prebuildcommands
 		{
-			CopyPDB()
+			CopyPDB("Game")
 		}
 	filter "configurations:Release"
 		prebuildcommands
 		{
-			CopyPDB()
+			CopyPDB("Game")
 		}
 	
 
@@ -169,6 +247,6 @@ project "Game"
 	filter "configurations:Release"
 		defines "APP_DEBUG"
 		optimize "On"
-	filter "configurations:Share"
+	filter "configurations:Dist"
 		defines "APP_SHARE"
 		optimize "On"

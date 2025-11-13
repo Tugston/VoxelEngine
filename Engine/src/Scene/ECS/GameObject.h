@@ -1,12 +1,15 @@
 #pragma once
+#include "Core/Core.h"
 
-/// <summary>
-/// VERY EARLY IMPLEMENTATION, JUST NEEDED FOR TESTING!!!
-/// </summary>
 namespace engine
 {
 	class GameObject
 	{
+	public:
+		GameObject();
+		~GameObject();
 
+	private:
+		
 	};
 }

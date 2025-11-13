@@ -24,13 +24,14 @@ namespace Engine
 	{
 	public:
 		Application();
-		virtual ~Application();
+		~Application();
 	
 		//*************//
 		//*ENGINE API*//
 		//************//
 	public:
-		//Call parents AFTER the game's functions
+		//Parent Start must be called at the very top of Start() function
+		//Parent Tick must be called at the very end of Tick() function
 		//Delta time is exposed separetly ie... GetDeltaTime();
 		virtual void Start();
 		virtual void Tick();
@@ -48,10 +49,10 @@ namespace Engine
 		bool m_Running = true;
 		
 		//create a completely new level
-		void CreateLevel(const std::string_view& levelName);
+		void CreateLevel(std::string_view levelName);
 
 		//open an existing level 
-		void LoadLevel(const std::string_view& levelName); 
+		void LoadLevel(std::string_view levelName); 
 
 
 	public:
