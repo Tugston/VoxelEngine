@@ -7,7 +7,7 @@
 
 //temporarily setting rotation to a Vector2, but want to switch to quaternions once I get it all setup and working
 
-namespace Engine::ECS::Components
+namespace Engine::Scene::ECS::Components
 {
 	struct Transform2D
 	{

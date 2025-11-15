@@ -9,7 +9,6 @@ namespace Engine::Maths
 	{
 		Vector2() = default;
 		Vector2(t x, t y) : x(x), y(y) {}
-		Vector2(const Vector3<t>& vec3) : x(vec3.x), y(vec3.y) {}
 
 		t x = 0;
 		t y = 0;
@@ -34,14 +33,14 @@ namespace Engine::Maths
 			return (first.x * second.x) + (first.y * second.y);
 		}
 
-		t Cross(const Vector2<t>& second) const
+		t Cross(const Vector2<t>& other) const
 		{
-			return (x - other.y) - (y - other.y);
+			return (x - other.y) - (y - other.x);
 		}
 
 		static t Cross(const Vector2<t>& first, const Vector2<t>& second)
 		{
-			return (first.x - second.y) - (first.y - second.y);
+			return (first.x - second.y) - (first.y - second.x);
 		}
 
 		//this will have a serious problem if you hit the max size of t, ie (t_max * t_max)
@@ -90,29 +89,21 @@ namespace Engine::Maths
 		//other value is the direction of cross (left hand rule)
 		t Cross(const Vector3<t>& other)
 		{
-			const std::pair<Vector2<t>, Vector2<t>> xOut{std::make_pair<Vector2<t>(y, z), Vector2<t>(other.y, other.z)>}; //x determinant
-			const std::pair<Vector2<t>, Vector2<t>> yOut{std::make_pair<Vector2<t>(x, z), Vector2<t>(other.x, other.z)>}; //y determinant
-			const std::pair<Vector2<t>, Vector2<t>> zOut{std::make_pair<Vector2<t>(x, y), Vector2<t>(other.x, other.y)>}; //z determinant
+			const t x = (this->y * other.z) - (this->z * other.y);
+			const t y = (this->z * other.x) - (this->x * other.z);
+			const t z = (this->x * other.y) - (this->y * other.x);
 
-			const t xProduct = (xOut.first.x * xOut.second.y) - (xOut.first.y * xOut.second.x);
-			const t yProduct = (yOut.first.x * yOut.second.y) - (yOut.first.y * yOut.second.x);
-			const t zProduct = (zOut.first.x * zOut.second.y) - (zOut.first.y * zOut.second.x);
-
-			return xProduct - yProduct + zProduct;
+			return x - y + z;
 		}
 
 		//literally the same as above just copy pasted and adjusted
 		static t Cross(const Vector3<t>& first, const Vector3<t>& second)
 		{
-			const std::pair<Vector2<t>, Vector2<t>> xOut{std::make_pair<Vector2<t>(first.y, first.z), Vector2<t>(second.y, second.z)};
-			const std::pair<Vector2<t>, Vector2<t>> yOut{std::make_pair<Vector2<t>(first.x, first.z), Vector2<t>(second.x, second.z)};
-			const std::pair<Vector2<t>, Vector2<t>> zOut{std::make_pair<Vector2<t>(first.x, first.y), Vector2<t>(second.x, second.y)};
+			const t x = (first.y * second.z) - (first.z * second.y);
+			const t y = (first.z * second.x) - (first.x * second.z);
+			const t z = (first.x * second.y) - (first.y * second.x);
 
-			const t xProduct = (xOut.first.x * xOut.second.y) - (xOut.first.y * xOut.second.x);
-			const t yProduct = (yOut.first.x * yOut.second.y) - (yOut.first.y * yOut.second.x);
-			const t zProduct = (zOut.first.x * zOut.second.y) - (zOut.first.y * zOut.second.x);
-
-			return xProduct - yProduct + zProduct;
+			return x - y + z;
 		}
 
 		Vector3 Normalize()

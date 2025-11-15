@@ -69,9 +69,9 @@ namespace Engine
 		static bool Init();
 
 		template <typename... Args>
-		static inline void LogMessage(LogType type, const std::string& message, Args&&... args)
+		static inline void LogMessage(LogType type, std::string_view message, Args&&... args)
 		{
-			std::string formattedMsg = std::vformat(message, std::make_format_args(std::forward<Args>(args)...));
+			std::string formattedMsg = std::vformat(message, std::make_format_args(args...));
 	
 			switch (type)
 			{
