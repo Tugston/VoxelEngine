@@ -93,7 +93,7 @@ namespace Engine
 	#endif
 #endif
 
-//this macro is the only one available in the share build so I am not having the world readably refer to layers
+//this macro is the only one available in the dist build so I am not having the world readably refer to layers
 #ifndef REMOVE_UI
 	//completely removes all ui from the screen
 	//this includes disabling the rendering, input, and hit detection

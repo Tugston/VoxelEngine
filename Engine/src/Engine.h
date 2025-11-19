@@ -4,12 +4,13 @@
 #include	<numbers>
 
 //ENGINE
-#include	"Core/Application.h"	//Required Application Class
-#include	"Core/Logger.h"			//Logging System
-#include	"Input/Input.h"			//Input System
-#include	"Scene/Scene.h"			//Level / Scene
+#include	"Core/Application.h"		//Required Application Class
+#include	"Core/Logger.h"				//Logging System
+#include	"Input/Input.h"				//Input System
+#include	"Scene/Scene.h"				//Level / Scene (scene includes ecs registry which includes all components)
+#include	"Scene/ECS/GameObject.h"	//Base Game Objects for 2D and 3D
 
-//test
+//testing
 #include	"Renderer/Architecture/Shader.h"
 #include	"Renderer/Architecture/Camera/PerspectiveCamera.h"
 
@@ -19,6 +20,8 @@
 #include	"glm/gtx/string_cast.hpp"
 
 using namespace Engine;
+using namespace Engine::Scene::ECS;
+using namespace Engine::Scene::ECS::Components;
 
 
 //API MACROS

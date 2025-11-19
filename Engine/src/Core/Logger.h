@@ -12,18 +12,16 @@
 
 //Logger Detection
 #ifdef EG_PRJ
-	#if defined(EG_DEBUG) || defined(APP_DEBUG)
-		#define GET_LOGGER() ::Engine::Logger::GetEngineLogger()
-	#else
-		#define GET_LOGGER(x) 
-	#endif //EG_DEBUG
-#else
-	#ifdef APP_DEBUG
+	#if defined(APP_DEBUG) //check app debug first, because engine may also be valid in game project
 		#define GET_LOGGER() ::Engine::Logger::GetGameLogger()
+	#elif defined(EG_DEBUG)
+		#define GET_LOGGER() ::Engine::Logger::GetEngineLogger()
 	#else
 		#define GET_LOGGER(x)
 	#endif //APP_DEBUG
-#endif
+#else
+	#define GET_LOGGER(x)
+#endif //EG_PRJ determines windows support, so shouldnt ever reach invalid logger
 
 
 //Log Type Macros
@@ -40,7 +38,8 @@
 #endif
 
 //internal use only, tired of writing out these logs everywhere
-#if defined(EG_DEBUG) || defined(EDITOR_DEBUG)
+//but nothing is rly stopping external use, so use them I guess
+#if defined(EG_DEBUG) || defined(EDITOR_DEBUG) || defined(APP_DEBUG)
 #define LOG_MSG(...)	Engine::Logger::LogMessage(Engine::Logger::LogType::Message, __VA_ARGS__)
 #define LOG_WARN(...)	Engine::Logger::LogMessage(Engine::Logger::LogType::Warning, __VA_ARGS__)
 #define LOG_ERR(...)	Engine::Logger::LogMessage(Engine::Logger::LogType::Error, __VA_ARGS__)

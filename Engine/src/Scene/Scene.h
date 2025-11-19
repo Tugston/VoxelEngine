@@ -20,7 +20,22 @@ namespace Engine::Scene
 		Scene(std::string_view name);
 		~Scene();
 
-		void CollectRenderData(); //collects all the rendering components data
+		
+		ECS::EntityID RegisterObject();
+
+		template<typename t, typename... Args>
+		t* RegisterComponent(ECS::EntityID id, Args&&... args)
+		{
+			return m_Registry->AddComponent<t>(id, std::forward<Args>(args)...);
+		}
+
+		template<typename t>
+		t* GetObjectComponent(ECS::EntityID id)
+		{
+			return m_Registry->GetComponent<t>(id);
+		}
+
+		void CollectRenderData(); //collects from the layers 
 
 		void AddUI() const;
 		void RemoveUI() const;

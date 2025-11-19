@@ -23,6 +23,11 @@ namespace Engine::Scene
 	{
 	}
 
+	ECS::EntityID Scene::RegisterObject()
+	{
+		return m_Registry->CreateEntity();
+	}
+
 	void Scene::CollectRenderData()
 	{
 

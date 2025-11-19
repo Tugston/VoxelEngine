@@ -9,7 +9,7 @@
 
 namespace Engine::Scene::ECS::Components
 {
-	struct Transform2D
+	struct TransformComponent2D
 	{
 		Maths::Vector2<float> location;
 		//Maths::Rotator2<float> rotation;
@@ -17,7 +17,7 @@ namespace Engine::Scene::ECS::Components
 		Maths::Vector2<float> scale;
 	};
 
-	struct Transform3D
+	struct TransformComponent3D
 	{
 		Maths::Vector3<float> location;
 		//Maths::Rotator3<float> rotation;

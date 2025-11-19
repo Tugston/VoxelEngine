@@ -1,7 +1,7 @@
 #pragma once
 
 //ENGINE
-#include <Core/Core.h>
+#include "Core/Core.h"
 
 //STND
 #include <string_view>
@@ -33,7 +33,7 @@ namespace Engine::Renderer
 		void SetUniformMat4(const std::string& name, const glm::mat4& value, bool transpose = false);
 
 	private:
-		enum class ShaderType
+		enum class ShaderType: UINT8
 		{
 			Fragment = 0,
 			Vertex
@@ -44,7 +44,6 @@ namespace Engine::Renderer
 		unsigned int CreateShader(ShaderType type, const char* src);
 		void CreateProgram(unsigned int& vertShader, unsigned int& fragShader);
 
-		void LogError(const std::string& lineData);
 	private:
 		unsigned int m_Program = 0;
 		std::string m_FilePath = "";

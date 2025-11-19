@@ -1,7 +1,12 @@
 #pragma once
 
+//STND
+#include <typeindex>
+
+//ENGINE
 #include "./Core/Core.h"
 #include "./Components/Positionals/Transform.h"
+#include "./Core/Logger.h"
 
 //ecs uses the hash lookup for components, I could add a compile ids for each component and then look up their index in a vector for o(1), but I dont know how to implement that
 //and this map works good enough, I am not trying to make unreal engine. I am aware there are better ways though. Better ways for this whole engine matter of fact!
@@ -30,14 +35,14 @@ namespace Engine::Scene::ECS
 		}
 
 		template<typename t, typename... Args>
-		void AddComponent(EntityID entityID, Args&&... args)
+		t* AddComponent(EntityID entityID, Args&&... args)
 		{
 			ComponentPool<t>* pool = GetPool<t>();
 		
-			if (pool->HasComponent(entityID))
+			if (pool->HasComponent<t>(entityID))
 			{
 				LOG_WARN("Component already exists on entity, returning component");
-				return pool->GetComponent(entityID);
+				return pool->GetComponent<t>(entityID);
 			}
 			
 			return pool->Add(entityID, t(std::forward<Args>(args)...));
@@ -48,21 +53,36 @@ namespace Engine::Scene::ECS
 		{
 			ComponentPool<t>* pool = GetPool<t>();
 
-			if (pool->HasComponent(entityID))
+			if (pool->HasComponent<t>(entityID))
 				pool->RemoveComponent(entityID);
 			else
 				LOG_WARN("Entity did not contain component, removed nothing");
+		}
+
+		template<typename t>
+		const t* GetComponent(EntityID entityID)
+		{
+			ComponentPool<t>* pool = GetPool<t>();
+
+			if (pool->HasComponent<t>(entityID))
+				return pool->GetComponent<t>(entityID);
+			else
+				LOG_MSG("Component does not exist on entity");
 		}
 	
 	protected:
 
 		class InheritPool {
+		public:
 			virtual ~InheritPool() = default;
+
+			//need to add this as the inherit so it can be accessed without the cast
+			virtual void RemoveComponent(EntityID entityID) = 0;
 		};
 
 		//sparse set implementation that I think works
 		template<typename t>
-		class ComponentPool : InheritPool
+		class ComponentPool : public InheritPool
 		{
 		public:
 			ComponentPool()
@@ -84,23 +104,23 @@ namespace Engine::Scene::ECS
 			//so the type name is just so the entitie's component values can be stored properly
 
 			//returns the component back
-			t& Add(EntityID entityID, const t& componentData)
+			t* Add(EntityID entityID, const t& componentData)
 			{
 				if (sparse.size() <= entityID)
 					sparse.resize(entityID + 1, 0);
 
-				sparse[entityID] = m_DenseComponents.size();
+				sparse[entityID] = denseComponents.size();
 				denseComponents.push_back(componentData);
 				denseEntities.push_back(entityID);
 
-				return denseComponents.back();
+				return &denseComponents.back();
 			}
 
-			void RemoveComponent(EntityID entityID)
+			virtual void RemoveComponent(EntityID entityID) override
 			{
 				//not going to log anything, because destroying an entity needs to call this
 				//so it would be weird and misleading logs
-				if (id >= sparse.size)
+				if (entityID >= sparse.size())
 					return;
 
 				int i = sparse[entityID];
@@ -110,21 +130,23 @@ namespace Engine::Scene::ECS
 			};
 
 			template<typename t>
-			bool HasComponent(EntityID id)
+			bool HasComponent(EntityID id) const
 			{
-				if (id >= sparse.size)
+				if (id >= sparse.size())
 					return false;
 
 				return typeid(denseComponents[sparse[id]]) == typeid(t);
 			}
 
+			//I rly want this to be reference, but I dont rly want exceptions
+			//especially for direct game api stuff (this ultimately gets called from GameObjects)
 			template<typename t>
 			t* GetComponent(EntityID id)
 			{
-				if (id >= sparse.size)
+				if (id >= sparse.size())
 					return nullptr;
 
-				int i = sparse[entity];
+				int i = sparse[id];
 
 				if (i < denseEntities.size() && denseEntities[i] == id)
 					return &denseComponents[i];
@@ -141,20 +163,27 @@ namespace Engine::Scene::ECS
 	private:
 		//this the culptrit I was ranting about at the top
 		template<typename t>
-		ComponentPool<t>& GetPool() const
+		ComponentPool<t>* GetPool()
 		{
-			type_info poolID = typeid(t);
-			ComponentPool<t> foundPool;
-			if (!m_Components.contains(poolID))
-				foundPool = m_Components.emplace(poolID, std::make_unique<ComponentPool<t>>);
-			else
-				foundPool = m_Components.find(poolID);
+			std::type_index poolID(typeid(t));
+			auto foundPoolIt = m_Components.find(poolID);
 
-			return foundPool;
+			//a component that is active is obviously trying to be found
+			//so if the pool doesn't exist for the component type then best to just make it
+			if (foundPoolIt == m_Components.end())
+			{
+				std::unique_ptr<ComponentPool<t>> pool = std::make_unique<ComponentPool<t>>();
+				ComponentPool<t>* poolPtr = pool.get();
+				m_Components.emplace(poolID, std::move(pool));
+				return poolPtr;
+			}
+
+			return static_cast<ComponentPool<t>*>(foundPoolIt->second.get());
 		}
 	
 	private:
-		std::unordered_map<type_info, std::unique_ptr<ComponentPool<InheritPool>>> m_Components;
+		//InheritPool type is for a default component type
+		std::unordered_map<std::type_index, std::unique_ptr<InheritPool>> m_Components;
 		EntityID m_NextEntityID = 1;
 	};
 }

@@ -17,7 +17,7 @@ namespace Engine::Maths
 		Vector2<t> operator-(const Vector2<t>& other) const { return(Vector2<t>(x - other.x, y - other.y)); }
 		Vector2<t> operator=(const Vector2<t>& other)
 		{
-			if (this == &other) return;
+			if (this == &other) return *this;
 			this->x = other.x;
 			this->y = other.y;
 			return *this;
@@ -69,7 +69,7 @@ namespace Engine::Maths
 		Vector3<t> operator-(const Vector3<t>& other) const { return Vector3<t>(x - other.x, y - other.y, z - other.z); }
 		Vector3<t> operator=(const Vector3<t>& other)
 		{
-			if (this == other) return;
+			if (this == &other) return *this;
 			this->x = other.x;
 			this->y = other.y;
 			this->z = other.z;

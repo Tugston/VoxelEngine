@@ -7,6 +7,7 @@
 
 //ENGINE
 #include "Renderer/Core/RenderCore.h"
+#include "Core/Logger.h"
 
 //VENDOR
 #include "glm/ext.hpp"
@@ -17,7 +18,7 @@ namespace Engine::Renderer
 	Shader::Shader(const std::string& fileName)
 	{
 		std::string filePath = "./Shaders/" + fileName + ".txt";
-		m_FilePath = filePath.c_str();	
+		m_FilePath = filePath.c_str();
 	}
 
 	Shader::~Shader()
@@ -49,7 +50,7 @@ namespace Engine::Renderer
 
 		if (location < 0)
 		{
-			LogError("(Float)");
+			LOG_ERR("<Shader.cpp> Float uniform does not have valid location!");
 			return;
 		}
 
@@ -63,7 +64,7 @@ namespace Engine::Renderer
 
 		if (location < 0)
 		{
-			LogError("(Int)");
+			LOG_ERR("<Shader.cpp> Int uniform does not have valid location!");
 			return;
 		}
 
@@ -77,7 +78,7 @@ namespace Engine::Renderer
 
 		if (location < 0)
 		{
-			LogError("(Vec2");
+			LOG_ERR("<Shader.cpp> Vec2 uniform does not have valid location!");
 			return;
 		}
 
@@ -91,7 +92,7 @@ namespace Engine::Renderer
 
 		if (location < 0)
 		{
-			LogError("(Vec 3)");
+			LOG_ERR("<Shader.cpp> Vec3 uniform does not have valid location!");
 			return;
 		}
 
@@ -105,7 +106,8 @@ namespace Engine::Renderer
 
 		if (location < 0)
 		{
-			LogError("(Vec 4)");
+			LOG_ERR("<Shader.cpp> Vec4 uniform does not have valid location!");
+			return;
 		}
 
 		GL_CHECK(glUniform4fv(location, 1, glm::value_ptr(value)));
@@ -118,7 +120,7 @@ namespace Engine::Renderer
 
 		if (location < 0)
 		{
-			LogError("(Mat 2)");
+			LOG_ERR("<Shader.cpp> Mat2 uniform does not have valid location!");
 			return;
 		}
 
@@ -132,7 +134,7 @@ namespace Engine::Renderer
 
 		if (location < 0)
 		{
-			LogError("(Mat 3)");
+			LOG_ERR("<Shader.cpp> Mat3 uniform does not have valid location!");
 			return;
 		}
 
@@ -146,7 +148,7 @@ namespace Engine::Renderer
 
 		if (location < 0)
 		{
-			LogError("(Mat 4)");
+			LOG_ERR("<Shader.cpp> Mat4 uniform does not have valid location!");
 			return;
 		}
 
@@ -162,7 +164,7 @@ namespace Engine::Renderer
 		{
 			std::cout << std::filesystem::current_path() << std::endl;
 			std::cout << std::filesystem::current_path() << m_FilePath << std::endl;
-			Logger::LogMessage(Logger::LogType::Error, "Shader File Could Not Be Opened!");
+			LOG_ERR("<Shader.cpp> Shader file could not be opened!");
 			return "";
 		}
 
@@ -203,7 +205,7 @@ namespace Engine::Renderer
 	{
 		if (!src)
 		{
-			Logger::LogMessage(Logger::LogType::Error, "Shader Src Not Valid!");
+			LOG_ERR("<Shader.cpp> Shader src not valid!");
 			return 0;
 		}
 		
@@ -237,10 +239,5 @@ namespace Engine::Renderer
 
 		glDeleteShader(vertProgram);
 		glDeleteShader(fragProgram);
-	}
-
-	void Shader::LogError(const std::string& lineData)
-	{
-		Logger::LogMessage(Logger::LogType::Warning, "<Shader.cpp> " + lineData + " Shader does not have the valid location");
 	}
 }

@@ -80,7 +80,8 @@ namespace Engine
 	private:
 	
 	protected:
-		std::unique_ptr<Scene::Scene> m_CurrentScene; //heap allocate, because the scene will contain a lot of stuff
+		//this needs to be controlled by the scene manager eventually
+		std::shared_ptr<Scene::Scene> m_CurrentScene; //heap allocate, because the scene will contain a lot of stuff
 		
 		Renderer::PerspectiveCamera* m_Camera;
 		

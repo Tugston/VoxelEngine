@@ -3,6 +3,7 @@
 //ENGINE
 #include "Core/Core.h"
 #include "Renderer/Core/RenderData.h"
+#include "Scene/ECS/Registry.h"
 
 namespace Engine
 {
@@ -25,5 +26,7 @@ namespace Engine
 		//there will only be a few layers
 		//this can be stored in a byte obviously
 		unsigned char m_ID = 0;
+
+		std::weak_ptr<Scene::ECS::Registry> m_SceneRegistry;
 	};
 }

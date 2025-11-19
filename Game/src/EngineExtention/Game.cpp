@@ -18,7 +18,6 @@ namespace VoxelGame
 			m_ModelMatrix = glm::translate(m_ModelMatrix, glm::vec3(0.f, 0.f, -3.f));
 			m_ModelMatrix = glm::rotate(m_ModelMatrix, (0 * (EG_PI_FLOAT / 180)), glm::vec3(0.f, 1.f, 0.f));
 			m_ModelMatrix = glm::scale(m_ModelMatrix, glm::vec3(1.f, 1.f, 1.f));
-
 		}
 
 		~Game()
@@ -31,6 +30,17 @@ namespace VoxelGame
 			Application::Start();
 
 			m_Shader->Create();
+
+
+			m_TestObjectOne = std::make_shared<GameObject3D>(m_CurrentScene);
+			m_TestObjectTwo = std::make_shared<GameObject2D>(m_CurrentScene);
+			m_TestObjectThree = std::make_shared<GameObject3D>(m_CurrentScene);
+
+
+			Logger::LogMessage(Logger::LogType::Message, "Object One ID (Should be 1): {}", m_TestObjectOne->GetID());
+			Logger::LogMessage(Logger::LogType::Message, "Object Two ID (Should be 2): {}", m_TestObjectTwo->GetID());
+			Logger::LogMessage(Logger::LogType::Message, "Object Three ID (Should be 3): {}", m_TestObjectThree->GetID());
+
 			Tick();
 		}
 
@@ -108,6 +118,11 @@ namespace VoxelGame
 		glm::vec3 m_Color = glm::vec3(0);
 		Renderer::Shader* m_Shader;
 
+		//sample game objects to test the instantiation and everything
+		std::shared_ptr<GameObject3D> m_TestObjectOne;
+		std::shared_ptr<GameObject2D> m_TestObjectTwo;
+		std::shared_ptr<GameObject3D> m_TestObjectThree;
+		
 		//Renderer::PerspectiveCamera m_Camera;
 		
 		bool m_GameFocus = true;
