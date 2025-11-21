@@ -3,8 +3,6 @@
 
 # Voxel Engine
 
----
-
 Welcome! This is my first real attempt at making a voxel based game engine. The project is designed for experimental purposes and side projects only, and 
 I highly recommend not utilizing this for any serious applications. However, feel free to do so as you wish its just a suggestion!
 
@@ -12,18 +10,12 @@ For the full documentation, please checkout the documentation folder [here](http
 
 
 ## Features
-
----
-
 - [x] Fully custom Entity Component System with underlying sparse set
 - [x] Levels *(with full saving / loading coming soon)*
 - [ ] Simple editor with custom scripting
 
 
 ## Setup & Installation
-
----
-
 All library dependencies are included in the repo, and PreMake is utilized to setup the project. The only hiccup is the absence of CMake.
 The **GenerateProject.bat** sets up the entire project accordingly. Get started by cloning, and running the batch file.
 
@@ -36,9 +28,6 @@ then run command in terminal at root project directory
 ```
 
 ## Usage
-
----
-
 To have the project working, as of now *(11/20/2025)* you **must**
 
 1. Delete Game project that was downloaded with the project *(or download the gameless branch if you wish)*
