@@ -34,11 +34,20 @@ namespace Engine::Scene::ECS
 	GameObject2D::GameObject2D(std::shared_ptr<Scene> scene): GameObject(scene)
 	{
 		m_TransformComponent = AddComponent<Components::TransformComponent2D>();
+		m_SecondTransformComponent = AddComponent<Components::TransformComponent2D>();
 	}
 
 	GameObject2D::~GameObject2D()
 	{
 
+	}
+
+	void GameObject2D::Start()
+	{
+	}
+
+	void GameObject2D::Tick(float deltaTime)
+	{
 	}
 
 	//**************
@@ -54,9 +63,19 @@ namespace Engine::Scene::ECS
 	GameObject3D::GameObject3D(std::shared_ptr<Scene> scene): GameObject(scene)
 	{
 		m_TransformComponent = AddComponent<Components::TransformComponent3D>();
+		//RemoveComponent<Components::TransformComponent3D>(m_TransformComponent);
+		LOG_MSG("Location: {}", m_TransformComponent->location.x);
 	}
 
 	GameObject3D::~GameObject3D()
+	{
+	}
+
+	void GameObject3D::Start()
+	{
+	}
+
+	void GameObject3D::Tick(float deltaTime)
 	{
 	}
 

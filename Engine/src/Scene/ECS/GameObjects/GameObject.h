@@ -14,8 +14,13 @@ namespace Engine::Scene::ECS
 	class GameObject
 	{
 	public:
+		//delete default for now, until I get the scene manager all setup
+		GameObject() = delete;
 		GameObject(std::shared_ptr<Scene> scene);
 		~GameObject();
+
+		virtual void Start() = 0;
+		virtual void Tick(float deltaTime) = 0;
 
 	protected:
 		template<typename t, typename... Args>
@@ -23,15 +28,26 @@ namespace Engine::Scene::ECS
 		{
 			if (Scene* currentScene = m_Scene.lock().get())
 			{
-				Logger::LogMessage(Logger::LogType::Message, "Component Successfully added to Object [ {} ]", m_ID);
+				Logger::LogMessage(Logger::LogType::Message, "<GameObject.h> Component Successfully added to Object [ {} ]", m_ID);
 				return currentScene->RegisterComponent<t>(m_ID, std::forward<Args>(args)...);
 			}
 			else
 			{
-				LOG_ERR("<GameObject.h> Could Not Create Component");
+				LOG_ERR("<GameObject.h> Could Not Create Component for Object [ {} ]", m_ID);
 			}
 
 			return nullptr;
+		}
+
+		template<typename t>
+		void RemoveComponent(t*& componentRef)
+		{
+			if (Scene* currentScene = m_Scene.lock().get())
+			{
+				LOG_MSG("<GameObject.h> Component Successfully removed from Object [ {} ]", m_ID);
+				currentScene->DestroyComponent<t>(m_ID);
+				componentRef = nullptr;
+			}
 		}
 
 	public:
@@ -58,8 +74,12 @@ namespace Engine::Scene::ECS
 		GameObject2D(std::shared_ptr<Scene> scene);
 		~GameObject2D();
 
+		virtual void Start() override;
+		virtual void Tick(float deltaTime) override;
+
 	protected:
 		Components::TransformComponent2D* m_TransformComponent;
+		Components::TransformComponent2D* m_SecondTransformComponent;
 	};
 
 	class GameObject3D : public GameObject
@@ -67,6 +87,9 @@ namespace Engine::Scene::ECS
 	public:
 		GameObject3D(std::shared_ptr<Scene> scene);
 		~GameObject3D();
+
+		virtual void Start() override;
+		virtual void Tick(float deltaTime) override;
 
 	protected:
 		Components::TransformComponent3D* m_TransformComponent;

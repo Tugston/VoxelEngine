@@ -30,6 +30,12 @@ namespace Engine::Scene
 		}
 
 		template<typename t>
+		void DestroyComponent(ECS::EntityID id)
+		{
+			m_Registry->RemoveComponent<t>(id);
+		}
+
+		template<typename t>
 		t* GetObjectComponent(ECS::EntityID id)
 		{
 			return m_Registry->GetComponent<t>(id);

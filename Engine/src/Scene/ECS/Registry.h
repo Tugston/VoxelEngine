@@ -23,9 +23,7 @@ namespace Engine::Scene::ECS
 
 		EntityID CreateEntity()
 		{
-			EntityID currentId = m_NextEntityID;
-			m_NextEntityID++;
-			return currentId;
+			return m_NextEntityID++;
 		};
 
 		void DeleteEntity(EntityID entityID)
@@ -41,7 +39,7 @@ namespace Engine::Scene::ECS
 		
 			if (pool->HasComponent<t>(entityID))
 			{
-				LOG_WARN("Component already exists on entity, returning component");
+				LOG_WARN("<Registry.h> Component already exists on entity [ {} ], returning component", entityID);
 				return pool->GetComponent<t>(entityID);
 			}
 			
@@ -56,7 +54,7 @@ namespace Engine::Scene::ECS
 			if (pool->HasComponent<t>(entityID))
 				pool->RemoveComponent(entityID);
 			else
-				LOG_WARN("Entity did not contain component, removed nothing");
+				LOG_MSG("<Registry.h> Entity [ {} ] does not contain component, removed nothing", entityID);
 		}
 
 		template<typename t>
@@ -67,7 +65,7 @@ namespace Engine::Scene::ECS
 			if (pool->HasComponent<t>(entityID))
 				return pool->GetComponent<t>(entityID);
 			else
-				LOG_MSG("Component does not exist on entity");
+				LOG_MSG("<Registry.h> Component does not exist on entity [ {} ]", entityID);
 		}
 	
 	protected:
@@ -87,9 +85,7 @@ namespace Engine::Scene::ECS
 		public:
 			ComponentPool()
 			{
-				denseEntities.resize(5, 0);
-				denseComponents.resize(5);
-				sparse.resize(5, 0);
+				sparse.resize(5, UINT32_MAX);
 			}
 
 			~ComponentPool()
@@ -104,14 +100,15 @@ namespace Engine::Scene::ECS
 			//so the type name is just so the entitie's component values can be stored properly
 
 			//returns the component back
+			//the existing check is done in the registry itself, felt it was slightly better to do it there
 			t* Add(EntityID entityID, const t& componentData)
 			{
 				if (sparse.size() <= entityID)
 					sparse.resize(entityID + 1, 0);
 
-				sparse[entityID] = denseComponents.size();
 				denseComponents.push_back(componentData);
 				denseEntities.push_back(entityID);
+				sparse[entityID] = denseComponents.size() - 1;
 
 				return &denseComponents.back();
 			}
@@ -123,10 +120,12 @@ namespace Engine::Scene::ECS
 				if (entityID >= sparse.size())
 					return;
 
-				int i = sparse[entityID];
-				sparse[entityID] = 0;
+				const int i = sparse[entityID];
+				sparse[entityID] = UINT32_MAX;
 
+				//the off by one is accounted for when adding
 				denseComponents.erase(denseComponents.begin() + i);
+				denseEntities.erase(denseEntities.begin() + i);
 			};
 
 			template<typename t>
@@ -135,7 +134,7 @@ namespace Engine::Scene::ECS
 				if (id >= sparse.size())
 					return false;
 
-				return typeid(denseComponents[sparse[id]]) == typeid(t);
+				return sparse[id] != UINT32_MAX;
 			}
 
 			//I rly want this to be reference, but I dont rly want exceptions
@@ -146,7 +145,7 @@ namespace Engine::Scene::ECS
 				if (id >= sparse.size())
 					return nullptr;
 
-				int i = sparse[id];
+				const int i = sparse[id];
 
 				if (i < denseEntities.size() && denseEntities[i] == id)
 					return &denseComponents[i];
@@ -184,6 +183,6 @@ namespace Engine::Scene::ECS
 	private:
 		//InheritPool type is for a default component type
 		std::unordered_map<std::type_index, std::unique_ptr<InheritPool>> m_Components;
-		EntityID m_NextEntityID = 1;
+		EntityID m_NextEntityID = 0;
 	};
 }

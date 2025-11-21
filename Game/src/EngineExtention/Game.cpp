@@ -37,9 +37,10 @@ namespace VoxelGame
 			m_TestObjectThree = std::make_shared<GameObject3D>(m_CurrentScene);
 
 
-			Logger::LogMessage(Logger::LogType::Message, "Object One ID (Should be 1): {}", m_TestObjectOne->GetID());
-			Logger::LogMessage(Logger::LogType::Message, "Object Two ID (Should be 2): {}", m_TestObjectTwo->GetID());
-			Logger::LogMessage(Logger::LogType::Message, "Object Three ID (Should be 3): {}", m_TestObjectThree->GetID());
+
+			//Logger::LogMessage(Logger::LogType::Message, "Object One ID (Should be 1): {}", m_TestObjectOne->GetID());
+			//Logger::LogMessage(Logger::LogType::Message, "Object Two ID (Should be 2): {}", m_TestObjectTwo->GetID());
+			//Logger::LogMessage(Logger::LogType::Message, "Object Three ID (Should be 3): {}", m_TestObjectThree->GetID());
 
 			Tick();
 		}
