@@ -5,6 +5,7 @@
 #include "Core/Logger.h"
 #include "Core/Layers/LayerStack.h"
 
+
 //this cpp file is a mess, and will always be, using the find tool (ctrl-f) is advised
 
 namespace Engine
@@ -73,11 +74,9 @@ namespace Engine
 		m_Renderer->Clear();
 
 		m_CurrentScene->CollectRenderData();
-
 		m_Renderer->Render();
 		
-		//Debug::UI::UpdateContext();
-		m_Window.SwapBuffers();
+		SwapBuffer();
 	}
 
 

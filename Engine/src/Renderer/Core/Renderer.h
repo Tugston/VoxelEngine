@@ -12,7 +12,7 @@ namespace Engine::Renderer
 		enum class RenderTarget: UINT8
 		{
 			Window,
-			FrameBuffer
+			FrameBufferTexture
 		};
 
 		virtual ~Renderer() = default;

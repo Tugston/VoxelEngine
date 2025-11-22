@@ -1,7 +1,6 @@
 #include "Editor.h"
-#include "../VENDOR/imgui/imgui.h"
-#include "../VENDOR/imgui/imgui_impl_opengl3.h"
-#include "../VENDOR/imgui/imgui_impl_glfw.h"
+
+
 
 namespace Editor
 {		
@@ -17,11 +16,16 @@ namespace Editor
 		const bool success = ImGui_ImplGlfw_InitForOpenGL(Application::GetWindow()->GetGLFWWindow(), true) &&
 			ImGui_ImplOpenGL3_Init("#version 410");
 
+
 		if (success)
-			LOG_MSG("Editor Application Successfully Initialized!");
+			LOG_MSG("Application Successfully Initialized!");
 		else
-			LOG_FATAL("Editor Application Not Initialized!");
-	}
+			LOG_CRIT("Application Not Initialized!");
+
+		m_TestSlot = new FloatSlot("Test Float", &m_TestFloat);
+		m_Vec2TestSlot = new Vector2FSlot("2D Position", &m_TestFloat, &m_TestFloat);
+		m_Vec3TestSlot = new Vector3FSlot("3D Position", &m_TestFloat, &m_TestFloat, &m_TestFloat);
+	};
 
 	EditorApplication::~EditorApplication()
 	{
@@ -32,26 +36,46 @@ namespace Editor
 
 	void EditorApplication::Start()
 	{
+		LOG_MSG("Editor Started!");
 		Application::Start();
+		Tick();
 	}
 
 	void EditorApplication::Tick()
 	{
-		
-
-		Application::Tick();
+		while (m_Running)
+		{
+			Draw();
+			Application::Tick();
+		}
 	}
 
 	void EditorApplication::Draw()
 	{
-		ImGui::Render();
-		ImGui::DockSpaceOverViewport();
-		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
+
+		ImGui::DockSpaceOverViewport(1, ImGui::GetMainViewport());
+		
+		ImGui::Begin("Test Window", nullptr, ImGuiWindowFlags_::ImGuiWindowFlags_AlwaysAutoResize);
+		m_TestSlot->Draw();
+		m_Vec2TestSlot->Draw();
+		m_Vec3TestSlot->Draw();
+		ImGui::End();
 	}
+	
+	void EditorApplication::SwapBuffer()
+	{
+		ImGui::Render();
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
+		GLFWwindow* backupContext = glfwGetCurrentContext();
+		ImGui::UpdatePlatformWindows();
+		ImGui::RenderPlatformWindowsDefault();
+		glfwMakeContextCurrent(backupContext);
+
+		Application::SwapBuffer();
+	}
 }
 
-Application* Engine::CreateApplication()
-{
-	return new Editor::EditorApplication;
-}

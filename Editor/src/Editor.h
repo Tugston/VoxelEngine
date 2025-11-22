@@ -1,12 +1,26 @@
 #pragma once
+
+//EDITOR
+#include "Globals/Slots/FloatSlot.h"
+#include "Globals/Slots/Vector2Slot.h"
+#include "Globals/Slots/Vector3Slot.h"
+
+//ENGINE
 #include <Engine.h>
 #include <Core/EntryPoint.h>
+
+//VENDOR
+#include "../VENDOR/imgui/imgui.h"
+#include "../VENDOR/imgui/imgui_impl_opengl3.h"
+#include "../VENDOR/imgui/imgui_impl_glfw.h"
 
 class GLFWWindow;
 
 namespace Editor
 {
-	class EditorApplication : public Engine::Application
+	class FloatSlot;
+
+	class EditorApplication : public Application
 	{
 	public:
 		EditorApplication();
@@ -17,7 +31,19 @@ namespace Editor
 
 		void Draw();
 
-	private:
+		virtual void SwapBuffer() override;
 
+	private:
+		FloatSlot* m_TestSlot;
+		Vector2FSlot* m_Vec2TestSlot;
+		Vector3FSlot* m_Vec3TestSlot;
+
+		float m_TestFloat = 2.f;
 	};
+}
+
+Application* Engine::CreateApplication()
+{
+	LOG_MSG("Editor Application Created");
+	return new Editor::EditorApplication;
 }

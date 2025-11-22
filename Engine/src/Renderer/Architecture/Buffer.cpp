@@ -14,18 +14,21 @@ namespace Engine::Renderer
 		GL_CHECK(glGenBuffers(1, &m_ID));
 	}
 
-	VertexBuffer::VertexBuffer(unsigned char amnt)
-	{
-		m_BufferAmnt = amnt;
-		GL_CHECK(glGenBuffers(amnt, &m_ID));
-	}
-
 	VertexBuffer::~VertexBuffer()
 	{
-		GL_CHECK(glDeleteBuffers(m_BufferAmnt, &m_ID));
+		GL_CHECK(glDeleteBuffers(1, &m_ID));
 	}
+/*
+	BaseBuffer& BaseBuffer::operator=(BaseBuffer&& other) noexcept
+	{
+		if (this == &other) return *this;
+		GL_CHECK(glDeleteBuffers(1, &m_ID));
+		m_ID = other.m_ID;
+		other.m_ID = 0;
+		return *this;
+	}*/
 
-	void VertexBuffer::BufferData(std::vector<float>& data, unsigned int drawType)
+	void VertexBuffer::BufferData(std::vector<float>& data, unsigned int drawType) const
 	{
 		Bind();
 
@@ -52,8 +55,9 @@ namespace Engine::Renderer
 		GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, 0));
 	}
 
-	//*********
-
+	//*************
+	//Vertex Buffer
+	//*************
 
 	//************
 	//INDEX BUFFER
@@ -64,17 +68,12 @@ namespace Engine::Renderer
 		GL_CHECK(glGenBuffers(1, &m_ID));
 	}
 
-	IndexBuffer::IndexBuffer(unsigned char amnt)
-	{
-		GL_CHECK(glGenBuffers(amnt, &m_ID));
-	}
-
 	IndexBuffer::~IndexBuffer()
 	{
-		GL_CHECK(glDeleteBuffers(m_BufferAmnt, &m_ID));
+		GL_CHECK(glDeleteBuffers(1, &m_ID));
 	}
 
-	void IndexBuffer::BufferData(std::vector<unsigned int>& data, unsigned int drawType)
+	void IndexBuffer::BufferData(std::vector<unsigned int>& data, unsigned int drawType) const
 	{
 		Bind();
 
@@ -100,4 +99,5 @@ namespace Engine::Renderer
 	{
 		GL_CHECK(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
 	}
+
 }

@@ -87,6 +87,7 @@ project "Editor"
 
 		defines
 		{
+			"EDTR_DEBUG",
 			"ENGINE_PLATFORM_WINDOWS",
 			"FMT_USE_UTF8=1"
 		}
@@ -100,7 +101,7 @@ project "Editor"
 		optimize "On"
 
 	filter "configurations:Dist"
-		defines "EDITOR_Share"
+		defines "EDTR_DIST"
 		optimize "On"
 
 project "Engine"
@@ -171,7 +172,7 @@ project "Engine"
 		defines "EG_DEBUG"
 		optimize "On"
 	filter "configurations:Dist"
-		defines "EG_SHARE"
+		defines "EG_DIST"
 		optimize "On"
 
 project "Game"
@@ -248,5 +249,5 @@ project "Game"
 		defines "APP_DEBUG"
 		optimize "On"
 	filter "configurations:Dist"
-		defines "APP_SHARE"
+		defines "APP_DIST"
 		optimize "On"

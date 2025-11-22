@@ -14,6 +14,8 @@
 #ifdef EG_PRJ
 	#if defined(APP_DEBUG) //check app debug first, because engine may also be valid in game project
 		#define GET_LOGGER() ::Engine::Logger::GetGameLogger()
+	#elif defined(EDTR_DEBUG)
+		#define GET_LOGGER() ::Engine::Logger::GetEditorLogger()
 	#elif defined(EG_DEBUG)
 		#define GET_LOGGER() ::Engine::Logger::GetEngineLogger()
 	#else
@@ -25,7 +27,7 @@
 
 
 //Log Type Macros
-#if defined(EG_DEBUG) || defined(APP_DEBUG)
+#if defined(EG_DEBUG) || defined(APP_DEBUG) || defined(EDTR_DEBUG)
 #define LOG_MESSAGE(...)	GET_LOGGER()->info(__VA_ARGS__) 
 #define LOG_WARNING(...)	GET_LOGGER()->warn(__VA_ARGS__)
 #define LOG_ERROR(...)		GET_LOGGER()->error(__VA_ARGS__)
@@ -39,7 +41,7 @@
 
 //internal use only, tired of writing out these logs everywhere
 //but nothing is rly stopping external use, so use them I guess
-#if defined(EG_DEBUG) || defined(EDITOR_DEBUG) || defined(APP_DEBUG)
+#if defined(EG_DEBUG) || defined(EDTR_DEBUG) || defined(APP_DEBUG)
 #define LOG_MSG(...)	Engine::Logger::LogMessage(Engine::Logger::LogType::Message, __VA_ARGS__)
 #define LOG_WARN(...)	Engine::Logger::LogMessage(Engine::Logger::LogType::Warning, __VA_ARGS__)
 #define LOG_ERR(...)	Engine::Logger::LogMessage(Engine::Logger::LogType::Error, __VA_ARGS__)
@@ -81,13 +83,14 @@ namespace Engine
 			};
 		};
 
-		static std::shared_ptr<spdlog::logger> GetEngineLogger() { return s_EngineLogger; };
-		static std::shared_ptr<spdlog::logger> GetGameLogger() { return s_GameLogger; };
+		static std::shared_ptr<spdlog::logger> GetEngineLogger()	{ return s_EngineLogger; }
+		static std::shared_ptr<spdlog::logger> GetGameLogger()		{ return s_GameLogger; }
+		static std::shared_ptr<spdlog::logger> GetEditorLogger()	{ return s_EditorLogger; }
 
 	private:
 		static std::shared_ptr<spdlog::logger> s_EngineLogger;
 		static std::shared_ptr<spdlog::logger> s_GameLogger;
-
+		static std::shared_ptr<spdlog::logger> s_EditorLogger;
 	};
 
 }

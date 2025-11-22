@@ -65,6 +65,7 @@ namespace Engine
 
 		static inline Renderer::PerspectiveCamera* GetCamera() { return s_Instance->m_Camera; };
 
+		virtual void SwapBuffer() { m_Window.SwapBuffers(); }
 		//*************//
 		//*ENGINE API*//
 		//************//
@@ -77,8 +78,6 @@ namespace Engine
 		void InitializeEngineRootSystems() const;
 		void ProcessInput() const;
 
-	private:
-	
 	protected:
 		//this needs to be controlled by the scene manager eventually
 		std::shared_ptr<Scene::Scene> m_CurrentScene; //heap allocate, because the scene will contain a lot of stuff

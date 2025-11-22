@@ -17,7 +17,6 @@
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
 
-//wrapping imgui is an absolute pain... I CANNOT STAND WORKING WITH VARIADIC TEMPLATES
 
 namespace Engine::Debug
 {
