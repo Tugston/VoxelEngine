@@ -64,8 +64,16 @@ namespace Engine::Renderer
 		UINT32 m_Size = 0; //size is the amount of items indexed
 	};
 
-	//class Texture2DBuffer : public BaseBuffer
-	//{
+	class FrameBuffer : public BaseBuffer
+	{
+	public:
+		FrameBuffer();
+		~FrameBuffer();
 
-	//};
+		virtual void Bind() const override;
+		virtual void UnBind() const override;
+
+		void BufferTexture2D(unsigned int target, unsigned int attachment, unsigned int source, int mipMap) const;
+	};
+
 }

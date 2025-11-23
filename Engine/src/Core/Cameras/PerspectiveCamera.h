@@ -1,7 +1,6 @@
 #pragma once
-
-//ENGINE
-#include "Renderer/Architecture/Camera/CameraSettings.h"
+#include "PerspectiveCamera.h"
+#include "CameraSettings.h"
 
 //Editor Camera
 

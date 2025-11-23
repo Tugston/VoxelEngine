@@ -129,6 +129,7 @@ project "Engine"
 		"Vendor/include/GLFW",
 		"Vendor/include/GLM",
 		"Vendor/include/GLEW",
+		"Vendor/include/STB",
 	}
 
 	links

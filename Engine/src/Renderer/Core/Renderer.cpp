@@ -10,7 +10,7 @@ namespace Engine::Renderer
 	{
 		if (glewInit() != GLEW_OK)
 		{
-			Logger::LogMessage(Logger::LogType::Critical, "<Renderer.h> Glew Did Not Initialize");
+			LOG_CRIT("<Renderer.cpp> Glew Did Not Initialize");
 			EG_ASSERT(false);
 		}
 	};

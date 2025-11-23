@@ -1,0 +1,64 @@
+#pragma once
+
+//VNDR
+#include "GL/glew.h"
+
+//ENGINE
+#include "Core/Core.h"
+
+namespace Engine::Renderer
+{
+	//these values were sourced from the gl constants data sheet
+	//raw.githubusercontent.com/KhronosGroup/OpenGL-Registry/master/xml/gl.xml?utm_source=chatgpt.com
+	enum class TextureParamName : unsigned int
+	{
+		DEPTH_STENCIL_TEXTURE_MODE	= 0x90EA,
+		TEXTURE_BASE_LEVEL			= 0x813c,
+		TEXTURE_COMPARE_FUNC		= 0x884D,
+		TEXTURE_COMPARE_MODE		= 0x884C,
+		TEXTURE_LOD_BIAS			= 0x8501,
+		TEXTURE_MIN_FILTER			= 0x2801,
+		TEXTURE_MAG_FILTER			= 0x2800,
+		TEXTURE_MIN_LOD				= 0x813A,
+		TEXTURE_MAX_LOD				= 0x813B,
+		TEXTURE_MAX_LEVEL			= 0x813D,
+		TEXTURE_SWIZZLE_R			= 0x8E42,
+		TEXTURE_SWIZZLE_G			= 0x8E43,
+		TEXTURE_SWIZZLE_B			= 0x8E44,
+		TEXTURE_SWIZZLE_A			= 0x8E45,
+		TEXTURE_WRAP_S				= 0x2802,
+		TEXTURE_WRAP_T				= 0x2803,
+		TEXTURE_WRAP_R				= 0x8072,
+
+		//Vector Commands only
+		TEXTURE_BORDER_COLOR		= 0x1004,
+		TEXTURE_SWIZZLE_RGBA		= 0x8E46
+	};
+
+	class Texture
+	{
+	public:
+		virtual void Bind() const = 0;
+		virtual void UnBind() const = 0;
+
+		virtual ~Texture();
+
+	protected:
+		Texture();
+		unsigned int m_id = 0;
+	};
+
+	class Texture2D : public Texture
+	{
+	public:
+		Texture2D();
+		//constructor for image textures
+		Texture2D(std::string_view fileName);
+
+		virtual void Bind() const override;
+		virtual void UnBind() const override;
+
+		void SetFilter(unsigned int minFilter, unsigned int magFilter) const;
+		void SetWrap(unsigned int wrapS, unsigned int wrapT) const;
+	};
+}

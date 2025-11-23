@@ -7,7 +7,7 @@
 #include "Core/Window.h"
 #include "Core/Debug/DebugUI.h"
 #include "Scene/Scene.h"
-#include "Renderer/Architecture/Camera/PerspectiveCamera.h"
+#include "Core/Cameras/PerspectiveCamera.h"
 
 //STND
 #include <cstdint>

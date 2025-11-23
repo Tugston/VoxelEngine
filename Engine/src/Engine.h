@@ -15,7 +15,7 @@
 
 //testing
 #include	"Renderer/Architecture/Shader.h"
-#include	"Renderer/Architecture/Camera/PerspectiveCamera.h"
+#include	"Core/Cameras/PerspectiveCamera.h"
 
 
 //VENDOR

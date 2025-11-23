@@ -4,7 +4,7 @@
 #include "Renderer/Architecture/Shader.h"
 #include "Renderer/Architecture/Buffer.h"
 #include "Renderer/Architecture/ArrayObject.h"
-#include "Renderer/Architecture/Camera/PerspectiveCamera.h"
+#include "Core/Cameras/PerspectiveCamera.h"
 
 namespace Engine::Renderer
 {

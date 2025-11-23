@@ -100,4 +100,41 @@ namespace Engine::Renderer
 		GL_CHECK(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
 	}
 
+
+	//************
+	//Frame Buffer
+	//************
+
+	FrameBuffer::FrameBuffer()
+	{
+		GL_CHECK(glGenFramebuffers(1, &m_ID));
+	}
+
+	FrameBuffer::~FrameBuffer()
+	{
+		GL_CHECK(glDeleteFramebuffers(1, &m_ID));
+	}
+
+	void FrameBuffer::Bind() const
+	{
+		GL_CHECK(glBindFramebuffer(GL_FRAMEBUFFER, m_ID));
+	}
+
+	void FrameBuffer::UnBind() const
+	{
+		GL_CHECK(glBindFramebuffer(GL_FRAMEBUFFER, 0));
+	}
+
+	void FrameBuffer::BufferTexture2D(unsigned int target, unsigned int attachment, unsigned int source, int mipMap) const
+	{
+		GL_CHECK(glFramebufferTexture2D(target, attachment, GL_TEXTURE_2D, source, mipMap));
+	}
+
+	//add more as needed, like Texture3D
+
+	//************
+	//Frame Buffer
+	//************
+
+
 }
