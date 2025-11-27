@@ -22,6 +22,9 @@ The **GenerateProject.bat** sets up the entire project accordingly. Get started 
 ```sh
 git clone https://github.com/Tugston/VoxelEngine.git
 ```
+*note: if you want all library binary files you may want to manually download any release. From there unzip the bin zip folder and put it next to include
+folder in VENDOR directory.*
+
 then run command in terminal at root project directory
 ```
 /GenerateProject
@@ -30,13 +33,13 @@ then run command in terminal at root project directory
 ## Usage
 To have the project working, as of now *(11/20/2025)* you **must**
 
-1. Delete Game project that was downloaded with the project *(or download the gameless branch if you wish)*
-	2. rerun the bat file in the Setup & Installation step to get a fresh game project
-	2. add Game.cpp file in a folder labeled "EngineExtensions"
+1. Delete Game project that was downloaded with the project *(or download the gameless branch if you wish)*<br/>
+	- rerun the bat file in the Setup & Installation step to get a fresh game project.<br/>
+	- add Game.cpp file in a folder labeled "EngineExtensions" in the Game Project.
 
-1. Add ```#include <Core/EntryPoint.h>``` and ```#include<Engine.h>``` to the file
-	2.  EntryPoint contains the main function, so it **must** be included exactly once in the Game project
-	2.	Engine.h includes the entire public API for the engine and can be added everywhere
+1. Add ```#include <Core/EntryPoint.h>``` and ```#include<Engine.h>``` to the file<br/>
+	- EntryPoint contains the main function, so it **must** be included exactly once in the Game project<br/>
+	- Engine.h includes the entire public API for the engine and can be added everywhere
 
 1. Create your GameClass *(call it whatever you want)* and publicly inherit from Application
 

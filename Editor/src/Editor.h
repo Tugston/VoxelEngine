@@ -15,6 +15,7 @@
 #include "../VENDOR/imgui/imgui_impl_glfw.h"
 
 class GLFWWindow;
+class Camera::PerspectiveCamera;
 
 namespace Editor
 {
@@ -37,6 +38,8 @@ namespace Editor
 		FloatSlot* m_TestSlot;
 		Vector2FSlot* m_Vec2TestSlot;
 		Vector3FSlot* m_Vec3TestSlot;
+
+		Camera::PerspectiveCamera* m_Camera;
 
 		float m_TestFloat = 2.f;
 	};

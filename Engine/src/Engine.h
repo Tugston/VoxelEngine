@@ -14,7 +14,7 @@
 
 
 //testing
-#include	"Renderer/Architecture/Shader.h"
+#include	"SharedResources/GenericResources/Shader.h"
 #include	"Core/Cameras/PerspectiveCamera.h"
 
 
@@ -22,9 +22,13 @@
 #include	"glm/glm.hpp"
 #include	"glm/gtx/string_cast.hpp"
 
+//may update these in the future, since types could have conflations with games
+//or it may be better to have the game be in a game namespace actually, idk. Still deciding.
 using namespace Engine;
+using namespace Engine::Utility;
 using namespace Engine::Scene::ECS;
 using namespace Engine::Scene::ECS::Components;
+using namespace Engine::Camera;
 
 
 //API MACROS

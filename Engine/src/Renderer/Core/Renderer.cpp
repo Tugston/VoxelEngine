@@ -3,15 +3,91 @@
 
 //ENGINE
 #include "Renderer/Core/RenderCore.h"
+#include "Core/Cameras/PerspectiveCamera.h"
+#include "Core/Cameras/OrthographicCamera.h"
 
 namespace Engine::Renderer
 {
-	Renderer::Renderer()
+	Renderer::Renderer(ViewSize viewportSize):
+		m_RenderTarget(RenderTarget::Window)
 	{
+		glViewport(0, 0, viewportSize.first, viewportSize.second);
+
 		if (glewInit() != GLEW_OK)
 		{
-			LOG_CRIT("<Renderer.cpp> Glew Did Not Initialize");
+			LOG_CRIT("<Renderer.cpp> Glew Not Initialized");
 			EG_ASSERT(false);
 		}
 	};
+
+	Renderer::Renderer(ViewSize viewportSize, RenderTarget target):
+		m_RenderTarget(target)
+	{
+		glViewport(0, 0, viewportSize.first, viewportSize.second);
+
+		if (glewInit() != GLEW_OK)
+		{
+			LOG_CRIT("<Renderer.cpp> Glew Not Initialized!");
+			EG_ASSERT(false);
+		}
+	}
+
+	Renderer::~Renderer()
+	{
+
+	}
+
+	void Renderer::BeginRender(Camera::EditorCamera* camera)
+	{
+	}
+
+	void Renderer::EndRender()
+	{
+	}
+
+	void Renderer::ClearScreen()
+	{
+		glClearColor(.5f, .9f, 1.f, 1.f);
+		glClear(GL_COLOR_BUFFER_BIT);
+	}
+
+	void Renderer::ClearQueues()
+	{
+		auto clear = [this](auto queueToClear)
+			{
+				while (!queueToClear.empty())
+					queueToClear.pop();
+			};
+
+		clear(m_OpaqueSceneObjects);
+	}
+
+	void Renderer::SubmitObject(std::shared_ptr<RenderObject> renderObject)
+	{
+		renderObject->SubmitToRender(this);
+	}
+
+	std::function<void(int, int)> Renderer::Resize(Camera::EditorCamera* camera)
+	{
+		return [&](int width, int height)
+			{
+				glViewport(0, 0, width, height);
+
+				if (camera)
+					camera->UpdateProjection(width, height);
+			};
+	}
+
+	//*************
+	//REGISTER DUMP
+	//*************
+
+	void Renderer::RegisterOpaqueObject(std::shared_ptr<OpaquePackets> mesh)
+	{
+		m_OpaqueSceneObjects.push(mesh);
+	}
+
+	//*************
+	//REGISTER DUMP
+	//*************
 }

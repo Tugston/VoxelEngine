@@ -12,19 +12,7 @@ namespace Engine::Renderer
 
 	//currently working on this, but just pushing this since I have the editor updated
 	class BaseBuffer
-	{
-	public:
-		//BaseBuffer(const BaseBuffer&) = delete;
-		//BaseBuffer& operator=(const BaseBuffer&); <- this is dangerous for excluding, but unfortunately vectors copy 
-
-		//I rly only allow moving
-		//BaseBuffer(BaseBuffer&& other) noexcept : m_ID(other.m_ID)
-		//{
-			//other.m_ID = 0;
-		//}
-
-		//BaseBuffer& operator=(BaseBuffer&& other) noexcept;
-
+	{	
 	protected:
 		BaseBuffer() = default;
 		BaseBuffer(UINT32 amnt) {};
@@ -42,6 +30,13 @@ namespace Engine::Renderer
 		VertexBuffer();
 		~VertexBuffer();
 
+		//assignment override is used for assigning ecs meshes to the renderer object meshes
+		VertexBuffer& operator=(const VertexBuffer& other) noexcept {
+			if (this == &other) return *this;
+			m_ID = other.m_ID;
+			return *this;
+		};
+
 		virtual void Bind() const override;
 		virtual void UnBind() const override;
 		
@@ -55,13 +50,17 @@ namespace Engine::Renderer
 		IndexBuffer();
 		~IndexBuffer();
 
+		//assignment override is used for assigning ecs meshes to the renderer object meshes
+		IndexBuffer& operator=(const IndexBuffer& other) noexcept {
+			if (this == &other) return *this;
+			m_ID = other.m_ID;
+			return *this;
+		};
+
 		virtual void Bind() const override;
 		virtual void UnBind() const override;
 
 		void BufferData(std::vector<unsigned int>& data, unsigned int drawType) const;
-
-	private:
-		UINT32 m_Size = 0; //size is the amount of items indexed
 	};
 
 	class FrameBuffer : public BaseBuffer
@@ -69,6 +68,13 @@ namespace Engine::Renderer
 	public:
 		FrameBuffer();
 		~FrameBuffer();
+
+		//assignment override is used for assigning ecs meshes to the renderer object meshes
+		FrameBuffer& operator=(const FrameBuffer& other) noexcept {
+			if (this == &other) return *this;
+			m_ID = other.m_ID;
+			return *this;
+		};
 
 		virtual void Bind() const override;
 		virtual void UnBind() const override;

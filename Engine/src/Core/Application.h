@@ -2,7 +2,7 @@
 
 //ENGINE
 #include "Core/Core.h"
-#include "Renderer/RendererAPI.h"
+#include "Renderer/Core/Renderer.h"
 #include "Input/Input.h"
 #include "Core/Window.h"
 #include "Core/Debug/DebugUI.h"
@@ -63,7 +63,7 @@ namespace Engine
 		//Returns the frame rate
 		static const inline unsigned int GetFrameRate() { return s_Instance->m_FrameRate; };
 
-		static inline Renderer::PerspectiveCamera* GetCamera() { return s_Instance->m_Camera; };
+		static inline std::shared_ptr<Camera::PerspectiveCamera> GetCamera() { return s_Instance->m_Camera; };
 
 		virtual void SwapBuffer() { m_Window.SwapBuffers(); }
 		//*************//
@@ -82,7 +82,7 @@ namespace Engine
 		//this needs to be controlled by the scene manager eventually
 		std::shared_ptr<Scene::Scene> m_CurrentScene; //heap allocate, because the scene will contain a lot of stuff
 		
-		Renderer::PerspectiveCamera* m_Camera;
+		std::shared_ptr<Camera::PerspectiveCamera> m_Camera; //needs to be in the editor instead of here, but just testing for now
 		
 	private:
 		float m_DeltaTime = 0;
@@ -90,7 +90,7 @@ namespace Engine
 		unsigned int m_FrameRate = 0;
 
 		Window m_Window;
-		Renderer::RenderAPI* m_Renderer;
+		std::unique_ptr<Renderer::Renderer> m_Renderer;
 
 
 

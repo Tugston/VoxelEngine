@@ -6,18 +6,24 @@
 #include <filesystem>
 
 //ENGINE
-#include "Renderer/Core/RenderCore.h"
 #include "Core/Logger.h"
+#include "Renderer/Core/RenderCore.h"
 
 //VENDOR
 #include "glm/ext.hpp"
 
 
-namespace Engine::Renderer
+namespace Engine::Utility
 {
+	Shader::Shader()
+	{
+		const std::string filePath = "./Shaders/BaseShader.txt";
+		m_FilePath = filePath.c_str();
+	}
+
 	Shader::Shader(const std::string& fileName)
 	{
-		std::string filePath = "./Shaders/" + fileName + ".txt";
+		const std::string filePath = "./Shaders/" + fileName + ".txt";
 		m_FilePath = filePath.c_str();
 	}
 
@@ -38,12 +44,12 @@ namespace Engine::Renderer
 		CreateProgram(vertShader, fragShader);
 	}
 
-	void Shader::Use()
+	void Shader::Use() const
 	{
 		GL_CHECK(glUseProgram(m_Program));
 	}
 
-	void Shader::SetUniformFloat(const std::string& name, const float value)
+	void Shader::SetUniformFloat(const std::string& name, const float value) const
 	{
 		Use();
 		int location = glGetUniformLocation(m_Program, name.c_str());
@@ -57,7 +63,7 @@ namespace Engine::Renderer
 		GL_CHECK(glUniform1f(location, value));
 	}
 
-	void Shader::SetUniformInt(const std::string& name, const int value)
+	void Shader::SetUniformInt(const std::string& name, const int value) const
 	{
 		Use();
 		int location = glGetUniformLocation(m_Program, name.c_str());
@@ -71,7 +77,7 @@ namespace Engine::Renderer
 		GL_CHECK(glUniform1i(location, value));
 	}
 
-	void Shader::SetUniformVec2(const std::string& name, const glm::vec2& value)
+	void Shader::SetUniformVec2(const std::string& name, const glm::vec2& value) const
 	{
 		Use();
 		int location = glGetUniformLocation(m_Program, name.c_str());
@@ -85,7 +91,7 @@ namespace Engine::Renderer
 		GL_CHECK(glUniform2fv(location, 1, glm::value_ptr(value)));
 	}
 
-	void Shader::SetUniformVec3(const std::string& name, const glm::vec3& value)
+	void Shader::SetUniformVec3(const std::string& name, const glm::vec3& value) const
 	{
 		Use();
 		int location = glGetUniformLocation(m_Program, name.c_str());
@@ -99,7 +105,7 @@ namespace Engine::Renderer
 		GL_CHECK(glUniform3fv(location, 1, glm::value_ptr(value)));
 	}
 
-	void Shader::SetUniformVec4(const std::string& name, const glm::vec4& value)
+	void Shader::SetUniformVec4(const std::string& name, const glm::vec4& value) const
 	{
 		Use();
 		int location = glGetUniformLocation(m_Program, name.c_str());
@@ -113,7 +119,7 @@ namespace Engine::Renderer
 		GL_CHECK(glUniform4fv(location, 1, glm::value_ptr(value)));
 	}
 
-	void Shader::SetUniformMat2(const std::string& name, const glm::mat2& value, bool transpose)
+	void Shader::SetUniformMat2(const std::string& name, const glm::mat2& value, bool transpose) const
 	{
 		Use();
 		int location = glGetUniformLocation(m_Program, name.c_str());
@@ -127,7 +133,7 @@ namespace Engine::Renderer
 		GL_CHECK(glUniformMatrix4fv(location, 1, transpose, glm::value_ptr(value)));
 	}
 
-	void Shader::SetUniformMat3(const std::string& name, const glm::mat3& value, bool transpose)
+	void Shader::SetUniformMat3(const std::string& name, const glm::mat3& value, bool transpose) const
 	{
 		Use();
 		int location = glGetUniformLocation(m_Program, name.c_str());
@@ -141,7 +147,7 @@ namespace Engine::Renderer
 		GL_CHECK(glUniformMatrix3fv(location, 1, transpose, glm::value_ptr(value)));
 	}
 
-	void Shader::SetUniformMat4(const std::string& name, const glm::mat4& value, bool transpose)
+	void Shader::SetUniformMat4(const std::string& name, const glm::mat4& value, bool transpose) const
 	{
 		Use();
 		int location = glGetUniformLocation(m_Program, name.c_str());

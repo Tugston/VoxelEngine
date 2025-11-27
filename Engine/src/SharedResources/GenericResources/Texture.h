@@ -6,7 +6,7 @@
 //ENGINE
 #include "Core/Core.h"
 
-namespace Engine::Renderer
+namespace Engine::Utility
 {
 	//these values were sourced from the gl constants data sheet
 	//raw.githubusercontent.com/KhronosGroup/OpenGL-Registry/master/xml/gl.xml?utm_source=chatgpt.com

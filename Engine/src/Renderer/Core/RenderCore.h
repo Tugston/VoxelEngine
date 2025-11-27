@@ -1,9 +1,7 @@
 #pragma once
 
-//would want this in the Core/Core.h, but it needs to include glew
-//that is problematic because I only really want the renderer to know that glew exists
-//so making a RenderCore is the next best thing I guess
-//idk this is my first engine, I am just winging it tbh...
+//created a render core just in case there is something in the renderer that may want glew but doesnt need the actual renderer class and everything
+
 
 //ENGINE
 #include "Core/Logger.h"

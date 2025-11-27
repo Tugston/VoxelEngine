@@ -1,6 +1,6 @@
 #include "Editor.h"
 
-
+#include <Core/Cameras/PerspectiveCamera.h>
 
 namespace Editor
 {		
@@ -25,6 +25,8 @@ namespace Editor
 		m_TestSlot = new FloatSlot("Test Float", &m_TestFloat);
 		m_Vec2TestSlot = new Vector2FSlot("2D Position", &m_TestFloat, &m_TestFloat);
 		m_Vec3TestSlot = new Vector3FSlot("3D Position", &m_TestFloat, &m_TestFloat, &m_TestFloat);
+
+		m_Camera = new Camera::PerspectiveCamera();
 	};
 
 	EditorApplication::~EditorApplication()

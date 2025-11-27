@@ -1,6 +1,7 @@
 #pragma once
 
 //ENGINE
+#include "Core/Core.h"
 #include "Renderer/Architecture/Buffer.h"
 
 //STND
@@ -71,18 +72,10 @@ namespace Engine::Renderer
 		void Bind() const;
 		void UnBind() const;
 
-		void AddVertBuffer(const std::shared_ptr<VertexBuffer>& newVertexBuffer);
-		void SetIndexBuffer(const std::shared_ptr<IndexBuffer>& newIndexBuffer);
-		void SetAttribData(const AttribData& data);
-
-		const std::vector<std::shared_ptr<VertexBuffer>>& GetVertexBuffers() const { return m_VertexBuffers; };
-		const std::shared_ptr<IndexBuffer>& GetIndexBuffer() const { return m_IndexBuffer; };
+		void SetAttribData(const unsigned int index, const AttribData& data, const VertexBuffer& vertBuffer, const IndexBuffer& indexBuffer);
 
 	private:
-		uint32_t m_ID = 0;
-		uint32_t m_VertexBufferIdx = 0;
-		std::vector<std::shared_ptr<VertexBuffer>> m_VertexBuffers;
-		std::shared_ptr<IndexBuffer> m_IndexBuffer;
+		UINT32 m_ID = 0;
 	};
 
 }

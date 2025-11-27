@@ -66,26 +66,14 @@ namespace Engine::Renderer
 		GL_CHECK(glBindVertexArray(0));
 	}
 
-	void ArrayObject::AddVertBuffer(const std::shared_ptr<VertexBuffer>& newVertexBuffer)
-	{
-		m_VertexBuffers.push_back(newVertexBuffer);
-	}
-
-	void ArrayObject::SetIndexBuffer(const std::shared_ptr<IndexBuffer>& newIndexBuffer)
-	{
-		m_IndexBuffer = newIndexBuffer;
-	}
-
-	void ArrayObject::SetAttribData(const AttribData& data)
+	void ArrayObject::SetAttribData(const unsigned int idx, const AttribData& data, const VertexBuffer& vertBuffer, const IndexBuffer& indexBuffer)
 	{
 		Bind();
-		m_IndexBuffer.get()->Bind();
+		indexBuffer.Bind();
 		
-		GL_CHECK(glVertexAttribPointer(m_VertexBufferIdx, SizeCountConversion(data.type), ShaderDataTypeConversion(data.type), data.normalized,
+		GL_CHECK(glVertexAttribPointer(idx, SizeCountConversion(data.type), ShaderDataTypeConversion(data.type), data.normalized,
 			data.stride, (void*)data.offset));
 
-		GL_CHECK(glEnableVertexAttribArray(m_VertexBufferIdx));
-
-		m_VertexBufferIdx++;
+		GL_CHECK(glEnableVertexAttribArray(idx));
 	}
 }

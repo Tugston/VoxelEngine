@@ -20,8 +20,8 @@ namespace Engine
 		srand(time(NULL));
 		InitializeEngineRootSystems();
 
-		m_Camera = new Renderer::PerspectiveCamera(glm::vec3(0.f, 0.f, 0.f));
-		m_Renderer = new Renderer::RenderAPI(m_Window.GetBufferSize());
+		m_Camera = std::make_shared<Camera::PerspectiveCamera>(glm::vec3(0.f, 0.f, 0.f));
+		m_Renderer = std::make_unique<Renderer::Renderer>(m_Window.GetBufferSize());
 	}
 
 	Application::~Application()
@@ -35,8 +35,7 @@ namespace Engine
 	{
 		Logger::LogMessage(Logger::LogType::Warning, "Started!");
 
-		m_Renderer->Setup();
-		m_Window.SetFrameSize(m_Renderer->Resize()); //send the resize function to the window for resize callback
+		m_Window.SetFrameSize(m_Renderer->Resize(m_Camera.get())); //send the resize function to the window for resize callback
 
 
 		//create a level for the engine to automatically use
@@ -70,11 +69,10 @@ namespace Engine
 
 	void Application::Draw(float deltaTime)
 	{
-		//previous frame reset
-		m_Renderer->Clear();
+		m_Renderer->BeginRender(m_Camera.get());
 
+		m_Renderer->EndRender();
 		m_CurrentScene->CollectRenderData();
-		m_Renderer->Render();
 		
 		SwapBuffer();
 	}

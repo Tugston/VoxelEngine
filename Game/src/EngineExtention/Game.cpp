@@ -14,7 +14,7 @@ namespace VoxelGame
 	public:
 		Game() : Application()
 		{
-			m_Shader = new Renderer::Shader("TestShader");
+			m_Shader = new Shader("TestShader");
 			m_ModelMatrix = glm::translate(m_ModelMatrix, glm::vec3(0.f, 0.f, -3.f));
 			m_ModelMatrix = glm::rotate(m_ModelMatrix, (0 * (EG_PI_FLOAT / 180)), glm::vec3(0.f, 1.f, 0.f));
 			m_ModelMatrix = glm::scale(m_ModelMatrix, glm::vec3(1.f, 1.f, 1.f));
@@ -71,22 +71,22 @@ namespace VoxelGame
 
 				if (InputSystem::KeyPressed(EngineKeys::W))
 				{
-					m_Camera->ProcessLocation(Renderer::MoveDirection::Forward, GetDeltaTime());
+					m_Camera->ProcessLocation(Camera::EditorCamera::MoveDirection::Forward, GetDeltaTime());
 				}
 				
 				if (InputSystem::KeyPressed(EngineKeys::S))
 				{
-					m_Camera->ProcessLocation(Renderer::MoveDirection::Backwards, GetDeltaTime());
+					m_Camera->ProcessLocation(Camera::EditorCamera::MoveDirection::Backwards, GetDeltaTime());
 				}
 				
 				if (InputSystem::KeyPressed(EngineKeys::A))
 				{
-					m_Camera->ProcessLocation(Renderer::MoveDirection::Left, GetDeltaTime());
+					m_Camera->ProcessLocation(Camera::EditorCamera::MoveDirection::Left, GetDeltaTime());
 				}
 				
 				if (InputSystem::KeyPressed(EngineKeys::D))
 				{
-					m_Camera->ProcessLocation(Renderer::MoveDirection::Right, GetDeltaTime());
+					m_Camera->ProcessLocation(Camera::EditorCamera::MoveDirection::Right, GetDeltaTime());
 				}
 
 				if (InputSystem::KeyTapped(EngineKeys::TAB))
@@ -117,7 +117,7 @@ namespace VoxelGame
 
 	private:
 		glm::vec3 m_Color = glm::vec3(0);
-		Renderer::Shader* m_Shader;
+		Shader* m_Shader;
 
 		//sample game objects to test the instantiation and everything
 		std::shared_ptr<GameObject3D> m_TestObjectOne;

@@ -2,7 +2,6 @@
 
 //ENGINE
 #include "Core/Core.h"
-#include "Renderer/Core/RenderData.h"
 #include "Core/Layers/LayerStack.h"
 #include "Core/Layers/EngineLayers.h"
 #include "./ECS/Registry.h"
@@ -41,7 +40,8 @@ namespace Engine::Scene
 			return m_Registry->GetComponent<t>(id);
 		}
 
-		void CollectRenderData(); //collects from the layers 
+		//collects all objects with renderable ecs components
+		void CollectRenderData(); 
 
 		void AddUI() const;
 		void RemoveUI() const;

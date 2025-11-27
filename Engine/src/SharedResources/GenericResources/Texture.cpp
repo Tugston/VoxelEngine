@@ -7,7 +7,7 @@
 //VNDR
 #include <stb/stb_image.h>
 
-namespace Engine::Renderer
+namespace Engine::Utility
 {
 	//************
 	//Base Texture
