@@ -39,10 +39,30 @@ namespace Engine::Renderer
 
 	void Renderer::BeginRender(Camera::EditorCamera* camera)
 	{
+		ClearScreen();
+		ClearQueues();
 	}
 
 	void Renderer::EndRender()
 	{
+		while (!m_OpaqueSceneObjects.empty())
+		{
+			OpaquePackets* packet = m_OpaqueSceneObjects.front().lock().get();
+			m_OpaqueSceneObjects.pop();
+
+			if (packet == nullptr)
+				continue;
+
+			std::visit([](auto&& arg) {
+				using t = std::decay_t<decltype(arg)>;
+
+				if constexpr (std::is_same_v<t, MeshObject>)
+				{
+					arg.Render();
+				}
+
+				}, *packet);
+		}
 	}
 
 	void Renderer::ClearScreen()

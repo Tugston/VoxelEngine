@@ -69,10 +69,11 @@ namespace Engine
 
 	void Application::Draw(float deltaTime)
 	{
-		m_Renderer->BeginRender(m_Camera.get());
-
-		m_Renderer->EndRender();
 		m_CurrentScene->CollectRenderData();
+		
+		m_Renderer->BeginRender(m_Camera.get());
+		//m_Renderer->SubmitObject();
+		m_Renderer->EndRender();
 		
 		SwapBuffer();
 	}
