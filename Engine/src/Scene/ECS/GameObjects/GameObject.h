@@ -22,13 +22,13 @@ namespace Engine::Scene::ECS
 		virtual void Start() = 0;
 		virtual void Tick(float deltaTime) = 0;
 
-	protected:
+	public:
 		template<typename t, typename... Args>
 		t* AddComponent(Args&&... args)
 		{
 			if (Scene* currentScene = m_Scene.lock().get())
 			{
-				Logger::LogMessage(Logger::LogType::Message, "<GameObject.h> Component Successfully added to Object [ {} ]", m_ID);
+				Logger::LogMessage(Logger::LogType::Message, "<GameObject.h> Adding {} component to Object [ {} ]", typeid(t).name(), m_ID);
 				return currentScene->RegisterComponent<t>(m_ID, std::forward<Args>(args)...);
 			}
 			else
@@ -44,24 +44,23 @@ namespace Engine::Scene::ECS
 		{
 			if (Scene* currentScene = m_Scene.lock().get())
 			{
-				LOG_MSG("<GameObject.h> Component Successfully removed from Object [ {} ]", m_ID);
+				LOG_MSG("<GameObject.h> Removing {} component from Object [ {} ]", typeid(t).name(), m_ID);
 				currentScene->DestroyComponent<t>(m_ID);
 				componentRef = nullptr;
 			}
 		}
 
-	public:
+		//returns nullptr if component cannot be found
 		template<typename t>
-		const t* GetComponent()
+		t* GetComponent()
 		{
 			if (Scene* currentScene = m_Scene.lock().get())
-			{
-				currentScene->GetObjectComponent(m_ID);
-			}
+				return currentScene->GetObjectComponent<t>(m_ID);
+			return nullptr;
 		}
 
 		//this is utilized for testing, objectID is internal use
-		EntityID GetID() { return m_ID; }
+		EntityID GetID() const { return m_ID; }
 
 	private:
 		EntityID m_ID;

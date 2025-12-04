@@ -4,12 +4,15 @@
 //ENGINE
 #include "Core/Logger.h"
 #include "Core/Layers/LayerStack.h"
-
+#include "Maths/InternalMath.h"
+#include "Scene/ECS/Systems/RenderSystems.h"
 
 //this cpp file is a mess, and will always be, using the find tool (ctrl-f) is advised
 
 namespace Engine
 {
+	using namespace Scene::ECS;
+
 	//instantiate static reference
 	Application* Application::s_Instance = nullptr;
 
@@ -69,10 +72,8 @@ namespace Engine
 
 	void Application::Draw(float deltaTime)
 	{
-		m_CurrentScene->CollectRenderData();
-		
 		m_Renderer->BeginRender(m_Camera.get());
-		//m_Renderer->SubmitObject();
+		Systems::SysRenderOpaqueMesh(m_CurrentScene, m_Renderer.get());
 		m_Renderer->EndRender();
 		
 		SwapBuffer();

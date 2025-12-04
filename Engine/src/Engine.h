@@ -13,6 +13,16 @@
 #include	"Scene/ECS/GameObjects/GameObject.h"	//Base Game Objects for 2D and 3D
 
 
+//components
+#include	"Scene/ECS/Components/Positionals/Transform.h"
+#include	"Scene/ECS/Components/Renders/Sprite.h"
+#include	"Scene/ECS/Components/Renders/Mesh.h"
+#include	"Scene/ECS/Components/Renders/InstancedMesh.h"
+
+//Base Meshes
+#include	"SharedResources/PrimitiveShapes/TwoDimensions/Triangle.h"
+#include	"SharedResources/PrimitiveShapes/TwoDimensions/Quad.h"
+
 //testing
 #include	"SharedResources/GenericResources/Shader.h"
 #include	"Core/Cameras/PerspectiveCamera.h"
@@ -31,6 +41,4 @@ using namespace Engine::Scene::ECS::Components;
 using namespace Engine::Camera;
 
 
-//API MACROS
-#define EG_PI			std::numbers::pi
-#define EG_PI_FLOAT		(float)std::numbers::pi
+

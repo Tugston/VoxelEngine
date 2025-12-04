@@ -1,5 +1,6 @@
 #pragma once
 #include <cassert>
+#include <numbers>
 
 //premake system config check
 #ifdef ENGINE_PLATFORM_WINDOWS
@@ -36,3 +37,7 @@ namespace Engine {
 	using UINT64 = uint64_t;
 }
 
+
+//API MACROS
+#define EG_PI			std::numbers::pi
+#define EG_PI_FLOAT		(float)std::numbers::pi

@@ -15,71 +15,81 @@ namespace Engine::Renderer
 	{	
 	protected:
 		BaseBuffer() = default;
-		BaseBuffer(UINT32 amnt) {};
 		~BaseBuffer() = default;
 
+		virtual void Create() = 0;
 		virtual void Bind() const = 0;
 		virtual void UnBind() const = 0;
+		virtual void Release() = 0;
 
-		UINT32 m_ID = (std::numeric_limits<unsigned int>::max)();
+		UINT32 m_ID = (std::numeric_limits<UINT32>::max)();
 	};
 
 	class VertexBuffer : public BaseBuffer
 	{
 	public:
-		VertexBuffer();
+		VertexBuffer() = default;
 		~VertexBuffer();
 
-		//assignment override is used for assigning ecs meshes to the renderer object meshes
-		VertexBuffer& operator=(const VertexBuffer& other) noexcept {
-			if (this == &other) return *this;
-			m_ID = other.m_ID;
-			return *this;
-		};
+		VertexBuffer(VertexBuffer&) = delete;
+		VertexBuffer& operator=(VertexBuffer&) = delete;
 
+		VertexBuffer(VertexBuffer&& other) noexcept;
+		VertexBuffer& operator=(VertexBuffer&& other) noexcept;
+
+		virtual void Create() override;
 		virtual void Bind() const override;
 		virtual void UnBind() const override;
 		
 		void BufferData(std::vector<float>& data, unsigned int drawType) const;
+
+	private:
+		virtual void Release() override;
 	};
 	
 	//Index buffer requires a VAO to be bound
 	class IndexBuffer : public BaseBuffer
 	{
 	public:
-		IndexBuffer();
+		IndexBuffer() = default;
 		~IndexBuffer();
 
-		//assignment override is used for assigning ecs meshes to the renderer object meshes
-		IndexBuffer& operator=(const IndexBuffer& other) noexcept {
-			if (this == &other) return *this;
-			m_ID = other.m_ID;
-			return *this;
-		};
+		IndexBuffer(IndexBuffer&) = delete;
+		IndexBuffer& operator=(IndexBuffer&) = delete;
 
+		IndexBuffer(IndexBuffer&& other) noexcept;
+		IndexBuffer& operator=(IndexBuffer&& other) noexcept;
+
+		virtual void Create() override;
 		virtual void Bind() const override;
 		virtual void UnBind() const override;
 
 		void BufferData(std::vector<unsigned int>& data, unsigned int drawType) const;
+
+	private:
+		virtual void Release() override;
 	};
 
 	class FrameBuffer : public BaseBuffer
 	{
 	public:
-		FrameBuffer();
+		FrameBuffer() = default;
 		~FrameBuffer();
 
-		//assignment override is used for assigning ecs meshes to the renderer object meshes
-		FrameBuffer& operator=(const FrameBuffer& other) noexcept {
-			if (this == &other) return *this;
-			m_ID = other.m_ID;
-			return *this;
-		};
+		FrameBuffer(const FrameBuffer&) = delete;
+		FrameBuffer& operator=(const FrameBuffer&) = delete;
 
+		FrameBuffer(FrameBuffer&& other) noexcept;
+		FrameBuffer& operator=(FrameBuffer&& other) noexcept;
+
+		virtual void Create() override;
 		virtual void Bind() const override;
 		virtual void UnBind() const override;
 
 		void BufferTexture2D(unsigned int target, unsigned int attachment, unsigned int source, int mipMap) const;
+
+	private:
+		virtual void Release() override;
 	};
 
 }

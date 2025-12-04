@@ -80,7 +80,7 @@ namespace Engine
 
 	protected:
 		//this needs to be controlled by the scene manager eventually
-		std::shared_ptr<Scene::Scene> m_CurrentScene; //heap allocate, because the scene will contain a lot of stuff
+		std::shared_ptr<Scene::Scene> m_CurrentScene; //heap allocate; scene will contain a lot of stuff and wont be unloaded and reloaded frequently
 		
 		std::shared_ptr<Camera::PerspectiveCamera> m_Camera; //needs to be in the editor instead of here, but just testing for now
 		
@@ -108,5 +108,5 @@ namespace Engine
 	Application* CreateApplication();
 }
 
-//glm experimental features
+//quaternions and what not
 #define GLM_ENABLE_EXPERIMENTAL

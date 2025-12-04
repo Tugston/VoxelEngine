@@ -14,10 +14,6 @@ namespace VoxelGame
 	public:
 		Game() : Application()
 		{
-			m_Shader = new Shader("TestShader");
-			m_ModelMatrix = glm::translate(m_ModelMatrix, glm::vec3(0.f, 0.f, -3.f));
-			m_ModelMatrix = glm::rotate(m_ModelMatrix, (0 * (EG_PI_FLOAT / 180)), glm::vec3(0.f, 1.f, 0.f));
-			m_ModelMatrix = glm::scale(m_ModelMatrix, glm::vec3(1.f, 1.f, 1.f));
 		}
 
 		~Game()
@@ -29,15 +25,21 @@ namespace VoxelGame
 		{
 			Application::Start();
 
-			m_Shader->Create();
-
 
 			m_TestObjectOne = std::make_shared<GameObject3D>(m_CurrentScene);
 			m_TestObjectTwo = std::make_shared<GameObject2D>(m_CurrentScene);
 			m_TestObjectThree = std::make_shared<GameObject3D>(m_CurrentScene);
 
+			m_TestObjectOne->AddComponent<SpriteComponent>();
 
-
+			SpriteComponent* sc = m_TestObjectOne->GetComponent<SpriteComponent>();
+			if (sc)
+			{
+				sc->planeMesh = std::make_shared<Utility::Mesh>(Utility::CreateQuad());
+				sc->planeMesh->indexCount = 6;
+				sc->material.shader = new Shader("TestShader");
+				sc->material.shader->Create();
+			}
 			//Logger::LogMessage(Logger::LogType::Message, "Object One ID (Should be 1): {}", m_TestObjectOne->GetID());
 			//Logger::LogMessage(Logger::LogType::Message, "Object Two ID (Should be 2): {}", m_TestObjectTwo->GetID());
 			//Logger::LogMessage(Logger::LogType::Message, "Object Three ID (Should be 3): {}", m_TestObjectThree->GetID());
@@ -62,12 +64,16 @@ namespace VoxelGame
 				Debug::UI::EndUI(); */
 
 
-				m_Shader->Use();
+				//m_Shader->Use();
+				SpriteComponent* sc = m_TestObjectOne->GetComponent<SpriteComponent>();
 
-				m_Shader->SetUniformVec3("uColor", m_Color);
-				m_Shader->SetUniformMat4("uProjection", m_Camera->GetProjectionMatrix());
-				m_Shader->SetUniformMat4("uView", m_Camera->GetViewMatrix());
-				m_Shader->SetUniformMat4("uModel", m_ModelMatrix);
+				if (sc)
+				{
+					sc->material.shader->Use();
+					sc->material.shader->SetUniformVec3("uColor", m_Color);
+					sc->material.shader->SetUniformMat4("uProjection", m_Camera->GetProjectionMatrix());
+					sc->material.shader->SetUniformMat4("uView", m_Camera->GetViewMatrix());
+				}
 
 				if (InputSystem::KeyPressed(EngineKeys::W))
 				{

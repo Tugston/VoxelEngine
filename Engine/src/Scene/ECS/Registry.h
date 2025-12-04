@@ -39,7 +39,7 @@ namespace Engine::Scene::ECS
 		
 			if (pool->HasComponent<t>(entityID))
 			{
-				LOG_WARN("<Registry.h> Component already exists on entity [ {} ], returning component", entityID);
+				LOG_WARN("<Registry.h> (AddComponent) Entity [ {} ] already has {} component, returning existing", entityID, typeid(t).name());
 				return pool->GetComponent<t>(entityID);
 			}
 			
@@ -54,18 +54,25 @@ namespace Engine::Scene::ECS
 			if (pool->HasComponent<t>(entityID))
 				pool->RemoveComponent(entityID);
 			else
-				LOG_MSG("<Registry.h> Entity [ {} ] does not contain component, removed nothing", entityID);
+				LOG_MSG("<Registry.h> (RemoveComponent) Entity [ {} ] does not contain {} component, removed nothing", entityID, typeid(t).name());
 		}
 
 		template<typename t>
-		const t* GetComponent(EntityID entityID)
+		t* GetComponent(EntityID entityID)
 		{
 			ComponentPool<t>* pool = GetPool<t>();
 
 			if (pool->HasComponent<t>(entityID))
 				return pool->GetComponent<t>(entityID);
 			else
-				LOG_MSG("<Registry.h> Component does not exist on entity [ {} ]", entityID);
+				LOG_WARN("<Registry.h> (GetComponent) Entity [ {} ] does not contain {} component", entityID, typeid(t).name());
+		}
+
+		template<typename t>
+		const std::vector<EntityID>* GetAllEntitiesWithComponent()
+		{
+			const ComponentPool<t>* pool = GetPool<t>();
+			return &pool->denseEntities;
 		}
 	
 	protected:

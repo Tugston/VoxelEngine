@@ -40,6 +40,15 @@ namespace Engine::Scene
 			return m_Registry->GetComponent<t>(id);
 		}
 
+		//this is only const, because it is not gameplay related
+		//GetObjectComponent will probably like to have access to modifying components in the game and stuff
+
+		template<typename t>
+		const std::vector<ECS::EntityID>* GetAllEntitiesWithComponent()
+		{
+			return m_Registry->GetAllEntitiesWithComponent<t>();
+		}
+
 		//collects all objects with renderable ecs components
 		void CollectRenderData(); 
 
@@ -47,7 +56,6 @@ namespace Engine::Scene
 		void RemoveUI() const;
 
 		//DEBUG ONLY
-		//may as well make them header only as well
 	#if defined(EG_DEBUG) || (APP_DEBUG)
 		inline void EnableFullDebugView() const { LayerStack::PushWorldLayer(new EngineWorldLayer); LayerStack::PushUILayer(new EngineUILayer); };
 		inline void EnableDebugUI() const { LayerStack::PushUILayer(new EngineUILayer); };

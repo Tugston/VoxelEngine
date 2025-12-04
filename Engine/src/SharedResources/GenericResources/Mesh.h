@@ -12,14 +12,28 @@ namespace Engine::Utility
 {
 	struct Mesh
 	{
-		Mesh() {};
-		Mesh(const Mesh& other)
+		Mesh() = default;
+		Mesh(const Mesh&) = delete;
+		Mesh& operator=(const Mesh&) = delete;
+
+		Mesh(Mesh&& other) noexcept :
+			vao(std::move(other.vao)), vbo(std::move(other.vbo)), ebo(std::move(other.ebo))
 		{
-			vao = other.vao;
-			vbo = other.vbo;
-			ebo = other.ebo;
-			indexCount = other.indexCount;
-			primitiveMode = other.primitiveMode;
+		}
+
+		Mesh& operator=(Mesh&& other) noexcept
+		{
+			vao = std::move(other.vao);
+			vbo = std::move(other.vbo);
+			ebo = std::move(other.ebo);
+			return *this;
+		}
+
+		void Create()
+		{
+			vao.Create();
+			vbo.Create();
+			ebo.Create();
 		}
 
 		Renderer::ArrayObject vao;
@@ -33,7 +47,7 @@ namespace Engine::Utility
 	struct InstancedMesh : public Mesh
 	{
 		InstancedMesh() {};
-		InstancedMesh(const InstancedMesh& other)
+	/*	InstancedMesh(const InstancedMesh& other)
 		{
 			vao = other.vao;
 			vbo = other.vbo;
@@ -42,7 +56,7 @@ namespace Engine::Utility
 			primitiveMode = other.primitiveMode;
 			instanceVBO = other.instanceVBO;
 			instances = other.instances;
-		}
+		} */
 
 		Renderer::IndexBuffer instanceVBO;
 		std::vector<glm::mat4> instances;

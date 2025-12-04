@@ -38,7 +38,7 @@ namespace Engine::Renderer
 		void EndRender();
 	
 		//this works with the RenderObject function so any renderObject can be passed as the api
-		void SubmitObject(std::shared_ptr<RenderObject> renderObject);
+		void SubmitObject(RenderObject& renderObject);
 
 		std::function<void(int, int)> Resize(Camera::EditorCamera* camera = nullptr); //utilized for application window resizing callback
 
@@ -53,7 +53,7 @@ namespace Engine::Renderer
 		RenderTarget m_RenderTarget;	
 
 		//render queues
-		std::queue<std::weak_ptr<OpaquePackets>> m_OpaqueSceneObjects;
+		std::queue<std::shared_ptr<OpaquePackets>> m_OpaqueSceneObjects;
 
 		friend struct MeshObject;
 		friend struct InstanceMeshObject;

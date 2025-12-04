@@ -4,12 +4,12 @@
 #include "SharedResources/GenericResources/Mesh.h"
 #include "SharedResources/GenericResources/Material.h"
 
+//wip - not important right now
 
 namespace Engine::Scene::ECS::Components
 {
-	struct SpriteComponent
+	struct InstancedMeshComponent
 	{
-		std::shared_ptr<Utility::Mesh> planeMesh;
-		Utility::Material material;
+
 	};
 }

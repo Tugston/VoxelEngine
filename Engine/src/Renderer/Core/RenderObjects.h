@@ -30,10 +30,10 @@ namespace Engine::Renderer
 	struct MeshObject : public RenderObject
 	{
 		MeshObject(unsigned int layer) : RenderObject(layer) {};
-		MeshObject(glm::mat4 transform, std::shared_ptr<Utility::Mesh> mesh, std::shared_ptr<Utility::Material> material, unsigned int layer) :
+		MeshObject(glm::mat4 transform, const Utility::Mesh* mesh, const Utility::Material* material, unsigned int layer) :
 		RenderObject(transform, layer), mesh(mesh), material(material) {};
-		const std::weak_ptr<Utility::Mesh> mesh;
-		const std::weak_ptr<Utility::Material> material;
+		const Utility::Mesh* mesh;
+		const Utility::Material* material;
 		
 	private:
 		virtual void SubmitToRender(Renderer* renderer) const override;
@@ -48,9 +48,9 @@ namespace Engine::Renderer
 
 		//each instance should only have a single actual mesh
 		//the instancedMesh stores the 
-		static const std::weak_ptr<Utility::InstancedMesh> mesh;
+		static const Utility::InstancedMesh* mesh;
 
-		const std::weak_ptr<Utility::Material> material;
+		const Utility::Material* material;
 
 	private:
 		virtual void SubmitToRender(Renderer* renderer) const override;

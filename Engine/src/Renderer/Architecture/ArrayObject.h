@@ -66,16 +66,25 @@ namespace Engine::Renderer
 	class ArrayObject
 	{
 	public:
-		ArrayObject();
+		ArrayObject() = default;
 		~ArrayObject();
+		ArrayObject& operator=(const ArrayObject& other) noexcept
+		{
+			if (this == &other) return *this;
+			m_ID = other.m_ID;
+		}
 
+
+		void Create();
 		void Bind() const;
 		void UnBind() const;
 
 		void SetAttribData(const unsigned int index, const AttribData& data, const VertexBuffer& vertBuffer, const IndexBuffer& indexBuffer);
 
 	private:
-		UINT32 m_ID = 0;
+		void Release();
+
+		UINT32 m_ID = (std::numeric_limits<UINT32>::max)();
 	};
 
 }

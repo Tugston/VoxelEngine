@@ -12,11 +12,19 @@ namespace Engine::Renderer
 
 	void MeshObject::SubmitToRender(Renderer* renderer) const
 	{
-		renderer->RegisterOpaqueObject(std::make_shared<OpaquePackets>(static_cast<const Engine::Renderer::MeshObject*>(this)));
+		renderer->RegisterOpaqueObject(std::make_unique<OpaquePackets>(static_cast<const Engine::Renderer::MeshObject*>(this)));
 	}
 
 	void MeshObject::Render() const
 	{
+		material->shader->Use();
+		material->shader->SetUniformMat4("uModel", transform);
+
+		mesh->vao.Bind();
+		mesh->vbo.Bind();
+		mesh->ebo.Bind();
+
+		glDrawElements(mesh->primitiveMode, mesh->indexCount, GL_UNSIGNED_INT, 0);
 	}
 	
 	//***********
@@ -30,7 +38,7 @@ namespace Engine::Renderer
 
 	void InstanceMeshObject::SubmitToRender(Renderer* renderer) const
 	{
-		renderer->RegisterOpaqueObject(std::make_shared<OpaquePackets>(static_cast<const Engine::Renderer::InstanceMeshObject*>(this)));
+		renderer->RegisterOpaqueObject(std::make_unique<OpaquePackets>(static_cast<const Engine::Renderer::InstanceMeshObject*>(this)));
 	}
 
 	void InstanceMeshObject::Render() const

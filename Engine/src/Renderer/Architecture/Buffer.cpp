@@ -8,25 +8,10 @@ namespace Engine::Renderer
 	//*************
 	//Vertex Buffer
 	//*************
-
-	VertexBuffer::VertexBuffer()
-	{
-		GL_CHECK(glGenBuffers(1, &m_ID));
-	}
-
 	VertexBuffer::~VertexBuffer()
 	{
-		GL_CHECK(glDeleteBuffers(1, &m_ID));
+		Release();
 	}
-/*
-	BaseBuffer& BaseBuffer::operator=(BaseBuffer&& other) noexcept
-	{
-		if (this == &other) return *this;
-		GL_CHECK(glDeleteBuffers(1, &m_ID));
-		m_ID = other.m_ID;
-		other.m_ID = 0;
-		return *this;
-	}*/
 
 	void VertexBuffer::BufferData(std::vector<float>& data, unsigned int drawType) const
 	{
@@ -43,6 +28,34 @@ namespace Engine::Renderer
 		default:
 			break;
 		}
+	}
+
+	void VertexBuffer::Release()
+	{
+		if (m_ID != (std::numeric_limits<UINT32>::max)())
+		{
+			GL_CHECK(glDeleteBuffers(1, &m_ID));
+			m_ID = (std::numeric_limits<UINT32>::max)();
+		}
+	}
+
+	VertexBuffer::VertexBuffer(VertexBuffer&& other) noexcept
+	{
+		m_ID = other.m_ID;
+		other.m_ID = (std::numeric_limits<UINT32>::max)();
+	}
+
+	VertexBuffer& VertexBuffer::operator=(VertexBuffer&& other) noexcept
+	{
+		if (this == &other) return *this;
+		Release();
+		m_ID = other.m_ID;
+		other.m_ID = (std::numeric_limits<UINT32>::max)();
+	}
+
+	void VertexBuffer::Create()
+	{
+		GL_CHECK(glGenBuffers(1, &m_ID));
 	}
 
 	void VertexBuffer::Bind() const
@@ -63,14 +76,9 @@ namespace Engine::Renderer
 	//INDEX BUFFER
 	//************
 
-	IndexBuffer::IndexBuffer()
-	{
-		GL_CHECK(glGenBuffers(1, &m_ID));
-	}
-
 	IndexBuffer::~IndexBuffer()
 	{
-		GL_CHECK(glDeleteBuffers(1, &m_ID));
+		Release();
 	}
 
 	void IndexBuffer::BufferData(std::vector<unsigned int>& data, unsigned int drawType) const
@@ -90,6 +98,35 @@ namespace Engine::Renderer
 		}
 	}
 
+	void IndexBuffer::Release()
+	{
+		if (m_ID != (std::numeric_limits<UINT32>::max)())
+		{
+			glDeleteBuffers(1, &m_ID);
+			m_ID = (std::numeric_limits<UINT32>::max)();
+		}
+	}
+
+	IndexBuffer::IndexBuffer(IndexBuffer&& other) noexcept
+	{
+		m_ID = other.m_ID;
+		other.m_ID = (std::numeric_limits<UINT32>::max)();
+	}
+
+	IndexBuffer& IndexBuffer::operator=(IndexBuffer&& other) noexcept
+	{
+		if (this == &other) return *this;
+		Release();
+		m_ID = other.m_ID;
+		other.m_ID = (std::numeric_limits<UINT32>::max)();
+		return *this;
+	}
+
+	void IndexBuffer::Create()
+	{
+		GL_CHECK(glGenBuffers(1, &m_ID));
+	}
+
 	void IndexBuffer::Bind() const
 	{
 		GL_CHECK(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ID));
@@ -105,14 +142,29 @@ namespace Engine::Renderer
 	//Frame Buffer
 	//************
 
-	FrameBuffer::FrameBuffer()
-	{
-		GL_CHECK(glGenFramebuffers(1, &m_ID));
-	}
-
 	FrameBuffer::~FrameBuffer()
 	{
-		GL_CHECK(glDeleteFramebuffers(1, &m_ID));
+		Release();
+	}
+
+	FrameBuffer::FrameBuffer(FrameBuffer&& other) noexcept
+	{
+		m_ID = other.m_ID;
+		other.m_ID = (std::numeric_limits<UINT32>::max)();
+	}
+
+	FrameBuffer& FrameBuffer::operator=(FrameBuffer&& other) noexcept
+	{
+		if (this == &other) return *this;
+		Release();
+		m_ID = other.m_ID;
+		other.m_ID = (std::numeric_limits<UINT32>::max)();
+		return *this;
+	}
+
+	void FrameBuffer::Create()
+	{
+		GL_CHECK(glGenFramebuffers(1, &m_ID));
 	}
 
 	void FrameBuffer::Bind() const
@@ -130,11 +182,18 @@ namespace Engine::Renderer
 		GL_CHECK(glFramebufferTexture2D(target, attachment, GL_TEXTURE_2D, source, mipMap));
 	}
 
+	void FrameBuffer::Release()
+	{
+		if (m_ID != (std::numeric_limits<UINT32>::max)())
+		{
+			GL_CHECK(glDeleteFramebuffers(1, &m_ID));
+			m_ID = (std::numeric_limits<UINT32>::max)();
+		}
+	}
+
 	//add more as needed, like Texture3D
 
 	//************
 	//Frame Buffer
 	//************
-
-
 }

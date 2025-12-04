@@ -47,21 +47,29 @@ namespace Engine::Renderer
 	{
 		while (!m_OpaqueSceneObjects.empty())
 		{
-			OpaquePackets* packet = m_OpaqueSceneObjects.front().lock().get();
-			m_OpaqueSceneObjects.pop();
+			OpaquePackets* packet = m_OpaqueSceneObjects.front().get();
+			//m_OpaqueSceneObjects.pop();
 
 			if (packet == nullptr)
+			{
+				m_OpaqueSceneObjects.pop();
 				continue;
+			}
 
-			std::visit([](auto&& arg) {
-				using t = std::decay_t<decltype(arg)>;
-
-				if constexpr (std::is_same_v<t, MeshObject>)
+			std::visit(
+				[](const auto* arg)
 				{
-					arg.Render();
-				}
+					using t = std::decay_t<decltype(arg)>;
 
-				}, *packet);
+					if constexpr (std::is_same_v<t, const MeshObject*>)
+					{
+						arg->Render();
+					}
+
+				}
+			, *packet);
+
+			m_OpaqueSceneObjects.pop();
 		}
 	}
 
@@ -82,9 +90,9 @@ namespace Engine::Renderer
 		clear(m_OpaqueSceneObjects);
 	}
 
-	void Renderer::SubmitObject(std::shared_ptr<RenderObject> renderObject)
+	void Renderer::SubmitObject(RenderObject& renderObject)
 	{
-		renderObject->SubmitToRender(this);
+		renderObject.SubmitToRender(this);
 	}
 
 	std::function<void(int, int)> Renderer::Resize(Camera::EditorCamera* camera)

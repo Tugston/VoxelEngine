@@ -22,12 +22,21 @@ namespace Engine::Utility
 			1, 2, 3
 		};
 
+		quadMesh.Create();
+
 		quadMesh.vao.Bind();
+		quadMesh.vbo.Bind();
+		quadMesh.ebo.Bind();
+
 		quadMesh.vbo.BufferData(vertexData, GL_STATIC_DRAW);
 		quadMesh.ebo.BufferData(indexData, GL_STATIC_DRAW);
 
 		Renderer::AttribData attribData = { Renderer::ShaderDataType::Float3 };
 		quadMesh.vao.SetAttribData(0, attribData, quadMesh.vbo, quadMesh.ebo);
+
+		quadMesh.vao.UnBind();
+		quadMesh.vbo.UnBind();
+		quadMesh.ebo.UnBind();
 
 		return quadMesh;
 	}

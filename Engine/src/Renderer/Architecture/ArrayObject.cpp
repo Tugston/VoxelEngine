@@ -45,15 +45,14 @@ namespace Engine::Renderer
 		}
 	}
 
-	ArrayObject::ArrayObject()
-	{
-		GL_CHECK(glGenVertexArrays(1, &m_ID));
-	}
-
-
 	ArrayObject::~ArrayObject()
 	{
 		GL_CHECK(glDeleteVertexArrays(1, &m_ID));
+	}
+
+	void ArrayObject::Create()
+	{
+		GL_CHECK(glGenVertexArrays(1, &m_ID));
 	}
 
 	void ArrayObject::Bind() const
@@ -75,5 +74,10 @@ namespace Engine::Renderer
 			data.stride, (void*)data.offset));
 
 		GL_CHECK(glEnableVertexAttribArray(idx));
+	}
+
+	void ArrayObject::Release()
+	{
+
 	}
 }
