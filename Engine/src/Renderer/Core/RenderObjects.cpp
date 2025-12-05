@@ -24,7 +24,8 @@ namespace Engine::Renderer
 		mesh->vbo.Bind();
 		mesh->ebo.Bind();
 
-		glDrawElements(mesh->primitiveMode, mesh->indexCount, GL_UNSIGNED_INT, 0);
+		//glDrawElements(mesh->primitiveMode, mesh->indexCount, GL_UNSIGNED_INT, 0);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 	}
 	
 	//***********

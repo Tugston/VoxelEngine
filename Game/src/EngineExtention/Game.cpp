@@ -33,12 +33,20 @@ namespace VoxelGame
 			m_TestObjectOne->AddComponent<SpriteComponent>();
 
 			SpriteComponent* sc = m_TestObjectOne->GetComponent<SpriteComponent>();
+			TransformComponent3D* tc = m_TestObjectOne->GetComponent<TransformComponent3D>();
 			if (sc)
 			{
 				sc->planeMesh = std::make_shared<Utility::Mesh>(Utility::CreateQuad());
 				sc->planeMesh->indexCount = 6;
 				sc->material.shader = new Shader("TestShader");
 				sc->material.shader->Create();
+			}
+
+			if (tc)
+			{
+				tc->location = Maths::Vector3{ 0.f, 0.f, 0.f };
+				tc->rotation = Maths::Vector3{ 0.f, 0.f, 0.f };
+				tc->scale = Maths::Vector3{ 1.f, 1.f, 1.f };
 			}
 			//Logger::LogMessage(Logger::LogType::Message, "Object One ID (Should be 1): {}", m_TestObjectOne->GetID());
 			//Logger::LogMessage(Logger::LogType::Message, "Object Two ID (Should be 2): {}", m_TestObjectTwo->GetID());

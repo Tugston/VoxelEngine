@@ -47,7 +47,21 @@ namespace Engine::Renderer
 
 	ArrayObject::~ArrayObject()
 	{
-		GL_CHECK(glDeleteVertexArrays(1, &m_ID));
+		Release();
+	}
+
+	ArrayObject::ArrayObject(ArrayObject&& other) noexcept
+	{
+		m_ID = other.m_ID;
+		other.m_ID = (std::numeric_limits<UINT32>::max)();
+	}
+
+	ArrayObject& ArrayObject::operator=(ArrayObject&& other) noexcept
+	{
+		if (this == &other) return *this;
+		Release();
+		m_ID = other.m_ID;
+		other.m_ID = (std::numeric_limits<UINT32>::max)();
 	}
 
 	void ArrayObject::Create()
@@ -68,7 +82,8 @@ namespace Engine::Renderer
 	void ArrayObject::SetAttribData(const unsigned int idx, const AttribData& data, const VertexBuffer& vertBuffer, const IndexBuffer& indexBuffer)
 	{
 		Bind();
-		indexBuffer.Bind();
+		vertBuffer.Bind();
+		//indexBuffer.Bind();
 		
 		GL_CHECK(glVertexAttribPointer(idx, SizeCountConversion(data.type), ShaderDataTypeConversion(data.type), data.normalized,
 			data.stride, (void*)data.offset));
@@ -78,6 +93,10 @@ namespace Engine::Renderer
 
 	void ArrayObject::Release()
 	{
-
+		if (m_ID != (std::numeric_limits<UINT32>::max)())
+		{
+			GL_CHECK(glDeleteVertexArrays(1, &m_ID));
+			m_ID = (std::numeric_limits<UINT32>::max)();
+		}
 	}
 }

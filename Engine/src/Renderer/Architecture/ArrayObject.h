@@ -54,7 +54,7 @@ namespace Engine::Renderer
 		ShaderDataType type;
 		int32_t size = 0;
 		bool normalized = false;
-		uint32_t stride = 0;
+		UINT32 stride = 0;
 		unsigned int offset = 0;
 
 		AttribData() = default;
@@ -68,11 +68,12 @@ namespace Engine::Renderer
 	public:
 		ArrayObject() = default;
 		~ArrayObject();
-		ArrayObject& operator=(const ArrayObject& other) noexcept
-		{
-			if (this == &other) return *this;
-			m_ID = other.m_ID;
-		}
+
+		ArrayObject(ArrayObject&) = delete;
+		ArrayObject& operator=(ArrayObject&) = delete;
+
+		ArrayObject(ArrayObject&& other) noexcept;
+		ArrayObject& operator=(ArrayObject&& other) noexcept;
 
 
 		void Create();

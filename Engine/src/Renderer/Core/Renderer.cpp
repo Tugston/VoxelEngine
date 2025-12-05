@@ -97,7 +97,7 @@ namespace Engine::Renderer
 
 	std::function<void(int, int)> Renderer::Resize(Camera::EditorCamera* camera)
 	{
-		return [&](int width, int height)
+		return [=](int width, int height)
 			{
 				glViewport(0, 0, width, height);
 

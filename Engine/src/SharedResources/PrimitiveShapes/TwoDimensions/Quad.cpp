@@ -25,10 +25,11 @@ namespace Engine::Utility
 		quadMesh.Create();
 
 		quadMesh.vao.Bind();
+		
 		quadMesh.vbo.Bind();
-		quadMesh.ebo.Bind();
-
 		quadMesh.vbo.BufferData(vertexData, GL_STATIC_DRAW);
+
+		quadMesh.ebo.Bind();
 		quadMesh.ebo.BufferData(indexData, GL_STATIC_DRAW);
 
 		Renderer::AttribData attribData = { Renderer::ShaderDataType::Float3 };
