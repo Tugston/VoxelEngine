@@ -1,3 +1,16 @@
+/*
+* File: Core.h
+* Project: Voxel Engine
+* Author: Vincent Pierce
+* Created: 2025-02-15 (yyyy/mm/dd)
+*
+* Description: The very core systems of the entire engine and all ecosystems. Dynamic linking macros should be defined here, but I had issues with it
+*
+* Copyright (C) 2025 Vincent Pierce
+* SPDX-License-Identifier: GPL-3.0
+*
+* See License in root directory for additional details.
+*/
 #pragma once
 #include <cassert>
 #include <numbers>

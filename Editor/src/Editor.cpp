@@ -1,3 +1,14 @@
+/*
+* File: Editor.cpp
+* Project: Voxel Engine
+* Author: Vincent Pierce
+* Created: 2025-11-12 (yyyy/mm/dd)
+*
+* Copyright (C) 2025 Vincent Pierce
+* SPDX-License-Identifier: GPL-3.0
+*
+* See License in root directory for additional details.
+*/
 #include "Editor.h"
 
 #include <Core/Cameras/PerspectiveCamera.h>
@@ -24,7 +35,7 @@ namespace Editor
 
 		m_TestSlot = new FloatSlot("Test Float", &m_TestFloat);
 		m_Vec2TestSlot = new Vector2FSlot("2D Position", &m_TestFloat, &m_TestFloat);
-		m_Vec3TestSlot = new Vector3FSlot("3D Position", &m_TestFloat, &m_TestFloat, &m_TestFloat);
+		m_Vec3TestSlot = new Vector3DSlot("3D Position",  &m_TestDouble, &m_TestDouble, &m_TestDouble);
 
 		m_Camera = new Camera::PerspectiveCamera();
 	};

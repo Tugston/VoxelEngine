@@ -1,3 +1,16 @@
+/*
+* File: Renderer.h
+* Project: Voxel Engine
+* Author: Vincent Pierce
+* Created: 2025-14-03 (yyyy/mm/dd)
+*
+* Description: Pipline that handles every single vertex, render pass, lighting calculation, or whatever required to draw the scene
+*
+* Copyright (C) 2025 Vincent Pierce
+* SPDX-License-Identifier: GPL-3.0
+*
+* See License in root directory for additional details.
+*/
 #pragma once
 
 //STND

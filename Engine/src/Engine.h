@@ -1,3 +1,16 @@
+/*
+* File: Engine.h
+* Project: Voxel Engine
+* Author: Vincent Pierce
+* Created: 2025-02-17 (yyyy/mm/dd)
+*
+* Description: Full api of the engine for ease of accessibility
+*
+* Copyright (C) 2025 Vincent Pierce
+* SPDX-License-Identifier: GPL-3.0
+*
+* See License in root directory for additional details.
+*/
 #pragma once
 
 //STND

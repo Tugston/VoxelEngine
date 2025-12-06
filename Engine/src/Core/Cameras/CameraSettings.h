@@ -1,3 +1,16 @@
+/*
+* File: CameraSettings.h
+* Project: Voxel Engine
+* Author: Vincent Pierce
+* Created: 2025-03-28 (yyyy/mm/dd)
+*
+* Description: Basic camera settings that are passed around. ECS could utilize this as well (not currently at that point as of 12/6/2025)
+*
+* Copyright (C) 2025 Vincent Pierce
+* SPDX-License-Identifier: GPL-3.0
+*
+* See License in root directory for additional details.
+*/
 #pragma once
 
 //VENDOR

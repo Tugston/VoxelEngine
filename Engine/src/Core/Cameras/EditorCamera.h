@@ -1,3 +1,16 @@
+/*
+* File: PerspectiveCamera.h
+* Project: Voxel Engine
+* Author: Vincent Pierce
+* Created: 2025-03-28 (yyyy/mm/dd)
+*
+* Description: Base engine camera implementation for the plentiful shared functionality between the two children
+*
+* Copyright (C) 2025 Vincent Pierce
+* SPDX-License-Identifier: GPL-3.0
+*
+* See License in root directory for additional details.
+*/
 #pragma once
 
 #include "CameraSettings.h"

@@ -1,3 +1,17 @@
+/*
+* File: Registry.h
+* Project: Voxel Engine
+* Author: Vincent Pierce
+* Created: 2025-11-12 (yyyy/mm/dd)
+*
+* Description: Driver class for the entire Entity Component System, utilizes a sparse set for O(1) except for removal. Could use Archtypes, but that I am
+* afraid that is a bit out of my realm, especially for this small engine.
+* 
+* Copyright (C) 2025 Vincent Pierce
+* SPDX-License-Identifier: GPL-3.0
+*
+* See License in root directory for additional details.
+*/
 #pragma once
 
 //STND
@@ -8,8 +22,6 @@
 #include "./Components/Positionals/Transform.h"
 #include "./Core/Logger.h"
 
-//ecs uses the hash lookup for components, I could add a compile ids for each component and then look up their index in a vector for o(1), but I dont know how to implement that
-//and this map works good enough, I am not trying to make unreal engine. I am aware there are better ways though. Better ways for this whole engine matter of fact!
 
 namespace Engine::Scene::ECS
 {

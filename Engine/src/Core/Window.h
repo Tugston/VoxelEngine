@@ -1,3 +1,16 @@
+/*
+* File: Window.h
+* Project: Voxel Engine
+* Author: Vincent Pierce
+* Created: 2025-02-25 (yyyy/mm/dd)
+*
+* Description: Wrapper for GLFW window and supporting functions
+*
+* Copyright (C) 2025 Vincent Pierce
+* SPDX-License-Identifier: GPL-3.0
+*
+* See License in root directory for additional details.
+*/
 #pragma once
 
 //ENGINE

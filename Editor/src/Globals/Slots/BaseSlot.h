@@ -1,3 +1,16 @@
+/*
+* File: BaseSlot.h
+* Project: Voxel Engine
+* Author: Vincent Pierce
+* Created: 2025-11-22 (yyyy/mm/dd)
+*
+* Description: Base class for all imgui slot types, they all share at least 1 modify-able value and a label
+*
+* Copyright (C) 2025 Vincent Pierce
+* SPDX-License-Identifier: GPL-3.0
+*
+* See License in root directory for additional details.
+*/
 #pragma once
 
 //VENDOR

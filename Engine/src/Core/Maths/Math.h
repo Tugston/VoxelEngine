@@ -1,3 +1,16 @@
+/*
+* File: Math.h
+* Project: Voxel Engine
+* Author: Vincent Pierce
+* Created: 2025-12-12 (yyyy/mm/dd)
+*
+* Description: The engine's own math implementations to abstract glm from the user application
+*
+* Copyright (C) 2025 Vincent Pierce
+* SPDX-License-Identifier: GPL-3.0
+*
+* See License in root directory for additional details.
+*/
 #pragma once
 
 //STND

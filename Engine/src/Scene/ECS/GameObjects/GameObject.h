@@ -1,3 +1,17 @@
+/*
+* File: GameObject.h
+* Project: Voxel Engine
+* Author: Vincent Pierce
+* Created: 2025-03-26 (yyyy/mm/dd)
+*
+* Description: Pure abstraction class over the ecs. Allows end user to utilize game objects as though an ecs was not even implemented, completely masks 
+* it away. The engine does allow not utilizing this as well however.
+*
+* Copyright (C) 2025 Vincent Pierce
+* SPDX-License-Identifier: GPL-3.0
+*
+* See License in root directory for additional details.
+*/
 #pragma once
 
 //ENGINE
@@ -6,8 +20,6 @@
 #include "Scene/Scene.h"
 #include "Scene/ECS/Components/Positionals/Transform.h"
 
-//this is purely an abstraction class that allows the engine api to only use GameObjects for everything like normal
-//masks away the underlying ecs
 
 namespace Engine::Scene::ECS
 {

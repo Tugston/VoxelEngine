@@ -1,11 +1,19 @@
+/*
+* File: Transform.h
+* Project: Voxel Engine
+* Author: Vincent Pierce
+* Created: 2025-11-26 (yyyy/mm/dd)
+*
+* Description: Transform components that ever entity has by default. Can be removed on a user basis. Currently utilizing Euler rotation, want to convert
+* to quaternions at some point
+*
+* Copyright (C) 2025 Vincent Pierce
+* SPDX-License-Identifier: GPL-3.0
+*
+* See License in root directory for additional details.
+*/
 #pragma once
 #include "./Core/Maths/Math.h"
-
-//not using glm, because I want my engine's api to be seperated from the library
-//everything will be converted internally
-//plus it gives me more control, when I want to add some bounds restrictions later (ie: Rotation can only go from 0 - 360)
-
-//temporarily setting rotation to a Vector2, but want to switch to quaternions once I get it all setup and working
 
 namespace Engine::Scene::ECS::Components
 {

@@ -1,3 +1,16 @@
+/*
+* File: Editor.h
+* Project: Voxel Engine
+* Author: Vincent Pierce
+* Created: 2025-11-12 (yyyy/mm/dd)
+*
+* Description: Main driver application for the editor to route all systems.
+*
+* Copyright (C) 2025 Vincent Pierce
+* SPDX-License-Identifier: GPL-3.0
+*
+* See License in root directory for additional details.
+*/
 #pragma once
 
 //EDITOR
@@ -37,11 +50,12 @@ namespace Editor
 	private:
 		FloatSlot* m_TestSlot;
 		Vector2FSlot* m_Vec2TestSlot;
-		Vector3FSlot* m_Vec3TestSlot;
+		Vector3DSlot* m_Vec3TestSlot;
 
 		Camera::PerspectiveCamera* m_Camera;
 
 		float m_TestFloat = 2.f;
+		double m_TestDouble = 3.0;
 	};
 }
 

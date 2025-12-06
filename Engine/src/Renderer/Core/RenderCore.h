@@ -1,6 +1,17 @@
+/*
+* File: RenderCore.h
+* Project: Voxel Engine
+* Author: Vincent Pierce
+* Created: 2025-14-03 (yyyy/mm/dd)
+*
+* Description: Simple seperation of Glew in the case something may need to utilize it besides the renderer
+*
+* Copyright (C) 2025 Vincent Pierce
+* SPDX-License-Identifier: GPL-3.0
+*
+* See License in root directory for additional details.
+*/
 #pragma once
-
-//created a render core just in case there is something in the renderer that may want glew but doesnt need the actual renderer class and everything
 
 
 //ENGINE

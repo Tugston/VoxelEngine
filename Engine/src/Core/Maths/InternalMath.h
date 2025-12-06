@@ -1,7 +1,17 @@
+/*
+* File: InternalMath.h
+* Project: Voxel Engine
+* Author: Vincent Pierce
+* Created: 2025-12-12 (yyyy/mm/dd)
+*
+* Description: NOT EXPOSED TO ENGINE API, handles type conversions between Maths and GLM
+*
+* Copyright (C) 2025 Vincent Pierce
+* SPDX-License-Identifier: GPL-3.0
+*
+* See License in root directory for additional details.
+*/
 #pragma once
-
-//internal math IS NOT exposed to engine api, only internal util
-//this is mainly responsible for type conversions between engine math and glm
 
 //VENDOR
 #include<glm/glm.hpp>

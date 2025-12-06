@@ -1,3 +1,16 @@
+/*
+* File: Mesh.h
+* Project: Voxel Engine
+* Author: Vincent Pierce
+* Created: 2025-03-26 (yyyy/mm/dd)
+*
+* Description: Container for array objects, buffers, and special functionalities and data storage for various mesh types
+*
+* Copyright (C) 2025 Vincent Pierce
+* SPDX-License-Identifier: GPL-3.0
+*
+* See License in root directory for additional details.
+*/
 #pragma once
 
 //ENGINE
