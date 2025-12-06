@@ -19,7 +19,7 @@ namespace Engine::Renderer
 	using ViewSize = std::pair<unsigned int, unsigned int>;
 
 	//fill packets with all possible types that can be in each category of queues
-	using OpaquePackets = std::variant<const MeshObject*, const InstanceMeshObject*>;
+	using OpaquePackets = std::variant<MeshObject, InstanceMeshObject>;
 
 	class Renderer
 	{
@@ -47,13 +47,13 @@ namespace Engine::Renderer
 		void ClearQueues(); //there shouldnt be any data left over from previous frame, but just in case
 
 		//Object Registering
-		void RegisterOpaqueObject(std::shared_ptr<OpaquePackets> mesh);
+		void RegisterOpaqueObject(OpaquePackets mesh);
 
 	private:
 		RenderTarget m_RenderTarget;	
 
 		//render queues
-		std::queue<std::shared_ptr<OpaquePackets>> m_OpaqueSceneObjects;
+		std::queue<OpaquePackets> m_OpaqueSceneObjects;
 
 		friend struct MeshObject;
 		friend struct InstanceMeshObject;

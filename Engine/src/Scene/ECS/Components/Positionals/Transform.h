@@ -11,17 +11,15 @@ namespace Engine::Scene::ECS::Components
 {
 	struct TransformComponent2D
 	{
-		Maths::Vector2<float> location;
-		//Maths::Rotator2<float> rotation;
-		Maths::Vector2<float> rotation;
-		Maths::Vector2<float> scale;
+		Maths::Vector2<float> location{ 0.f, 0.f};
+		Maths::Vector2<float> rotation{ 0.f, 0.f };
+		Maths::Vector2<float> scale{ 1.f, 1.f };
 	};
 
 	struct TransformComponent3D
 	{
-		Maths::Vector3<float> location;
-		//Maths::Rotator3<float> rotation;
-		Maths::Vector3<float> rotation;
-		Maths::Vector3<float> scale;
+		Maths::Vector3<float> location{ 0.f, 0.f, 0.f };
+		Maths::Vector3<float> rotation{ 0.f, 0.f, 0.f };
+		Maths::Vector3<float> scale{ 1.f, 1.f, 1.f };
 	};
 }

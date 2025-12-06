@@ -25,6 +25,13 @@ namespace Engine::Scene::ECS::Systems
 		{
 			const Components::SpriteComponent* sprite = scene->GetObjectComponent<Components::SpriteComponent>(spriteEntities->at(i));
 			const Components::TransformComponent3D* transform = scene->GetObjectComponent<Components::TransformComponent3D>(spriteEntities->at(i));
+
+			if (sprite == nullptr || transform == nullptr)
+			{
+				LOG_ERROR("<RenderSystems> (SysRenderOpaqueMesh) Sprite or Transform Component invalid!");
+				continue;
+			}
+
 			glm::mat4 modelMatrix = Maths::Transform3DToModelMatrix(transform->location, transform->rotation, transform->scale);
 			
 			Renderer::MeshObject mo { modelMatrix, sprite->planeMesh.get(), &sprite->material, 0};

@@ -12,7 +12,7 @@ namespace Engine::Renderer
 
 	void MeshObject::SubmitToRender(Renderer* renderer) const
 	{
-		renderer->RegisterOpaqueObject(std::make_unique<OpaquePackets>(static_cast<const Engine::Renderer::MeshObject*>(this)));
+		renderer->RegisterOpaqueObject(*this);
 	}
 
 	void MeshObject::Render() const
@@ -24,8 +24,7 @@ namespace Engine::Renderer
 		mesh->vbo.Bind();
 		mesh->ebo.Bind();
 
-		//glDrawElements(mesh->primitiveMode, mesh->indexCount, GL_UNSIGNED_INT, 0);
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		glDrawElements(mesh->primitiveMode, mesh->indexCount, GL_UNSIGNED_INT, 0);
 	}
 	
 	//***********
@@ -39,7 +38,7 @@ namespace Engine::Renderer
 
 	void InstanceMeshObject::SubmitToRender(Renderer* renderer) const
 	{
-		renderer->RegisterOpaqueObject(std::make_unique<OpaquePackets>(static_cast<const Engine::Renderer::InstanceMeshObject*>(this)));
+		renderer->RegisterOpaqueObject(*this);
 	}
 
 	void InstanceMeshObject::Render() const

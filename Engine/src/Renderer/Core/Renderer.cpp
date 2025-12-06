@@ -47,7 +47,7 @@ namespace Engine::Renderer
 	{
 		while (!m_OpaqueSceneObjects.empty())
 		{
-			OpaquePackets* packet = m_OpaqueSceneObjects.front().get();
+			OpaquePackets* packet = &m_OpaqueSceneObjects.front();
 			//m_OpaqueSceneObjects.pop();
 
 			if (packet == nullptr)
@@ -57,13 +57,13 @@ namespace Engine::Renderer
 			}
 
 			std::visit(
-				[](const auto* arg)
+				[](const auto arg)
 				{
 					using t = std::decay_t<decltype(arg)>;
 
-					if constexpr (std::is_same_v<t, const MeshObject*>)
+					if constexpr (std::is_same_v<t, MeshObject>)
 					{
-						arg->Render();
+						arg.Render();
 					}
 
 				}
@@ -110,7 +110,7 @@ namespace Engine::Renderer
 	//REGISTER DUMP
 	//*************
 
-	void Renderer::RegisterOpaqueObject(std::shared_ptr<OpaquePackets> mesh)
+	void Renderer::RegisterOpaqueObject(OpaquePackets mesh)
 	{
 		m_OpaqueSceneObjects.push(mesh);
 	}

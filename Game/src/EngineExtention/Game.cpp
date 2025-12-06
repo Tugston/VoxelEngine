@@ -31,26 +31,35 @@ namespace VoxelGame
 			m_TestObjectThree = std::make_shared<GameObject3D>(m_CurrentScene);
 
 			m_TestObjectOne->AddComponent<SpriteComponent>();
+			m_TestObjectThree->AddComponent<SpriteComponent>();
 
-			SpriteComponent* sc = m_TestObjectOne->GetComponent<SpriteComponent>();
-			TransformComponent3D* tc = m_TestObjectOne->GetComponent<TransformComponent3D>();
-			if (sc)
+			SpriteComponent* scOne = m_TestObjectOne->GetComponent<SpriteComponent>();
+			TransformComponent3D* tcOne = m_TestObjectOne->GetComponent<TransformComponent3D>();
+			if (scOne)
 			{
-				sc->planeMesh = std::make_shared<Utility::Mesh>(Utility::CreateQuad());
-				sc->planeMesh->indexCount = 6;
-				sc->material.shader = new Shader("TestShader");
-				sc->material.shader->Create();
+				scOne->planeMesh = std::make_shared<Utility::Mesh>(Utility::CreateQuad());
+				scOne->planeMesh->indexCount = 6;
+				scOne->material.shader = new Shader("TestShader");
+				scOne->material.shader->Create();
 			}
 
-			if (tc)
+			SpriteComponent* scTwo = m_TestObjectThree->GetComponent<SpriteComponent>();
+			TransformComponent3D* tcTwo = m_TestObjectThree->GetComponent<TransformComponent3D>();
+			
+			if (scTwo)
 			{
-				tc->location = Maths::Vector3{ 0.f, 0.f, 0.f };
-				tc->rotation = Maths::Vector3{ 0.f, 0.f, 0.f };
-				tc->scale = Maths::Vector3{ 1.f, 1.f, 1.f };
+				scTwo->planeMesh = std::make_shared<Utility::Mesh>(Utility::CreateQuad());
+				scTwo->planeMesh->indexCount = 6;
+				scTwo->material.shader = new Shader("TestShader");
+				scTwo->material.shader->Create();
 			}
-			//Logger::LogMessage(Logger::LogType::Message, "Object One ID (Should be 1): {}", m_TestObjectOne->GetID());
-			//Logger::LogMessage(Logger::LogType::Message, "Object Two ID (Should be 2): {}", m_TestObjectTwo->GetID());
-			//Logger::LogMessage(Logger::LogType::Message, "Object Three ID (Should be 3): {}", m_TestObjectThree->GetID());
+
+			if (tcTwo)
+			{
+				tcTwo->location = Maths::Vector3{ 25.f, 0.f, 0.f };
+				tcTwo->rotation = Maths::Vector3{ 20.f, 10.f, 35.f };
+				tcTwo->scale = Maths::Vector3{ 1.75f, 1.f, 1.2f };
+			} 
 
 			Tick();
 		}
@@ -74,6 +83,7 @@ namespace VoxelGame
 
 				//m_Shader->Use();
 				SpriteComponent* sc = m_TestObjectOne->GetComponent<SpriteComponent>();
+				SpriteComponent* sc2 = m_TestObjectThree->GetComponent<SpriteComponent>();
 
 				if (sc)
 				{
@@ -81,6 +91,15 @@ namespace VoxelGame
 					sc->material.shader->SetUniformVec3("uColor", m_Color);
 					sc->material.shader->SetUniformMat4("uProjection", m_Camera->GetProjectionMatrix());
 					sc->material.shader->SetUniformMat4("uView", m_Camera->GetViewMatrix());
+				}
+
+				if (sc2)
+				{
+					sc->material.shader->Use();
+					glm::vec3 blue{ 0.1f, 0.1f, 1.f };
+					sc->material.shader->SetUniformVec3("uColor", blue);
+					sc2->material.shader->SetUniformMat4("uProjection", m_Camera->GetProjectionMatrix());
+					sc2->material.shader->SetUniformMat4("uView", m_Camera->GetViewMatrix());
 				}
 
 				if (InputSystem::KeyPressed(EngineKeys::W))

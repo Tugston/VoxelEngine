@@ -1,4 +1,4 @@
-![Static Badge](https://img.shields.io/badge/Version-0.0.1-green)
+![Static Badge](https://img.shields.io/badge/Version-0.0.2-green)
 ![Static Badge](https://img.shields.io/badge/License-GPL3-blue)
 
 # Voxel Engine
@@ -13,7 +13,7 @@ For the full documentation, please checkout the documentation folder [here](http
 - [x] Fully custom Entity Component System with underlying sparse set
 - [x] Levels *(with full saving / loading coming soon)*
 - [ ] Simple editor with custom scripting
-
+- [ ] Fully customizable destructible and static terrain components
 
 ## Setup & Installation
 All library dependencies are included in the repo, and PreMake is utilized to setup the project. The only hiccup is the absence of CMake.
