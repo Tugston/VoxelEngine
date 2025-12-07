@@ -14,6 +14,7 @@
 
 //ENGN
 #include "Renderer.h"
+#include "RenderCore.h"
 
 namespace Engine::Renderer
 {

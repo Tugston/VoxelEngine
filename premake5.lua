@@ -40,7 +40,8 @@ project "Editor"
 		"Vendor/include/GLFW",
 		"Vendor/include/GLEW",
 		"Vendor/include/GLM",
-		"Vendor/include/SPDLOG"
+		"Vendor/include/SPDLOG",
+		"Vendor/include/STB",
 	}
 
 	links
@@ -87,17 +88,16 @@ project "Editor"
 
 		defines
 		{
-			"EDTR_DEBUG",
 			"ENGINE_PLATFORM_WINDOWS",
 			"FMT_USE_UTF8=1"
 		}
 
 	filter "configurations:Debug"
-		defines "EDITOR_DEBUG"
+		defines "EDTR_DEBUG"
 		symbols "On"
 
 	filter "configurations:Release"
-		defines "EDITOR_DEBUG"
+		defines "EDTR_DEBUG"
 		optimize "On"
 
 	filter "configurations:Dist"
@@ -197,6 +197,7 @@ project "Game"
 		"Vendor/include/GLFW",
 		"Vendor/include/GLM",
 		"Vendor/include/GLEW",
+		"Vendor/include/STB",
 	}
 
 	links

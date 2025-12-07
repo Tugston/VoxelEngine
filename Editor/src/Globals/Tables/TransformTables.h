@@ -22,34 +22,89 @@
 
 namespace Editor
 {
-	template<double>
-	struct TableType2 { using typeRef = Vector2DSlot; };
-	template<float>
-	struct TableType2 { using typeRef = Vector2FSlot; };
-	template<double>
-	struct TableType3 { using typeRef = Vector3DSlot; };
-	template<float>
-	struct TableType3 { using typeRef = Vector3FSlot; };
+	template<typename t>
+	struct TableType2;
+	template<typename t>
+	struct TableType3;
+
+	template<>
+	struct TableType2<double> { using typeRef = Vector2DSlot; };
+	template<>
+	struct TableType2<float> { using typeRef = Vector2FSlot; };
+	template<>
+	struct TableType3<double> { using typeRef = Vector3DSlot; };
+	template<>
+	struct TableType3<float> { using typeRef = Vector3FSlot; };
 
 	template<typename t>
 	class TransformTable3D {
 	public:
+		TransformTable3D(Maths::Vector3<t>* locRef, Maths::Vector3<t>* rotRef, Maths::Vector3<t>* scaleRef) :
+			m_LocationSlot("", &locRef->x, &locRef->y, &locRef->z), m_RotationSlot("", &rotRef->x, &rotRef->y, &rotRef->z), m_ScaleSlot("", &scaleRef->x, &scaleRef->y, &scaleRef->z)
+		{
+
+		};
+
+		~TransformTable3D() {};
+
+		void Draw()
+		{
+			if (ImGui::BeginTable("Transform", 2, ImGuiTableFlags_SizingStretchProp | ImGuiTableFlags_BordersInnerV))
+			{
+				ImGui::TableSetupColumn("Labels", ImGuiTableColumnFlags_WidthFixed, LABEL_WIDTH);
+				ImGui::TableSetupColumn("Content", ImGuiTableColumnFlags_WidthStretch);
+
+				ImGui::TableNextRow();
+				ImGui::TableNextColumn();
+
+				ImGui::TextUnformatted("Location");
+				ImGui::TableNextColumn();
+				m_LocationSlot.Draw();
+
+				ImGui::TableNextRow();
+				ImGui::TableNextColumn();
+
+				ImGui::TextUnformatted("Rotation");
+				ImGui::TableNextColumn();
+				m_RotationSlot.Draw();
+
+				ImGui::TableNextRow();
+				ImGui::TableNextColumn();
+
+				ImGui::TextUnformatted("Scale");
+				ImGui::TableNextColumn();
+				m_ScaleSlot.Draw();
+
+				ImGui::EndTable();
+			}
+		};
+
 	private:
-		TableType3<t> m_LocationSlot;
-		TableType3<t> m_RotationSlot;
-		TableType3<t> m_ScaleSlot;
-		Maths::Vector3<t>* m_TransformRef;
+		using TransformSlot = TableType3<t>::typeRef;
+		TransformSlot m_LocationSlot;
+		TransformSlot m_RotationSlot;
+		TransformSlot m_ScaleSlot;
 	};
 
 	template<typename t>
 	class TransformTable2D
 	{
+	public:
+		TransformTable2D(Maths::Vector2<t>* transformRef)
+		{
+		};
 
+		~TransformTable2D() {};
+
+		void Draw()
+		{
+		};
 
 	private:
-		TableType2<t> m_LocationSlot;
-		TableType2<t> m_RotationSlot;
-		TableType2<t> m_ScaleSlot;
+		using TransformSlot = TableType2<t>::typeRef;
+		TransformSlot m_LocationSlot;
+		TransformSlot m_RotationSlot;
+		TransformSlot m_ScaleSlot;
 		Maths::Vector2<t>* m_TransformRef;
 	};
 }

@@ -40,6 +40,7 @@ namespace Editor {
 	class BaseSlot {
 	protected:
 		BaseSlot(): m_Label("Label"), m_ValRef(nullptr) {};
+		//pass in empty string to handle label elsewhere
 		BaseSlot(std::string_view label, void* ref) : m_Label(label), m_ValRef(ref) {};
 		~BaseSlot() {};
 	

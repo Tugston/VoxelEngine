@@ -14,13 +14,16 @@
 
 //ENGINE
 #include "Renderer/Core/RenderCore.h"
+#include "Renderer/Architecture/Buffer.h"
 #include "Core/Cameras/PerspectiveCamera.h"
 #include "Core/Cameras/OrthographicCamera.h"
+#include "SharedResources/GenericResources/Texture.h"
 
 namespace Engine::Renderer
 {
+	//defaults to window, so no need to setup anything
 	Renderer::Renderer(ViewSize viewportSize):
-		m_RenderTarget(RenderTarget::Window)
+		m_RenderTarget(RenderTarget::Window), m_FrameBuffer(nullptr), m_TextureColorBuffer(nullptr)
 	{
 		glViewport(0, 0, viewportSize.first, viewportSize.second);
 
@@ -32,30 +35,46 @@ namespace Engine::Renderer
 	};
 
 	Renderer::Renderer(ViewSize viewportSize, RenderTarget target):
-		m_RenderTarget(target)
+		m_RenderTarget(target), m_FrameBuffer(nullptr), m_TextureColorBuffer(nullptr)
 	{
-		glViewport(0, 0, viewportSize.first, viewportSize.second);
+
+		glViewport(0, 0, viewportSize.first, viewportSize.second);	
 
 		if (glewInit() != GLEW_OK)
 		{
 			LOG_CRIT("<Renderer.cpp> Glew Not Initialized!");
 			EG_ASSERT(false);
 		}
+
+		if (target == RenderTarget::FrameBufferTexture)
+			SetupRenderTexture();
+
 	}
 
 	Renderer::~Renderer()
 	{
-
+		delete m_FrameBuffer;
+		delete m_TextureColorBuffer;
 	}
 
 	void Renderer::BeginRender(Camera::EditorCamera* camera)
 	{
+		if (m_RenderTarget == RenderTarget::FrameBufferTexture && m_FrameBuffer)
+			m_FrameBuffer->Bind();
+
 		ClearScreen();
 		ClearQueues();
+
+		if (m_RenderTarget == RenderTarget::FrameBufferTexture && m_FrameBuffer)
+			m_FrameBuffer->UnBind();
 	}
 
 	void Renderer::EndRender()
 	{
+		//prepare the texture for opengl to render to
+		if (m_RenderTarget == RenderTarget::FrameBufferTexture && m_FrameBuffer)
+			m_FrameBuffer->Bind();
+
 		while (!m_OpaqueSceneObjects.empty())
 		{
 			OpaquePackets* packet = &m_OpaqueSceneObjects.front();
@@ -81,6 +100,37 @@ namespace Engine::Renderer
 			, *packet);
 
 			m_OpaqueSceneObjects.pop();
+		}
+
+		if (m_RenderTarget == RenderTarget::FrameBufferTexture && m_FrameBuffer)
+			m_FrameBuffer->UnBind();
+	}
+
+	void Renderer::SetupRenderTexture()
+	{
+		m_FrameBuffer = new FrameBuffer;
+		m_FrameBuffer->Create();
+
+		m_TextureColorBuffer = new Utility::Texture2D;
+		m_TextureColorBuffer->CreateEmpty(Utility::TextureDefaultParams{ "",1280, 720 });
+		m_TextureColorBuffer->SetFilter(GL_LINEAR, GL_LINEAR);
+
+		m_FrameBuffer->Bind();
+		m_TextureColorBuffer->Bind();
+
+		m_FrameBuffer->BufferTexture2D(GL_COLOR_ATTACHMENT0, m_TextureColorBuffer->GetID(), 0);
+
+		//depth buffer setup is connected through gpu
+		RenderBuffer* depthBuffer = new RenderBuffer;
+		depthBuffer->Create();
+		depthBuffer->Bind();
+		depthBuffer->RenderBufferStorage(GL_DEPTH24_STENCIL8, 1280, 720);
+
+		GL_CHECK(glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, depthBuffer->GetID()));
+
+		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+		{
+			LOG_ERR("<Renderer.cpp> (Construct) Render Buffer Not Setup!");
 		}
 	}
 

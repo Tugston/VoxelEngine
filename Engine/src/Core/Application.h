@@ -106,6 +106,11 @@ namespace Engine
 		std::unique_ptr<Renderer::Renderer> m_Renderer;
 
 
+	//Editor Specifics
+	protected:
+#if defined(EDTR_DEBUG) || defined(EDTR_DIST)
+		unsigned int GetRenderScreenTexture() { return m_Renderer->GetRenderTexture(); }
+#endif
 
 	//class instance just hidden away down here
 	public:

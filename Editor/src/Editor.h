@@ -17,6 +17,7 @@
 #include "Globals/Slots/FloatSlot.h"
 #include "Globals/Slots/Vector2Slot.h"
 #include "Globals/Slots/Vector3Slot.h"
+#include "Globals/Tables/TransformTables.h"
 
 //ENGINE
 #include <Engine.h>
@@ -49,13 +50,13 @@ namespace Editor
 
 	private:
 		FloatSlot* m_TestSlot;
-		Vector2FSlot* m_Vec2TestSlot;
-		Vector3DSlot* m_Vec3TestSlot;
+		TransformTable3D<float>* m_TransformTable;
 
 		Camera::PerspectiveCamera* m_Camera;
 
 		float m_TestFloat = 2.f;
 		double m_TestDouble = 3.0;
+		Maths::Vector3<float> m_TestTransform;
 	};
 }
 

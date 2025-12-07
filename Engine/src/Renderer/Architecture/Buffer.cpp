@@ -14,6 +14,12 @@
 
 #include "Renderer/Core/RenderCore.h"
 
+#define COPY_ASSIGNMENT()\
+if (this == &other) return *this;\
+Release();\
+m_ID = other.m_ID;\
+other.m_ID = (std::numeric_limits<UINT32>::max)();\
+
 namespace Engine::Renderer
 {
 	//*************
@@ -58,10 +64,7 @@ namespace Engine::Renderer
 
 	VertexBuffer& VertexBuffer::operator=(VertexBuffer&& other) noexcept
 	{
-		if (this == &other) return *this;
-		Release();
-		m_ID = other.m_ID;
-		other.m_ID = (std::numeric_limits<UINT32>::max)();
+		COPY_ASSIGNMENT();
 	}
 
 	void VertexBuffer::Create()
@@ -126,11 +129,7 @@ namespace Engine::Renderer
 
 	IndexBuffer& IndexBuffer::operator=(IndexBuffer&& other) noexcept
 	{
-		if (this == &other) return *this;
-		Release();
-		m_ID = other.m_ID;
-		other.m_ID = (std::numeric_limits<UINT32>::max)();
-		return *this;
+		COPY_ASSIGNMENT();
 	}
 
 	void IndexBuffer::Create()
@@ -166,11 +165,7 @@ namespace Engine::Renderer
 
 	FrameBuffer& FrameBuffer::operator=(FrameBuffer&& other) noexcept
 	{
-		if (this == &other) return *this;
-		Release();
-		m_ID = other.m_ID;
-		other.m_ID = (std::numeric_limits<UINT32>::max)();
-		return *this;
+		COPY_ASSIGNMENT();
 	}
 
 	void FrameBuffer::Create()
@@ -188,9 +183,9 @@ namespace Engine::Renderer
 		GL_CHECK(glBindFramebuffer(GL_FRAMEBUFFER, 0));
 	}
 
-	void FrameBuffer::BufferTexture2D(unsigned int target, unsigned int attachment, unsigned int source, int mipMap) const
+	void FrameBuffer::BufferTexture2D(unsigned int attachment, unsigned int source, int mipMap) const
 	{
-		GL_CHECK(glFramebufferTexture2D(target, attachment, GL_TEXTURE_2D, source, mipMap));
+		GL_CHECK(glFramebufferTexture2D(GL_FRAMEBUFFER, attachment, GL_TEXTURE_2D, source, mipMap));
 	}
 
 	void FrameBuffer::Release()
@@ -202,9 +197,58 @@ namespace Engine::Renderer
 		}
 	}
 
-	//add more as needed, like Texture3D
-
 	//************
 	//Frame Buffer
 	//************
+
+
+	//*************
+	//Render Buffer
+	//*************
+
+	RenderBuffer::~RenderBuffer()
+	{
+		Release();
+	}
+
+	RenderBuffer::RenderBuffer(RenderBuffer&& other) noexcept
+	{
+		m_ID = other.m_ID;
+		other.m_ID = (std::numeric_limits<UINT32>::max)();
+	}
+
+	RenderBuffer& RenderBuffer::operator=(RenderBuffer&& other) noexcept
+	{
+		COPY_ASSIGNMENT();
+	}
+
+	void RenderBuffer::Create()
+	{
+		GL_CHECK(glGenRenderbuffers(1, &m_ID));
+	}
+
+	void RenderBuffer::Bind() const
+	{
+		GL_CHECK(glBindRenderbuffer(GL_RENDERBUFFER, m_ID));
+	}
+
+	void RenderBuffer::UnBind() const
+	{
+		GL_CHECK(glBindRenderbuffer(GL_RENDERBUFFER, 0));
+	}
+
+	void RenderBuffer::RenderBufferStorage(unsigned int format, int width, int height)
+	{
+		GL_CHECK(glRenderbufferStorage(GL_RENDERBUFFER, format, width, height));
+	}
+
+	void RenderBuffer::Release()
+	{
+		if (m_ID != (std::numeric_limits<UINT32>::max)())
+		{
+			GL_CHECK(glDeleteRenderbuffers(1, &m_ID));
+			m_ID = (std::numeric_limits<UINT32>::max)();
+		}
+	}
+
 }

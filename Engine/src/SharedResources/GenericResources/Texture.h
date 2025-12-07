@@ -13,16 +13,16 @@
 */
 #pragma once
 
-//VNDR
-#include "GL/glew.h"
 
 //ENGINE
 #include "Core/Core.h"
 
+#include <stb/stb_image.h>
+
 namespace Engine::Utility
 {
 	//these values were sourced from the gl constants data sheet
-	//raw.githubusercontent.com/KhronosGroup/OpenGL-Registry/master/xml/gl.xml?utm_source=chatgpt.com
+	//raw.githubusercontent.com/KhronosGroup/OpenGL-Registry/master/xml/gl.xml?utm
 	enum class TextureParamName : unsigned int
 	{
 		DEPTH_STENCIL_TEXTURE_MODE	= 0x90EA,
@@ -48,26 +48,43 @@ namespace Engine::Utility
 		TEXTURE_SWIZZLE_RGBA		= 0x8E46
 	};
 
+	//empty texture will return empty file name!
+	struct TextureDefaultParams
+	{
+		TextureDefaultParams(std::string_view fileName = "", int width = 1280, int height = 720): fileName(fileName), width(width), height(height) {}
+
+		std::string_view fileName = "";
+		int width;
+		int height;
+	};
+
 	class Texture
 	{
 	public:
+		//create is utilized to source an image for the texture and create empty is just passed params
+		virtual void Create(std::string_view filename) = 0;
+		virtual void CreateEmpty(TextureDefaultParams params) = 0;
+
 		virtual void Bind() const = 0;
 		virtual void UnBind() const = 0;
+
+		unsigned int GetID() { return m_Id; }
 
 		virtual ~Texture();
 
 	protected:
 		Texture();
-		unsigned int m_id = 0;
+		unsigned int m_Id = 0;
 	};
 
 	class Texture2D : public Texture
 	{
 	public:
-		Texture2D();
-		//constructor for image textures
-		Texture2D(std::string_view fileName);
+		Texture2D() = default;
+		~Texture2D();
 
+		virtual void Create(std::string_view filename) override;
+		virtual void CreateEmpty(TextureDefaultParams params) override;
 		virtual void Bind() const override;
 		virtual void UnBind() const override;
 

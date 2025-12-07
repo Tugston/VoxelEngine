@@ -16,7 +16,6 @@
 #include "Renderer/Core/RenderCore.h"
 
 //VNDR
-#include <stb/stb_image.h>
 
 namespace Engine::Utility
 {
@@ -25,13 +24,11 @@ namespace Engine::Utility
 	//************
 	Texture::Texture()
 	{
-		GL_CHECK(glGenTextures(1, &m_id));
-		Bind();
 	}
 
 	Texture::~Texture()
 	{
-		GL_CHECK(glDeleteTextures(1, &m_id));
+		GL_CHECK(glDeleteTextures(1, &m_Id));
 	}
 
 	//************
@@ -43,31 +40,49 @@ namespace Engine::Utility
 	//TEXTURE 2D
 	//**********
 
-	Texture2D::Texture2D(std::string_view fileName)
+	Texture2D::~Texture2D()
 	{
+	}
+
+	void Texture2D::Create(std::string_view fileName)
+	{
+		GL_CHECK(glGenTextures(1, &m_Id));
+		Bind();
+
 		//defaults for most cases
 		SetWrap(GL_REPEAT, GL_REPEAT);
-		SetFilter(GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-		
+		SetFilter(GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR);
+
 		int width, height, nrChannels = 0;
 		unsigned char* textureData = stbi_load(fileName.data(), &width, &height, &nrChannels, 0);
 
 		if (textureData)
 		{
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, textureData);
-			glGenerateMipmap(GL_TEXTURE_2D);
+			GL_CHECK(glGenerateMipmap(GL_TEXTURE_2D));
 		}
 		else
 		{
 			LOG_WARN("<Texture.cpp> Texture 2D data failed to load");
 		}
-		
+
 		stbi_image_free(textureData);
+	}
+
+	void Texture2D::CreateEmpty(TextureDefaultParams params)
+	{
+		GL_CHECK(glGenTextures(1, &m_Id));
+		Bind();
+
+		SetWrap(GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE);
+		SetFilter(GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, params.width, params.height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
 	}
 
 	void Texture2D::Bind() const
 	{
-		GL_CHECK(glBindTexture(GL_TEXTURE_2D, m_id));
+		GL_CHECK(glBindTexture(GL_TEXTURE_2D, m_Id));
 	}
 
 	void Texture2D::UnBind() const

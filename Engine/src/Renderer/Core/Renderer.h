@@ -27,8 +27,14 @@ namespace Engine::Camera
 	class EditorCamera;
 }
 
+namespace Engine::Utility
+{
+	class Texture2D;
+}
+
 namespace Engine::Renderer
-{	
+{
+	class FrameBuffer;
 	using ViewSize = std::pair<unsigned int, unsigned int>;
 
 	//fill packets with all possible types that can be in each category of queues
@@ -55,7 +61,12 @@ namespace Engine::Renderer
 
 		std::function<void(int, int)> Resize(Camera::EditorCamera* camera = nullptr); //utilized for application window resizing callback
 
+		//EDITOR SPECIFICS
+		unsigned int GetRenderTexture() { return m_TextureColorBuffer->GetID(); }
+
 	private:
+		void SetupRenderTexture();
+
 		void ClearScreen();
 		void ClearQueues(); //there shouldnt be any data left over from previous frame, but just in case
 
@@ -70,5 +81,9 @@ namespace Engine::Renderer
 
 		friend struct MeshObject;
 		friend struct InstanceMeshObject;
+
+		//EXTRA DATA THAT SHOULD NOT BE IN THE GAME BUT RENDERER NEEDS IT
+		FrameBuffer* m_FrameBuffer;
+		Utility::Texture2D* m_TextureColorBuffer;
 	};
 }

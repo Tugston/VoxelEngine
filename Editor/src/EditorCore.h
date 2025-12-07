@@ -16,4 +16,6 @@
 #include<algorithm>
 
 #define DRAG_SPEED 0.75f
+#define LABEL_WIDTH 75.f
+
 #define ELEMENT_WIDTH(n) std::clamp((ImGui::GetContentRegionAvail().x - ImGui::GetStyle().ItemSpacing.x * 2.f) / n, -1.f, 70.f)

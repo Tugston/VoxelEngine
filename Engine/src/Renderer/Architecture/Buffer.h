@@ -35,6 +35,10 @@ namespace Engine::Renderer
 		virtual void UnBind() const = 0;
 		virtual void Release() = 0;
 
+	public:
+		UINT32 GetID() { return m_ID; };
+
+	protected:
 		UINT32 m_ID = (std::numeric_limits<UINT32>::max)();
 	};
 
@@ -99,10 +103,31 @@ namespace Engine::Renderer
 		virtual void Bind() const override;
 		virtual void UnBind() const override;
 
-		void BufferTexture2D(unsigned int target, unsigned int attachment, unsigned int source, int mipMap) const;
+		void BufferTexture2D(unsigned int attachment, unsigned int source, int mipMap) const;
 
 	private:
 		virtual void Release() override;
 	};
 
+	class RenderBuffer : public BaseBuffer
+	{
+	public:
+		RenderBuffer() = default;
+		~RenderBuffer();
+
+		RenderBuffer(const RenderBuffer&) = delete;
+		RenderBuffer& operator=(const RenderBuffer&) = delete;
+
+		RenderBuffer(RenderBuffer&& other) noexcept;
+		RenderBuffer& operator=(RenderBuffer&& other) noexcept;
+
+		virtual void Create() override;
+		virtual void Bind() const override;
+		virtual void UnBind() const override;
+
+		void RenderBufferStorage(unsigned int format, int width, int height);
+
+	private:
+		virtual void Release() override;
+	};
 }

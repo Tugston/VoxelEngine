@@ -25,23 +25,40 @@ namespace Editor
 		~Vector3FSlot() {};
 
 		virtual void Draw() const override {
-			ImGui::Text(m_Label.data());
-			ImGui::SameLine();
 
-			float elementWidth = ELEMENT_WIDTH(3.f);
+			if (m_Label.size() > 0)
+			{
+				ImGui::Text(m_Label.data());
+				ImGui::SameLine();
+			}
+
+			float elementWidth = ELEMENT_WIDTH(4.f);
+
+			//prevents conflicts between vector3's
+			ImGui::PushID(this);
 
 			ImGui::PushItemWidth(elementWidth);
+			ImGui::TextColored({ 1.f, 0.f, 0.f, 1.f }, "X");
+			ImGui::SameLine();
 			ImGui::DragFloat("##x", static_cast<float*>(m_ValRef), DRAG_SPEED, std::numeric_limits<float>::lowest(), std::numeric_limits<float>::max());
+			
 			ImGui::SameLine();
 			ImGui::PushItemWidth(elementWidth);
+			ImGui::TextColored({ 0.f, 1.f, 0.f, 1.f }, "Y");
+			ImGui::SameLine();
 			ImGui::DragFloat("##y", static_cast<float*>(m_YRef), DRAG_SPEED, std::numeric_limits<float>::lowest(), std::numeric_limits<float>::max());
+			
 			ImGui::SameLine();
 			ImGui::PushItemWidth(elementWidth);
+			ImGui::TextColored({ 0.f, 0.f, 1.f, 1.f }, "Z");
+			ImGui::SameLine();
 			ImGui::DragFloat("##z", static_cast<float*>(m_ZRef), DRAG_SPEED, std::numeric_limits<float>::lowest(), std::numeric_limits<float>::max());
 
 			ImGui::PopItemWidth();
 			ImGui::PopItemWidth();
 			ImGui::PopItemWidth();
+
+			ImGui::PopID();
 		}
 
 	private:
@@ -61,18 +78,23 @@ namespace Editor
 
 			float elementWidth = ELEMENT_WIDTH(3.f);
 
+			//prevents conflicts between vector3's
+			ImGui::PushID(this);
+
 			ImGui::PushItemWidth(elementWidth);
-			ImGui::DragScalar("##x", ImGuiDataType_Double, static_cast<double*>(m_ValRef), DRAG_SPEED, std::numeric_limits<double*>::lowest(), std::numeric_limits<double*>::max());
+			ImGui::DragScalar("X##x", ImGuiDataType_Double, static_cast<double*>(m_ValRef), DRAG_SPEED, std::numeric_limits<double*>::lowest(), std::numeric_limits<double*>::max());
 			ImGui::SameLine();
 			ImGui::PushItemWidth(elementWidth);
-			ImGui::DragScalar("##y", ImGuiDataType_Double, static_cast<double*>(m_YRef), DRAG_SPEED, std::numeric_limits<double*>::lowest(), std::numeric_limits<double*>::max());
+			ImGui::DragScalar("Y##y", ImGuiDataType_Double, static_cast<double*>(m_YRef), DRAG_SPEED, std::numeric_limits<double*>::lowest(), std::numeric_limits<double*>::max());
 			ImGui::SameLine();
 			ImGui::PushItemWidth(elementWidth);
-			ImGui::DragScalar("##z", ImGuiDataType_Double, static_cast<double*>(m_ZRef), DRAG_SPEED, std::numeric_limits<double*>::lowest(), std::numeric_limits<double*>::max());
+			ImGui::DragScalar("Z##z", ImGuiDataType_Double, static_cast<double*>(m_ZRef), DRAG_SPEED, std::numeric_limits<double*>::lowest(), std::numeric_limits<double*>::max());
 
 			ImGui::PopItemWidth();
 			ImGui::PopItemWidth();
 			ImGui::PopItemWidth();
+
+			ImGui::PopID();
 		}
 
 	private:

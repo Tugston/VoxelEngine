@@ -15,7 +15,7 @@
 
 namespace Editor
 {		
-	EditorApplication::EditorApplication()
+	EditorApplication::EditorApplication() : Application()
 	{
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -34,8 +34,7 @@ namespace Editor
 			LOG_CRIT("Application Not Initialized!");
 
 		m_TestSlot = new FloatSlot("Test Float", &m_TestFloat);
-		m_Vec2TestSlot = new Vector2FSlot("2D Position", &m_TestFloat, &m_TestFloat);
-		m_Vec3TestSlot = new Vector3DSlot("3D Position",  &m_TestDouble, &m_TestDouble, &m_TestDouble);
+		m_TransformTable = new TransformTable3D<float>(&m_TestTransform, &m_TestTransform, &m_TestTransform);
 
 		m_Camera = new Camera::PerspectiveCamera();
 	};
@@ -49,8 +48,8 @@ namespace Editor
 
 	void EditorApplication::Start()
 	{
-		LOG_MSG("Editor Started!");
 		Application::Start();
+		LOG_MSG("Editor Started!");
 		Tick();
 	}
 
@@ -73,8 +72,11 @@ namespace Editor
 		
 		ImGui::Begin("Test Window", nullptr, ImGuiWindowFlags_::ImGuiWindowFlags_AlwaysAutoResize);
 		m_TestSlot->Draw();
-		m_Vec2TestSlot->Draw();
-		m_Vec3TestSlot->Draw();
+		m_TransformTable->Draw();
+		ImGui::End();
+
+		ImGui::Begin("Viewport");
+		ImGui::Image((ImTextureID)this->GetRenderScreenTexture(), ImVec2{ 1280, 720 }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
 		ImGui::End();
 	}
 	
