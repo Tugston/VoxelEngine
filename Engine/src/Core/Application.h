@@ -76,7 +76,8 @@ namespace Engine
 		//Returns the frame rate
 		static const inline unsigned int GetFrameRate() { return s_Instance->m_FrameRate; };
 
-		static inline std::shared_ptr<Camera::PerspectiveCamera> GetCamera() { return s_Instance->m_Camera; };
+		static inline Camera::EditorCamera* GetCamera() { return s_Instance->m_Camera.lock().get(); };
+		void SetViewTargetCamera(std::shared_ptr<Camera::EditorCamera> camera) { m_Camera = camera; };
 
 		virtual void SwapBuffer() { m_Window.SwapBuffers(); }
 		//*************//
@@ -94,9 +95,10 @@ namespace Engine
 	protected:
 		//this needs to be controlled by the scene manager eventually
 		std::shared_ptr<Scene::Scene> m_CurrentScene; //heap allocate; scene will contain a lot of stuff and wont be unloaded and reloaded frequently
-		
-		std::shared_ptr<Camera::PerspectiveCamera> m_Camera; //needs to be in the editor instead of here, but just testing for now
-		
+			
+		//Editor Specifics
+		unsigned int GetRenderScreenTexture() { return m_Renderer->GetRenderTexture(); }
+
 	private:
 		float m_DeltaTime = 0;
 		float m_PreviousTime = 0;
@@ -105,12 +107,7 @@ namespace Engine
 		Window m_Window;
 		std::unique_ptr<Renderer::Renderer> m_Renderer;
 
-
-	//Editor Specifics
-	protected:
-#if defined(EDTR_DEBUG) || defined(EDTR_DIST)
-		unsigned int GetRenderScreenTexture() { return m_Renderer->GetRenderTexture(); }
-#endif
+		std::weak_ptr<Camera::EditorCamera> m_Camera; //holds a reference to the current active camera in the app
 
 	//class instance just hidden away down here
 	public:

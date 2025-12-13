@@ -38,6 +38,7 @@ namespace Engine::Maths
 			return *this;
 		}
 
+
 		t Dot(const Vector2<t>& other) const
 		{
 			return (x * other.x) + (y * other.y);
@@ -91,6 +92,23 @@ namespace Engine::Maths
 			return *this;
 		}
 
+		void Floor()
+		{
+			x = std::floor(x);
+			y = std::floor(y);
+			z = std::floor(z);
+		}
+
+		Vector3<t> Absolute() const
+		{
+			return Vector3<t>(std::abs(x), std::abs(y), std::abs(z));
+		}
+
+		double Length() const
+		{
+			return std::sqrt((x * x) + (y * y) + (z * z));
+		}
+
 		t Dot(const Vector3<t>& other)
 		{
 			return (x * other.x) + (y * other.y) + (z * other.z);
@@ -102,29 +120,38 @@ namespace Engine::Maths
 		}
 
 		//other value is the direction of cross (left hand rule)
-		t Cross(const Vector3<t>& other)
+		Vector3<t> Cross(const Vector3<t>& other) const
 		{
-			const t x = (this->y * other.z) - (this->z * other.y);
-			const t y = (this->z * other.x) - (this->x * other.z);
-			const t z = (this->x * other.y) - (this->y * other.x);
-
-			return x - y + z;
+			return Vector3<t>{
+				(y * other.z) - (z * other.y),
+				(z * other.x) - (x * other.z),
+				(x * other.y) - (y * other.x)
+			};
 		}
 
 		//literally the same as above just copy pasted and adjusted
-		static t Cross(const Vector3<t>& first, const Vector3<t>& second)
+		static Vector3<t> Cross(const Vector3<t>& first, const Vector3<t>& second)
 		{
-			const t x = (first.y * second.z) - (first.z * second.y);
-			const t y = (first.z * second.x) - (first.x * second.z);
-			const t z = (first.x * second.y) - (first.y * second.x);
-
-			return x - y + z;
+			return Vector3<t>{
+				(first.y * second.z) - (first.z * second.y),
+				(first.z * second.x) - (first.x * second.z),
+				(first.x * second.y) - (first.y * second.x)
+			};
 		}
 
 		Vector3 Normalize()
 		{
 			t length = std::sqrt((x * x) + (y * y) + (z * z));
 			return Vector3(x / length, y / length, z / length);
+		}
+
+		static Vector3 Normalize(const Vector3<t>& vector)
+		{
+			t length = std::sqrt((vector.x * vector.x) + (vector.y * vector.y) + (vector.z + vector.z));
+			if (length > 0)
+				return Vector3(vector.x / length, vector.y / length, vector.z / length);
+			else
+				return Vector3(vector.x, vector.y, vector.z);
 		}
 	};
 
@@ -137,4 +164,5 @@ namespace Engine::Maths
 	{
 
 	};
+
 }

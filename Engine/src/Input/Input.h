@@ -69,7 +69,11 @@ namespace Engine
 		static bool KeyReleased(EngineKeys key);
 
 		static glm::vec2 GetMousePos();
+
+		//sets the previous mouse pos as well
+		//see <Input.cpp>
 		static glm::vec2 GetMouseDelta();
+
 		static float GetMouseX();
 		static float GetMouseY();
 

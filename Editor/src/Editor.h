@@ -39,20 +39,39 @@ namespace Editor
 	{
 	public:
 		EditorApplication();
-		~EditorApplication();
+		~EditorApplication();	
 
 		virtual void Start() override;
 		virtual void Tick() override;
+		virtual void SwapBuffer() override;
 
+	private:
+		//this draw is obviously not override, so no correlation to the engine's drawing
+		//its just a container for imgui drawing
 		void Draw();
 
-		virtual void SwapBuffer() override;
+		void CameraControl();
+
+	private:
+
+		//not worrying about overloads and safety, its fine (surely)
+		enum EditorMode : UINT8
+		{
+			ViewportFocus = 0,
+			PanelFocus,
+		};
 
 	private:
 		FloatSlot* m_TestSlot;
 		TransformTable3D<float>* m_TransformTable;
+		
+		//not test
+		std::shared_ptr<Camera::PerspectiveCamera> m_EditorCamera;
+		EditorMode m_CurrentMode;
 
-		Camera::PerspectiveCamera* m_Camera;
+
+		std::unique_ptr<GameObject3D> m_TestObject;
+
 
 		float m_TestFloat = 2.f;
 		double m_TestDouble = 3.0;

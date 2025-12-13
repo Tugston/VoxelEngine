@@ -14,6 +14,8 @@ namespace VoxelGame
 	public:
 		Game() : Application()
 		{
+			m_GameCamera = std::make_shared<Camera::PerspectiveCamera>(glm::vec3{ 0.f, 0.f, 0.f });
+			SetViewTargetCamera(m_GameCamera);
 		}
 
 		~Game()
@@ -89,8 +91,8 @@ namespace VoxelGame
 				{
 					sc->material.shader->Use();
 					sc->material.shader->SetUniformVec3("uColor", m_Color);
-					sc->material.shader->SetUniformMat4("uProjection", m_Camera->GetProjectionMatrix());
-					sc->material.shader->SetUniformMat4("uView", m_Camera->GetViewMatrix());
+					sc->material.shader->SetUniformMat4("uProjection", m_GameCamera->GetProjectionMatrix());
+					sc->material.shader->SetUniformMat4("uView", m_GameCamera->GetViewMatrix());
 				}
 
 				if (sc2)
@@ -98,28 +100,28 @@ namespace VoxelGame
 					sc->material.shader->Use();
 					glm::vec3 blue{ 0.1f, 0.1f, 1.f };
 					sc->material.shader->SetUniformVec3("uColor", blue);
-					sc2->material.shader->SetUniformMat4("uProjection", m_Camera->GetProjectionMatrix());
-					sc2->material.shader->SetUniformMat4("uView", m_Camera->GetViewMatrix());
+					sc2->material.shader->SetUniformMat4("uProjection", m_GameCamera->GetProjectionMatrix());
+					sc2->material.shader->SetUniformMat4("uView", m_GameCamera->GetViewMatrix());
 				}
 
 				if (InputSystem::KeyPressed(EngineKeys::W))
 				{
-					m_Camera->ProcessLocation(Camera::EditorCamera::MoveDirection::Forward, GetDeltaTime());
+					m_GameCamera->ProcessLocation(Camera::EditorCamera::MoveDirection::Forward, GetDeltaTime());
 				}
 				
 				if (InputSystem::KeyPressed(EngineKeys::S))
 				{
-					m_Camera->ProcessLocation(Camera::EditorCamera::MoveDirection::Backwards, GetDeltaTime());
+					m_GameCamera->ProcessLocation(Camera::EditorCamera::MoveDirection::Backwards, GetDeltaTime());
 				}
 				
 				if (InputSystem::KeyPressed(EngineKeys::A))
 				{
-					m_Camera->ProcessLocation(Camera::EditorCamera::MoveDirection::Left, GetDeltaTime());
+					m_GameCamera->ProcessLocation(Camera::EditorCamera::MoveDirection::Left, GetDeltaTime());
 				}
 				
 				if (InputSystem::KeyPressed(EngineKeys::D))
 				{
-					m_Camera->ProcessLocation(Camera::EditorCamera::MoveDirection::Right, GetDeltaTime());
+					m_GameCamera->ProcessLocation(Camera::EditorCamera::MoveDirection::Right, GetDeltaTime());
 				}
 
 				if (InputSystem::KeyTapped(EngineKeys::TAB))
@@ -130,17 +132,16 @@ namespace VoxelGame
 
 				if (InputSystem::KeyTapped(EngineKeys::Space))
 				{
-					Logger::LogMessage(Logger::LogType::Message, "Camera Forward Vector: {}", glm::to_string(m_Camera->GetForwardVector()));
-					Logger::LogMessage(Logger::LogType::Message, "Camera Right Vector: {}", glm::to_string(m_Camera->GetRightVector()));
-					Logger::LogMessage(Logger::LogType::Message, "Camera Up Vector: {}", glm::to_string(m_Camera->GetUpVector()));
-					Logger::LogMessage(Logger::LogType::Message, "Camera Rotation: {}", glm::to_string(m_Camera->GetEulerRotation()));
-					Logger::LogMessage(Logger::LogType::Message, "Camera Matrix: {}", glm::to_string(m_Camera->GetProjectionMatrix()));
+					Logger::LogMessage(Logger::LogType::Message, "Camera Forward Vector: {}", glm::to_string(m_GameCamera->GetForwardVector()));
+					Logger::LogMessage(Logger::LogType::Message, "Camera Right Vector: {}", glm::to_string(m_GameCamera->GetRightVector()));
+					Logger::LogMessage(Logger::LogType::Message, "Camera Up Vector: {}", glm::to_string(m_GameCamera->GetUpVector()));
+					Logger::LogMessage(Logger::LogType::Message, "Camera Rotation: {}", glm::to_string(m_GameCamera->GetEulerRotation()));
+					Logger::LogMessage(Logger::LogType::Message, "Camera Matrix: {}", glm::to_string(m_GameCamera->GetProjectionMatrix()));
 				}
 				
 				if (m_GameFocus)
 				{
-					m_Camera->ProcessRotation(InputSystem::GetMouseDelta(), false);
-					InputSystem::SetPreviousMousePos(InputSystem::GetMousePos());
+					m_GameCamera->ProcessRotation(InputSystem::GetMouseDelta(), false);
 				}
 			
 
@@ -157,7 +158,7 @@ namespace VoxelGame
 		std::shared_ptr<GameObject2D> m_TestObjectTwo;
 		std::shared_ptr<GameObject3D> m_TestObjectThree;
 		
-		//Renderer::PerspectiveCamera m_Camera;
+		std::shared_ptr<Camera::PerspectiveCamera> m_GameCamera;
 		
 		bool m_GameFocus = true;
 

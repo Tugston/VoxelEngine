@@ -74,13 +74,21 @@ namespace Engine
 
 	bool InputSystem::KeyPressed(EngineKeys key)
 	{
-		auto keyState = glfwGetKey(Application::GetWindow()->GetGLFWWindow(), (int)key);
+		int keyState = -1;
+		if (key != EngineKeys::LeftClick && key != EngineKeys::RightClick)
+			keyState = glfwGetKey(Application::GetWindow()->GetGLFWWindow(), (int)key);
+		else
+			keyState = glfwGetMouseButton(Application::GetWindow()->GetGLFWWindow(), (int)key);
 		return keyState == GLFW_PRESS;
 	}
 
 	bool InputSystem::KeyReleased(EngineKeys key)
 	{
-		auto keyState = glfwGetKey(Application::GetWindow()->GetGLFWWindow(), (int)key);
+		int keyState = -1;
+		if (key != EngineKeys::LeftClick && key != EngineKeys::RightClick)
+			keyState = glfwGetKey(Application::GetWindow()->GetGLFWWindow(), (int)key);
+		else
+			keyState = glfwGetMouseButton(Application::GetWindow()->GetGLFWWindow(), (int)key);
 		return keyState == GLFW_RELEASE;
 	}
 

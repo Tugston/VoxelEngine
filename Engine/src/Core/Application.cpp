@@ -33,16 +33,9 @@ namespace Engine
 		s_Instance = this;
 		srand(time(NULL));
 		InitializeEngineRootSystems();
-
-		m_Camera = std::make_shared<Camera::PerspectiveCamera>(glm::vec3(0.f, 0.f, 0.f));
+	 //std::make_shared<Camera::PerspectiveCamera>(glm::vec3(0.f, 0.f, 0.f));
 
 		m_Renderer = std::make_unique<Renderer::Renderer>(m_Window.GetBufferSize(), Renderer::Renderer::RenderTarget::FrameBufferTexture);
-		/*
-#if defined(EDTR_DEBUG) || defined(EDTR_DIST)
-		m_Renderer = std::make_unique<Renderer::Renderer>(m_Window.GetBufferSize(), Renderer::Renderer::RenderTarget::FrameBufferTexture);
-#else
-		m_Renderer = std::make_unique<Renderer::Renderer>(m_Window.GetBufferSize());
-#endif */
 	}
 
 	Application::~Application()
@@ -56,7 +49,7 @@ namespace Engine
 	{
 		Logger::LogMessage(Logger::LogType::Warning, "Started!");
 
-		m_Window.SetFrameSize(m_Renderer->Resize(m_Camera.get())); //send the resize function to the window for resize callback
+		m_Window.SetFrameSize(m_Renderer->Resize(m_Camera.lock().get())); //send the resize function to the window for resize callback
 
 
 		//create a level for the engine to automatically use
@@ -69,6 +62,7 @@ namespace Engine
 		CalculateDeltaTime();
 		ProcessInput();
 		InputSystem::MouseIdleDetection(m_DeltaTime);
+		InputSystem::SetPreviousMousePos(InputSystem::GetMousePos());
 
 		m_Window.PollEvents();
 		Draw(GetDeltaTime());
@@ -90,7 +84,7 @@ namespace Engine
 
 	void Application::Draw(float deltaTime)
 	{
-		m_Renderer->BeginRender(m_Camera.get());
+		m_Renderer->BeginRender(m_Camera.lock().get());
 		Systems::SysRenderOpaqueMesh(m_CurrentScene, m_Renderer.get());
 		m_Renderer->EndRender();
 		

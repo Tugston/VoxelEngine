@@ -33,6 +33,8 @@
 #include	"Scene/ECS/Components/Renders/InstancedMesh.h"
 
 //Base Meshes
+#include	"SharedResources/PrimitiveShapes/ThreeDimensions/Cone.h"
+
 #include	"SharedResources/PrimitiveShapes/TwoDimensions/Triangle.h"
 #include	"SharedResources/PrimitiveShapes/TwoDimensions/Quad.h"
 

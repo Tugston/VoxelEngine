@@ -15,7 +15,7 @@
 
 namespace Editor
 {		
-	EditorApplication::EditorApplication() : Application()
+	EditorApplication::EditorApplication() : m_CurrentMode(EditorMode::PanelFocus), Application()
 	{
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -36,7 +36,8 @@ namespace Editor
 		m_TestSlot = new FloatSlot("Test Float", &m_TestFloat);
 		m_TransformTable = new TransformTable3D<float>(&m_TestTransform, &m_TestTransform, &m_TestTransform);
 
-		m_Camera = new Camera::PerspectiveCamera();
+		m_EditorCamera = std::make_shared<Camera::PerspectiveCamera>(glm::vec3{0.f, 0.f, 0.f});
+		SetViewTargetCamera(m_EditorCamera);
 	};
 
 	EditorApplication::~EditorApplication()
@@ -50,6 +51,28 @@ namespace Editor
 	{
 		Application::Start();
 		LOG_MSG("Editor Started!");
+
+		m_TestObject = std::make_unique<GameObject3D>(m_CurrentScene);
+
+		m_TestObject->AddComponent<Components::SpriteComponent>();
+		Components::TransformComponent3D* transformComponent = m_TestObject->GetComponent<Components::TransformComponent3D>();
+		Components::SpriteComponent* spriteComponent = m_TestObject->GetComponent<Components::SpriteComponent>();
+		
+		if (spriteComponent)
+		{
+			spriteComponent->planeMesh = std::make_shared<Utility::Mesh>(Utility::CreateCone());
+			spriteComponent->planeMesh->indexCount = 6;
+			spriteComponent->material.shader = new Shader("TestShader");
+			spriteComponent->material.shader->Create();
+		}
+
+		if (transformComponent)
+		{
+			transformComponent->location = Maths::Vector3{ 0.f, 10.f, 0.f };
+			transformComponent->rotation = Maths::Vector3{ 0.f, 0.f, 0.f };
+			transformComponent->scale = Maths::Vector3{ 1.f, 1.f, 1.f };
+		}
+
 		Tick();
 	}
 
@@ -57,27 +80,27 @@ namespace Editor
 	{
 		while (m_Running)
 		{
+			Utility::Material* spriteMaterial = &m_TestObject->GetComponent<Components::SpriteComponent>()->material;
+
+			if (spriteMaterial)
+			{
+				spriteMaterial->shader->Use();
+				//spriteMaterial->shader->SetUniformVec3("uColor", m_Color);
+				spriteMaterial->shader->SetUniformMat4("uProjection", m_EditorCamera->GetProjectionMatrix());
+				spriteMaterial->shader->SetUniformMat4("uView", m_EditorCamera->GetViewMatrix());
+			}
+			
+			//cycle between modes
+			if (InputSystem::KeyTapped(EngineKeys::LCTRL))
+				m_CurrentMode = static_cast<EditorMode>(static_cast<UINT8>(m_CurrentMode) + 1);
+			else if (InputSystem::KeyTapped(EngineKeys::RCTRL))
+				m_CurrentMode = static_cast<EditorMode>(static_cast<UINT8>(m_CurrentMode) - 1);
+
+			CameraControl();
+
 			Draw();
 			Application::Tick();
 		}
-	}
-
-	void EditorApplication::Draw()
-	{
-		ImGui_ImplOpenGL3_NewFrame();
-		ImGui_ImplGlfw_NewFrame();
-		ImGui::NewFrame();
-
-		ImGui::DockSpaceOverViewport(1, ImGui::GetMainViewport());
-		
-		ImGui::Begin("Test Window", nullptr, ImGuiWindowFlags_::ImGuiWindowFlags_AlwaysAutoResize);
-		m_TestSlot->Draw();
-		m_TransformTable->Draw();
-		ImGui::End();
-
-		ImGui::Begin("Viewport");
-		ImGui::Image((ImTextureID)this->GetRenderScreenTexture(), ImVec2{ 1280, 720 }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
-		ImGui::End();
 	}
 	
 	void EditorApplication::SwapBuffer()
@@ -92,5 +115,50 @@ namespace Editor
 
 		Application::SwapBuffer();
 	}
+
+	void EditorApplication::Draw()
+	{
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
+
+		ImGui::DockSpaceOverViewport(1, ImGui::GetMainViewport());
+
+		ImGui::Begin("Test Window", nullptr, ImGuiWindowFlags_::ImGuiWindowFlags_AlwaysAutoResize);
+		m_TestSlot->Draw();
+		m_TransformTable->Draw();
+		ImGui::End();
+
+		ImGui::Begin("Viewport");
+		ImGui::Image((ImTextureID)this->GetRenderScreenTexture(), ImVec2{ 1280, 720 }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
+		ImGui::End();
+	}
+
+	void EditorApplication::CameraControl()
+	{
+		if (!(m_CurrentMode == EditorMode::ViewportFocus))
+			return;
+			
+		if (InputSystem::KeyPressed(EngineKeys::RightClick))
+			m_EditorCamera->ProcessRotation(InputSystem::GetMouseDelta(), false);
+
+		//may adjust the controls to force right click pressing
+		//may be a future change
+
+		Logger::LogMessage(Logger::LogType::Message, "Camera Control Active");
+
+		if (InputSystem::KeyPressed(EngineKeys::W))
+			m_EditorCamera->ProcessLocation(EditorCamera::MoveDirection::Forward, GetDeltaTime());
+
+		if (InputSystem::KeyPressed(EngineKeys::S))
+			m_EditorCamera->ProcessLocation(EditorCamera::MoveDirection::Backwards, GetDeltaTime());
+
+		if (InputSystem::KeyPressed(EngineKeys::A))
+			m_EditorCamera->ProcessLocation(EditorCamera::MoveDirection::Left, GetDeltaTime());
+
+		if (InputSystem::KeyPressed(EngineKeys::D))
+			m_EditorCamera->ProcessLocation(EditorCamera::MoveDirection::Right, GetDeltaTime());
+	}
+
 }
 
