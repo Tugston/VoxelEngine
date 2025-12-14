@@ -80,9 +80,11 @@ namespace Engine::Maths
 		t x = 0;
 		t y = 0;
 		t z = 0;
-
+		
 		Vector3<t> operator+(const Vector3<t>& other) const { return Vector3<t>(x + other.x, y + other.y, z + other.z); }
 		Vector3<t> operator-(const Vector3<t>& other) const { return Vector3<t>(x - other.x, y - other.y, z - other.z); }
+		Vector3<t> operator*(const Vector3<t>& other) const { return Vector3<t>(x * other.x, y * other.y, z * other.z); }
+		Vector3<t> operator*(float scalar) const { return Vector3<t>(x * scalar, y * scalar, z * scalar); }
 		Vector3<t> operator=(const Vector3<t>& other)
 		{
 			if (this == &other) return *this;

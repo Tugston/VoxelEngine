@@ -26,6 +26,7 @@ namespace Engine::Renderer
 		m_RenderTarget(RenderTarget::Window), m_FrameBuffer(nullptr), m_TextureColorBuffer(nullptr)
 	{
 		glViewport(0, 0, viewportSize.first, viewportSize.second);
+		glEnable(GL_DEPTH_TEST);
 
 		if (glewInit() != GLEW_OK)
 		{
@@ -37,8 +38,8 @@ namespace Engine::Renderer
 	Renderer::Renderer(ViewSize viewportSize, RenderTarget target):
 		m_RenderTarget(target), m_FrameBuffer(nullptr), m_TextureColorBuffer(nullptr)
 	{
-
-		glViewport(0, 0, viewportSize.first, viewportSize.second);	
+		glViewport(0, 0, viewportSize.first, viewportSize.second);
+		glEnable(GL_DEPTH_TEST);
 
 		if (glewInit() != GLEW_OK)
 		{
@@ -137,7 +138,7 @@ namespace Engine::Renderer
 	void Renderer::ClearScreen()
 	{
 		glClearColor(.5f, .9f, 1.f, 1.f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
 	void Renderer::ClearQueues()

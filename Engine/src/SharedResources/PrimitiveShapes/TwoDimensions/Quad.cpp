@@ -50,6 +50,8 @@ namespace Engine::Utility
 		quadMesh.vbo.UnBind();
 		quadMesh.ebo.UnBind();
 
+		quadMesh.indexCount = 6;
+
 		return quadMesh;
 	}
 }

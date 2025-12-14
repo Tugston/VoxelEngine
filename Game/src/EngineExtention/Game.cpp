@@ -39,8 +39,7 @@ namespace VoxelGame
 			TransformComponent3D* tcOne = m_TestObjectOne->GetComponent<TransformComponent3D>();
 			if (scOne)
 			{
-				scOne->planeMesh = std::make_shared<Utility::Mesh>(Utility::CreateQuad());
-				scOne->planeMesh->indexCount = 6;
+				scOne->planeMesh = std::make_shared<Utility::Mesh>(Utility::CreateCone(6));
 				scOne->material.shader = new Shader("TestShader");
 				scOne->material.shader->Create();
 			}
@@ -51,7 +50,6 @@ namespace VoxelGame
 			if (scTwo)
 			{
 				scTwo->planeMesh = std::make_shared<Utility::Mesh>(Utility::CreateQuad());
-				scTwo->planeMesh->indexCount = 6;
 				scTwo->material.shader = new Shader("TestShader");
 				scTwo->material.shader->Create();
 			}

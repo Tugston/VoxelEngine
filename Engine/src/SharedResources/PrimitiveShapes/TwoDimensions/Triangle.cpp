@@ -38,6 +38,8 @@ namespace Engine::Utility
         Renderer::AttribData atributeData = { Renderer::ShaderDataType::Float3 }; //just use defaults
         triangleMesh.vao.SetAttribData(0, atributeData, triangleMesh.vbo, triangleMesh.ebo);
 
+        triangleMesh.indexCount = 3;
+
         return triangleMesh;
     }
 }

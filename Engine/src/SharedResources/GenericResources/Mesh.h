@@ -30,7 +30,8 @@ namespace Engine::Utility
 		Mesh& operator=(const Mesh&) = delete;
 
 		Mesh(Mesh&& other) noexcept :
-			vao(std::move(other.vao)), vbo(std::move(other.vbo)), ebo(std::move(other.ebo))
+			vao(std::move(other.vao)), vbo(std::move(other.vbo)), ebo(std::move(other.ebo)), indexCount(std::move(other.indexCount)),
+			primitiveMode(std::move(other.primitiveMode))
 		{
 		}
 

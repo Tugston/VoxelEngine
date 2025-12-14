@@ -35,7 +35,7 @@ namespace Engine
 		InitializeEngineRootSystems();
 	 //std::make_shared<Camera::PerspectiveCamera>(glm::vec3(0.f, 0.f, 0.f));
 
-		m_Renderer = std::make_unique<Renderer::Renderer>(m_Window.GetBufferSize(), Renderer::Renderer::RenderTarget::FrameBufferTexture);
+		m_Renderer = std::make_unique<Renderer::Renderer>(m_Window.GetBufferSize(), Renderer::Renderer::RenderTarget::Window);
 	}
 
 	Application::~Application()

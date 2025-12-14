@@ -33,18 +33,21 @@ namespace Engine::Utility
 
         //height is 1.f
 
-        const float circumference = 2 * EG_PI_FLOAT * 0.5f;
+        const float baseRadius = 0.5f;
         const float pointAngles = 2 * EG_PI_FLOAT / sideCount;
 
+
         const Maths::Vector3<float> apexPoint{ 0.f, 0.5f, 0.f };
-        const Maths::Vector3<float> baseCenterPosition = apexPoint - Maths::Vector3{ 0.f, 1.f, 0.f };
+        const Maths::Vector3<float> baseCenterPosition{ 0.f, -0.5f, 0.f }; //apex point - height
+
         const Maths::Vector3<float> coneAxisDirection = Maths::Vector3<float>::Normalize(baseCenterPosition - apexPoint);
 
         //need a cross angle for the cone axis
-       // Maths::Vector3<float> helpDir = coneAxisDirection.Length() < 0.99 ? Maths::Vector3<float>(0.f, 1.f, 0.f) : Maths::Vector3<float>(1.f, 0.f, 0.f);
-        Maths::Vector3<float> helpDir = Maths::Vector3<float>(0.f, 1.f, 0.f);
-        const Maths::Vector3<float> baseRightDir = Maths::Vector3<float>::Normalize(Maths::Vector3<float>::Cross(coneAxisDirection, helpDir.Absolute()));
-        const Maths::Vector3<float> baseForwardDir = Maths::Vector3<float>::Cross(coneAxisDirection, baseRightDir);
+        //this cannot be parrallel
+        Maths::Vector3<float> helpDir = Maths::Vector3<float>(1.f, 0.f, 0.f);
+
+        Maths::Vector3<float> baseRightDir = Maths::Vector3<float>::Normalize(Maths::Vector3<float>::Cross(coneAxisDirection, helpDir));
+        Maths::Vector3<float> baseForwardDir = Maths::Vector3<float>::Cross(coneAxisDirection, baseRightDir);
 
         std::vector<float> vertexData
         {
@@ -53,28 +56,32 @@ namespace Engine::Utility
 
         std::vector<unsigned int> indexes;
 
-        for (UINT16 i = 0; i < sideCount; i++)
+        for (UINT16 i = 1; i <= sideCount; i++)
         {
             const float currentAngle = i * pointAngles;
 
-            const float cosAngle = cos(currentAngle);
-            const Maths::Vector3<float> halfCosRightDir{ 0.5f * baseRightDir.x * cosAngle, 0.5f * baseRightDir.y * cosAngle, 0.5f * baseRightDir.z * cosAngle };
-
-            const float sinAngle = sin(currentAngle);
-            const Maths::Vector3<float> halfSinBaseDir{ 0.5f * sinAngle * baseForwardDir.x, 0.5f * sinAngle * baseForwardDir.y, 0.5f * sinAngle * baseForwardDir.z };
-
-            const Maths::Vector3<float> position = baseCenterPosition + halfCosRightDir + halfSinBaseDir;
+            //base radius is 0.5f
+            const Maths::Vector3<float> position = baseCenterPosition + baseRightDir * baseRadius * std::cos(currentAngle) + baseForwardDir * baseRadius * std::sin(currentAngle);
 
             vertexData.push_back(position.x);
             vertexData.push_back(position.y);
             vertexData.push_back(position.z);
 
-            if (i % 2 == 0 && i != 0)
-            {
-                indexes.push_back(0);
-                indexes.push_back(i);
-                indexes.push_back(i - 1);
-            }
+            indexes.push_back(0);
+            indexes.push_back(i);
+            indexes.push_back((i % sideCount) + 1); //loop around when at sideCount
+        }
+
+        //add the bottom triangles
+        vertexData.push_back(baseCenterPosition.x);
+        vertexData.push_back(baseCenterPosition.y);
+        vertexData.push_back(baseCenterPosition.z);
+
+        for (UINT16 i = 1; i <= sideCount; i++)
+        {
+            indexes.push_back(sideCount + 1); //base center position
+            indexes.push_back(i);
+            indexes.push_back((i % sideCount) + 1);
         }
 
         //now the mesh can finally be setup
@@ -95,6 +102,10 @@ namespace Engine::Utility
         coneMesh.vao.UnBind();
         coneMesh.vbo.UnBind();
         coneMesh.ebo.UnBind();
+
+        //each side has three vertexes
+        //the bottom has side count indexes as well so double it
+        coneMesh.indexCount = sideCount * 6;
 
         return coneMesh;
     }
