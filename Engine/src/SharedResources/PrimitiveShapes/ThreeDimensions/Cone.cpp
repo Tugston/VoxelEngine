@@ -25,7 +25,7 @@ namespace Engine::Utility
 
         if (sideCount < 3)
         {
-            Logger::LogMessage(Logger::LogType::Message, "<Cone.cpp> (Create Cone), Cone has insufficient amount of sides, adjusting to 3");
+            LOG_MSG("<Cone.cpp> (Create Cone) Cone has insufficient amount of sides, adjusting to 3");
             sideCount = 3;
         }
 

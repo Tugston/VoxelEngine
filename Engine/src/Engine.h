@@ -34,6 +34,7 @@
 
 //Base Meshes
 #include	"SharedResources/PrimitiveShapes/ThreeDimensions/Cone.h"
+#include	"SharedResources/PrimitiveShapes/ThreeDimensions/Cyllinder.h"
 
 #include	"SharedResources/PrimitiveShapes/TwoDimensions/Triangle.h"
 #include	"SharedResources/PrimitiveShapes/TwoDimensions/Quad.h"

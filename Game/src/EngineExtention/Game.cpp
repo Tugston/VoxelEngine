@@ -29,10 +29,11 @@ namespace VoxelGame
 
 
 			m_TestObjectOne = std::make_shared<GameObject3D>(m_CurrentScene);
-			m_TestObjectTwo = std::make_shared<GameObject2D>(m_CurrentScene);
+			m_TestObjectTwo = std::make_shared<GameObject3D>(m_CurrentScene);
 			m_TestObjectThree = std::make_shared<GameObject3D>(m_CurrentScene);
 
 			m_TestObjectOne->AddComponent<SpriteComponent>();
+			m_TestObjectTwo->AddComponent<SpriteComponent>();
 			m_TestObjectThree->AddComponent<SpriteComponent>();
 
 			SpriteComponent* scOne = m_TestObjectOne->GetComponent<SpriteComponent>();
@@ -44,22 +45,39 @@ namespace VoxelGame
 				scOne->material.shader->Create();
 			}
 
-			SpriteComponent* scTwo = m_TestObjectThree->GetComponent<SpriteComponent>();
-			TransformComponent3D* tcTwo = m_TestObjectThree->GetComponent<TransformComponent3D>();
-			
-			if (scTwo)
+			SpriteComponent* mcTwo = m_TestObjectTwo->GetComponent<SpriteComponent>();
+			TransformComponent3D* tcTwo = m_TestObjectTwo->GetComponent<TransformComponent3D>();
+
+			if (mcTwo)
 			{
-				scTwo->planeMesh = std::make_shared<Utility::Mesh>(Utility::CreateQuad());
-				scTwo->material.shader = new Shader("TestShader");
-				scTwo->material.shader->Create();
+				mcTwo->planeMesh = std::make_shared<Utility::Mesh>(Utility::CreateCyllinder(6));
+				mcTwo->material.shader = new Shader("TestShader");
+				mcTwo->material.shader->Create();
 			}
 
 			if (tcTwo)
 			{
-				tcTwo->location = Maths::Vector3{ 25.f, 0.f, 0.f };
-				tcTwo->rotation = Maths::Vector3{ 20.f, 10.f, 35.f };
-				tcTwo->scale = Maths::Vector3{ 1.75f, 1.f, 1.2f };
+				tcTwo->location = Maths::Vector3{ 10.f, 0.f, 0.f };
+			}
+
+			SpriteComponent* scThree = m_TestObjectThree->GetComponent<SpriteComponent>();
+			TransformComponent3D* tcThree = m_TestObjectThree->GetComponent<TransformComponent3D>();
+			
+			if (scThree)
+			{
+				scThree->planeMesh = std::make_shared<Utility::Mesh>(Utility::CreateQuad());
+				scThree->material.shader = new Shader("TestShader");
+				scThree->material.shader->Create();
+			}
+
+			if (tcThree)
+			{
+				tcThree->location = Maths::Vector3{ 20.f, 0.f, 0.f };
+				tcThree->rotation = Maths::Vector3{ 20.f, 10.f, 35.f };
+				tcThree->scale = Maths::Vector3{ 1.75f, 1.f, 1.2f };
 			} 
+
+
 
 			Tick();
 		}
@@ -83,23 +101,34 @@ namespace VoxelGame
 
 				//m_Shader->Use();
 				SpriteComponent* sc = m_TestObjectOne->GetComponent<SpriteComponent>();
-				SpriteComponent* sc2 = m_TestObjectThree->GetComponent<SpriteComponent>();
+				SpriteComponent* sc2 = m_TestObjectTwo->GetComponent<SpriteComponent>();
+				SpriteComponent* sc3 = m_TestObjectThree->GetComponent<SpriteComponent>();
 
 				if (sc)
 				{
 					sc->material.shader->Use();
-					sc->material.shader->SetUniformVec3("uColor", m_Color);
+					glm::vec3 red{ 1.f, 0.1f, 0.1f };
+					sc->material.shader->SetUniformVec3("uColor", red);
 					sc->material.shader->SetUniformMat4("uProjection", m_GameCamera->GetProjectionMatrix());
 					sc->material.shader->SetUniformMat4("uView", m_GameCamera->GetViewMatrix());
 				}
 
 				if (sc2)
 				{
-					sc->material.shader->Use();
-					glm::vec3 blue{ 0.1f, 0.1f, 1.f };
-					sc->material.shader->SetUniformVec3("uColor", blue);
+					sc2->material.shader->Use();
+					glm::vec3 green{ 0.1f, 1.f, 0.1f };
+					sc2->material.shader->SetUniformVec3("uColor", green);
 					sc2->material.shader->SetUniformMat4("uProjection", m_GameCamera->GetProjectionMatrix());
 					sc2->material.shader->SetUniformMat4("uView", m_GameCamera->GetViewMatrix());
+				}
+
+				if (sc3)
+				{
+					sc3->material.shader->Use();
+					glm::vec3 blue{ 0.1f, 0.1f, 1.f };
+					sc3->material.shader->SetUniformVec3("uColor", blue);
+					sc3->material.shader->SetUniformMat4("uProjection", m_GameCamera->GetProjectionMatrix());
+					sc3->material.shader->SetUniformMat4("uView", m_GameCamera->GetViewMatrix());
 				}
 
 				if (InputSystem::KeyPressed(EngineKeys::W))
@@ -153,7 +182,7 @@ namespace VoxelGame
 
 		//sample game objects to test the instantiation and everything
 		std::shared_ptr<GameObject3D> m_TestObjectOne;
-		std::shared_ptr<GameObject2D> m_TestObjectTwo;
+		std::shared_ptr<GameObject3D> m_TestObjectTwo;
 		std::shared_ptr<GameObject3D> m_TestObjectThree;
 		
 		std::shared_ptr<Camera::PerspectiveCamera> m_GameCamera;
