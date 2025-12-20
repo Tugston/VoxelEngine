@@ -19,9 +19,9 @@
 
 #include "Core/Maths/InternalMath.h"
 
-#include "Scene/ECS/Components/Renders/Sprite.h"
-#include "Scene/ECS/Components/Renders/Mesh.h"
-#include "Scene/ECS/Components/Renders/InstancedMesh.h"
+#include "Scene/ECS/Components/Renders/SpriteComponent.h"
+#include "Scene/ECS/Components/Renders/MeshComponent.h"
+#include "Scene/ECS/Components/Renders/InstancedMeshComponent.h"
 
 //scene should always be valid in each system
 

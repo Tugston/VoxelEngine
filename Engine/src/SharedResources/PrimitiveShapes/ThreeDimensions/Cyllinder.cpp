@@ -62,11 +62,6 @@ namespace Engine::Utility
 
 		std::vector<unsigned int> indexes;
 
-		//unsigned int topCurrent = 1;
-		//unsigned int botCurrent = 2;
-		//unsigned int topNext = 3;
-		//unsigned int botNext = 4;
-
 		for (int i = 0; i < sideCount; i++)
 		{
 			//there is probably a way to do this pure mathematically

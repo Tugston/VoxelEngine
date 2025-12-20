@@ -44,21 +44,21 @@ namespace Engine::Scene::ECS
 
 	GameObject2D::GameObject2D(std::shared_ptr<Scene> scene): GameObject(scene)
 	{
-		m_TransformComponent = AddComponent<Components::TransformComponent2D>();
-		m_SecondTransformComponent = AddComponent<Components::TransformComponent2D>();
+		AddComponent<Components::TransformComponent2D>();
+	}
+
+	GameObject2D::GameObject2D(std::shared_ptr<Scene> scene, const Components::TransformComponent2D& transform): GameObject(scene)
+	{
+		AddComponent<Components::TransformComponent2D>();
+		Components::TransformComponent2D* transformComp = GetComponent<Components::TransformComponent2D>();
+		transformComp->location = transform.location;
+		transformComp->rotation = transform.rotation;
+		transformComp->scale = transform.scale;
 	}
 
 	GameObject2D::~GameObject2D()
 	{
 
-	}
-
-	void GameObject2D::Start()
-	{
-	}
-
-	void GameObject2D::Tick(float deltaTime)
-	{
 	}
 
 	//**************
@@ -73,20 +73,19 @@ namespace Engine::Scene::ECS
 
 	GameObject3D::GameObject3D(std::shared_ptr<Scene> scene): GameObject(scene)
 	{
-		m_TransformComponent = AddComponent<Components::TransformComponent3D>();
-		//RemoveComponent<Components::TransformComponent3D>(m_TransformComponent);
-		LOG_MSG("Location: {}", m_TransformComponent->location.x);
+		AddComponent<Components::TransformComponent3D>();
+	}
+
+	GameObject3D::GameObject3D(std::shared_ptr<Scene> scene, const Components::TransformComponent3D& transform): GameObject(scene)
+	{
+		AddComponent<Components::TransformComponent3D>();
+		Components::TransformComponent3D* transformComp = GetComponent<Components::TransformComponent3D>();
+		transformComp->location = transform.location;
+		transformComp->rotation = transform.rotation;
+		transformComp->scale = transform.scale;
 	}
 
 	GameObject3D::~GameObject3D()
-	{
-	}
-
-	void GameObject3D::Start()
-	{
-	}
-
-	void GameObject3D::Tick(float deltaTime)
 	{
 	}
 

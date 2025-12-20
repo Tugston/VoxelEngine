@@ -16,16 +16,18 @@
 
 //STND
 #include <typeindex>
+#include <vector>
 
 //ENGINE
 #include "./Core/Core.h"
-#include "./Components/Positionals/Transform.h"
+#include "./Components/Data/TransformComponent.h"
 #include "./Core/Logger.h"
 
 
 namespace Engine::Scene::ECS
 {
 	using EntityID = UINT32;
+	using ComponentTypeID = size_t;
 
 	class Registry
 	{
@@ -33,10 +35,22 @@ namespace Engine::Scene::ECS
 		Registry();
 		~Registry();
 
+		struct ComponentView
+		{
+			ComponentView(ComponentTypeID id, void* data): type(id), data(data) {}
+			ComponentTypeID type;
+			void* data;
+		};
+
 		EntityID CreateEntity()
 		{
 			return m_NextEntityID++;
 		};
+
+		void SetupEntityFamily(EntityID parentEntity)
+		{
+			
+		}
 
 		void DeleteEntity(EntityID entityID)
 		{
@@ -45,17 +59,14 @@ namespace Engine::Scene::ECS
 		}
 
 		template<typename t, typename... Args>
-		t* AddComponent(EntityID entityID, Args&&... args)
+		void AddComponent(EntityID entityID, Args&&... args)
 		{
 			ComponentPool<t>* pool = GetPool<t>();
 		
-			if (pool->HasComponent<t>(entityID))
-			{
-				LOG_WARN("<Registry.h> (AddComponent) Entity [ {} ] already has {} component, returning existing", entityID, typeid(t).name());
-				return pool->GetComponent<t>(entityID);
-			}
+			if (pool->HasComponent(entityID))
+				LOG_WARN("<Registry.h> (AddComponent) Entity [ {} ] already has {} component, adding nothing", entityID, typeid(t).name());
 			
-			return pool->Add(entityID, t(std::forward<Args>(args)...));
+			pool->Add(entityID, t(std::forward<Args>(args)...));
 		}
 		
 		template<typename t>
@@ -63,7 +74,7 @@ namespace Engine::Scene::ECS
 		{
 			ComponentPool<t>* pool = GetPool<t>();
 
-			if (pool->HasComponent<t>(entityID))
+			if (pool->HasComponent(entityID))
 				pool->RemoveComponent(entityID);
 			else
 				LOG_MSG("<Registry.h> (RemoveComponent) Entity [ {} ] does not contain {} component, removed nothing", entityID, typeid(t).name());
@@ -74,7 +85,7 @@ namespace Engine::Scene::ECS
 		{
 			ComponentPool<t>* pool = GetPool<t>();
 
-			if (pool->HasComponent<t>(entityID))
+			if (pool->HasComponent(entityID))
 				return pool->GetComponent<t>(entityID);
 			else
 				LOG_WARN("<Registry.h> (GetComponent) Entity [ {} ] does not contain {} component", entityID, typeid(t).name());
@@ -86,6 +97,9 @@ namespace Engine::Scene::ECS
 			const ComponentPool<t>* pool = GetPool<t>();
 			return &pool->denseEntities;
 		}
+
+		//returns all the components that are on an entity
+		std::vector<ComponentView> GetAllEntityComponents(EntityID entity);
 	
 	protected:
 
@@ -93,8 +107,11 @@ namespace Engine::Scene::ECS
 		public:
 			virtual ~InheritPool() = default;
 
-			//need to add this as the inherit so it can be accessed without the cast
+			//need to add these as the inherit so it can be accessed without the cast
 			virtual void RemoveComponent(EntityID entityID) = 0;
+			virtual bool HasComponent(EntityID entityID) const = 0;
+
+			virtual void* GetRaw(EntityID entityID) = 0;
 		};
 
 		//sparse set implementation that I think works
@@ -147,8 +164,7 @@ namespace Engine::Scene::ECS
 				denseEntities.erase(denseEntities.begin() + i);
 			};
 
-			template<typename t>
-			bool HasComponent(EntityID id) const
+			virtual bool HasComponent(EntityID id) const override
 			{
 				if (id >= sparse.size())
 					return false;
@@ -160,6 +176,22 @@ namespace Engine::Scene::ECS
 			//especially for direct game api stuff (this ultimately gets called from GameObjects)
 			template<typename t>
 			t* GetComponent(EntityID id)
+			{
+				if (id >= sparse.size())
+					return nullptr;
+
+				const int i = sparse[id];
+
+				if (i < denseEntities.size() && denseEntities[i] == id)
+					return &denseComponents[i];
+
+				//not found
+				return nullptr;
+			}
+
+			//this function operates the same as GetComponent, but it just returns the raw memory ptr
+			//this is meant to be injected into a ComponentView, so if you are not using that then you should use GetComponent() instead
+			virtual void* GetRaw(EntityID id) override
 			{
 				if (id >= sparse.size())
 					return nullptr;

@@ -36,15 +36,20 @@ namespace Engine::Scene
 		ECS::EntityID RegisterObject();
 
 		template<typename t, typename... Args>
-		t* RegisterComponent(ECS::EntityID id, Args&&... args)
+		void RegisterComponent(ECS::EntityID id, Args&&... args)
 		{
-			return m_Registry->AddComponent<t>(id, std::forward<Args>(args)...);
+			m_Registry->AddComponent<t>(id, std::forward<Args>(args)...);
 		}
 
 		template<typename t>
 		void DestroyComponent(ECS::EntityID id)
 		{
 			m_Registry->RemoveComponent<t>(id);
+		}
+
+		void DeleteEntity(ECS::EntityID id)
+		{
+			m_Registry->DeleteEntity(id);
 		}
 
 		template<typename t>

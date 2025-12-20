@@ -13,10 +13,13 @@
 * See License in root directory for additional details.
 */
 #pragma once
+
+//ENGN
 #include "./Core/Maths/Math.h"
 
 namespace Engine::Scene::ECS::Components
 {
+
 	struct TransformComponent2D
 	{
 		Maths::Vector2<float> location{ 0.f, 0.f};

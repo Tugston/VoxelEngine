@@ -24,12 +24,16 @@ namespace Engine::Scene::ECS
 
 	}
 
-//	void Registry::CreateEntity(UINT32 entityID)
-	//{
-	//}
+	std::vector<Registry::ComponentView> Registry::GetAllEntityComponents(EntityID entity)
+	{
+		std::vector<ComponentView> list;
 
-	//void Registry::RemoveEntity(UINT32 entityID)
-//	{
-	//}
+		for (auto& [key, pool] : m_Components)
+		{
+			if (pool->HasComponent(entity))
+				list.push_back(ComponentView{key.hash_code(), pool->GetRaw(entity)});
+		}
 
+		return list;
+	}
 }

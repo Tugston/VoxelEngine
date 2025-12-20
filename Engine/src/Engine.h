@@ -27,10 +27,10 @@
 
 
 //components
-#include	"Scene/ECS/Components/Positionals/Transform.h"
-#include	"Scene/ECS/Components/Renders/Sprite.h"
-#include	"Scene/ECS/Components/Renders/Mesh.h"
-#include	"Scene/ECS/Components/Renders/InstancedMesh.h"
+#include	"Scene/ECS/Components/Data/TransformComponent.h"
+#include	"Scene/ECS/Components/Renders/SpriteComponent.h"
+#include	"Scene/ECS/Components/Renders/MeshComponent.h"
+#include	"Scene/ECS/Components/Renders/InstancedMeshComponent.h"
 
 //Base Meshes
 #include	"SharedResources/PrimitiveShapes/ThreeDimensions/Cone.h"
