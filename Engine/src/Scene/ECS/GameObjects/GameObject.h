@@ -20,6 +20,13 @@
 
 #include "Scene/ECS/Components/Data/TransformComponent.h"
 
+//maybe there is a better place for this, I might add some default engine settings or something
+//so then this can be easily customizable in engine preferences or something?
+//but right now, just going to be a macro here until there are more default settings
+#ifndef DEFAULT_COLOR
+#define DEFAULT_COLOR glm::vec3{0.9f, 0.7f, 0.5f}
+#endif
+
 namespace Engine::Scene::ECS
 {
 	class GameObject

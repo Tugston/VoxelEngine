@@ -22,21 +22,31 @@ namespace Engine::Utility
         Mesh triangleMesh;
 
         std::vector<float> vertexData = {
-            0.5f, 0.f, 0.f,
-            -0.5f, 0.f, 0.f,
-            0.f, 0.5f, 0.f
+             0.5f, -0.5f, 0.0f,
+            -0.5f, -0.5f, 0.0f,
+             0.0f,  0.5f, 0.0f
         };
 
         std::vector<unsigned int> indexData = {
-            0, 1, 3
+            0, 1, 2
         };
 
-        triangleMesh.vao.Bind();
+        triangleMesh.Create();
+
+        triangleMesh.vbo.Bind();
         triangleMesh.vbo.BufferData(vertexData, GL_STATIC_DRAW);
+
+        triangleMesh.ebo.Bind();
         triangleMesh.ebo.BufferData(indexData, GL_STATIC_DRAW);
+
+        triangleMesh.vao.Bind();
 
         Renderer::AttribData atributeData = { Renderer::ShaderDataType::Float3 }; //just use defaults
         triangleMesh.vao.SetAttribData(0, atributeData, triangleMesh.vbo, triangleMesh.ebo);
+
+        triangleMesh.vao.UnBind();
+        triangleMesh.ebo.UnBind();
+        triangleMesh.vbo.UnBind();
 
         triangleMesh.indexCount = 3;
 

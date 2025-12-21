@@ -22,6 +22,10 @@ namespace Engine::Scene::ECS::Components
 
 	struct TransformComponent2D
 	{
+		TransformComponent2D() = default;
+		TransformComponent2D(Maths::Vector2<float> location, Maths::Vector2<float> rotation, Maths::Vector2<float> scale) :
+			location(location), rotation(rotation), scale(scale) {}
+
 		Maths::Vector2<float> location{ 0.f, 0.f};
 		Maths::Vector2<float> rotation{ 0.f, 0.f };
 		Maths::Vector2<float> scale{ 1.f, 1.f };
@@ -29,6 +33,10 @@ namespace Engine::Scene::ECS::Components
 
 	struct TransformComponent3D
 	{
+		TransformComponent3D() = default;
+		TransformComponent3D(Maths::Vector3<float> location, Maths::Vector3<float> rotation, Maths::Vector3<float> scale) :
+			location(location), rotation(rotation), scale(scale) {}
+
 		Maths::Vector3<float> location{ 0.f, 0.f, 0.f };
 		Maths::Vector3<float> rotation{ 0.f, 0.f, 0.f };
 		Maths::Vector3<float> scale{ 1.f, 1.f, 1.f };

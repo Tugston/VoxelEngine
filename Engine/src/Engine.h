@@ -24,9 +24,10 @@
 
 //add all the default game objects
 #include	"Scene/ECS/GameObjects/GameObject.h"	//Base Game Objects for 2D and 3D
+#include	"Scene/ECS/GameObjects/SpriteObject.h"	//Game Objects with Sprites already setup
+#include	"Scene/ECS/GameObjects/MeshObject.h"	//Game Object that has Meshes already setup
 
-
-//components
+//Components
 #include	"Scene/ECS/Components/Data/TransformComponent.h"
 #include	"Scene/ECS/Components/Renders/SpriteComponent.h"
 #include	"Scene/ECS/Components/Renders/MeshComponent.h"
@@ -39,10 +40,9 @@
 #include	"SharedResources/PrimitiveShapes/TwoDimensions/Triangle.h"
 #include	"SharedResources/PrimitiveShapes/TwoDimensions/Quad.h"
 
-//testing
+//TESTING
 #include	"SharedResources/GenericResources/Shader.h"
 #include	"Core/Cameras/PerspectiveCamera.h"
-
 
 //VENDOR
 #include	"glm/glm.hpp"

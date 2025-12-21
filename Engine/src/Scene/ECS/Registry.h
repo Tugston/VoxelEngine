@@ -32,9 +32,6 @@ namespace Engine::Scene::ECS
 	class Registry
 	{
 	public:
-		Registry();
-		~Registry();
-
 		struct ComponentView
 		{
 			ComponentView(ComponentTypeID id, void* data): type(id), data(data) {}
@@ -137,7 +134,7 @@ namespace Engine::Scene::ECS
 
 			//returns the component back
 			//the existing check is done in the registry itself, felt it was slightly better to do it there
-			t* Add(EntityID entityID, const t& componentData)
+			void Add(EntityID entityID, const t& componentData)
 			{
 				if (sparse.size() <= entityID)
 					sparse.resize(entityID + 1, 0);
@@ -145,8 +142,6 @@ namespace Engine::Scene::ECS
 				denseComponents.push_back(componentData);
 				denseEntities.push_back(entityID);
 				sparse[entityID] = denseComponents.size() - 1;
-
-				return &denseComponents.back();
 			}
 
 			virtual void RemoveComponent(EntityID entityID) override

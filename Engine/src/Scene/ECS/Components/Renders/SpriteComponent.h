@@ -22,6 +22,9 @@ namespace Engine::Scene::ECS::Components
 {
 	struct SpriteComponent
 	{
+		SpriteComponent() = default;
+		SpriteComponent(std::shared_ptr<Utility::Mesh> mesh, Utility::Material mat): planeMesh(mesh), material(mat) {}
+
 		std::shared_ptr<Utility::Mesh> planeMesh;
 		Utility::Material material;
 	};

@@ -26,6 +26,10 @@ namespace Engine::Scene::ECS::Components
 
 	struct HierarchyComponent
 	{
+		HierarchyComponent() = default;
+		HierarchyComponent(UINT32 parent, UINT32 firstChild, UINT32 nextSibling):
+			parentEntity(parent), firstChildEntity(firstChild), nextSiblingEntity(nextSibling) {}
+
 		UINT32 parentEntity		 = INVALID_ENTITY;
 		UINT32 firstChildEntity	 = INVALID_ENTITY;
 		UINT32 nextSiblingEntity = INVALID_ENTITY;

@@ -19,12 +19,25 @@
 
 namespace Engine::Scene::ECS
 {
-	class SpriteObject : public GameObject3D
+	enum class SpriteType: UINT8
+	{
+		QUAD_MESH = 0,
+		TRIANGLE_MESH
+	};
+
+	class SpriteObject2D : public GameObject2D
 	{
 	public:
-		SpriteObject(std::shared_ptr<Scene> scene);
-		SpriteObject(std::shared_ptr<Scene> scene, Components::SpriteComponent sprite);
-		SpriteObject(std::shared_ptr<Scene> scene, Components::SpriteComponent sprite, Components::TransformComponent3D transform);
-		~SpriteObject();
+		SpriteObject2D(std::shared_ptr<Scene> scene, SpriteType type = SpriteType::QUAD_MESH);
+
+		SpriteObject2D(std::shared_ptr<Scene> scene, Components::TransformComponent2D transform, SpriteType type = SpriteType::QUAD_MESH);
+	};
+
+	class SpriteObject3D : public GameObject3D
+	{
+	public:
+		SpriteObject3D(std::shared_ptr<Scene> scene, SpriteType type = SpriteType::QUAD_MESH);
+
+		SpriteObject3D(std::shared_ptr<Scene> scene, Components::TransformComponent3D transform, SpriteType type = SpriteType::QUAD_MESH);
 	};
 }

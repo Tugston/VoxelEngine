@@ -28,48 +28,23 @@ namespace VoxelGame
 			Application::Start();
 
 
-			m_TestObjectOne = std::make_shared<GameObject3D>(m_CurrentScene);
-			m_TestObjectTwo = std::make_shared<GameObject3D>(m_CurrentScene);
-			m_TestObjectThree = std::make_shared<GameObject3D>(m_CurrentScene);
+			m_TestObjectOne = std::make_shared<MeshObject>(m_CurrentScene, MeshType::CONE_MESH, 8);
+			m_TestObjectTwo = std::make_shared<MeshObject>(m_CurrentScene, MeshType::CYLINDER_MESH, 15);
+			m_TestObjectThree = std::make_shared<SpriteObject3D>(m_CurrentScene);
 
-			m_TestObjectOne->AddComponent<SpriteComponent>();
-			m_TestObjectTwo->AddComponent<SpriteComponent>();
-			m_TestObjectThree->AddComponent<SpriteComponent>();
+			MeshComponent* mcOne = m_TestObjectOne->GetComponent<MeshComponent>();
+			if (mcOne)
+				mcOne->material.shader->SetUniformVec3("uColor", { 1.f, 0.1f, 0.1f });
 
-			SpriteComponent* scOne = m_TestObjectOne->GetComponent<SpriteComponent>();
-			TransformComponent3D* tcOne = m_TestObjectOne->GetComponent<TransformComponent3D>();
-			if (scOne)
-			{
-				scOne->planeMesh = std::make_shared<Utility::Mesh>(Utility::CreateCone(6));
-				scOne->material.shader = new Shader("TestShader");
-				scOne->material.shader->Create();
-			}
-
-			SpriteComponent* mcTwo = m_TestObjectTwo->GetComponent<SpriteComponent>();
 			TransformComponent3D* tcTwo = m_TestObjectTwo->GetComponent<TransformComponent3D>();
-
-			if (mcTwo)
-			{
-				mcTwo->planeMesh = std::make_shared<Utility::Mesh>(Utility::CreateCyllinder(6));
-				mcTwo->material.shader = new Shader("TestShader");
-				mcTwo->material.shader->Create();
-			}
-
 			if (tcTwo)
-			{
 				tcTwo->location = Maths::Vector3{ 10.f, 0.f, 0.f };
-			}
 
-			SpriteComponent* scThree = m_TestObjectThree->GetComponent<SpriteComponent>();
+			MeshComponent* mcTwo = m_TestObjectTwo->GetComponent<MeshComponent>();
+			if (mcTwo)
+				mcTwo->material.shader->SetUniformVec3("uColor", { 0.1f, 1.f, 0.1f });
+
 			TransformComponent3D* tcThree = m_TestObjectThree->GetComponent<TransformComponent3D>();
-			
-			if (scThree)
-			{
-				scThree->planeMesh = std::make_shared<Utility::Mesh>(Utility::CreateQuad());
-				scThree->material.shader = new Shader("TestShader");
-				scThree->material.shader->Create();
-			}
-
 			if (tcThree)
 			{
 				tcThree->location = Maths::Vector3{ 20.f, 0.f, 0.f };
@@ -77,7 +52,9 @@ namespace VoxelGame
 				tcThree->scale = Maths::Vector3{ 1.75f, 1.f, 1.2f };
 			} 
 
-
+			SpriteComponent* scThree = m_TestObjectThree->GetComponent<SpriteComponent>();
+			if (scThree)
+				scThree->material.shader->SetUniformVec3("uColor", { 0.1f, 0.1f, 1.f });
 
 			Tick();
 		}
@@ -85,52 +62,7 @@ namespace VoxelGame
 		virtual void Tick() override
 		{
 			while (m_Running)
-			{
-
-				//ALL TEST STUFF
-				/*
-				Debug::UI::Refresh();
-				Debug::UI::BeginUI("Engine Menu", false);
-				Debug::UI::AddElement<std::string, glm::vec3>(Debug::ElementType::ColorEdit3, "Color", &m_Color);
-				Debug::UI::AddElement<std::string, float>(Debug::ElementType::InputFloat, "Camera Rot Sensitivity",
-					&m_Camera->GetSettings()->sensitivity, 0.005f, 1.f, "%.005f", 0);
-				Debug::UI::AddElement<std::string, float>(Debug::ElementType::InputFloat, "Camera Move Speed",
-					&m_Camera->GetSettings()->speed, 0.f, 3.f, "%.01f", 0);
-				Debug::UI::EndUI(); */
-
-
-				//m_Shader->Use();
-				SpriteComponent* sc = m_TestObjectOne->GetComponent<SpriteComponent>();
-				SpriteComponent* sc2 = m_TestObjectTwo->GetComponent<SpriteComponent>();
-				SpriteComponent* sc3 = m_TestObjectThree->GetComponent<SpriteComponent>();
-
-				if (sc)
-				{
-					sc->material.shader->Use();
-					glm::vec3 red{ 1.f, 0.1f, 0.1f };
-					sc->material.shader->SetUniformVec3("uColor", red);
-					sc->material.shader->SetUniformMat4("uProjection", m_GameCamera->GetProjectionMatrix());
-					sc->material.shader->SetUniformMat4("uView", m_GameCamera->GetViewMatrix());
-				}
-
-				if (sc2)
-				{
-					sc2->material.shader->Use();
-					glm::vec3 green{ 0.1f, 1.f, 0.1f };
-					sc2->material.shader->SetUniformVec3("uColor", green);
-					sc2->material.shader->SetUniformMat4("uProjection", m_GameCamera->GetProjectionMatrix());
-					sc2->material.shader->SetUniformMat4("uView", m_GameCamera->GetViewMatrix());
-				}
-
-				if (sc3)
-				{
-					sc3->material.shader->Use();
-					glm::vec3 blue{ 0.1f, 0.1f, 1.f };
-					sc3->material.shader->SetUniformVec3("uColor", blue);
-					sc3->material.shader->SetUniformMat4("uProjection", m_GameCamera->GetProjectionMatrix());
-					sc3->material.shader->SetUniformMat4("uView", m_GameCamera->GetViewMatrix());
-				}
-
+			{		
 				if (InputSystem::KeyPressed(EngineKeys::W))
 				{
 					m_GameCamera->ProcessLocation(Camera::EditorCamera::MoveDirection::Forward, GetDeltaTime());
@@ -181,9 +113,9 @@ namespace VoxelGame
 		Shader* m_Shader;
 
 		//sample game objects to test the instantiation and everything
-		std::shared_ptr<GameObject3D> m_TestObjectOne;
-		std::shared_ptr<GameObject3D> m_TestObjectTwo;
-		std::shared_ptr<GameObject3D> m_TestObjectThree;
+		std::shared_ptr<MeshObject> m_TestObjectOne;
+		std::shared_ptr<MeshObject> m_TestObjectTwo;
+		std::shared_ptr<SpriteObject3D> m_TestObjectThree;
 		
 		std::shared_ptr<Camera::PerspectiveCamera> m_GameCamera;
 		

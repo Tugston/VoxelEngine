@@ -23,6 +23,8 @@
 #include "Scene/ECS/Components/Renders/MeshComponent.h"
 #include "Scene/ECS/Components/Renders/InstancedMeshComponent.h"
 
+#include "Core/Application.h"
+
 //scene should always be valid in each system
 
 namespace Engine::Scene::ECS::Systems
@@ -30,6 +32,7 @@ namespace Engine::Scene::ECS::Systems
 	void SysRenderOpaqueMesh(const std::shared_ptr<Engine::Scene::Scene> scene, Renderer::Renderer* renderer)
 	{
 		const std::vector<EntityID>* spriteEntities = scene->GetAllEntitiesWithComponent<Components::SpriteComponent>();
+		const std::vector<EntityID>* meshEntities = scene->GetAllEntitiesWithComponent<Components::MeshComponent>();
 
 		//not worrying about 2d just yet
 		for (size_t i = 0; i < spriteEntities->size(); i++)
@@ -42,10 +45,36 @@ namespace Engine::Scene::ECS::Systems
 				LOG_ERROR("<RenderSystems> (SysRenderOpaqueMesh) Sprite or Transform Component invalid!");
 				continue;
 			}
+			
+			//need to do this globally per frame eventually, just tossing it here for simplicity
+			sprite->material.shader->Use();
+			sprite->material.shader->SetUniformMat4("uProjection", Application::GetCamera()->GetProjectionMatrix());
+			sprite->material.shader->SetUniformMat4("uView", Application::GetCamera()->GetViewMatrix());
 
 			glm::mat4 modelMatrix = Maths::Transform3DToModelMatrix(transform->location, transform->rotation, transform->scale);
 			
 			Renderer::MeshObject mo { modelMatrix, sprite->planeMesh.get(), &sprite->material, 0};
+			renderer->SubmitObject(mo);
+		}
+
+		for (size_t i = 0; i < meshEntities->size(); i++)
+		{
+			const Components::MeshComponent* mesh = scene->GetObjectComponent<Components::MeshComponent>(meshEntities->at(i));
+			const Components::TransformComponent3D* transform = scene->GetObjectComponent<Components::TransformComponent3D>(meshEntities->at(i));
+
+			if (mesh == nullptr || transform == nullptr)
+			{
+				LOG_ERROR("<RenderSystems> (SysRenderOpaqueMesh) Mesh or Transform Component invalid!");
+				continue;
+			}
+
+			mesh->material.shader->Use();
+			mesh->material.shader->SetUniformMat4("uProjection", Application::GetCamera()->GetProjectionMatrix());
+			mesh->material.shader->SetUniformMat4("uView", Application::GetCamera()->GetViewMatrix());
+
+			glm::mat4 modelMatric = Maths::Transform3DToModelMatrix(transform->location, transform->rotation, transform->scale);
+
+			Renderer::MeshObject mo{ modelMatric, mesh->mesh.get(), &mesh->material, 0 };
 			renderer->SubmitObject(mo);
 		}
 

@@ -14,16 +14,6 @@
 
 namespace Engine::Scene::ECS
 {
-	Registry::Registry()
-	{
-
-	}
-
-	Registry::~Registry()
-	{
-
-	}
-
 	std::vector<Registry::ComponentView> Registry::GetAllEntityComponents(EntityID entity)
 	{
 		std::vector<ComponentView> list;
