@@ -17,6 +17,7 @@
 #include "Core/Layers/LayerStack.h"
 #include "Maths/InternalMath.h"
 #include "Scene/ECS/Systems/RenderSystems.h"
+#include "Scene/ECS/Systems/ScriptSystem.h"
 
 //this cpp file is a mess, and will always be, using the find tool (ctrl-f) is advised
 
@@ -33,28 +34,31 @@ namespace Engine
 		s_Instance = this;
 		srand(time(NULL));
 		InitializeEngineRootSystems();
-	 //std::make_shared<Camera::PerspectiveCamera>(glm::vec3(0.f, 0.f, 0.f));
 
 		m_Renderer = std::make_unique<Renderer::Renderer>(m_Window.GetBufferSize(), Renderer::Renderer::RenderTarget::Window);
+
+		//EVERYTHING PAST THIS POINT SHOULD BE VERIFIED TO BE WORKING
+
+		LOG_WARN("Engine Successfully Started!");
+		
+		m_Window.SetFrameSize(m_Renderer->Resize(m_Camera.lock().get())); //send the resize function to the window for resize callback
+		
+		//setup a test level for the engine
+		//can obviously be overridden later in the app
+		CreateLevel("Test Level");
 	}
 
 	Application::~Application()
 	{
 		glfwTerminate();
 		LayerStack::Destroy();
-		Logger::LogMessage(Logger::LogType::Critical, "Application Stopped!");
+		LOG_MESSAGE("Application Stopped!");
 	}
 
 	void Application::Start()
-	{
-		Logger::LogMessage(Logger::LogType::Warning, "Started!");
-
-		m_Window.SetFrameSize(m_Renderer->Resize(m_Camera.lock().get())); //send the resize function to the window for resize callback
-
-
-		//create a level for the engine to automatically use
-		//can obviously be overwrote in the game app
-		CreateLevel("Test Level");
+	{		
+		Systems::SysOnScriptConstruct(m_CurrentScene);
+		Systems::SysOnScriptStart(m_CurrentScene);
 	}
 
 	void Application::Tick()
@@ -63,6 +67,8 @@ namespace Engine
 		ProcessInput();
 		InputSystem::MouseIdleDetection(m_DeltaTime);
 		InputSystem::SetPreviousMousePos(InputSystem::GetMousePos());
+
+		Systems::SysOnScriptTick(m_CurrentScene, GetDeltaTime());
 
 		m_Window.PollEvents();
 		Draw(GetDeltaTime());

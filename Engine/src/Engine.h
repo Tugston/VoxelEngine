@@ -19,16 +19,19 @@
 //ENGINE
 #include	"Core/Application.h"	//Required Application Class
 #include	"Core/Logger.h"			//Logging System
+#include	"Core/ScriptModule.h"	//Scripting System
 #include	"Input/Input.h"			//Input System
 #include	"Scene/Scene.h"			//Level / Scene (scene includes ecs registry which includes all components)
 
 //add all the default game objects
-#include	"Scene/ECS/GameObjects/GameObject.h"	//Base Game Objects for 2D and 3D
-#include	"Scene/ECS/GameObjects/SpriteObject.h"	//Game Objects with Sprites already setup
-#include	"Scene/ECS/GameObjects/MeshObject.h"	//Game Object that has Meshes already setup
+#include	"Scene/ECS/GameObjects/GameObject.h"		//Base Game Objects for 2D and 3D
+#include	"Scene/ECS/GameObjects/SpriteObject.h"		//Game Objects with Sprites already setup
+#include	"Scene/ECS/GameObjects/MeshObject.h"		//Game Object that has Meshes already setup
+#include	"Scene/ECS/GameObjects/ScriptableObject.h"	//Game Objects that pretty much just add a script to all other object types
 
 //Components
 #include	"Scene/ECS/Components/Data/TransformComponent.h"
+#include	"Scene/ECS/Components/Data/ScriptComponent.h"
 #include	"Scene/ECS/Components/Renders/SpriteComponent.h"
 #include	"Scene/ECS/Components/Renders/MeshComponent.h"
 #include	"Scene/ECS/Components/Renders/InstancedMeshComponent.h"

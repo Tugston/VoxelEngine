@@ -29,7 +29,6 @@ namespace Engine::Scene::ECS
 	{
 	public:
 		SpriteObject2D(std::shared_ptr<Scene> scene, SpriteType type = SpriteType::QUAD_MESH);
-
 		SpriteObject2D(std::shared_ptr<Scene> scene, Components::TransformComponent2D transform, SpriteType type = SpriteType::QUAD_MESH);
 	};
 
@@ -37,7 +36,6 @@ namespace Engine::Scene::ECS
 	{
 	public:
 		SpriteObject3D(std::shared_ptr<Scene> scene, SpriteType type = SpriteType::QUAD_MESH);
-
 		SpriteObject3D(std::shared_ptr<Scene> scene, Components::TransformComponent3D transform, SpriteType type = SpriteType::QUAD_MESH);
 	};
 }

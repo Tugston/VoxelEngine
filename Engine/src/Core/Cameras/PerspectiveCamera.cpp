@@ -72,7 +72,7 @@ namespace Engine::Camera
 		const glm::vec2 calculatedDelta = mouseDelta * m_Settings.sensitivity;
 
 		m_EulerRotation.y += calculatedDelta.x;
-		m_EulerRotation.x += calculatedDelta.y;
+		m_EulerRotation.x += calculatedDelta.y * ((constrainPitch * -2) + 1); //add the one to offset multiplying by 0, which also requires a -2
 
 		if (constrainPitch)
 		{
