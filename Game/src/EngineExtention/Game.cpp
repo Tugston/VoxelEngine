@@ -16,7 +16,8 @@
 #include<Engine.h>
 #include<Core/EntryPoint.h> //entry point
 
-#include "../MovementScript.h";
+#include "../MovementScript.h"
+#include "../BaseColorFlashScript.h"
 
 namespace VoxelGame
 {
@@ -39,7 +40,8 @@ namespace VoxelGame
 			m_TestObjectOne = std::make_shared<ScriptableMeshObject>(m_CurrentScene, std::make_shared<MovementScript>(0.1f), MeshType::CONE_MESH, (UINT16)5);
 
 			m_TestObjectTwo = std::make_shared<ScriptableMeshObject>(m_CurrentScene, std::make_shared<MovementScript>(1.f), MeshType::CYLINDER_MESH, (UINT16)15);
-			//m_TestObjectThree = std::make_shared<ScriptableSpriteObject3D>(m_CurrentScene, std::make_unique<MovementScript>(-0.1f));
+			
+			m_TestObjectThree = std::make_shared<ScriptableSpriteObject3D>(m_CurrentScene, std::make_shared<MovementScript>(-0.1f));
 
 			MeshComponent* mcOne = m_TestObjectOne->GetComponent<MeshComponent>();
 			if (mcOne)
@@ -52,6 +54,10 @@ namespace VoxelGame
 			TransformComponent3D* tcTwo = m_TestObjectTwo->GetComponent<TransformComponent3D>();
 			if (tcTwo)
 				tcTwo->location.x = 10.f;
+
+			ScriptComponent* scThree = m_TestObjectThree->GetComponent<ScriptComponent>();
+			if (scThree)
+				scThree->AddScript(std::make_shared<BaseColorFlashScript>(Maths::Vector3<float>{1.f, 0.f, 0.f}));
 
 		//	TransformComponent3D* tcThree = m_TestObjectThree->GetComponent<TransformComponent3D>();
 		//	if (tcThree)
@@ -122,7 +128,7 @@ namespace VoxelGame
 		//sample game objects to test the instantiation and everything
 		std::shared_ptr<ScriptableMeshObject> m_TestObjectOne;
 		std::shared_ptr<ScriptableMeshObject> m_TestObjectTwo;
-		//std::shared_ptr<ScriptableSpriteObject3D> m_TestObjectThree;
+		std::shared_ptr<ScriptableSpriteObject3D> m_TestObjectThree;
 		
 		std::shared_ptr<Camera::PerspectiveCamera> m_GameCamera;
 		

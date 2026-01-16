@@ -22,6 +22,8 @@
 
 namespace Engine::Scene::ECS::Components
 {
+	//setting script modules to shared pointers 
+	//so it can be accessed by systems and copied
 
 	struct ScriptComponent
 	{
@@ -34,7 +36,7 @@ namespace Engine::Scene::ECS::Components
 		ScriptComponent(std::shared_ptr<ScriptModule> script, GameObject* owner):
 			owner(owner)
 		{
-			AddScript(script);
+			AddScript(std::move(script));
 		}
 
 		//breaking Component architecture here, but its just extrapolating the vector

@@ -20,6 +20,7 @@
 #include	"Core/Application.h"	//Required Application Class
 #include	"Core/Logger.h"			//Logging System
 #include	"Core/ScriptModule.h"	//Scripting System
+#include	"Core/RandNumGen.h"		//Random Number Generator
 #include	"Input/Input.h"			//Input System
 #include	"Scene/Scene.h"			//Level / Scene (scene includes ecs registry which includes all components)
 

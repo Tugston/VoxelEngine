@@ -18,6 +18,8 @@
 #include "SpriteObject.h"
 #include "Scene/ECS/Components/Data/ScriptComponent.h"
 
+//script module is shared pointer for the ECS to access it easier
+
 namespace Engine::Scene::ECS
 {
 	class ScriptableObject2D : public GameObject2D

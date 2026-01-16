@@ -15,6 +15,7 @@
 //ENGINE
 #include "Core/Logger.h"
 #include "Core/Layers/LayerStack.h"
+#include "Core/RandNumGen.h"
 #include "Maths/InternalMath.h"
 #include "Scene/ECS/Systems/RenderSystems.h"
 #include "Scene/ECS/Systems/ScriptSystem.h"
@@ -32,7 +33,6 @@ namespace Engine
 		m_Window("Voxel Game"), m_CurrentScene(nullptr)
 	{
 		s_Instance = this;
-		srand(time(NULL));
 		InitializeEngineRootSystems();
 
 		m_Renderer = std::make_unique<Renderer::Renderer>(m_Window.GetBufferSize(), Renderer::Renderer::RenderTarget::Window);
@@ -135,6 +135,7 @@ namespace Engine
 		InitializeCheck(InputSystem::Init(), "Input System");
 		InitializeCheck(LayerStack::Init(), "Layer Stack");
 		//InitializeCheck(Debug::UI::Init(), "Debug UI");
+		InitializeCheck(Utility::InitializeRandomGenerators(), "Random Number Generator");
 	}
 
 	void Application::ProcessInput() const
