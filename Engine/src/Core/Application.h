@@ -37,7 +37,12 @@ namespace Engine
 	{
 	public:
 		Application();
+		Application(std::string_view applicationName);
+		Application(Renderer::Renderer::RenderTarget renderTarget);
+		Application(std::string_view applicationName, Renderer::Renderer::RenderTarget renderTarget);
 		~Application();
+	private:
+		void Initialize();
 	
 		//*************//
 		//*ENGINE API*//
@@ -96,8 +101,9 @@ namespace Engine
 		//this needs to be controlled by the scene manager eventually
 		std::shared_ptr<Scene::Scene> m_CurrentScene; //heap allocate; scene will contain a lot of stuff and wont be unloaded and reloaded frequently
 			
-		//Editor Specifics
+		//Editor Specifics & MetaData
 		unsigned int GetRenderScreenTexture() { return m_Renderer->GetRenderTexture(); }
+		const std::string_view GetWindowName() { return m_Window.GetName(); }
 
 	private:
 		float m_DeltaTime = 0;

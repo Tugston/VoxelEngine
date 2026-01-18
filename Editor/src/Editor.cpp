@@ -15,7 +15,7 @@
 
 namespace Editor
 {		
-	EditorApplication::EditorApplication() : m_CurrentMode(EditorMode::PanelFocus), Application()
+	EditorApplication::EditorApplication() : m_CurrentMode(EditorMode::PanelFocus), Application("Viper Editor", Engine::Renderer::Renderer::RenderTarget::FrameBufferTexture)
 	{
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -27,11 +27,10 @@ namespace Editor
 		const bool success = ImGui_ImplGlfw_InitForOpenGL(Application::GetWindow()->GetGLFWWindow(), true) &&
 			ImGui_ImplOpenGL3_Init("#version 410");
 
-
 		if (success)
-			LOG_MSG("Application Successfully Initialized!");
+			LOG_MSG("Editor Successfully Initialized!");
 		else
-			LOG_CRIT("Application Not Initialized!");
+			LOG_CRIT("Editor Failed to Initialize!");
 
 		m_TestSlot = new FloatSlot("Test Float", &m_TestFloat);
 		m_TransformTable = new TransformTable3D<float>(&m_TestTransform, &m_TestTransform, &m_TestTransform);

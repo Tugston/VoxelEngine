@@ -29,23 +29,33 @@ namespace Engine
 	//instantiate static reference
 	Application* Application::s_Instance = nullptr;
 
+	//set the render target to window for the game application
+	//the editor overrides it, so if a new editor is ever built need to take this into consideration 
+
 	Application::Application() :
-		m_Window("Voxel Game"), m_CurrentScene(nullptr)
+		m_Window("Voxel Game"), m_CurrentScene(nullptr), m_Renderer(std::make_unique<Renderer::Renderer>(m_Window.GetBufferSize(), Renderer::Renderer::RenderTarget::Window))
 	{
-		s_Instance = this;
-		InitializeEngineRootSystems();
+		Initialize();
+	}
 
-		m_Renderer = std::make_unique<Renderer::Renderer>(m_Window.GetBufferSize(), Renderer::Renderer::RenderTarget::Window);
+	Application::Application(std::string_view applicationName) :
+		m_Window(applicationName.data()), m_CurrentScene(nullptr), m_Renderer(std::make_unique<Renderer::Renderer>(m_Window.GetBufferSize(), Renderer::Renderer::RenderTarget::Window))
+	{
+		Initialize();
+	}
 
-		//EVERYTHING PAST THIS POINT SHOULD BE VERIFIED TO BE WORKING
+	//IGNORE THIS CONSTRUCTOR UNLESS YOU EXPLICITLY NEED A DIFFERENT RENDER TARGET
+	Application::Application(Renderer::Renderer::RenderTarget renderTarget) :
+		m_Window("Voxel Game"), m_CurrentScene(nullptr), m_Renderer(std::make_unique<Renderer::Renderer>(m_Window.GetBufferSize(), renderTarget))
+	{
+		Initialize();
+	}
 
-		LOG_WARN("Engine Successfully Started!");
-		
-		m_Window.SetFrameSize(m_Renderer->Resize(m_Camera.lock().get())); //send the resize function to the window for resize callback
-		
-		//setup a test level for the engine
-		//can obviously be overridden later in the app
-		CreateLevel("Test Level");
+	//IGNORE THIS CONSTRUCTOR UNLESS YOU EXPLICITLY NEED A DIFFERENT RENDER TARGET
+	Application::Application(std::string_view applicationName, Renderer::Renderer::RenderTarget renderTarget) :
+		m_Window(applicationName.data()), m_CurrentScene(nullptr), m_Renderer(std::make_unique<Renderer::Renderer>(m_Window.GetBufferSize(), renderTarget))
+	{
+		Initialize();
 	}
 
 	Application::~Application()
@@ -53,6 +63,24 @@ namespace Engine
 		glfwTerminate();
 		LayerStack::Destroy();
 		LOG_MESSAGE("Application Stopped!");
+	}
+
+	void Application::Initialize()
+	{
+		s_Instance = this;
+		InitializeEngineRootSystems();
+
+		//---------------------------------------------------------------
+		// EVERYTHING PAST THIS POINT SHOULD BE VERIFIED TO BE WORKING
+		// NO ERRORS IN THE MAIN ENGINE IF IT IS NOT INITIALIZED PROPERLY
+		//---------------------------------------------------------------
+		LOG_WARN("Engine Successfully Initialized!");
+
+		m_Window.SetFrameSize(m_Renderer->Resize(m_Camera.lock().get())); //send the resize function to the window for resize callback
+
+		//setup a test level for the engine
+		//can obviously be overridden later in the app
+		CreateLevel("Test Level");
 	}
 
 	void Application::Start()

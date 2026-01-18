@@ -27,6 +27,8 @@ namespace Editor
 	template<typename t>
 	struct TableType3;
 
+	//Maths vec only deals with floats and doubles
+	//so explicit double and float works
 	template<>
 	struct TableType2<double> { using typeRef = Vector2DSlot; };
 	template<>

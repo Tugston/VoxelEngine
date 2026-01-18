@@ -35,6 +35,7 @@ namespace Engine
 
 		inline unsigned short GetWidth() const { return m_Info.width; };
 		inline unsigned short GetHeight() const { return m_Info.height; };
+		inline std::string_view GetName() const { return m_Info.name; };
 		inline GLFWwindow* GetGLFWWindow() const { return m_RenderWindow; };
 
 		
@@ -66,8 +67,6 @@ namespace Engine
 			std::pair<int, int> bufferSize;
 		};
 
-
 		WindowInfo m_Info;
-	
 	};
 }
