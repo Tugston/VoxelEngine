@@ -13,8 +13,12 @@
 
 #include <Core/Cameras/PerspectiveCamera.h>
 
+#define HEADING_HEIGHT	70.f //45
+
 namespace Editor
 {		
+	ImGuiViewport* imguiViewport = nullptr;
+
 	EditorApplication::EditorApplication() : m_CurrentMode(EditorMode::PanelFocus), Application("Viper Editor", Engine::Renderer::Renderer::RenderTarget::FrameBufferTexture)
 	{
 		IMGUI_CHECKVERSION();
@@ -32,11 +36,16 @@ namespace Editor
 		else
 			LOG_CRIT("Editor Failed to Initialize!");
 
+		m_HeadingPanel = std::make_unique<HeadingParentPanel>(GetWindowName(), HEADING_HEIGHT);
+
 		m_TestSlot = new FloatSlot("Test Float", &m_TestFloat);
 		m_TransformTable = new TransformTable3D<float>(&m_TestTransform, &m_TestTransform, &m_TestTransform);
 
 		m_EditorCamera = std::make_shared<Camera::PerspectiveCamera>(glm::vec3{0.f, 0.f, 0.f});
 		SetViewTargetCamera(m_EditorCamera);
+
+		//define the extern window
+		imguiViewport = ImGui::GetMainViewport();
 	};
 
 	EditorApplication::~EditorApplication()
@@ -127,6 +136,8 @@ namespace Editor
 		m_TestSlot->Draw();
 		m_TransformTable->Draw();
 		ImGui::End();
+
+		m_HeadingPanel->Draw();
 
 		ImGui::Begin("Viewport");
 		ImGui::Image((ImTextureID)this->GetRenderScreenTexture(), ImVec2{ 1280, 720 }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
