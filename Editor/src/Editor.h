@@ -54,6 +54,8 @@ namespace Editor
 
 		void CameraControl();
 
+		void SetupWindowStyle();
+
 	private:
 
 		//not worrying about overloads and safety, its fine (surely)

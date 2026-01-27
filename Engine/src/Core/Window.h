@@ -13,8 +13,12 @@
 */
 #pragma once
 
+#define GLFW_EXPOSE_NATIVE_WIN32
+#define NOMINMAX
+
 //ENGINE
 #include "Core/Core.h"
+#include "Maths/Math.h"
 
 //STND
 #include <string>
@@ -38,7 +42,18 @@ namespace Engine
 		inline std::string_view GetName() const { return m_Info.name; };
 		inline GLFWwindow* GetGLFWWindow() const { return m_RenderWindow; };
 
+		//*******
+		//natives
+		//*******
+
+		//colors may only be on scale of 0 - 255
+		void SetWindowBorderColor(const Maths::Vector3<float>& color) const;
+		void SetWindowHeadingColor(const Maths::Vector3<float>& color) const;
 		
+		//*******
+		//natives
+		//*******
+
 		void PollEvents();
 		void DestroyWindow();
 		void SwapBuffers();
@@ -52,6 +67,8 @@ namespace Engine
 	private:
 		void SetupWindow();
 		void InitializeGLFW(); //to allow the window to be created in any order, probably not the best to Initialize glfw multiple times though
+
+		unsigned int RGBtoHex(const Maths::Vector3<float>& color) const;
 
 	private:
 		GLFWwindow* m_RenderWindow;

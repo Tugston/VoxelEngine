@@ -13,6 +13,11 @@
 */
 #pragma once
 
+//STND
+#include <functional>
+#include <memory>
+
+//ENGN
 #include "../BasePanel.h"
 
 namespace Editor
@@ -20,7 +25,7 @@ namespace Editor
 	class HeadingParentPanel : public BasePanel
 	{
 	public:
-		HeadingParentPanel(std::string_view appName, float height);
+		HeadingParentPanel(std::string_view appName, std::unique_ptr<std::function<void()>> quitFunction);
 		~HeadingParentPanel();
 
 		virtual void Draw() const override;
@@ -30,7 +35,7 @@ namespace Editor
 
 	private:
 		std::string_view m_ProjectName;
-		float m_Height;
+		std::unique_ptr<std::function<void()>> m_QuitEditor;
 		uint8_t m_InputModeMask = 0x00000001;
 	};
 }

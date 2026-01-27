@@ -11,9 +11,10 @@
 */
 #include "Editor.h"
 
+//ENGN
 #include <Core/Cameras/PerspectiveCamera.h>
 
-#define HEADING_HEIGHT	70.f //45
+#define HEADING_HEIGHT	45.f
 
 namespace Editor
 {		
@@ -36,7 +37,12 @@ namespace Editor
 		else
 			LOG_CRIT("Editor Failed to Initialize!");
 
-		m_HeadingPanel = std::make_unique<HeadingParentPanel>(GetWindowName(), HEADING_HEIGHT);
+		//should maybe have some error stuff on this,
+		//or at least above the init success stuff, but its not IMGUI related I guess, idk
+		SetupWindowStyle();
+
+		std::function<void()> quitClass = []() {QuitGame(); };
+		m_HeadingPanel = std::make_unique<HeadingParentPanel>(GetWindowName(), std::make_unique<std::function<void()>>(quitClass));
 
 		m_TestSlot = new FloatSlot("Test Float", &m_TestFloat);
 		m_TransformTable = new TransformTable3D<float>(&m_TestTransform, &m_TestTransform, &m_TestTransform);
@@ -168,6 +174,17 @@ namespace Editor
 
 		if (InputSystem::KeyPressed(EngineKeys::D))
 			m_EditorCamera->ProcessLocation(EditorCamera::MoveDirection::Right, GetDeltaTime());
+	}
+
+	void EditorApplication::SetupWindowStyle()
+	{
+		const Window* window = GetWindow();
+		if (window)
+		{
+			const Maths::Vector3<float> color{ 100.f, 100.f, 255.f };
+			window->SetWindowBorderColor(color);
+			window->SetWindowHeadingColor(color);
+		}
 	}
 
 }
