@@ -31,7 +31,7 @@ namespace Editor
 		virtual void Draw() const override;
 
 	private:
-		void InputStatusBox(const char* number);
+		void InputStatusBox(const char* number) const;
 
 	private:
 		std::string_view m_ProjectName;

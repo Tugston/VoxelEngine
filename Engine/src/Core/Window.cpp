@@ -18,6 +18,7 @@
 
 //ENGINE
 #include "Core/Logger.h"
+#include "Core/Maths/Conversions.h"
 
 //STND
 #include <cassert>
@@ -54,7 +55,7 @@ namespace Engine
 		DestroyWindow();
 	}
 
-	void Window::SetWindowBorderColor(const Maths::Vector3<float>& color) const
+	void Window::SetWindowBorderColor(const Maths::Vector3<uint8_t>& color) const
 	{
 		if (!m_RenderWindow) return;
 		HWND hwnd = glfwGetWin32Window(m_RenderWindow);
@@ -62,11 +63,11 @@ namespace Engine
 
 		LOG_MSG("<Window.cpp> (SetWindowBorderColor) Setting Border Color To: ({}, {}, {})", color.x, color.y, color.z);
 
-		COLORREF borderColor = static_cast<COLORREF>(RGBtoHex(color));
+		COLORREF borderColor = static_cast<COLORREF>(Maths::RGBtoHex(color));
 		DwmSetWindowAttribute(hwnd, DWMWA_BORDER_COLOR, &borderColor, sizeof(borderColor));
 	}
 
-	void Window::SetWindowHeadingColor(const Maths::Vector3<float>& color) const
+	void Window::SetWindowHeadingColor(const Maths::Vector3<uint8_t>& color) const
 	{
 		if (!m_RenderWindow) return;
 		HWND hwnd = glfwGetWin32Window(m_RenderWindow);
@@ -74,7 +75,7 @@ namespace Engine
 
 		LOG_MSG("<Window.cpp> (SetWindowHeadingColor) Setting Heading Color To: ({}, {}, {})", color.x, color.y, color.z);
 
-		COLORREF headingColor = static_cast<COLORREF>(RGBtoHex(color));
+		COLORREF headingColor = static_cast<COLORREF>(Maths::RGBtoHex(color));
 		DwmSetWindowAttribute(hwnd, DWMWA_CAPTION_COLOR, &headingColor, sizeof(headingColor));
 	}
 
@@ -145,13 +146,5 @@ namespace Engine
 			Logger::LogMessage(Logger::LogType::Critical, "<Window.cpp> glfw Is Not Initialized!");
 			EG_ASSERT(false);
 		}
-	}
-
-	unsigned int Window::RGBtoHex(const Maths::Vector3<float>& color) const
-	{
-		const char r = (std::max)(0.f, (std::min)(255.f, color.x));
-		const char g = (std::max)(0.f, (std::min)(255.f, color.y));
-		const char b = (std::max)(0.f, (std::min)(255.f, color.z));
-		return (b << 16) || (g << 16) || r;
 	}
 }

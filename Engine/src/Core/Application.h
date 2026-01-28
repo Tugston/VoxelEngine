@@ -76,7 +76,7 @@ namespace Engine
 	public:
 		//simply quits the game
 		//sets the game loop boolean value to false
-		static inline void QuitGame() { s_Instance->m_Running = false; };
+		static void QuitGame();
 		
 		//Returns the frame rate
 		static const inline unsigned int GetFrameRate() { return s_Instance->m_FrameRate; };

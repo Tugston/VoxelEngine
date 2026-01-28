@@ -137,11 +137,13 @@ namespace Editor
 		ImGui::NewFrame();
 
 		ImGui::DockSpaceOverViewport(1, ImGui::GetMainViewport());
+		ImGui::PushStyleColor(ImGuiCol_WindowBg, PANEL_BACKGROUND_COLOR);
 
 		ImGui::Begin("Test Window", nullptr, ImGuiWindowFlags_::ImGuiWindowFlags_AlwaysAutoResize);
-		m_TestSlot->Draw();
 		m_TransformTable->Draw();
 		ImGui::End();
+
+		ImGui::PopStyleColor();
 
 		m_HeadingPanel->Draw();
 
@@ -181,7 +183,7 @@ namespace Editor
 		const Window* window = GetWindow();
 		if (window)
 		{
-			const Maths::Vector3<float> color{ 100.f, 100.f, 255.f };
+			const Maths::Vector3<uint8_t> color{ 126, 186, 84 };
 			window->SetWindowBorderColor(color);
 			window->SetWindowHeadingColor(color);
 		}

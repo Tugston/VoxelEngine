@@ -51,6 +51,16 @@ namespace Editor
 
 		void Draw()
 		{
+			const char* title = "T R A N S F O R M";
+			ImGui::PushStyleColor(ImGuiCol_Separator, PANEL_SEPERATOR_COLOR);
+			ImGui::TextUnformatted(title);
+			ImGui::SameLine();
+
+			const ImVec2 height = ImGui::CalcTextSize(title);
+
+			ImGui::SetCursorPosY(ImGui::GetCursorPosY() + height.y / 2);
+			ImGui::Separator();
+
 			if (ImGui::BeginTable("Transform", 2, ImGuiTableFlags_SizingStretchProp | ImGuiTableFlags_BordersInnerV))
 			{
 				ImGui::TableSetupColumn("Labels", ImGuiTableColumnFlags_WidthFixed, LABEL_WIDTH);
@@ -79,6 +89,9 @@ namespace Editor
 
 				ImGui::EndTable();
 			}
+
+			ImGui::Separator();
+			ImGui::PopStyleColor();
 		};
 
 	private:

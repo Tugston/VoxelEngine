@@ -47,8 +47,8 @@ namespace Engine
 		//*******
 
 		//colors may only be on scale of 0 - 255
-		void SetWindowBorderColor(const Maths::Vector3<float>& color) const;
-		void SetWindowHeadingColor(const Maths::Vector3<float>& color) const;
+		void SetWindowBorderColor(const Maths::Vector3<uint8_t>& color) const;
+		void SetWindowHeadingColor(const Maths::Vector3<uint8_t>& color) const;
 		
 		//*******
 		//natives
@@ -67,8 +67,6 @@ namespace Engine
 	private:
 		void SetupWindow();
 		void InitializeGLFW(); //to allow the window to be created in any order, probably not the best to Initialize glfw multiple times though
-
-		unsigned int RGBtoHex(const Maths::Vector3<float>& color) const;
 
 	private:
 		GLFWwindow* m_RenderWindow;
