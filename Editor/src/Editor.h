@@ -15,14 +15,15 @@
 
 //EDITOR
 #include "EditorCore.h"
+#include "EditorMode.h"
 #include "Panels/HeadingPanel/HeadingParentPanel.h"
 #include "Globals/Slots/FloatSlot.h"
 #include "Globals/Slots/Vector2Slot.h"
 #include "Globals/Slots/Vector3Slot.h"
 #include "Globals/Tables/TransformTables.h"
+#include "Panels/SidePanels/MainDetailsPanel.h"
 
 //ENGINE
-#include <Engine.h>
 #include <Core/EntryPoint.h>
 
 //VENDOR
@@ -56,24 +57,21 @@ namespace Editor
 
 		void SetupWindowStyle();
 
-	private:
 
-		//not worrying about overloads and safety, its fine (surely)
-		enum EditorMode : UINT8
-		{
-			ViewportFocus = 0,
-			PanelFocus,
-		};
+	private:	
+		void UpdateInputMode(EditorMode newMode);
 
 	private:
 		FloatSlot* m_TestSlot;
-		TransformTable3D<float>* m_TransformTable;
+	
 
 		std::unique_ptr<HeadingParentPanel> m_HeadingPanel;
 		
 		//not test
 		std::shared_ptr<Camera::PerspectiveCamera> m_EditorCamera;
 		EditorMode m_CurrentMode;
+
+		MainDetailPanel& m_MainPanelInstance = MainDetailPanel::GetInstance();
 		//not test
 
 		std::unique_ptr<GameObject3D> m_TestObject;

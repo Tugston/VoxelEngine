@@ -17,10 +17,11 @@
 #include "../../VENDOR/imgui/imgui.h"
 
 //STND
-#include<string_view>
+#include <string_view>
 
 //EDTR
 #include "../EditorCore.h"
+#include "../EditorMode.h"
 
 namespace Editor
 {
@@ -30,7 +31,7 @@ namespace Editor
 		BasePanel(std::string_view panelName) : m_Name(panelName) {};
 		~BasePanel() {};
 
-		virtual void Draw() const = 0;
+		virtual void Draw(EditorMode currentMode) const = 0;
 
 		//void AddSection();
 

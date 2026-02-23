@@ -2,7 +2,7 @@
 * File: Conversions.h
 * Project: Voxel Engine
 * Author: Vincent Pierce
-* Created: 2025-12-12 (yyyy/mm/dd)
+* Created: 2026-01-27 (yyyy/mm/dd)
 *
 * Description: Math and logic conversions useful throughout all user applications
 *

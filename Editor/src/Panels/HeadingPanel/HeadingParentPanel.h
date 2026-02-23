@@ -25,17 +25,18 @@ namespace Editor
 	class HeadingParentPanel : public BasePanel
 	{
 	public:
-		HeadingParentPanel(std::string_view appName, std::unique_ptr<std::function<void()>> quitFunction);
+		HeadingParentPanel(std::string_view appName);
 		~HeadingParentPanel();
 
-		virtual void Draw() const override;
+		virtual void Draw(EditorMode currentMode) const override;
+
+		void SetInputDisplayMask(const UINT8 index);
 
 	private:
 		void InputStatusBox(const char* number) const;
 
 	private:
 		std::string_view m_ProjectName;
-		std::unique_ptr<std::function<void()>> m_QuitEditor;
-		uint8_t m_InputModeMask = 0x00000001;
+		UINT8 m_InputModeMask = 0x00000001;
 	};
 }
