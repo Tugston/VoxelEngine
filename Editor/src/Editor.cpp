@@ -42,10 +42,9 @@ namespace Editor
 		SetupWindowStyle();
 
 		std::function<void()> quitClass = []() {QuitGame(); };
-		m_HeadingPanel = std::make_unique<HeadingParentPanel>(GetWindowName(), std::make_unique<std::function<void()>>(quitClass));
+		m_HeadingPanel = std::make_unique<HeadingParentPanel>(GetWindowName());
 
 		m_TestSlot = new FloatSlot("Test Float", &m_TestFloat);
-		m_TransformTable = new TransformTable3D<float>(&m_TestTransform, &m_TestTransform, &m_TestTransform);
 
 		m_EditorCamera = std::make_shared<Camera::PerspectiveCamera>(glm::vec3{0.f, 0.f, 0.f});
 		SetViewTargetCamera(m_EditorCamera);
@@ -86,6 +85,8 @@ namespace Editor
 			transformComponent->rotation = Maths::Vector3{ 0.f, 0.f, 0.f };
 			transformComponent->scale = Maths::Vector3{ 1.f, 1.f, 1.f };
 		}
+
+		m_MainPanelInstance.Init();
 
 		Tick();
 	}
@@ -137,15 +138,10 @@ namespace Editor
 		ImGui::NewFrame();
 
 		ImGui::DockSpaceOverViewport(1, ImGui::GetMainViewport());
-		ImGui::PushStyleColor(ImGuiCol_WindowBg, PANEL_BACKGROUND_COLOR);
+	
+		m_MainPanelInstance.Draw(m_CurrentMode);
 
-		ImGui::Begin("Test Window", nullptr, ImGuiWindowFlags_::ImGuiWindowFlags_AlwaysAutoResize);
-		m_TransformTable->Draw();
-		ImGui::End();
-
-		ImGui::PopStyleColor();
-
-		m_HeadingPanel->Draw();
+		m_HeadingPanel->Draw(m_CurrentMode);
 
 		ImGui::Begin("Viewport");
 		ImGui::Image((ImTextureID)this->GetRenderScreenTexture(), ImVec2{ 1280, 720 }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
@@ -154,6 +150,14 @@ namespace Editor
 
 	void EditorApplication::CameraControl()
 	{
+
+		if (InputSystem::KeyTapped(EngineKeys::ESC))
+			UpdateInputMode(EditorMode::PanelFocus);
+		else if (InputSystem::KeyTapped(EngineKeys::V))
+			UpdateInputMode(EditorMode::ViewportFocus);
+		else if (InputSystem::KeyTapped(EngineKeys::X))
+			UpdateInputMode(EditorMode::PanelEdit);
+
 		if (!(m_CurrentMode == EditorMode::ViewportFocus))
 			return;
 			
@@ -176,6 +180,7 @@ namespace Editor
 
 		if (InputSystem::KeyPressed(EngineKeys::D))
 			m_EditorCamera->ProcessLocation(EditorCamera::MoveDirection::Right, GetDeltaTime());
+	
 	}
 
 	void EditorApplication::SetupWindowStyle()
@@ -183,10 +188,19 @@ namespace Editor
 		const Window* window = GetWindow();
 		if (window)
 		{
-			const Maths::Vector3<uint8_t> color{ 126, 186, 84 };
+			const Maths::Vector3<UINT8> color{ 126, 186, 84 };
 			window->SetWindowBorderColor(color);
 			window->SetWindowHeadingColor(color);
 		}
+	}
+
+	void EditorApplication::UpdateInputMode(EditorMode newMode)
+	{
+		m_CurrentMode = newMode;
+		if (m_HeadingPanel)
+			m_HeadingPanel->SetInputDisplayMask((UINT8)newMode);
+
+		LOG_MSG("Updating Mode to {}", (UINT8)newMode);
 	}
 
 }

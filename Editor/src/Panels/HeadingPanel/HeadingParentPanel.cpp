@@ -10,8 +10,8 @@ namespace Editor
 {
 	//initializing the project name needs to be read in from a save file or something
 	//just hard coding it for now because it is not important!!!
-	HeadingParentPanel::HeadingParentPanel(std::string_view appName, std::unique_ptr<std::function<void()>> quitFunction):
-		m_ProjectName("Voxel Game"), m_QuitEditor(std::move(quitFunction)), BasePanel(appName)
+	HeadingParentPanel::HeadingParentPanel(std::string_view appName):
+		m_ProjectName("Voxel Game"), BasePanel(appName)
 	{
 	}
 
@@ -19,7 +19,7 @@ namespace Editor
 	{
 	}
 
-	void HeadingParentPanel::Draw() const
+	void HeadingParentPanel::Draw(EditorMode currentMode) const
 	{
 		if (!imguiViewport) return;
 
@@ -53,18 +53,34 @@ namespace Editor
 		ImGui::PopStyleVar();
 	}
 
+	void HeadingParentPanel::SetInputDisplayMask(const UINT8 index)
+	{
+		m_InputModeMask = 0;
+		m_InputModeMask = (1U<<index);
+	}
+
 	void HeadingParentPanel::InputStatusBox(const char* number) const
 	{
-		if (m_InputModeMask & (1U << (Utility::FastATOI(number) - 1)))
-			ImGui::PushStyleColor(ImGuiCol_Button, Maths::RGBtoHex(Maths::Vector3<uint8_t>{186, 183, 84}));
-		else
-			ImGui::PushStyleColor(ImGuiCol_Button, Maths::RGBtoHex(Maths::Vector3<uint8_t>{156, 153, 54}));
+		const char integralNum = Utility::FastATOI(number);
 
-		if (ImGui::SmallButton(number))
+		if (m_InputModeMask & (1U << (integralNum - 1)))
 		{
-			
+			ImGui::PushStyleColor(ImGuiCol_Button,			ImVec4{ 206.f / 255.f, 152.f / 255.f, 104.f / 255.f, 1.f });
+			ImGui::PushStyleColor(ImGuiCol_ButtonHovered,	ImVec4{ 206.f / 255.f, 152.f / 255.f, 104.f / 255.f, 1.f });
+			ImGui::PushStyleColor(ImGuiCol_ButtonActive,	ImVec4{ 206.f / 255.f, 152.f / 255.f, 104.f / 255.f, 1.f });
+		}
+		else
+		{
+			ImGui::PushStyleColor(ImGuiCol_Button,			ImVec4{ 156.f / 255.f, 103.f / 255.f, 54.f / 255.f, 1.f });
+			ImGui::PushStyleColor(ImGuiCol_ButtonHovered,   ImVec4{ 156.f / 255.f, 103.f / 255.f, 54.f / 255.f, 1.f });
+			ImGui::PushStyleColor(ImGuiCol_ButtonActive,	ImVec4{ 156.f / 255.f, 103.f / 255.f, 54.f / 255.f, 1.f });
 		}
 
+		//may add clicking later, but button doesnt need to anything currently
+		if (ImGui::SmallButton(number));
+
+		ImGui::PopStyleColor();
+		ImGui::PopStyleColor();
 		ImGui::PopStyleColor();
 	}
 }
