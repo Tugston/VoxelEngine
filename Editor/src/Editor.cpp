@@ -11,10 +11,15 @@
 */
 #include "Editor.h"
 
+//ENGN
 #include <Core/Cameras/PerspectiveCamera.h>
+
+#define HEADING_HEIGHT	45.f
 
 namespace Editor
 {		
+	ImGuiViewport* imguiViewport = nullptr;
+
 	EditorApplication::EditorApplication() : m_CurrentMode(EditorMode::PanelFocus), Application("Viper Editor", Engine::Renderer::Renderer::RenderTarget::FrameBufferTexture)
 	{
 		IMGUI_CHECKVERSION();
@@ -32,11 +37,21 @@ namespace Editor
 		else
 			LOG_CRIT("Editor Failed to Initialize!");
 
+		//should maybe have some error stuff on this,
+		//or at least above the init success stuff, but its not IMGUI related I guess, idk
+		SetupWindowStyle();
+
+		std::function<void()> quitClass = []() {QuitGame(); };
+		m_HeadingPanel = std::make_unique<HeadingParentPanel>(GetWindowName(), std::make_unique<std::function<void()>>(quitClass));
+
 		m_TestSlot = new FloatSlot("Test Float", &m_TestFloat);
 		m_TransformTable = new TransformTable3D<float>(&m_TestTransform, &m_TestTransform, &m_TestTransform);
 
 		m_EditorCamera = std::make_shared<Camera::PerspectiveCamera>(glm::vec3{0.f, 0.f, 0.f});
 		SetViewTargetCamera(m_EditorCamera);
+
+		//define the extern window
+		imguiViewport = ImGui::GetMainViewport();
 	};
 
 	EditorApplication::~EditorApplication()
@@ -122,11 +137,15 @@ namespace Editor
 		ImGui::NewFrame();
 
 		ImGui::DockSpaceOverViewport(1, ImGui::GetMainViewport());
+		ImGui::PushStyleColor(ImGuiCol_WindowBg, PANEL_BACKGROUND_COLOR);
 
 		ImGui::Begin("Test Window", nullptr, ImGuiWindowFlags_::ImGuiWindowFlags_AlwaysAutoResize);
-		m_TestSlot->Draw();
 		m_TransformTable->Draw();
 		ImGui::End();
+
+		ImGui::PopStyleColor();
+
+		m_HeadingPanel->Draw();
 
 		ImGui::Begin("Viewport");
 		ImGui::Image((ImTextureID)this->GetRenderScreenTexture(), ImVec2{ 1280, 720 }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
@@ -157,6 +176,17 @@ namespace Editor
 
 		if (InputSystem::KeyPressed(EngineKeys::D))
 			m_EditorCamera->ProcessLocation(EditorCamera::MoveDirection::Right, GetDeltaTime());
+	}
+
+	void EditorApplication::SetupWindowStyle()
+	{
+		const Window* window = GetWindow();
+		if (window)
+		{
+			const Maths::Vector3<uint8_t> color{ 126, 186, 84 };
+			window->SetWindowBorderColor(color);
+			window->SetWindowHeadingColor(color);
+		}
 	}
 
 }

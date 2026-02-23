@@ -14,6 +14,8 @@
 #pragma once
 
 //EDITOR
+#include "EditorCore.h"
+#include "Panels/HeadingPanel/HeadingParentPanel.h"
 #include "Globals/Slots/FloatSlot.h"
 #include "Globals/Slots/Vector2Slot.h"
 #include "Globals/Slots/Vector3Slot.h"
@@ -52,6 +54,8 @@ namespace Editor
 
 		void CameraControl();
 
+		void SetupWindowStyle();
+
 	private:
 
 		//not worrying about overloads and safety, its fine (surely)
@@ -64,18 +68,21 @@ namespace Editor
 	private:
 		FloatSlot* m_TestSlot;
 		TransformTable3D<float>* m_TransformTable;
+
+		std::unique_ptr<HeadingParentPanel> m_HeadingPanel;
 		
 		//not test
 		std::shared_ptr<Camera::PerspectiveCamera> m_EditorCamera;
 		EditorMode m_CurrentMode;
-
+		//not test
 
 		std::unique_ptr<GameObject3D> m_TestObject;
-
 
 		float m_TestFloat = 2.f;
 		double m_TestDouble = 3.0;
 		Maths::Vector3<float> m_TestTransform;
+
+
 	};
 }
 

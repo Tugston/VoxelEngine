@@ -92,6 +92,11 @@ project "Editor"
 			"FMT_USE_UTF8=1"
 		}
 
+		links
+		{
+			"dwmapi"
+		}
+
 	filter "configurations:Debug"
 		defines "EDTR_DEBUG"
 		symbols "On"
@@ -242,6 +247,11 @@ project "Game"
 		{
 			"ENGINE_PLATFORM_WINDOWS",
 			"FMT_USE_UTF8=1"
+		}
+
+		links
+		{
+			"dwmapi"
 		}
 
 	filter "configurations:Debug"

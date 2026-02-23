@@ -116,6 +116,12 @@ namespace Engine
 	{
 	}
 
+	void Application::QuitGame()
+	{
+		s_Instance->m_Running = false;
+		s_Instance->m_Window.DestroyWindow();
+	}
+
 	void Application::Draw(float deltaTime)
 	{
 		m_Renderer->BeginRender(m_Camera.lock().get());

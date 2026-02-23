@@ -14,20 +14,28 @@
 #pragma once
 
 //STND
-#include <string_view>
+#include <functional>
+#include <memory>
 
-//EDTR
-#include "../../EditorCore.h"
+//ENGN
+#include "../BasePanel.h"
 
 namespace Editor
 {
-	class HeadingParentPanel
+	class HeadingParentPanel : public BasePanel
 	{
 	public:
-		HeadingParentPanel(std::string_view appName);
+		HeadingParentPanel(std::string_view appName, std::unique_ptr<std::function<void()>> quitFunction);
 		~HeadingParentPanel();
 
-	private:
+		virtual void Draw() const override;
 
+	private:
+		void InputStatusBox(const char* number) const;
+
+	private:
+		std::string_view m_ProjectName;
+		std::unique_ptr<std::function<void()>> m_QuitEditor;
+		uint8_t m_InputModeMask = 0x00000001;
 	};
 }

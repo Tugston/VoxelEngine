@@ -14,12 +14,15 @@
 
 //VENDOR
 #include <glfw/glfw3.h>
+#include <glfw/glfw3native.h>
 
 //ENGINE
 #include "Core/Logger.h"
+#include "Core/Maths/Conversions.h"
 
 //STND
 #include <cassert>
+#include <dwmapi.h>
 
 namespace Engine
 {
@@ -50,6 +53,30 @@ namespace Engine
 	Window::~Window()
 	{
 		DestroyWindow();
+	}
+
+	void Window::SetWindowBorderColor(const Maths::Vector3<uint8_t>& color) const
+	{
+		if (!m_RenderWindow) return;
+		HWND hwnd = glfwGetWin32Window(m_RenderWindow);
+		if (!&hwnd) return; //just ensuring this window is valid
+
+		LOG_MSG("<Window.cpp> (SetWindowBorderColor) Setting Border Color To: ({}, {}, {})", color.x, color.y, color.z);
+
+		COLORREF borderColor = static_cast<COLORREF>(Maths::RGBtoHex(color));
+		DwmSetWindowAttribute(hwnd, DWMWA_BORDER_COLOR, &borderColor, sizeof(borderColor));
+	}
+
+	void Window::SetWindowHeadingColor(const Maths::Vector3<uint8_t>& color) const
+	{
+		if (!m_RenderWindow) return;
+		HWND hwnd = glfwGetWin32Window(m_RenderWindow);
+		if (!&hwnd) return; //just ensuring this window is valid
+
+		LOG_MSG("<Window.cpp> (SetWindowHeadingColor) Setting Heading Color To: ({}, {}, {})", color.x, color.y, color.z);
+
+		COLORREF headingColor = static_cast<COLORREF>(Maths::RGBtoHex(color));
+		DwmSetWindowAttribute(hwnd, DWMWA_CAPTION_COLOR, &headingColor, sizeof(headingColor));
 	}
 
 	void Window::PollEvents()
@@ -83,9 +110,14 @@ namespace Engine
 
 	void Window::SetupWindow()
 	{
-		Logger::LogMessage(Logger::LogType::Message, "Initializing Window...");
+		Logger::LogMessage(Logger::LogType::Message, "Initializing Window...");	
 
-		//window properties
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
+		//glfwWindowHint(GLFW_DECORATED, GLFW_FALSE); //remove decoration for full screen and windowed borderless, add it back for windowed
+
 		m_RenderWindow = glfwCreateWindow(m_Info.width, m_Info.height, m_Info.name.c_str(), NULL, NULL);
 
 		if (!m_RenderWindow)
@@ -95,12 +127,6 @@ namespace Engine
 			EG_ASSERT(false);
 		}
 
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
-		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
-
-	
 		//buffer size
 		glfwGetFramebufferSize(m_RenderWindow, &m_Info.bufferSize.first, &m_Info.bufferSize.second);
 

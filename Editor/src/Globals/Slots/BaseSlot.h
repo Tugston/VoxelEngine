@@ -13,9 +13,6 @@
 */
 #pragma once
 
-//VENDOR
-#include "../../../VENDOR/imgui/imgui.h"
-
 //STND
 #include<string_view>
 #include<limits>

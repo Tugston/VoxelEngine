@@ -16,11 +16,15 @@
 //STND
 #include	<numbers>
 
-//ENGINE
-#include	"Core/Application.h"	//Required Application Class
-#include	"Core/Logger.h"			//Logging System
-#include	"Core/ScriptModule.h"	//Scripting System
-#include	"Core/RandNumGen.h"		//Random Number Generator
+//ENGINE CORE
+#include	"Core/Application.h"		//Required Application Class
+#include	"Core/Logger.h"				//Logging System
+#include	"Core/ScriptModule.h"		//Scripting System
+#include	"Core/RandNumGen.h"			//Random Number Generator
+#include	"Core/Maths/Math.h"			//Math Class Types
+#include	"Core/Maths/Conversions.h"  //Common Conversions Needed
+
+//ENGINE ACCESSORIES
 #include	"Input/Input.h"			//Input System
 #include	"Scene/Scene.h"			//Level / Scene (scene includes ecs registry which includes all components)
 
@@ -43,6 +47,9 @@
 
 #include	"SharedResources/PrimitiveShapes/TwoDimensions/Triangle.h"
 #include	"SharedResources/PrimitiveShapes/TwoDimensions/Quad.h"
+
+//MISC Stuff
+#include	"SharedResources/MiscShared/StringMethods.h"
 
 //TESTING
 #include	"SharedResources/GenericResources/Shader.h"
