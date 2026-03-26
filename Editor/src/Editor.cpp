@@ -73,7 +73,7 @@ namespace Editor
 		
 		if (spriteComponent)
 		{
-			spriteComponent->planeMesh = std::make_shared<Utility::Mesh>(Utility::CreateCone());
+			spriteComponent->planeMesh = std::make_unique<Utility::Mesh>(Utility::CreateCone());
 			spriteComponent->planeMesh->indexCount = 6;
 			spriteComponent->material.shader = new Shader("TestShader");
 			spriteComponent->material.shader->Create();

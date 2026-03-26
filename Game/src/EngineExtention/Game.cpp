@@ -37,11 +37,11 @@ namespace VoxelGame
 
 		virtual void Start() override
 		{
-			m_TestObjectOne = std::make_shared<ScriptableMeshObject>(m_CurrentScene, std::make_shared<MovementScript>(0.1f), MeshType::CONE_MESH, (UINT16)5);
+			m_TestObjectOne = std::make_shared<ScriptableMeshObject>(m_CurrentScene, std::make_unique<MovementScript>(0.1f), MeshType::CONE_MESH, (UINT16)5);
 
-			m_TestObjectTwo = std::make_shared<ScriptableMeshObject>(m_CurrentScene, std::make_shared<MovementScript>(1.f), MeshType::CYLINDER_MESH, (UINT16)15);
+			m_TestObjectTwo = std::make_shared<ScriptableMeshObject>(m_CurrentScene, std::make_unique<MovementScript>(1.f), MeshType::CYLINDER_MESH, (UINT16)15);
 			
-			m_TestObjectThree = std::make_shared<ScriptableSpriteObject3D>(m_CurrentScene, std::make_shared<MovementScript>(-0.1f));
+			m_TestObjectThree = std::make_shared<ScriptableSpriteObject3D>(m_CurrentScene, std::make_unique<MovementScript>(-0.1f));
 
 			MeshComponent* mcOne = m_TestObjectOne->GetComponent<MeshComponent>();
 			if (mcOne)
@@ -57,7 +57,7 @@ namespace VoxelGame
 
 			ScriptComponent* scThree = m_TestObjectThree->GetComponent<ScriptComponent>();
 			if (scThree)
-				scThree->AddScript(std::make_shared<BaseColorFlashScript>(Maths::Vector3<float>{1.f, 0.f, 0.f}));
+				scThree->AddScript(std::make_unique<BaseColorFlashScript>(Maths::Vector3<float>{1.f, 0.f, 0.f}));
 
 		//	TransformComponent3D* tcThree = m_TestObjectThree->GetComponent<TransformComponent3D>();
 		//	if (tcThree)

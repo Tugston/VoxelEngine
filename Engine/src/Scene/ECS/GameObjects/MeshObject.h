@@ -30,10 +30,10 @@ namespace Engine::Scene::ECS
 	class MeshObject : public GameObject3D
 	{
 	public:
-		MeshObject(std::shared_ptr<Scene> scene, MeshType type = MeshType::CUBE_MESH, std::optional<UINT16> sideCount = std::nullopt);
-		MeshObject(std::shared_ptr<Scene> scene, std::string_view fileName);
+		MeshObject(const std::shared_ptr<Scene>& scene, MeshType type = MeshType::CUBE_MESH, std::optional<UINT16> sideCount = std::nullopt);
+		MeshObject(const std::shared_ptr<Scene>& scene, std::string_view fileName);
 
-		MeshObject(std::shared_ptr<Scene> scene, Components::TransformComponent3D transform, MeshType type = MeshType::CUBE_MESH, std::optional<UINT16> sideCount = std::nullopt);
-		MeshObject(std::shared_ptr<Scene> scene, Components::TransformComponent3D transform, std::string_view fileName);
+		MeshObject(const std::shared_ptr<Scene>& scene, Components::TransformComponent3D transform, MeshType type = MeshType::CUBE_MESH, std::optional<UINT16> sideCount = std::nullopt);
+		MeshObject(const std::shared_ptr<Scene>& scene, Components::TransformComponent3D transform, std::string_view fileName);
 	};
 }

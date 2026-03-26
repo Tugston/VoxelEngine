@@ -25,7 +25,13 @@ namespace Engine::Scene::ECS::Components
 		LandscapeComponent() {};
 		LandscapeComponent(std::shared_ptr<Utility::Mesh> mesh, Utility::Material material, Utility::Texture2D heightMap) {};
 
-		std::shared_ptr<Utility::Mesh> mesh;
+		LandscapeComponent(const LandscapeComponent&) = delete;
+		LandscapeComponent& operator=(const LandscapeComponent&) = delete;
+
+		LandscapeComponent(LandscapeComponent&&) noexcept = default;
+		LandscapeComponent& operator=(LandscapeComponent&&) noexcept = default;
+
+		std::unique_ptr<Utility::Mesh> mesh;
 		Utility::Material material;
 		Utility::Texture2D heightMap;
 

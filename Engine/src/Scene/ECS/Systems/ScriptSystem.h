@@ -20,7 +20,7 @@ namespace Engine::Scene
 
 namespace Engine::Scene::ECS::Systems
 {
-	void SysOnScriptConstruct(std::shared_ptr<Scene> scene);
-	void SysOnScriptStart(std::shared_ptr<Scene> scene);
-	void SysOnScriptTick(std::shared_ptr<Scene> scene, float deltaTime);
+	void SysOnScriptConstruct(const std::shared_ptr<Scene>& scene);
+	void SysOnScriptStart(const std::shared_ptr<Scene>& scene);
+	void SysOnScriptTick(const std::shared_ptr<Scene>& scene, float deltaTime);
 }

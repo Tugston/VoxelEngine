@@ -23,9 +23,15 @@ namespace Engine::Scene::ECS::Components
 	struct SpriteComponent
 	{
 		SpriteComponent() = default;
-		SpriteComponent(std::shared_ptr<Utility::Mesh> mesh, Utility::Material mat): planeMesh(mesh), material(mat) {}
+		SpriteComponent(std::unique_ptr<Utility::Mesh> mesh, Utility::Material mat): planeMesh(std::move(mesh)), material(mat) {}
 
-		std::shared_ptr<Utility::Mesh> planeMesh;
+		SpriteComponent(const SpriteComponent&) = delete;
+		SpriteComponent& operator=(const SpriteComponent&) = delete;
+
+		SpriteComponent(SpriteComponent&&) noexcept = default;
+		SpriteComponent& operator=(SpriteComponent&&) noexcept = default;
+
+		std::unique_ptr<Utility::Mesh> planeMesh;
 		Utility::Material material;
 	};
 }

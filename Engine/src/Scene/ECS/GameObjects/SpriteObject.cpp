@@ -60,7 +60,7 @@ namespace Engine::Scene::ECS
 			return;
 		}
 
-		spriteComp->planeMesh = std::make_shared<Utility::Mesh>(GetMeshType(type));
+		spriteComp->planeMesh = std::make_unique<Utility::Mesh>(GetMeshType(type));
 
 		SETUP_MATERIAL();
 	}
@@ -78,7 +78,7 @@ namespace Engine::Scene::ECS
 			return;
 		}
 
-		spriteComp->planeMesh = std::make_shared<Utility::Mesh>(GetMeshType(type));
+		spriteComp->planeMesh = std::make_unique<Utility::Mesh>(GetMeshType(type));
 
 		SETUP_MATERIAL();
 	}
@@ -102,7 +102,7 @@ namespace Engine::Scene::ECS
 			return;
 		}
 
-		spriteComp->planeMesh = std::make_shared<Utility::Mesh>(GetMeshType(type));
+		spriteComp->planeMesh = std::make_unique<Utility::Mesh>(GetMeshType(type));
 
 		SETUP_MATERIAL();
 	}
@@ -119,7 +119,7 @@ namespace Engine::Scene::ECS
 			return;
 		}
 		
-		spriteComp->planeMesh = std::make_shared<Utility::Mesh>(GetMeshType(type));
+		spriteComp->planeMesh = std::make_unique<Utility::Mesh>(GetMeshType(type));
 
 		SETUP_MATERIAL();
 	}

@@ -56,7 +56,7 @@ namespace Engine::Scene::ECS
 		}
 	}
 
-	MeshObject::MeshObject(std::shared_ptr<Scene> scene, MeshType type, std::optional<UINT16> sideCount):
+	MeshObject::MeshObject(const std::shared_ptr<Scene>& scene, MeshType type, std::optional<UINT16> sideCount):
 		GameObject3D(scene)
 	{
 		AddComponent<Components::MeshComponent>();
@@ -68,18 +68,18 @@ namespace Engine::Scene::ECS
 			return;
 		}
 
-		meshComp->mesh = std::make_shared<Utility::Mesh>(GetMeshType(type, sideCount));
+		meshComp->mesh = std::make_unique<Utility::Mesh>(GetMeshType(type, sideCount));
 	
 		SETUP_MATERIAL();
 	}
 
-	MeshObject::MeshObject(std::shared_ptr<Scene> scene, std::string_view fileName):
+	MeshObject::MeshObject(const std::shared_ptr<Scene>& scene, std::string_view fileName):
 		GameObject3D(scene)
 	{
 		//wip, need to actually make the mesh imported and everything first, which will come later
 	}
 
-	MeshObject::MeshObject(std::shared_ptr<Scene> scene, Components::TransformComponent3D transform, MeshType type, std::optional<UINT16> sideCount):
+	MeshObject::MeshObject(const std::shared_ptr<Scene>& scene, Components::TransformComponent3D transform, MeshType type, std::optional<UINT16> sideCount):
 		GameObject3D(scene, transform)
 	{
 		AddComponent<Components::MeshComponent>();
@@ -91,12 +91,12 @@ namespace Engine::Scene::ECS
 			return;
 		}
 
-		meshComp->mesh = std::make_shared<Utility::Mesh>(GetMeshType(type, sideCount));
+		meshComp->mesh = std::make_unique<Utility::Mesh>(GetMeshType(type, sideCount));
 
 		SETUP_MATERIAL();
 	}
 
-	MeshObject::MeshObject(std::shared_ptr<Scene> scene, Components::TransformComponent3D transform, std::string_view fileName):
+	MeshObject::MeshObject(const std::shared_ptr<Scene>& scene, Components::TransformComponent3D transform, std::string_view fileName):
 		GameObject3D(scene, transform)
 	{
 		//wip, need to actually make the mesh imported and everything first, which will come later

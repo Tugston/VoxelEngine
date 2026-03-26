@@ -20,7 +20,7 @@ namespace Engine::Scene::ECS
 	//***********
 	//GAME OBJECT
 	//***********
-	GameObject::GameObject(std::shared_ptr<Scene> scene): m_Scene(scene), m_ID(0)
+	GameObject::GameObject(const std::shared_ptr<Scene>& scene): m_Scene(scene), m_ID(0)
 	{
 		//I just want to ensure the scene is ready before calling this
 		if (Scene* currentScene = m_Scene.lock().get())
@@ -49,11 +49,7 @@ namespace Engine::Scene::ECS
 
 	GameObject2D::GameObject2D(std::shared_ptr<Scene> scene, const Components::TransformComponent2D& transform): GameObject(scene)
 	{
-		AddComponent<Components::TransformComponent2D>();
-		Components::TransformComponent2D* transformComp = GetComponent<Components::TransformComponent2D>();
-		transformComp->location = transform.location;
-		transformComp->rotation = transform.rotation;
-		transformComp->scale = transform.scale;
+		AddComponent<Components::TransformComponent2D>(transform.location, transform.rotation, transform.scale);
 	}
 
 	GameObject2D::~GameObject2D()
@@ -78,11 +74,7 @@ namespace Engine::Scene::ECS
 
 	GameObject3D::GameObject3D(std::shared_ptr<Scene> scene, const Components::TransformComponent3D& transform): GameObject(scene)
 	{
-		AddComponent<Components::TransformComponent3D>();
-		Components::TransformComponent3D* transformComp = GetComponent<Components::TransformComponent3D>();
-		transformComp->location = transform.location;
-		transformComp->rotation = transform.rotation;
-		transformComp->scale = transform.scale;
+		AddComponent<Components::TransformComponent3D>(transform.location, transform.rotation, transform.scale);
 	}
 
 	GameObject3D::~GameObject3D()

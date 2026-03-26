@@ -63,7 +63,7 @@ namespace Engine::Scene::ECS
 			if (pool->HasComponent(entityID))
 				LOG_WARN("<Registry.h> (AddComponent) Entity [ {} ] already has {} component, adding nothing", entityID, typeid(t).name());
 			
-			pool->Add(entityID, t(std::forward<Args>(args)...));
+			pool->Add(entityID, std::forward<Args>(args)...);
 		}
 		
 		template<typename t>
@@ -105,6 +105,7 @@ namespace Engine::Scene::ECS
 			virtual ~InheritPool() = default;
 
 			//need to add these as the inherit so it can be accessed without the cast
+			//since the component pool needs to represent any type of component
 			virtual void RemoveComponent(EntityID entityID) = 0;
 			virtual bool HasComponent(EntityID entityID) const = 0;
 
@@ -134,12 +135,13 @@ namespace Engine::Scene::ECS
 
 			//returns the component back
 			//the existing check is done in the registry itself, felt it was slightly better to do it there
-			void Add(EntityID entityID, const t& componentData)
+			template<typename... Args>
+			void Add(EntityID entityID, Args&&... args)
 			{
 				if (sparse.size() <= entityID)
 					sparse.resize(entityID + 1, 0);
 
-				denseComponents.push_back(componentData);
+				denseComponents.emplace_back(std::forward<Args>(args)...);
 				denseEntities.push_back(entityID);
 				sparse[entityID] = denseComponents.size() - 1;
 			}

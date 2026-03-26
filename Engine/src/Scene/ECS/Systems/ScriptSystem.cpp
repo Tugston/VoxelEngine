@@ -21,7 +21,7 @@
 
 namespace Engine::Scene::ECS::Systems
 {
-	void SysOnScriptConstruct(std::shared_ptr<Scene> scene)
+	void SysOnScriptConstruct(const std::shared_ptr<Scene>& scene)
 	{
 		const std::vector<EntityID>* scriptEntities = scene->GetAllEntitiesWithComponent<Components::ScriptComponent>();
 
@@ -42,7 +42,7 @@ namespace Engine::Scene::ECS::Systems
 		}
 	}
 
-	void SysOnScriptStart(std::shared_ptr<Scene> scene)
+	void SysOnScriptStart(const std::shared_ptr<Scene>& scene)
 	{
 		const std::vector<EntityID>* scriptEntities = scene->GetAllEntitiesWithComponent<Components::ScriptComponent>();
 
@@ -63,7 +63,7 @@ namespace Engine::Scene::ECS::Systems
 		}
 	}
 
-	void SysOnScriptTick(std::shared_ptr<Scene> scene, float deltaTime)
+	void SysOnScriptTick(const std::shared_ptr<Scene>& scene, float deltaTime)
 	{
 		const std::vector<EntityID>* scriptEntities = scene->GetAllEntitiesWithComponent<Components::ScriptComponent>();
 

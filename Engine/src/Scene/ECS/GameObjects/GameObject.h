@@ -34,7 +34,7 @@ namespace Engine::Scene::ECS
 	public:
 		//delete default for now, until I get the scene manager all setup
 		GameObject() = delete;
-		GameObject(std::shared_ptr<Scene> scene);
+		GameObject(const std::shared_ptr<Scene>& scene);
 		~GameObject();
 
 	public:

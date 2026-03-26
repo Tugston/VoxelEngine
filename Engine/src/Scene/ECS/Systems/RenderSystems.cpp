@@ -29,7 +29,7 @@
 
 namespace Engine::Scene::ECS::Systems
 {
-	void SysRenderOpaqueMesh(const std::shared_ptr<Engine::Scene::Scene> scene, Renderer::Renderer* renderer)
+	void SysRenderOpaqueMesh(const std::shared_ptr<Engine::Scene::Scene>& scene, Renderer::Renderer* renderer)
 	{
 		const std::vector<EntityID>* spriteEntities = scene->GetAllEntitiesWithComponent<Components::SpriteComponent>();
 		const std::vector<EntityID>* meshEntities = scene->GetAllEntitiesWithComponent<Components::MeshComponent>();

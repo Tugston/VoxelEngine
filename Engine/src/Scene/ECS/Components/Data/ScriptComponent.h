@@ -27,23 +27,23 @@ namespace Engine::Scene::ECS::Components
 
 	struct ScriptComponent
 	{
-		std::vector<std::shared_ptr<ScriptModule>> scripts;
+		std::vector<std::unique_ptr<ScriptModule>> scripts;
 		bool tickEnabled = true;
 
 		//store the owner here as well, so that the component can setup the scripts automatically
 		GameObject* owner = nullptr;
 
-		ScriptComponent(std::shared_ptr<ScriptModule> script, GameObject* owner):
+		ScriptComponent(std::unique_ptr<ScriptModule> script, GameObject* owner):
 			owner(owner)
 		{
 			AddScript(std::move(script));
 		}
 
 		//breaking Component architecture here, but its just extrapolating the vector
-		void AddScript(std::shared_ptr<ScriptModule> script)
+		void AddScript(std::unique_ptr<ScriptModule> script)
 		{
 			script.get()->SetOwner(owner);
-			scripts.push_back(script);
+			scripts.push_back(std::move(script));
 		}
 
 	};

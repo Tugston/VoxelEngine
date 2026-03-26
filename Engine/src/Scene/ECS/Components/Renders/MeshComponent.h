@@ -22,9 +22,15 @@ namespace Engine::Scene::ECS::Components
 	struct MeshComponent
 	{
 		MeshComponent() = default;
-		MeshComponent(std::shared_ptr<Utility::Mesh> mesh, Utility::Material mat) : mesh(mesh), material(material) {}
+		MeshComponent(std::unique_ptr<Utility::Mesh> mesh, Utility::Material mat): mesh(std::move(mesh)), material(material) {}
 
-		std::shared_ptr<Utility::Mesh> mesh;
+		MeshComponent(const MeshComponent&) = delete;
+		MeshComponent& operator=(const MeshComponent&) = delete;
+
+		MeshComponent(MeshComponent&&) noexcept = default;
+		MeshComponent& operator=(MeshComponent&&) noexcept = default;
+
+		std::unique_ptr<Utility::Mesh> mesh;
 		Utility::Material material;
 	};
 }
