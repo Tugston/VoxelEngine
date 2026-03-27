@@ -18,6 +18,7 @@
 #include "Core/Layers/LayerStack.h"
 #include "Core/Layers/EngineLayers.h"
 #include "./ECS/Registry.h"
+#include "../Renderer/Core/RenderPasses.h"
 
 //STND
 #include <string>
@@ -67,17 +68,18 @@ namespace Engine::Scene
 			return m_Registry->GetAllEntitiesWithComponent<t>();
 		}
 
-		//collects all objects with renderable ecs components
-		void CollectRenderData(); 
+		//returns data in proper layer rendering order
+		//takes in the current render pass for appropriate data
+		const std::vector<ECS::EntityID> CollectRenderData(Renderer::RenderPasses type);
 
 		void AddUI() const;
 		void RemoveUI() const;
 
 		//DEBUG ONLY
 	#if defined(EG_DEBUG) || (APP_DEBUG)
-		inline void EnableFullDebugView() const { LayerStack::PushWorldLayer(new EngineWorldLayer); LayerStack::PushUILayer(new EngineUILayer); };
-		inline void EnableDebugUI() const { LayerStack::PushUILayer(new EngineUILayer); };
-		inline void EnableDebugGeometry() const { LayerStack::PushWorldLayer(new EngineWorldLayer); };
+		inline void EnableFullDebugView() const { LayerStack::PushWorldLayer(new EngineWorldLayer(m_Registry)); LayerStack::PushUILayer(new EngineUILayer(m_Registry)); };
+		inline void EnableDebugUI() const { LayerStack::PushUILayer(new EngineUILayer(m_Registry)); };
+		inline void EnableDebugGeometry() const { LayerStack::PushWorldLayer(new EngineWorldLayer(m_Registry)); };
 		inline void DisableFullDebugView() const { REMOVE_ENGINE_UI_LAYER; REMOVE_ENGINE_DEBUG_LAYER; };
 		inline void DisableDebugUI() const { REMOVE_ENGINE_UI_LAYER; };
 		inline void DisableDebugGeometry() const { REMOVE_ENGINE_DEBUG_LAYER; };

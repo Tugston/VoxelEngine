@@ -73,7 +73,7 @@ namespace Engine
 			m_emplaceIdex--;
 	}
 
-	const bool LayerStack::CheckLayerExists(unsigned char id)
+	const bool LayerStack::CheckLayerExists(LayerID id)
 	{
 		//o(n), idc, there is only 4 layers
 		for (auto i : m_Layers)

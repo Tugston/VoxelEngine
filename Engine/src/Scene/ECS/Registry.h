@@ -4,8 +4,7 @@
 * Author: Vincent Pierce
 * Created: 2025-11-12 (yyyy/mm/dd)
 *
-* Description: Driver class for the entire Entity Component System, utilizes a sparse set for O(1) except for removal. Could use Archtypes, but that I am
-* afraid that is a bit out of my realm, especially for this small engine.
+* Description: Driver class for the entire Entity Component System, utilizes a sparse set for O(1) except for removal. Could use Archtypes, but that I am afraid that is a bit out of my realm, especially for this small engine.
 * 
 * Copyright (C) 2025 Vincent Pierce
 * SPDX-License-Identifier: GPL-3.0
@@ -83,9 +82,14 @@ namespace Engine::Scene::ECS
 			ComponentPool<t>* pool = GetPool<t>();
 
 			if (pool->HasComponent(entityID))
+			{
 				return pool->GetComponent<t>(entityID);
+			}
 			else
+			{
 				LOG_WARN("<Registry.h> (GetComponent) Entity [ {} ] does not contain {} component", entityID, typeid(t).name());
+				return nullptr;
+			}
 		}
 
 		template<typename t>

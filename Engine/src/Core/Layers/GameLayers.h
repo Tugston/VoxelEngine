@@ -24,25 +24,25 @@ namespace Engine
 	class WorldLayer : public Layer
 	{
 	public:
-		WorldLayer();
+		WorldLayer(std::shared_ptr<ECSRegistry> registry);
 		~WorldLayer();
 
-		virtual void Attach();
-		virtual void Detach();
-		virtual void GetDrawData();
-		virtual void InputEvent();
+		virtual void Attach() override;
+		virtual void Detach() override;
+		virtual std::vector<EntityID> GetDrawData(Renderer::RenderPasses pass) override;
+		virtual void InputEvent() override;
 	};
 
 
 	class UILayer : public Layer
 	{
 	public:
-		UILayer();
+		UILayer(std::shared_ptr<ECSRegistry> registry);
 		~UILayer();
 
-		virtual void Attach();
-		virtual void Detach();
-		virtual void GetDrawData();
-		virtual void InputEvent();
+		virtual void Attach() override;
+		virtual void Detach() override;
+		virtual std::vector<EntityID> GetDrawData(Renderer::RenderPasses pass) override;
+		virtual void InputEvent() override;
 	};
 }

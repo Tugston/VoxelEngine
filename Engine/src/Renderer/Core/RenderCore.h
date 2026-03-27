@@ -32,7 +32,7 @@ namespace Core
 			std::string errmsg = std::format("OpenGL error {}, at {}:{} - for {}\n", err, fileName, line, statement);
 			Engine::Logger::LogMessage(Engine::Logger::LogType::Critical, errmsg);
 		}
-	}
+	}	
 }
 
 

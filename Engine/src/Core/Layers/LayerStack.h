@@ -41,7 +41,7 @@ namespace Engine
 
 
 		//take advantage of the layer "stack" actually being an underlying vector
-		static const bool CheckLayerExists(unsigned char id);
+		static const bool CheckLayerExists(LayerID id);
 
 		static std::vector<Layer*>::iterator Top();
 		static std::vector<Layer*>::iterator Bottom();
@@ -65,7 +65,7 @@ namespace Engine
 	#ifndef REMOVE_ENGINE_UI_LAYER
 	#define REMOVE_ENGINE_UI_LAYER \
 		for(std::vector<Layer*>::iterator i = Engine::LayerStack::CurrentLocation(); i < Engine::LayerStack::Bottom(); i++){\
-			if((*i)->GetID() == 2){\
+			if((*i)->GetID() == LayerID::EngineUI){\
 				Engine::LayerStack::RemoveLayer(i);\
 				break;\
 			}\
@@ -76,7 +76,7 @@ namespace Engine
 	#ifndef REMOVE_ENGINE_DEBUG_LAYER
 	#define REMOVE_ENGINE_DEBUG_LAYER \
 		for(std::vector<Layer*>::iterator i = Engine::LayerStack::Top(); i < Engine::LayerStack::CurrentLocation(); i++){\
-			if((*i)->GetID() == 1){\
+			if((*i)->GetID() == LayerID::EngineWorld){\
 				Engine::LayerStack::RemoveLayer(i);\
 				break;\
 			}\

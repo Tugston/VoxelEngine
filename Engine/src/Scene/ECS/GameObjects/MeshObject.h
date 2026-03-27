@@ -16,6 +16,7 @@
 //ENGN
 #include "GameObject.h"
 #include "Scene/ECS/Components/Renders/MeshComponent.h"
+#include "Scene/ECS/Components/Tags/RenderComponent.h"
 
 namespace Engine::Scene::ECS
 {

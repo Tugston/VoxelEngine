@@ -20,10 +20,11 @@
 
 namespace Engine
 {
+
 	//***********//
 	//WORLD LAYER//
 	//***********//
-	WorldLayer::WorldLayer() : Layer(3)
+	WorldLayer::WorldLayer(std::shared_ptr<ECSRegistry> registry) : Layer(LayerID::GameWorld, registry)
 	{
 	}
 
@@ -40,10 +41,29 @@ namespace Engine
 	{
 	}
 
-	void WorldLayer::GetDrawData()
+	std::vector<WorldLayer::EntityID> WorldLayer::GetDrawData(Renderer::RenderPasses pass)
 	{
-	//	Engine::Logger::LogMessage(Engine::Logger::LogType::Message, "World Layer Draw!");
-		return;
+		std::shared_ptr<ECSRegistry> reg = m_SceneRegistry.lock();
+		
+		if (!reg)
+		{
+			LOG_ERR("<GameLayers.cpp> (GetDrawData): Scene Registry is Invalid, Returning!");
+			return std::vector<EntityID>{std::numeric_limits<UINT32>::max()};
+		}
+
+		const std::vector<EntityID>* entities = reg->GetAllEntitiesWithComponent<RenderComponent>();
+		std::vector<EntityID> validDataPool;
+		
+		for (auto entt : *entities)
+		{
+			const RenderComponent* renderComponent = reg->GetComponent<RenderComponent>(entt);
+
+			//testing just grabbing everything and the visible feature
+			if (renderComponent->layer == GetID() && renderComponent->visible)
+				validDataPool.insert(validDataPool.begin(), entt);
+		}
+
+		return validDataPool;
 	}
 
 	void WorldLayer::InputEvent()
@@ -77,8 +97,8 @@ namespace Engine
 			}
 			else if (InputSystem::KeyTapped(EngineKeys::F12))
 			{
-				LayerStack::PushWorldLayer(new EngineWorldLayer);
-				LayerStack::PushUILayer(new EngineUILayer);
+				LayerStack::PushWorldLayer(new EngineWorldLayer(m_SceneRegistry.lock()));
+				LayerStack::PushUILayer(new EngineUILayer(m_SceneRegistry.lock()));
 			}
 
 #endif	
@@ -95,7 +115,7 @@ namespace Engine
 	//********//
 	//UI LAYER//
 	//********//
-	UILayer::UILayer() : Layer(4)
+	UILayer::UILayer(std::shared_ptr<ECSRegistry> registry) : Layer(LayerID::GameUI, registry)
 	{
 	}
 
@@ -112,9 +132,9 @@ namespace Engine
 	{		
 	}
 
-	void UILayer::GetDrawData()
+	std::vector<Scene::ECS::EntityID> UILayer::GetDrawData(Renderer::RenderPasses pass)
 	{
-		return;
+		return std::vector<Scene::ECS::EntityID>{std::numeric_limits<UINT32>::max()};
 	}
 
 	void UILayer::InputEvent()

@@ -45,8 +45,8 @@ namespace Engine::Renderer
 		MeshObject(unsigned int layer) : RenderObject(layer) {};
 		MeshObject(glm::mat4 transform, const Utility::Mesh* mesh, const Utility::Material* material, unsigned int layer) :
 		RenderObject(transform, layer), mesh(mesh), material(material) {};
-		const Utility::Mesh* mesh;
-		const Utility::Material* material;
+		const Utility::Mesh* mesh = nullptr;
+		const Utility::Material* material = nullptr;
 		
 	private:
 		virtual void SubmitToRender(Renderer* renderer) const override;
@@ -63,7 +63,7 @@ namespace Engine::Renderer
 		//the instancedMesh stores the 
 		static const Utility::InstancedMesh* mesh;
 
-		const Utility::Material* material;
+		const Utility::Material* material = nullptr;
 
 	private:
 		virtual void SubmitToRender(Renderer* renderer) const override;

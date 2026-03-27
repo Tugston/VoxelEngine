@@ -39,22 +39,29 @@ namespace Engine::Scene
 		return m_Registry->CreateEntity();
 	}
 
-	void Scene::CollectRenderData()
+	const std::vector<ECS::EntityID> Scene::CollectRenderData(Renderer::RenderPasses type)
 	{
+		std::vector<ECS::EntityID> sortedData;
 
 		for (size_t i = 0; i < LayerStack::GetLayers().size(); i++)
 		{
-			LayerStack::GetLayers().at(i)->GetDrawData();
+			std::vector<ECS::EntityID> currentData = LayerStack::GetLayers().at(i)->GetDrawData(type);
+
+			if (currentData[0] == (std::numeric_limits<UINT32>::max)())
+				continue;
+
+			sortedData.insert(std::end(sortedData), std::begin(currentData), std::end(currentData));
 		}
+
+		return sortedData;
 	}
 
 	void Scene::AddUI() const
 	{
 		//check if the layer exists already, if not add it
-		//4 is the game ui layer id
-		if (!(LayerStack::CheckLayerExists(4)))
+		if (!(LayerStack::CheckLayerExists(LayerID::GameUI)))
 		{
-			LayerStack::PushUILayer(new UILayer);
+			LayerStack::PushUILayer(new UILayer(m_Registry));
 		}
 	}
 
@@ -66,15 +73,15 @@ namespace Engine::Scene
 	void Scene::SetupScene()
 	{
 		Logger::LogMessage(Logger::LogType::Message, "New Scene Created!");
-		
+	
+		m_Registry = std::make_shared<ECS::Registry>();
+
 		//layer setup
 		LayerStack::Clear(); //clear the layer stack to refresh for the new scene
-		LayerStack::PushWorldLayer(new EngineWorldLayer);
-		LayerStack::PushUILayer(new UILayer);
-		LayerStack::PushWorldLayer(new WorldLayer);
-		LayerStack::PushUILayer(new EngineUILayer);
-
-		m_Registry = std::make_shared<ECS::Registry>();
+		LayerStack::PushWorldLayer(new EngineWorldLayer(m_Registry));
+		LayerStack::PushUILayer(new UILayer(m_Registry));
+		LayerStack::PushWorldLayer(new WorldLayer(m_Registry));
+		LayerStack::PushUILayer(new EngineUILayer(m_Registry));
 	}
 
 }

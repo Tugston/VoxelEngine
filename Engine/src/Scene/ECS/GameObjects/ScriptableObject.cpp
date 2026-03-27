@@ -47,48 +47,64 @@ namespace Engine::Scene::ECS
 		SpriteObject2D(scene, type)
 	{
 		ADD_SCRIPT();
+
+		AddComponent<Components::Renderable>(LayerID::GameWorld, true);
 	}
 
 	ScriptableSpriteObject2D::ScriptableSpriteObject2D(std::shared_ptr<Scene> scene, std::unique_ptr<ScriptModule> script, Components::TransformComponent2D transform, SpriteType type):
 		SpriteObject2D(scene, transform, type)
 	{
 		ADD_SCRIPT();
+
+		AddComponent<Components::Renderable>(LayerID::GameWorld, true);
 	}
 
 	ScriptableSpriteObject3D::ScriptableSpriteObject3D(std::shared_ptr<Scene> scene, std::unique_ptr<ScriptModule> script, SpriteType type):
 		SpriteObject3D(scene, type)
 	{
 		ADD_SCRIPT();
+
+		AddComponent<Components::Renderable>(LayerID::GameWorld, true);
 	}
 
 	ScriptableSpriteObject3D::ScriptableSpriteObject3D(std::shared_ptr<Scene> scene, std::unique_ptr<ScriptModule> script, Components::TransformComponent3D transform, SpriteType type):
 		SpriteObject3D(scene, transform, type)
 	{
 		ADD_SCRIPT();
+
+		AddComponent<Components::Renderable>(LayerID::GameWorld, true);
 	}
 
 	ScriptableMeshObject::ScriptableMeshObject(std::shared_ptr<Scene> scene, std::unique_ptr<ScriptModule> script, MeshType type, std::optional<UINT16> sideCount):
 		MeshObject(scene, type, sideCount)
 	{
 		ADD_SCRIPT();
+
+		AddComponent<Components::Renderable>(LayerID::GameWorld, true);
 	}
 
 	ScriptableMeshObject::ScriptableMeshObject(std::shared_ptr<Scene> scene, std::unique_ptr<ScriptModule> script, std::string_view fileName):
 		MeshObject(scene, fileName)
 	{
 		ADD_SCRIPT();
+
+		AddComponent<Components::Renderable>(LayerID::GameWorld, true);
 	}
 
 	ScriptableMeshObject::ScriptableMeshObject(std::shared_ptr<Scene> scene, std::unique_ptr<ScriptModule> script, Components::TransformComponent3D transform, MeshType type, std::optional<UINT16> sideCount):
 		MeshObject(scene, transform, type, sideCount)
 	{
 		ADD_SCRIPT();
+
+		AddComponent<Components::Renderable>(LayerID::GameWorld, true);
 	}
 
 	ScriptableMeshObject::ScriptableMeshObject(std::shared_ptr<Scene> scene, std::unique_ptr<ScriptModule> script, Components::TransformComponent3D transform, std::string_view fileName):
 		MeshObject(scene, transform, fileName)
 	{
 		ADD_SCRIPT();
+
+		AddComponent<Components::Renderable>(LayerID::GameWorld, true);
 	}
 }
 

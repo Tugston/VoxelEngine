@@ -16,29 +16,38 @@
 //ENGINE
 #include "Core/Core.h"
 #include "Scene/ECS/Registry.h"
+#include "Renderer/Core/RenderPasses.h"
+#include "LayerID.h"
+#include "Scene/ECS/Components/Tags/RenderComponent.h"
 
 namespace Engine
 {
 	class Layer
 	{
 	protected:
-		Layer() {};
-		Layer(unsigned char id) : m_ID(id) {};
+		using ECSRegistry = Scene::ECS::Registry;
+		using EntityID = Scene::ECS::EntityID;
+		using RenderComponent = Scene::ECS::Components::Renderable;	
+
+		Layer() = default;
+		Layer(LayerID id, std::shared_ptr<ECSRegistry> reg) : m_ID(id), m_SceneRegistry(reg) {};
 	public:
 		virtual ~Layer() = default;
 
 		virtual void Attach() = 0;
 		virtual void Detach() = 0;
-		virtual void GetDrawData() = 0;
+
+		//need to copy the data so the scene can properly combine it rather than returning a const pointer
+		//only returns the draw entities so not as much data
+		virtual std::vector<EntityID> GetDrawData(Renderer::RenderPasses pass) = 0;
+		
 		virtual void InputEvent() = 0;
 
-		inline unsigned char GetID() const { return m_ID; };
+		inline LayerID GetID() const { return m_ID; };
 
 	protected:
-		//there will only be a few layers
-		//this can be stored in a byte obviously
-		unsigned char m_ID = 0;
+		LayerID m_ID = LayerID::Unknown;
 
-		std::weak_ptr<Scene::ECS::Registry> m_SceneRegistry;
+		std::weak_ptr<ECSRegistry> m_SceneRegistry;
 	};
 }

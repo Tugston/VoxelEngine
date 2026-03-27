@@ -27,28 +27,28 @@ namespace Engine
 	class EngineWorldLayer : public Layer
 	{
 	public:
-		EngineWorldLayer();
+		EngineWorldLayer(std::shared_ptr<ECSRegistry> registry);
 		~EngineWorldLayer();
 
-		virtual void Attach();
-		virtual void Detach();
+		virtual void Attach() override;
+		virtual void Detach() override;
 
-		virtual void GetDrawData();
-		virtual void InputEvent();
+		virtual std::vector<EntityID> GetDrawData(Renderer::RenderPasses pass) override;
+		virtual void InputEvent() override;
 	
 	};
 
 	class EngineUILayer : public Layer
 	{
 	public:
-		EngineUILayer();
+		EngineUILayer(std::shared_ptr<ECSRegistry> registry);
 		~EngineUILayer();
 
-		virtual void Attach();
-		virtual void Detach();
+		virtual void Attach() override;
+		virtual void Detach() override;
 
-		virtual void GetDrawData();
-		virtual void InputEvent();
+		virtual std::vector<EntityID> GetDrawData(Renderer::RenderPasses pass) override;
+		virtual void InputEvent() override;
 
 	private:
 		bool m_ShowAllData = false;

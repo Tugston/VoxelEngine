@@ -25,7 +25,7 @@ namespace Engine
 	//WORLD LAYER//
 	//***********//
 
-	EngineWorldLayer::EngineWorldLayer() : Layer(1)
+	EngineWorldLayer::EngineWorldLayer(std::shared_ptr<ECSRegistry> registry) : Layer(LayerID::EngineWorld, registry)
 	{
 
 	}
@@ -46,10 +46,10 @@ namespace Engine
 
 	}
 
-	void EngineWorldLayer::GetDrawData()
+	std::vector<EngineWorldLayer::EntityID> EngineWorldLayer::GetDrawData(Renderer::RenderPasses)
 	{
-		//need to collect all the verts, textures, etc from ecs so then the renderer can draw them
-		return;
+		//temporary
+		return std::vector<EntityID>{std::numeric_limits<UINT32>().max()};
 	}
 
 	void EngineWorldLayer::InputEvent()
@@ -77,7 +77,7 @@ namespace Engine
 	//UI LAYER//
 	//********//
 
-	EngineUILayer::EngineUILayer() : Layer(2)
+	EngineUILayer::EngineUILayer(std::shared_ptr<ECSRegistry> registry) : Layer(LayerID::EngineUI, registry)
 	{
 
 	}
@@ -97,8 +97,9 @@ namespace Engine
 		Logger::LogMessage(Logger::LogType::Error, "Engine UI Layer Removed!");
 	}
 
-	void EngineUILayer::GetDrawData()
+	std::vector<EngineUILayer::EntityID> EngineUILayer::GetDrawData(Renderer::RenderPasses pass)
 	{
+		return std::vector<EntityID>{std::numeric_limits<UINT32>().max()};
 	}
 
 	void EngineUILayer::InputEvent()
