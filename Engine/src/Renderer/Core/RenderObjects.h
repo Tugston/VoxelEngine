@@ -28,10 +28,8 @@ namespace Engine::Renderer
 	class Renderer;
 
 	struct RenderObject {
-		RenderObject(unsigned int layer) : layer(layer) {};
-		RenderObject(glm::mat4 transform, unsigned int layer): transform(transform), layer(layer) {};
+		RenderObject(glm::mat4 transform): transform(transform) {};
 		glm::mat4 transform{};
-		const unsigned int layer;
 
 	private:
 		virtual void SubmitToRender(Renderer* renderer) const = 0;
@@ -42,9 +40,8 @@ namespace Engine::Renderer
 
 	struct MeshObject : public RenderObject
 	{
-		MeshObject(unsigned int layer) : RenderObject(layer) {};
-		MeshObject(glm::mat4 transform, const Utility::Mesh* mesh, const Utility::Material* material, unsigned int layer) :
-		RenderObject(transform, layer), mesh(mesh), material(material) {};
+		MeshObject(glm::mat4 transform, const Utility::Mesh* mesh, const Utility::Material* material) :
+		RenderObject(transform), mesh(mesh), material(material) {};
 		const Utility::Mesh* mesh = nullptr;
 		const Utility::Material* material = nullptr;
 		

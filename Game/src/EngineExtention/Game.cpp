@@ -55,6 +55,10 @@ namespace VoxelGame
 			if (tcTwo)
 				tcTwo->location.x = 10.f;
 
+			TransformComponent3D* tcThree = m_TestObjectThree->GetComponent<TransformComponent3D>();
+			if (tcThree)
+				tcThree->location.y = 5.f;
+
 			ScriptComponent* scThree = m_TestObjectThree->GetComponent<ScriptComponent>();
 			if (scThree)
 				scThree->AddScript(std::make_unique<BaseColorFlashScript>(Maths::Vector3<float>{1.f, 0.f, 0.f}));

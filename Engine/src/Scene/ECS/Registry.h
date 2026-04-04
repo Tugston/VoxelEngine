@@ -16,10 +16,11 @@
 //STND
 #include <typeindex>
 #include <vector>
+#include <variant>
+#include <any>
 
 //ENGINE
 #include "./Core/Core.h"
-#include "./Components/Data/TransformComponent.h"
 #include "./Core/Logger.h"
 
 
@@ -82,16 +83,17 @@ namespace Engine::Scene::ECS
 			ComponentPool<t>* pool = GetPool<t>();
 
 			if (pool->HasComponent(entityID))
-			{
 				return pool->GetComponent<t>(entityID);
-			}
 			else
-			{
-				LOG_WARN("<Registry.h> (GetComponent) Entity [ {} ] does not contain {} component", entityID, typeid(t).name());
 				return nullptr;
-			}
 		}
 
+		template<typename... t>
+		auto GetComponents(EntityID id)
+		{
+			return std::make_tuple(GetComponent<t>(id)...);
+		}
+	
 		template<typename t>
 		const std::vector<EntityID>* GetAllEntitiesWithComponent()
 		{
@@ -189,7 +191,7 @@ namespace Engine::Scene::ECS
 				//not found
 				return nullptr;
 			}
-
+			
 			//this function operates the same as GetComponent, but it just returns the raw memory ptr
 			//this is meant to be injected into a ComponentView, so if you are not using that then you should use GetComponent() instead
 			virtual void* GetRaw(EntityID id) override

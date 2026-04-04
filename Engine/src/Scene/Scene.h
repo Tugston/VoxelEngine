@@ -59,6 +59,12 @@ namespace Engine::Scene
 			return m_Registry->GetComponent<t>(id);
 		}
 
+		template<typename... t>
+		auto GetObjectComponents(ECS::EntityID id)
+		{
+			return m_Registry->GetComponents<t...>(id);
+		}
+
 		//this is only const, because it is not gameplay related
 		//GetObjectComponent will probably like to have access to modifying components in the game and stuff
 

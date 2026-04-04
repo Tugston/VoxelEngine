@@ -49,7 +49,7 @@ namespace Engine::Scene
 
 			if (currentData[0] == (std::numeric_limits<UINT32>::max)())
 				continue;
-
+			
 			sortedData.insert(std::end(sortedData), std::begin(currentData), std::end(currentData));
 		}
 
