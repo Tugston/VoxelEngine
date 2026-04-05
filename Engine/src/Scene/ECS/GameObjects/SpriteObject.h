@@ -29,14 +29,14 @@ namespace Engine::Scene::ECS
 	class SpriteObject2D : public GameObject2D
 	{
 	public:
-		SpriteObject2D(std::shared_ptr<Scene> scene, SpriteType type = SpriteType::QUAD_MESH);
-		SpriteObject2D(std::shared_ptr<Scene> scene, Components::TransformComponent2D transform, SpriteType type = SpriteType::QUAD_MESH);
+		SpriteObject2D(ECS::Registry& registry, SpriteType type = SpriteType::QUAD_MESH);
+		SpriteObject2D(ECS::Registry& registry, Components::TransformComponent2D transform, SpriteType type = SpriteType::QUAD_MESH);
 	};
 
 	class SpriteObject3D : public GameObject3D
 	{
 	public:
-		SpriteObject3D(std::shared_ptr<Scene> scene, SpriteType type = SpriteType::QUAD_MESH);
-		SpriteObject3D(std::shared_ptr<Scene> scene, Components::TransformComponent3D transform, SpriteType type = SpriteType::QUAD_MESH);
+		SpriteObject3D(ECS::Registry& registry, SpriteType type = SpriteType::QUAD_MESH);
+		SpriteObject3D(ECS::Registry& registry, Components::TransformComponent3D transform, SpriteType type = SpriteType::QUAD_MESH);
 	};
 }

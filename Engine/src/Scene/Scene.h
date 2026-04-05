@@ -36,56 +36,21 @@ namespace Engine::Scene
 		
 		ECS::EntityID RegisterObject();
 
-		template<typename t, typename... Args>
-		void RegisterComponent(ECS::EntityID id, Args&&... args)
-		{
-			m_Registry->AddComponent<t>(id, std::forward<Args>(args)...);
-		}
-
-		template<typename t>
-		void DestroyComponent(ECS::EntityID id)
-		{
-			m_Registry->RemoveComponent<t>(id);
-		}
-
-		void DeleteEntity(ECS::EntityID id)
-		{
-			m_Registry->DeleteEntity(id);
-		}
-
-		template<typename t>
-		t* GetObjectComponent(ECS::EntityID id)
-		{
-			return m_Registry->GetComponent<t>(id);
-		}
-
-		template<typename... t>
-		auto GetObjectComponents(ECS::EntityID id)
-		{
-			return m_Registry->GetComponents<t...>(id);
-		}
-
-		//this is only const, because it is not gameplay related
-		//GetObjectComponent will probably like to have access to modifying components in the game and stuff
-
-		template<typename t>
-		const std::vector<ECS::EntityID>* GetAllEntitiesWithComponent()
-		{
-			return m_Registry->GetAllEntitiesWithComponent<t>();
-		}
-
 		//returns data in proper layer rendering order
 		//takes in the current render pass for appropriate data
 		const std::vector<ECS::EntityID> CollectRenderData(Renderer::RenderPasses type);
+
+		//returns the scene registry, automatically checks validity
+		ECS::Registry& GetRegistry();
 
 		void AddUI() const;
 		void RemoveUI() const;
 
 		//DEBUG ONLY
 	#if defined(EG_DEBUG) || (APP_DEBUG)
-		inline void EnableFullDebugView() const { LayerStack::PushWorldLayer(new EngineWorldLayer(m_Registry)); LayerStack::PushUILayer(new EngineUILayer(m_Registry)); };
-		inline void EnableDebugUI() const { LayerStack::PushUILayer(new EngineUILayer(m_Registry)); };
-		inline void EnableDebugGeometry() const { LayerStack::PushWorldLayer(new EngineWorldLayer(m_Registry)); };
+		inline void EnableFullDebugView() const { LayerStack::PushWorldLayer(new EngineWorldLayer()); LayerStack::PushUILayer(new EngineUILayer()); };
+		inline void EnableDebugUI() const { LayerStack::PushUILayer(new EngineUILayer()); };
+		inline void EnableDebugGeometry() const { LayerStack::PushWorldLayer(new EngineWorldLayer()); };
 		inline void DisableFullDebugView() const { REMOVE_ENGINE_UI_LAYER; REMOVE_ENGINE_DEBUG_LAYER; };
 		inline void DisableDebugUI() const { REMOVE_ENGINE_UI_LAYER; };
 		inline void DisableDebugGeometry() const { REMOVE_ENGINE_DEBUG_LAYER; };
@@ -96,7 +61,7 @@ namespace Engine::Scene
 
 	private:
 		std::string m_Name = "Example Scene";
-		std::shared_ptr<ECS::Registry> m_Registry;
+		std::unique_ptr<ECS::Registry> m_Registry;
 	};
 
 }

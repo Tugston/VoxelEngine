@@ -25,7 +25,7 @@ namespace Engine
 	//WORLD LAYER//
 	//***********//
 
-	EngineWorldLayer::EngineWorldLayer(std::shared_ptr<ECSRegistry> registry) : Layer(LayerID::EngineWorld, registry)
+	EngineWorldLayer::EngineWorldLayer() : Layer(LayerID::EngineWorld)
 	{
 
 	}
@@ -46,7 +46,7 @@ namespace Engine
 
 	}
 
-	std::vector<EngineWorldLayer::EntityID> EngineWorldLayer::GetDrawData(Renderer::RenderPasses)
+	std::vector<EngineWorldLayer::EntityID> EngineWorldLayer::GetDrawData(Renderer::RenderPasses, ECSRegistry& registry)
 	{
 		//temporary
 		return std::vector<EntityID>{std::numeric_limits<UINT32>().max()};
@@ -77,7 +77,7 @@ namespace Engine
 	//UI LAYER//
 	//********//
 
-	EngineUILayer::EngineUILayer(std::shared_ptr<ECSRegistry> registry) : Layer(LayerID::EngineUI, registry)
+	EngineUILayer::EngineUILayer() : Layer(LayerID::EngineUI)
 	{
 
 	}
@@ -97,7 +97,7 @@ namespace Engine
 		Logger::LogMessage(Logger::LogType::Error, "Engine UI Layer Removed!");
 	}
 
-	std::vector<EngineUILayer::EntityID> EngineUILayer::GetDrawData(Renderer::RenderPasses pass)
+	std::vector<EngineUILayer::EntityID> EngineUILayer::GetDrawData(Renderer::RenderPasses pass, ECSRegistry& registry)
 	{
 		return std::vector<EntityID>{std::numeric_limits<UINT32>().max()};
 	}

@@ -19,7 +19,7 @@
 #include "Input/Input.h"
 #include "Core/Window.h"
 #include "Core/Debug/DebugUI.h"
-#include "Scene/Scene.h"
+#include "Scene/SceneManager.h"
 #include "Core/Cameras/PerspectiveCamera.h"
 
 //STND
@@ -98,8 +98,7 @@ namespace Engine
 		void ProcessInput() const;
 
 	protected:
-		//this needs to be controlled by the scene manager eventually
-		std::shared_ptr<Scene::Scene> m_CurrentScene; //heap allocate; scene will contain a lot of stuff and wont be unloaded and reloaded frequently
+		Scene::SceneManager m_SceneManager;
 			
 		//Editor Specifics & MetaData
 		unsigned int GetRenderScreenTexture() { return m_Renderer->GetRenderTexture(); }

@@ -13,14 +13,12 @@
 */
 #pragma once
 
-namespace Engine::Scene
-{
-	class Scene;
-}
+//ENGN
+#include "Scene/ECS/Registry.h"
 
 namespace Engine::Scene::ECS::Systems
 {
-	void SysOnScriptConstruct(const std::shared_ptr<Scene>& scene);
-	void SysOnScriptStart(const std::shared_ptr<Scene>& scene);
-	void SysOnScriptTick(const std::shared_ptr<Scene>& scene, float deltaTime);
+	void SysOnScriptConstruct(ECS::Registry& registry);
+	void SysOnScriptStart(ECS::Registry& registry);
+	void SysOnScriptTick(ECS::Registry& registry, float deltaTime);
 }

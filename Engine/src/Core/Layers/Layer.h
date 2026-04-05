@@ -30,16 +30,17 @@ namespace Engine
 		using RenderComponent = Scene::ECS::Components::Renderable;	
 
 		Layer() = default;
-		Layer(LayerID id, std::shared_ptr<ECSRegistry> reg) : m_ID(id), m_SceneRegistry(reg) {};
+		Layer(LayerID id) : m_ID(id) {};
 	public:
 		virtual ~Layer() = default;
 
 		virtual void Attach() = 0;
 		virtual void Detach() = 0;
 
+		//registry is passed to each GetDrawData so that layers are not coupled to the Scene and can persist
 		//need to copy the data so the scene can properly combine it rather than returning a const pointer
 		//only returns the draw entities so not as much data
-		virtual std::vector<EntityID> GetDrawData(Renderer::RenderPasses pass) = 0;
+		virtual std::vector<EntityID> GetDrawData(Renderer::RenderPasses pass, ECSRegistry& registry) = 0;
 		
 		virtual void InputEvent() = 0;
 
@@ -47,7 +48,5 @@ namespace Engine
 
 	protected:
 		LayerID m_ID = LayerID::Unknown;
-
-		std::weak_ptr<ECSRegistry> m_SceneRegistry;
 	};
 }

@@ -27,13 +27,13 @@ namespace Engine
 	class EngineWorldLayer : public Layer
 	{
 	public:
-		EngineWorldLayer(std::shared_ptr<ECSRegistry> registry);
+		EngineWorldLayer();
 		~EngineWorldLayer();
 
 		virtual void Attach() override;
 		virtual void Detach() override;
 
-		virtual std::vector<EntityID> GetDrawData(Renderer::RenderPasses pass) override;
+		virtual std::vector<EntityID> GetDrawData(Renderer::RenderPasses pass, ECSRegistry& registry) override;
 		virtual void InputEvent() override;
 	
 	};
@@ -41,13 +41,13 @@ namespace Engine
 	class EngineUILayer : public Layer
 	{
 	public:
-		EngineUILayer(std::shared_ptr<ECSRegistry> registry);
+		EngineUILayer();
 		~EngineUILayer();
 
 		virtual void Attach() override;
 		virtual void Detach() override;
 
-		virtual std::vector<EntityID> GetDrawData(Renderer::RenderPasses pass) override;
+		virtual std::vector<EntityID> GetDrawData(Renderer::RenderPasses pass, ECSRegistry& registry) override;
 		virtual void InputEvent() override;
 
 	private:

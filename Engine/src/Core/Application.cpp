@@ -33,27 +33,27 @@ namespace Engine
 	//the editor overrides it, so if a new editor is ever built need to take this into consideration 
 
 	Application::Application() :
-		m_Window("Voxel Game"), m_CurrentScene(nullptr), m_Renderer(std::make_unique<Renderer::Renderer>(m_Window.GetBufferSize(), Renderer::Renderer::RenderTarget::Window))
+		m_Window("Voxel Game"), m_Renderer(std::make_unique<Renderer::Renderer>(m_Window.GetBufferSize(), Renderer::Renderer::RenderTarget::Window))
 	{
 		Initialize();
 	}
 
 	Application::Application(std::string_view applicationName) :
-		m_Window(applicationName.data()), m_CurrentScene(nullptr), m_Renderer(std::make_unique<Renderer::Renderer>(m_Window.GetBufferSize(), Renderer::Renderer::RenderTarget::Window))
+		m_Window(applicationName.data()), m_Renderer(std::make_unique<Renderer::Renderer>(m_Window.GetBufferSize(), Renderer::Renderer::RenderTarget::Window))
 	{
 		Initialize();
 	}
 
 	//IGNORE THIS CONSTRUCTOR UNLESS YOU EXPLICITLY NEED A DIFFERENT RENDER TARGET
 	Application::Application(Renderer::Renderer::RenderTarget renderTarget) :
-		m_Window("Voxel Game"), m_CurrentScene(nullptr), m_Renderer(std::make_unique<Renderer::Renderer>(m_Window.GetBufferSize(), renderTarget))
+		m_Window("Voxel Game"), m_Renderer(std::make_unique<Renderer::Renderer>(m_Window.GetBufferSize(), renderTarget))
 	{
 		Initialize();
 	}
 
 	//IGNORE THIS CONSTRUCTOR UNLESS YOU EXPLICITLY NEED A DIFFERENT RENDER TARGET
 	Application::Application(std::string_view applicationName, Renderer::Renderer::RenderTarget renderTarget) :
-		m_Window(applicationName.data()), m_CurrentScene(nullptr), m_Renderer(std::make_unique<Renderer::Renderer>(m_Window.GetBufferSize(), renderTarget))
+		m_Window(applicationName.data()), m_Renderer(std::make_unique<Renderer::Renderer>(m_Window.GetBufferSize(), renderTarget))
 	{
 		Initialize();
 	}
@@ -77,16 +77,12 @@ namespace Engine
 		LOG_WARN("Engine Successfully Initialized!");
 
 		m_Window.SetFrameSize(m_Renderer->Resize(m_Camera.lock().get())); //send the resize function to the window for resize callback
-
-		//setup a test level for the engine
-		//can obviously be overridden later in the app
-		CreateLevel("Test Level");
 	}
 
 	void Application::Start()
 	{		
-		Systems::SysOnScriptConstruct(m_CurrentScene);
-		Systems::SysOnScriptStart(m_CurrentScene);
+		Systems::SysOnScriptConstruct(m_SceneManager.GetCurrentScene()->GetRegistry());
+		Systems::SysOnScriptStart(m_SceneManager.GetCurrentScene()->GetRegistry());
 	}
 
 	void Application::Tick()
@@ -96,7 +92,7 @@ namespace Engine
 		InputSystem::MouseIdleDetection(m_DeltaTime);
 		InputSystem::SetPreviousMousePos(InputSystem::GetMousePos());
 
-		Systems::SysOnScriptTick(m_CurrentScene, GetDeltaTime());
+		Systems::SysOnScriptTick(m_SceneManager.GetCurrentScene()->GetRegistry(), GetDeltaTime());
 
 		m_Window.PollEvents();
 		Draw(GetDeltaTime());
@@ -104,10 +100,7 @@ namespace Engine
 
 	void Application::CreateLevel(std::string_view levelName)
 	{
-		if (m_CurrentScene)
-			m_CurrentScene.reset();
-
-		m_CurrentScene = std::make_unique<Scene::Scene>(Scene::Scene(levelName));
+		m_SceneManager.CreateScene(levelName);
 	}
 
 	//need to somehow save scenes and everything else, this is on the back burner for a while
@@ -125,7 +118,7 @@ namespace Engine
 	void Application::Draw(float deltaTime)
 	{
 		m_Renderer->BeginRender(m_Camera.lock().get());
-		Systems::SysRenderOpaqueMesh(m_CurrentScene, m_Renderer.get());
+		Systems::SysRenderOpaqueMesh(m_SceneManager.GetCurrentScene(), m_Renderer.get());
 		m_Renderer->EndRender();
 		
 		SwapBuffer();

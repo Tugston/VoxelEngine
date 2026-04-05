@@ -65,7 +65,7 @@ namespace Editor
 		Application::Start();
 		LOG_MSG("Editor Started!");
 
-		m_TestObject = std::make_unique<GameObject3D>(m_CurrentScene);
+		m_TestObject = std::make_unique<GameObject3D>(m_SceneManager.GetCurrentScene()->GetRegistry());
 
 		m_TestObject->AddComponent<Components::SpriteComponent>();
 		Components::TransformComponent3D* transformComponent = m_TestObject->GetComponent<Components::TransformComponent3D>();

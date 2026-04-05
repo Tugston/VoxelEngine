@@ -17,17 +17,17 @@
 
 //ENGN
 #include "Scene/ECS/GameObjects/ScriptableObject.h";
-#include "Scene/Scene.h"
 
 namespace Engine::Scene::ECS::Systems
 {
-	void SysOnScriptConstruct(const std::shared_ptr<Scene>& scene)
+
+	void SysOnScriptConstruct(ECS::Registry& registry)
 	{
-		const std::vector<EntityID>* scriptEntities = scene->GetAllEntitiesWithComponent<Components::ScriptComponent>();
+		const std::vector<EntityID>* scriptEntities = registry.GetAllEntitiesWithComponent<Components::ScriptComponent>();
 
 		for (EntityID ent : *scriptEntities)
 		{
-			Components::ScriptComponent* scriptComp = scene->GetObjectComponent<Components::ScriptComponent>(ent);
+			Components::ScriptComponent* scriptComp = registry.GetComponent<Components::ScriptComponent>(ent);
 
 			if (scriptComp)
 			{
@@ -42,13 +42,13 @@ namespace Engine::Scene::ECS::Systems
 		}
 	}
 
-	void SysOnScriptStart(const std::shared_ptr<Scene>& scene)
+	void SysOnScriptStart(ECS::Registry& registry)
 	{
-		const std::vector<EntityID>* scriptEntities = scene->GetAllEntitiesWithComponent<Components::ScriptComponent>();
+		const std::vector<EntityID>* scriptEntities = registry.GetAllEntitiesWithComponent<Components::ScriptComponent>();
 
 		for (EntityID ent : *scriptEntities)
 		{
-			Components::ScriptComponent* scriptComp = scene->GetObjectComponent<Components::ScriptComponent>(ent);
+			Components::ScriptComponent* scriptComp = registry.GetComponent<Components::ScriptComponent>(ent);
 
 			if (scriptComp)
 			{
@@ -63,13 +63,13 @@ namespace Engine::Scene::ECS::Systems
 		}
 	}
 
-	void SysOnScriptTick(const std::shared_ptr<Scene>& scene, float deltaTime)
+	void SysOnScriptTick(ECS::Registry& registry, float deltaTime)
 	{
-		const std::vector<EntityID>* scriptEntities = scene->GetAllEntitiesWithComponent<Components::ScriptComponent>();
+		const std::vector<EntityID>* scriptEntities = registry.GetAllEntitiesWithComponent<Components::ScriptComponent>();
 
 		for (EntityID ent : *scriptEntities)
 		{
-			Components::ScriptComponent* scriptComp = scene->GetObjectComponent<Components::ScriptComponent>(ent);
+			Components::ScriptComponent* scriptComp = registry.GetComponent<Components::ScriptComponent>(ent);
 
 			if (scriptComp && scriptComp->tickEnabled)
 			{

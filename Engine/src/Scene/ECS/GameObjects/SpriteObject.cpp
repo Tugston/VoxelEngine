@@ -49,7 +49,7 @@ namespace Engine::Scene::ECS
 	//Sprite Object 2D
 	//****************
 
-	SpriteObject2D::SpriteObject2D(std::shared_ptr<Scene> scene, SpriteType type): GameObject2D(scene)
+	SpriteObject2D::SpriteObject2D(ECS::Registry& registry, SpriteType type): GameObject2D(registry)
 	{
 		AddComponent<Components::SpriteComponent>();
 		Components::SpriteComponent* spriteComp = GetComponent<Components::SpriteComponent>();
@@ -66,8 +66,8 @@ namespace Engine::Scene::ECS
 	}
 
 
-	SpriteObject2D::SpriteObject2D(std::shared_ptr<Scene> scene, Components::TransformComponent2D transform, SpriteType type):
-		GameObject2D(scene, transform)
+	SpriteObject2D::SpriteObject2D(ECS::Registry& registry, Components::TransformComponent2D transform, SpriteType type):
+		GameObject2D(registry, transform)
 	{
 		AddComponent<Components::SpriteComponent>();
 		Components::SpriteComponent* spriteComp = GetComponent<Components::SpriteComponent>();
@@ -91,7 +91,7 @@ namespace Engine::Scene::ECS
 	//Sprite Object 3D
 	//****************
 
-	SpriteObject3D::SpriteObject3D(std::shared_ptr<Scene> scene, SpriteType type): GameObject3D(scene)
+	SpriteObject3D::SpriteObject3D(ECS::Registry& registry, SpriteType type): GameObject3D(registry)
 	{
 		AddComponent<Components::SpriteComponent>();
 		Components::SpriteComponent* spriteComp = GetComponent<Components::SpriteComponent>();
@@ -107,8 +107,8 @@ namespace Engine::Scene::ECS
 		SETUP_MATERIAL();
 	}
 
-	SpriteObject3D::SpriteObject3D(std::shared_ptr<Scene> scene, Components::TransformComponent3D transform, SpriteType type):
-		GameObject3D(scene, transform)
+	SpriteObject3D::SpriteObject3D(ECS::Registry& registry, Components::TransformComponent3D transform, SpriteType type):
+		GameObject3D(registry, transform)
 	{
 		AddComponent<Components::SpriteComponent>();
 		Components::SpriteComponent* spriteComp = GetComponent<Components::SpriteComponent>();

@@ -20,13 +20,9 @@ namespace Engine::Scene::ECS
 	//***********
 	//GAME OBJECT
 	//***********
-	GameObject::GameObject(const std::shared_ptr<Scene>& scene): m_Scene(scene), m_ID(0)
+	GameObject::GameObject(ECS::Registry& registry): m_Registry(registry), m_ID(0)
 	{
-		//I just want to ensure the scene is ready before calling this
-		if (Scene* currentScene = m_Scene.lock().get())
-			m_ID = currentScene->RegisterObject();
-		else
-			LOG_ERR("<GameObject.cpp> Could Not Register Object, Scene Not Valid!");
+		m_ID = m_Registry.CreateEntity();
 	}
 
 	GameObject::~GameObject()
@@ -42,12 +38,12 @@ namespace Engine::Scene::ECS
 	//GAME OBJECT 2D
 	//**************
 
-	GameObject2D::GameObject2D(std::shared_ptr<Scene> scene): GameObject(scene)
+	GameObject2D::GameObject2D(ECS::Registry& registry): GameObject(registry)
 	{
 		AddComponent<Components::TransformComponent2D>();
 	}
 
-	GameObject2D::GameObject2D(std::shared_ptr<Scene> scene, const Components::TransformComponent2D& transform): GameObject(scene)
+	GameObject2D::GameObject2D(ECS::Registry& registry, const Components::TransformComponent2D& transform): GameObject(registry)
 	{
 		AddComponent<Components::TransformComponent2D>(transform.location, transform.rotation, transform.scale);
 	}
@@ -67,12 +63,12 @@ namespace Engine::Scene::ECS
 	//GAME OBJECT 3D
 	//**************
 
-	GameObject3D::GameObject3D(std::shared_ptr<Scene> scene): GameObject(scene)
+	GameObject3D::GameObject3D(ECS::Registry& registry): GameObject(registry)
 	{
 		AddComponent<Components::TransformComponent3D>();
 	}
 
-	GameObject3D::GameObject3D(std::shared_ptr<Scene> scene, const Components::TransformComponent3D& transform): GameObject(scene)
+	GameObject3D::GameObject3D(ECS::Registry& registry, const Components::TransformComponent3D& transform): GameObject(registry)
 	{
 		AddComponent<Components::TransformComponent3D>(transform.location, transform.rotation, transform.scale);
 	}

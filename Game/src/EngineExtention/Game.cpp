@@ -37,11 +37,11 @@ namespace VoxelGame
 
 		virtual void Start() override
 		{
-			m_TestObjectOne = std::make_shared<ScriptableMeshObject>(m_CurrentScene, std::make_unique<MovementScript>(0.1f), MeshType::CONE_MESH, (UINT16)5);
+			m_TestObjectOne = m_SceneManager.CreateEntity<ScriptableMeshObject>(std::make_unique<MovementScript>(0.1f), MeshType::CONE_MESH, (UINT16)5);
 
-			m_TestObjectTwo = std::make_shared<ScriptableMeshObject>(m_CurrentScene, std::make_unique<MovementScript>(1.f), MeshType::CYLINDER_MESH, (UINT16)15);
+			m_TestObjectTwo = m_SceneManager.CreateEntity<ScriptableMeshObject>(std::make_unique<MovementScript>(1.f), MeshType::CYLINDER_MESH, (UINT16)15);
 			
-			m_TestObjectThree = std::make_shared<ScriptableSpriteObject3D>(m_CurrentScene, std::make_unique<MovementScript>(-0.1f));
+			m_TestObjectThree = m_SceneManager.CreateEntity<ScriptableSpriteObject3D>(std::make_unique<MovementScript>(-0.1f));
 
 			MeshComponent* mcOne = m_TestObjectOne->GetComponent<MeshComponent>();
 			if (mcOne)
@@ -130,9 +130,9 @@ namespace VoxelGame
 		Shader* m_Shader;
 
 		//sample game objects to test the instantiation and everything
-		std::shared_ptr<ScriptableMeshObject> m_TestObjectOne;
-		std::shared_ptr<ScriptableMeshObject> m_TestObjectTwo;
-		std::shared_ptr<ScriptableSpriteObject3D> m_TestObjectThree;
+		std::shared_ptr<GameObject> m_TestObjectOne;
+		std::shared_ptr<GameObject> m_TestObjectTwo;
+		std::shared_ptr<GameObject> m_TestObjectThree;
 		
 		std::shared_ptr<Camera::PerspectiveCamera> m_GameCamera;
 		

@@ -13,15 +13,46 @@
 */
 #pragma once
 
-//work in progress this will eventually handle loading scenes, auto detecting current scene for GameObjects, etc
-//I just currently have a lot of stuff to handle in the ecs and everything, so going to just od all that stuff manually for now
+//ENGN
+#include "Scene.h"
+#include "ECS/GameObjects/GameObject.h"
 
+//STND
+#include <memory>
+
+//I would like to add level streaming eventually and have scenes that can be loaded and closed during runtime which would allow the player to 
+//transition through scenes and not even realize it
 
 namespace Engine::Scene
 {
 	class SceneManager
 	{
+	public:
+		SceneManager();
+		~SceneManager();
 
+		void CreateScene(std::string_view sceneName);
+		void LoadScene(std::string_view sceneName);
+		void SaveCurrentScene();
+
+		inline Scene* GetCurrentScene() { return m_CurrentScene.get(); }
+
+		//NOTE: this should eventually be a unique_ptr because the overall game should only hold this, may already need to add it
+		// keeping it shared for now just in case though
+		//
+		//The different GameObject types only do constructor stuff, so can just simply return the base GameObject for the id
+		template<typename t, typename... Args>
+		std::shared_ptr<ECS::GameObject> CreateEntity(Args&&... args)
+		{
+			if (m_CurrentScene)
+				return std::make_shared<t>(m_CurrentScene->GetRegistry(), std::forward<Args>(args)...);
+			else
+				return nullptr;
+		};
+
+	private:
+		//heap allocate; scene will contain a lot of stuff and wont be unloaded and reloaded frequently
+		std::unique_ptr<Scene> m_CurrentScene = nullptr; 
 	};
 
 }

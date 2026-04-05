@@ -34,41 +34,29 @@ namespace Engine::Scene::ECS
 	public:
 		//delete default for now, until I get the scene manager all setup
 		GameObject() = delete;
-		GameObject(const std::shared_ptr<Scene>& scene);
+		GameObject(ECS::Registry& registry);
 		~GameObject();
 
 	public:
 		template<typename t, typename... Args>
 		void AddComponent(Args&&... args)
 		{
-			if (Scene* currentScene = m_Scene.lock().get())
-			{
-				Logger::LogMessage(Logger::LogType::Message, "<GameObject.h> Adding {} component to Object [ {} ]", typeid(t).name(), m_ID);
-				currentScene->RegisterComponent<t>(m_ID, std::forward<Args>(args)...);
-			}
-			else
-			{
-				LOG_ERR("<GameObject.h> Could Not Create Component for Object [ {} ]", m_ID);
-			}
+			LOG_MSG("<GameObject.h> Adding {} component to Object [ {} ]", typeid(t).name(), m_ID);
+			m_Registry.AddComponent<t>(m_ID, std::forward<Args>(args)...);
 		}
 
 		template<typename t>
 		void RemoveComponent(t*& componentRef)
 		{
-			if (Scene* currentScene = m_Scene.lock().get())
-			{
-				LOG_MSG("<GameObject.h> Removing {} component from Object [ {} ]", typeid(t).name(), m_ID);
-				currentScene->DestroyComponent<t>(m_ID);
-			}
+			LOG_MSG("<GameObject.h> Removing {} component from Object [ {} ]", typeid(t).name(), m_ID);
+			m_Registry.RemoveComponent<t>(m_ID);
 		}
 
 		//returns nullptr if component cannot be found
 		template<typename t>
 		t* GetComponent()
 		{
-			if (Scene* currentScene = m_Scene.lock().get())
-				return currentScene->GetObjectComponent<t>(m_ID);
-			return nullptr;
+			return m_Registry.GetComponent<t>(m_ID);
 		}
 
 		//this is utilized for testing, objectID is internal use
@@ -76,22 +64,25 @@ namespace Engine::Scene::ECS
 
 	private:
 		EntityID m_ID;
-		std::weak_ptr<Scene> m_Scene;
+
+		//Game Objects will never outlive the Scene, which contains the ECS registry
+		//Before a scene ends, it cleans up all the current GameObjects that are stored in the Scene Manager
+		ECS::Registry& m_Registry;
 	};
 
 	class GameObject2D : public GameObject
 	{
 	public:
-		GameObject2D(std::shared_ptr<Scene> scene);
-		GameObject2D(std::shared_ptr<Scene> scene, const Components::TransformComponent2D& transform);
+		GameObject2D(ECS::Registry& registry);
+		GameObject2D(ECS::Registry& registry, const Components::TransformComponent2D& transform);
 		~GameObject2D();
 	};
 
 	class GameObject3D : public GameObject
 	{
 	public:
-		GameObject3D(std::shared_ptr<Scene> scene);
-		GameObject3D(std::shared_ptr<Scene> scene, const Components::TransformComponent3D& transform);
+		GameObject3D(ECS::Registry& registry);
+		GameObject3D(ECS::Registry& registry, const Components::TransformComponent3D& transform);
 		~GameObject3D();
 	};
 }

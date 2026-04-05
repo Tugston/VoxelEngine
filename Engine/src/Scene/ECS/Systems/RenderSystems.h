@@ -25,6 +25,7 @@ namespace Engine::Scene
 
 namespace Engine::Scene::ECS::Systems
 {
-	void SysRenderOpaqueMesh(const std::shared_ptr<Scene>& scene, Renderer::Renderer* renderer);
+	//utilizes scene to retrieve the render data
+	void SysRenderOpaqueMesh(Scene* scene, Renderer::Renderer* renderer);
 }
 

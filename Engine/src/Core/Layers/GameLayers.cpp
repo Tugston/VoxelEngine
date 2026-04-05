@@ -24,7 +24,7 @@ namespace Engine
 	//***********//
 	//WORLD LAYER//
 	//***********//
-	WorldLayer::WorldLayer(std::shared_ptr<ECSRegistry> registry) : Layer(LayerID::GameWorld, registry)
+	WorldLayer::WorldLayer() : Layer(LayerID::GameWorld)
 	{
 	}
 
@@ -41,22 +41,14 @@ namespace Engine
 	{
 	}
 
-	std::vector<WorldLayer::EntityID> WorldLayer::GetDrawData(Renderer::RenderPasses pass)
+	std::vector<WorldLayer::EntityID> WorldLayer::GetDrawData(Renderer::RenderPasses pass, ECSRegistry& registry)
 	{
-		std::shared_ptr<ECSRegistry> reg = m_SceneRegistry.lock();
-		
-		if (!reg)
-		{
-			LOG_ERR("<GameLayers.cpp> (GetDrawData): Scene Registry is Invalid, Returning!");
-			return std::vector<EntityID>{std::numeric_limits<UINT32>::max()};
-		}
-
-		const std::vector<EntityID>* entities = reg->GetAllEntitiesWithComponent<RenderComponent>();
+		const std::vector<EntityID>* entities = registry.GetAllEntitiesWithComponent<RenderComponent>();
 		std::vector<EntityID> validDataPool;
 		
 		for (auto entt : *entities)
 		{
-			const RenderComponent* renderComponent = reg->GetComponent<RenderComponent>(entt);
+			const RenderComponent* renderComponent = registry.GetComponent<RenderComponent>(entt);
 
 			//testing just grabbing everything and the visible feature
 			if (renderComponent->layer == GetID() && renderComponent->visible)
@@ -97,8 +89,8 @@ namespace Engine
 			}
 			else if (InputSystem::KeyTapped(EngineKeys::F12))
 			{
-				LayerStack::PushWorldLayer(new EngineWorldLayer(m_SceneRegistry.lock()));
-				LayerStack::PushUILayer(new EngineUILayer(m_SceneRegistry.lock()));
+				//LayerStack::PushWorldLayer(new EngineWorldLayer(m_SceneRegistry.lock()));
+				//LayerStack::PushUILayer(new EngineUILayer(m_SceneRegistry.lock()));
 			}
 
 #endif	
@@ -115,7 +107,7 @@ namespace Engine
 	//********//
 	//UI LAYER//
 	//********//
-	UILayer::UILayer(std::shared_ptr<ECSRegistry> registry) : Layer(LayerID::GameUI, registry)
+	UILayer::UILayer() : Layer(LayerID::GameUI)
 	{
 	}
 
@@ -132,7 +124,7 @@ namespace Engine
 	{		
 	}
 
-	std::vector<Scene::ECS::EntityID> UILayer::GetDrawData(Renderer::RenderPasses pass)
+	std::vector<Scene::ECS::EntityID> UILayer::GetDrawData(Renderer::RenderPasses pass, ECSRegistry& registry)
 	{
 		return std::vector<Scene::ECS::EntityID>{std::numeric_limits<UINT32>::max()};
 	}

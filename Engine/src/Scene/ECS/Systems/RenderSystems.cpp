@@ -26,26 +26,25 @@
 
 #include "Core/Application.h"
 
-//scene should always be valid in each system
-
 namespace Engine::Scene::ECS::Systems
 {
 
-	void SysRenderOpaqueMesh(const std::shared_ptr<Engine::Scene::Scene>& scene, Renderer::Renderer* renderer)
+	void SysRenderOpaqueMesh(Scene* scene, Renderer::Renderer* renderer)
 	{
-		const std::vector<EntityID> opaqueObjects = scene->CollectRenderData(Renderer::RenderPasses::Opaque);
+		if (!scene)
+		{
+			LOG_FATAL("<RenderSystems.cpp> (SysRenderOpaqueMesh) Scene is invalid for unknown reason!");
+			return;
+		}
 
+		const std::vector<EntityID> opaqueObjects = scene->CollectRenderData(Renderer::RenderPasses::Opaque);
+		ECS::Registry& reg = scene->GetRegistry();
+	
 		//not worrying about 2d just yet
 		for (size_t i = 0; i < opaqueObjects.size(); i++)
-		{
-			//there is def a better way to do this, but just doing it like this for now
-			//its important to note that an entity could have multiple different types of rendering objects
-			//const Components::MeshComponent* sprite = scene->GetObjectComponent<Components::MeshComponent>(opaqueObjects.at(i));
-			//const Components::MeshComponent* mesh = scene->GetObjectComponent<Components::MeshComponent>(opaqueObjects.at(i));
-			
-			auto [mesh, sprite] = scene->GetObjectComponents<Components::MeshComponent, Components::SpriteComponent>(opaqueObjects.at(i));
-
-			const Components::TransformComponent3D* transform = scene->GetObjectComponent<Components::TransformComponent3D>(opaqueObjects.at(i));
+		{	
+			auto [mesh, sprite] = reg.GetComponents<Components::MeshComponent, Components::SpriteComponent>(opaqueObjects[i]);
+			const Components::TransformComponent3D* transform = reg.GetComponent<Components::TransformComponent3D>(opaqueObjects.at(i));
 
 			if (transform == nullptr)
 			{
