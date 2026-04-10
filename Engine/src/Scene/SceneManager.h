@@ -42,17 +42,22 @@ namespace Engine::Scene
 		//
 		//The different GameObject types only do constructor stuff, so can just simply return the base GameObject for the id
 		template<typename t, typename... Args>
-		std::shared_ptr<ECS::GameObject> CreateEntity(Args&&... args)
+		ECS::GameObject* CreateEntity(Args&&... args)
 		{
 			if (m_CurrentScene)
-				return std::make_shared<t>(m_CurrentScene->GetRegistry(), std::forward<Args>(args)...);
-			else
-				return nullptr;
+			{
+				std::unique_ptr<t> object = std::make_unique<t>(m_CurrentScene->GetRegistry(), std::forward<Args>(args)...);
+				m_ObjectPool.push_back(std::move(object));
+				return m_ObjectPool.back().get();
+			}
+
+			return nullptr;
 		};
 
 	private:
 		//heap allocate; scene will contain a lot of stuff and wont be unloaded and reloaded frequently
-		std::unique_ptr<Scene> m_CurrentScene = nullptr; 
+		std::unique_ptr<Scene> m_CurrentScene = nullptr;
+		std::vector<std::unique_ptr<ECS::GameObject>> m_ObjectPool; //storing game objects in the scene manager since they are a lyaer above the ECS
 	};
 
 }

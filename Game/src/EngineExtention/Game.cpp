@@ -130,9 +130,9 @@ namespace VoxelGame
 		Shader* m_Shader;
 
 		//sample game objects to test the instantiation and everything
-		std::shared_ptr<GameObject> m_TestObjectOne;
-		std::shared_ptr<GameObject> m_TestObjectTwo;
-		std::shared_ptr<GameObject> m_TestObjectThree;
+		GameObject* m_TestObjectOne;
+		GameObject* m_TestObjectTwo;
+		GameObject* m_TestObjectThree;
 		
 		std::shared_ptr<Camera::PerspectiveCamera> m_GameCamera;
 		
