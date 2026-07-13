@@ -16,6 +16,7 @@
 #include "SharedResources/GenericResources/Material.h"
 #include "SharedResources/PrimitiveShapes/ThreeDimensions/Cone.h"
 #include "SharedResources/PrimitiveShapes/ThreeDimensions/Cyllinder.h"
+#include "SharedResources/PrimitiveShapes/ThreeDimensions/Arrow.h"
 
 #define SETUP_MATERIAL()\
 meshComp->material.shader = new Utility::Shader("TestShader");\
@@ -51,6 +52,8 @@ namespace Engine::Scene::ECS
 		
 		case Engine::Scene::ECS::MeshType::SPHERE_MESH:
 			break;
+		case Engine::Scene::ECS::MeshType::ARROW_MESH:
+			return Utility::CreateArrow();
 		default:
 			break;
 		}

@@ -37,7 +37,7 @@ namespace VoxelGame
 
 		virtual void Start() override
 		{
-			m_TestObjectOne = m_SceneManager.CreateEntity<ScriptableMeshObject>(std::make_unique<MovementScript>(0.1f), MeshType::CONE_MESH, (UINT16)5);
+			m_TestObjectOne = m_SceneManager.CreateEntity<ScriptableMeshObject>(std::make_unique<MovementScript>(0.1f), MeshType::ARROW_MESH);
 
 			m_TestObjectTwo = m_SceneManager.CreateEntity<ScriptableMeshObject>(std::make_unique<MovementScript>(1.f), MeshType::CYLINDER_MESH, (UINT16)15);
 			

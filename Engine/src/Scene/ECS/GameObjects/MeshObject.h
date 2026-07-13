@@ -26,6 +26,7 @@ namespace Engine::Scene::ECS
 		CONE_MESH,
 		CYLINDER_MESH,
 		SPHERE_MESH,
+		ARROW_MESH
 	};
 
 	class MeshObject : public GameObject3D

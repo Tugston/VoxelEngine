@@ -43,7 +43,6 @@ namespace VoxelGame
 		float g = RandomFloatInRange(-1, 1) * scalar;
 		float b = RandomFloatInRange(-1, 1) * scalar;
 
-		Logger::LogMessage(Logger::LogType::Message, "Red Channel: {}", r);
 
 		m_CurrentColor.x += r;
 		m_CurrentColor.y += g;
