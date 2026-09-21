@@ -18,5 +18,13 @@
 
 namespace Engine::Utility
 {
-	Mesh CreateArrow();
+	//this is just a container exposed since the arrow has quite a few adjustments
+	struct ArrowConstruct {
+		int sideCount = 6;
+		float baseRadius = 0.5f;
+		float coneHeight = 0.8f;
+		float stemHeight = 0.5f;
+	};
+
+	Mesh CreateArrow(ArrowConstruct construct = {});
 }

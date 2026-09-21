@@ -21,24 +21,18 @@
 
 namespace Engine::Utility
 {
-    Mesh CreateArrow()
+    Mesh CreateArrow(ArrowConstruct construct)
     {
         Mesh arrowMesh;
-        const int sideCount = 6;
 
         //*****************************************
         //THIS IS PULLED STRAIGHT FROM THE CONE.CPP (kinda)
         //*****************************************
 
-        //Calculate the sides of the cone
-
-        const float baseRadius = 0.5f;
-        const float pointAngles = 2 * EG_PI_FLOAT / sideCount;
-        const float coneHeight = 0.8f;
-        const float stemHeight = 0.5f;
+        const float pointAngles = 2 * EG_PI_FLOAT / construct.sideCount;
 
         const Maths::Vector3<float> apexPoint{ 0.f, 0.5, 0.f };
-        const Maths::Vector3<float> baseCenterPosition{ 0.f, apexPoint.y - coneHeight, 0.f };
+        const Maths::Vector3<float> baseCenterPosition{ 0.f, apexPoint.y - construct.coneHeight, 0.f };
 
         const Maths::Vector3<float> coneAxisDirection = Maths::Vector3<float>::Normalize(baseCenterPosition - apexPoint);
 
@@ -57,13 +51,13 @@ namespace Engine::Utility
         std::vector<unsigned int> indexes;
 
         //++i on side count in order to skip first
-        for (UINT16 i = 1; i <= sideCount; i++)
+        for (UINT16 i = 1; i <= construct.sideCount; i++)
         {
             const float currentAngle = i * pointAngles;
 
             //base radius is 0.5f
             //calc the object's position on a circle around the base's center
-            const Maths::Vector3<float> position = baseCenterPosition + baseRightDir * baseRadius * std::cos(currentAngle) + baseForwardDir * baseRadius * std::sin(currentAngle);
+            const Maths::Vector3<float> position = baseCenterPosition + baseRightDir * construct.baseRadius * std::cos(currentAngle) + baseForwardDir * construct.baseRadius * std::sin(currentAngle);
 
             vertexData.push_back(position.x);
             vertexData.push_back(position.y);
@@ -71,7 +65,7 @@ namespace Engine::Utility
 
             indexes.push_back(0);
             indexes.push_back(i);
-            indexes.push_back((i % sideCount) + 1); //loop around when at sideCount
+            indexes.push_back((i % construct.sideCount) + 1); //loop around when at sideCount
         }
         
         //*****************************************
@@ -79,10 +73,10 @@ namespace Engine::Utility
         //*****************************************
 
         //now need to add the hole and cyllinder for the actual arrow
-        const float branchRadius = baseRadius / BRANCH_DIVISOR;
+        const float branchRadius = construct.baseRadius / BRANCH_DIVISOR;
         LOG_MSG("Branch Radius: {}", branchRadius); 
        
-        const int cyllinderStart = sideCount + 1;
+        const int cyllinderStart = construct.sideCount + 1;
 
         //skip the apex point
         const int currentSize = vertexData.size(); //loop adds to it
@@ -101,13 +95,13 @@ namespace Engine::Utility
 
         //need to add indices in third loop
         //to ensure arll the cone's points are formed
-        for (UINT16 i = 1; i <= sideCount; i++)
+        for (UINT16 i = 1; i <= construct.sideCount; i++)
         {
             const int outerCurrent = i;
-            const int outerNext = (i % sideCount) + 1;
+            const int outerNext = (i % construct.sideCount) + 1;
 
-            const int innerCurrent = sideCount + i;
-            const int innerNext = sideCount + ((i % sideCount) + 1);
+            const int innerCurrent = construct.sideCount + i;
+            const int innerNext = construct.sideCount + ((i % construct.sideCount) + 1);
 
             //first triangle of base section
             indexes.push_back(outerCurrent);
@@ -124,23 +118,23 @@ namespace Engine::Utility
         //BOTTOM STEM
         //*********** 
 
-        for (UINT16 i = 0; i < sideCount; i++)
+        for (UINT16 i = 0; i < construct.sideCount; i++)
         {
             const int vertexIndex = cyllinderStart + i;
             const int floatIndex = vertexIndex * 3;
 
             vertexData.push_back(vertexData.at(floatIndex)); //copy x from top of ring
-            vertexData.push_back(vertexData.at(floatIndex + 1) - stemHeight); //move the y down
+            vertexData.push_back(vertexData.at(floatIndex + 1) - construct.stemHeight); //move the y down
             vertexData.push_back(vertexData.at(floatIndex + 2)); //copy z as well
         }
 
         //now just connect the top to the bottom
-        for (UINT16 i = 0; i < sideCount; i++)
+        for (UINT16 i = 0; i < construct.sideCount; i++)
         {
             const unsigned int topCurrent = cyllinderStart + i;
-            const unsigned int botCurrent = cyllinderStart + sideCount + i;
-            const unsigned int topNext = (i == sideCount - 1) ? cyllinderStart : topCurrent + 1;
-            const unsigned int botNext = (i == sideCount - 1) ? cyllinderStart + sideCount : botCurrent + 1;
+            const unsigned int botCurrent = cyllinderStart + construct.sideCount + i;
+            const unsigned int topNext = (i == construct.sideCount - 1) ? cyllinderStart : topCurrent + 1;
+            const unsigned int botNext = (i == construct.sideCount - 1) ? cyllinderStart + construct.sideCount : botCurrent + 1;
             
             //side quad triangle 1
             indexes.push_back(topCurrent);
@@ -163,15 +157,15 @@ namespace Engine::Utility
         
         //add the bottom apex point
         vertexData.push_back(0.f);
-        vertexData.push_back(apexPoint.y - stemHeight);
+        vertexData.push_back(apexPoint.y - construct.stemHeight);
         vertexData.push_back(0.f);
 
-        const unsigned int bottomApex = cyllinderStart + sideCount * 2;
+        const unsigned int bottomApex = cyllinderStart + construct.sideCount * 2;
 
-        for (UINT16 i = 0; i < sideCount; i++)
+        for (UINT16 i = 0; i < construct.sideCount; i++)
         {
-            const unsigned int botCurrent = cyllinderStart + sideCount + i;
-            const unsigned int botNext = (i == sideCount - 1) ? cyllinderStart + sideCount : botCurrent + 1;
+            const unsigned int botCurrent = cyllinderStart + construct.sideCount + i;
+            const unsigned int botNext = (i == construct.sideCount - 1) ? cyllinderStart + construct.sideCount : botCurrent + 1;
 
             indexes.push_back(botCurrent);
             indexes.push_back(botNext);
