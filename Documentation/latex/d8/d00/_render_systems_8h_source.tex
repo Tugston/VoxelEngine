@@ -1,0 +1,37 @@
+\doxysection{Render\+Systems.\+h}
+\hypertarget{_render_systems_8h_source}{}\label{_render_systems_8h_source}\index{Engine/src/Scene/ECS/Systems/RenderSystems.h@{Engine/src/Scene/ECS/Systems/RenderSystems.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ RenderSystems.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/12-\/04\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ Systems\ for\ handling\ all\ the\ render\ pass\ setups\ in\ preparation\ for\ the\ render\ call\ }}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }Engine::Renderer}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_engine_1_1_renderer_1_1_renderer}{Renderer}};}
+\DoxyCodeLine{00019\ \}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }Engine::Scene}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_scene}{Scene}};}
+\DoxyCodeLine{00024\ \}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{namespace\ }Engine::Scene::ECS::Systems}
+\DoxyCodeLine{00027\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//utilizes\ scene\ to\ retrieve\ the\ render\ data}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ SysRenderOpaqueMesh(Scene*\ scene,\ Renderer::Renderer*\ renderer);}
+\DoxyCodeLine{00030\ \}}
+\DoxyCodeLine{00031\ }
+
+\end{DoxyCode}

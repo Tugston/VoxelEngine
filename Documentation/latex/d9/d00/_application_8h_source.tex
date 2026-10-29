@@ -1,0 +1,151 @@
+\doxysection{Application.\+h}
+\hypertarget{_application_8h_source}{}\label{_application_8h_source}\index{Engine/src/Core/Application.h@{Engine/src/Core/Application.h}}
+\doxymbox{\hyperlink{_application_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ Application.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/02-\/17\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ Distinct\ class\ that\ drives\ the\ entire\ application,\ user's\ game,\ and\ editor}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{comment}{//ENGINE}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ "{}Core/Core.h"{}}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ "{}Renderer/Core/Renderer.h"{}}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}Input/Input.h"{}}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_window_8h}{Core/Window.h}}"{}}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ "{}Core/Debug/DebugUI.h"{}}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ "{}Scene/SceneManager.h"{}}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ "{}Core/Cameras/PerspectiveCamera.h"{}}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{comment}{//STND}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{namespace\ }Engine}
+\DoxyCodeLine{00043\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_engine_1_1_layer}{Layer}};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_engine_1_1_application_aafb4be83f26204bdebf131e261bbf4e4}{Application}}}
+\DoxyCodeLine{00047\ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_application_aafb4be83f26204bdebf131e261bbf4e4}{Application}}();}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_application_aafb4be83f26204bdebf131e261bbf4e4}{Application}}(std::string\_view\ applicationName);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_application_aafb4be83f26204bdebf131e261bbf4e4}{Application}}(Renderer::Renderer::RenderTarget\ renderTarget);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_application_aafb4be83f26204bdebf131e261bbf4e4}{Application}}(std::string\_view\ applicationName,\ Renderer::Renderer::RenderTarget\ renderTarget);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_application_aafb4be83f26204bdebf131e261bbf4e4}{\string~Application}}();}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_1_1_application_af1f8ad5ad0b74bebe8c745a561d8ca36}{Initialize}}();}
+\DoxyCodeLine{00098\ \ \ \ \ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{comment}{//*************//}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{comment}{//*ENGINE\ API*//}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{comment}{//************//}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \textcolor{comment}{\ \ \ \ \ \ \ \ /***}}
+\DoxyCodeLine{00104\ \textcolor{comment}{\ \ \ \ \ \ \ \ *\ @name\ Engine\ API}}
+\DoxyCodeLine{00105\ \textcolor{comment}{\ \ \ \ \ \ \ \ *\ @anchor\ engine\_api\_group}}
+\DoxyCodeLine{00106\ \textcolor{comment}{\ \ \ \ \ \ \ \ *\ @details\ These\ functions\ are\ meant\ to\ be\ utilized\ within\ the\ child\ game\ class.\ Public\ ones\ may\ be\ used\ anywhere}}
+\DoxyCodeLine{00107\ \textcolor{comment}{\ \ \ \ \ \ \ \ *\ @\{\ \ \ \ }}
+\DoxyCodeLine{00108\ \textcolor{comment}{\ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_1_1_application_aa473bd543c92402f19ce0d4ff4002442}{Start}}();}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_1_1_application_a38a9c8a9bd54b694eb432827247e6d8c}{Tick}}();}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keyword}{protected}:\ \ }
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{class_engine_1_1_application_ab74e908f50c64b5fa86d35dc0d2928cf}{GetDeltaTime}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_engine_1_1_application_a25077d891fc8e95f609ff1b4ec772bd1}{m\_DeltaTime}};\ \};}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_1_1_application_a4616a5b523d4163f63f76dcdeb240167}{CreateLevel}}(std::string\_view\ levelName);}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_1_1_application_aaba50eeba7fe9cd0f7ebed718cb4361c}{LoadLevel}}(std::string\_view\ levelName);\ }
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_scene}{Scene::Scene}}*\ \doxymbox{\hyperlink{class_engine_1_1_application_af242894e2e00f34e004bd875d570dfe7}{GetWorld}}()\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_engine_1_1_application_abc9791b7db37e70517c7455f5bccb6da}{m\_SceneManager}}.GetCurrentScene();\ \}}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_engine_1_1_application_a463c6b35c62f2ee778917b9d99af65ec}{ShouldRun}}()\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_engine_1_1_application_a5b43b4bf89e85879731eea766012108d}{m\_Running}};\ \};}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_1_1_application_a0191bb93ec2fb8ca91fcb70a60b8a2b5}{QuitGame}}();}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_engine_1_1_application_ae2cad2a50b82a1c4cef5186db376153b}{GetFrameRate}}()\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_engine_1_1_application_aa4d9a8c948e785dbe1d21542de42be6d}{s\_Instance}}-\/>\doxymbox{\hyperlink{class_engine_1_1_application_a49ef60eb7c943948b0c2a24d8add3853}{m\_FrameRate}};\ \};}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \doxymbox{\hyperlink{class_engine_1_1_camera_1_1_editor_camera}{Camera::EditorCamera}}*\ \doxymbox{\hyperlink{class_engine_1_1_application_a225cb0e2ab00b84cbfdff2c9b7b480a1}{GetCamera}}()\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_engine_1_1_application_aa4d9a8c948e785dbe1d21542de42be6d}{s\_Instance}}-\/>\doxymbox{\hyperlink{class_engine_1_1_application_a67284e2af7e9bfced8c14a5fe1a617df}{m\_Camera}}.lock().get();\ \};}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_1_1_application_afcb4d929b975056af03a69d9d8fa2ea9}{SetViewTargetCamera}}(std::shared\_ptr<Camera::EditorCamera>\ camera)\ \{\ \doxymbox{\hyperlink{class_engine_1_1_application_a67284e2af7e9bfced8c14a5fe1a617df}{m\_Camera}}\ =\ camera;\ \};\ \ }
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{comment}{//*************//}}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \textcolor{comment}{//*ENGINE\ API*//}}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \textcolor{comment}{//************//}}
+\DoxyCodeLine{00200\ \ \ \ \ }
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_1_1_application_acbe20aa5886a591958c12937ea8bde04}{Draw}}(\textcolor{keywordtype}{float}\ deltaTime);}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_1_1_application_a69aeb77e8f654c7d11ff64eed9004233}{SwapBuffer}}()\ \{\ \doxymbox{\hyperlink{class_engine_1_1_application_a37d38002b6278343af012a08000381d1}{m\_Window}}.\doxymbox{\hyperlink{class_engine_1_1_window_abb7acac18eb1edff6779c9746cb2baa2}{SwapBuffers}}();\ \}}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_1_1_application_a7c03874deb6fd6484ed179ba4f37a600}{CalculateDeltaTime}}();}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00231\ \ \ \ \ }
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_1_1_application_ab8954479e3ad2b140aef49930b776e93}{InitializeEngineRootSystems}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_1_1_application_abc177c62b3b0d553f28f91bd59ed7a5b}{ProcessInput}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00246\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_scene_manager}{Scene::SceneManager}}\ \doxymbox{\hyperlink{class_engine_1_1_application_abc9791b7db37e70517c7455f5bccb6da}{m\_SceneManager}};}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Editor\ Specifics\ \&\ MetaData}}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_engine_1_1_application_a1c3a329f1212f6cca1a97aa388d5670f}{GetRenderScreenTexture}}()\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_engine_1_1_application_aa16f9830cc85a8510b207018244e134e}{m\_Renderer}}-\/>GetRenderTexture();\ \}}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\_view\ \doxymbox{\hyperlink{class_engine_1_1_application_a3bcf761f579ba94e27156f3bafbb2fa8}{GetWindowName}}()\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_engine_1_1_application_a37d38002b6278343af012a08000381d1}{m\_Window}}.\doxymbox{\hyperlink{class_engine_1_1_window_aeef8b9f680a5df8774143076d9fe29a2}{GetName}}();\ \}}
+\DoxyCodeLine{00269\ }
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Editor\ Specifics\ \&\ MetaData}}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00273\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{class_engine_1_1_application_a25077d891fc8e95f609ff1b4ec772bd1}{m\_DeltaTime}}\ =\ 0;}
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{class_engine_1_1_application_af9b37577e49f44e520509c5783a28487}{m\_PreviousTime}}\ =\ 0;}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_engine_1_1_application_a49ef60eb7c943948b0c2a24d8add3853}{m\_FrameRate}}\ =\ 0;}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_engine_1_1_application_a5b43b4bf89e85879731eea766012108d}{m\_Running}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00288\ }
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_window}{Window}}\ \doxymbox{\hyperlink{class_engine_1_1_application_a37d38002b6278343af012a08000381d1}{m\_Window}};}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ std::unique\_ptr<Renderer::Renderer>\ \doxymbox{\hyperlink{class_engine_1_1_application_aa16f9830cc85a8510b207018244e134e}{m\_Renderer}};}
+\DoxyCodeLine{00297\ }
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ std::weak\_ptr<Camera::EditorCamera>\ \doxymbox{\hyperlink{class_engine_1_1_application_a67284e2af7e9bfced8c14a5fe1a617df}{m\_Camera}};}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00301\ \ \ \ \ \textcolor{comment}{//class\ instance\ just\ hidden\ away\ down\ here}}
+\DoxyCodeLine{00302\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{class_engine_1_1_application_aafb4be83f26204bdebf131e261bbf4e4}{Application}}*\ \doxymbox{\hyperlink{class_engine_1_1_application_aa4d9a8c948e785dbe1d21542de42be6d}{s\_Instance}};}
+\DoxyCodeLine{00305\ }
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{class_engine_1_1_window}{Window}}*\ \doxymbox{\hyperlink{class_engine_1_1_application_a04bdb0fd821e878b920538ab9b3dcc74}{GetWindow}}()\ \{\ \textcolor{keywordflow}{if}\ (\&\doxymbox{\hyperlink{class_engine_1_1_application_aa4d9a8c948e785dbe1d21542de42be6d}{s\_Instance}}-\/>\doxymbox{\hyperlink{class_engine_1_1_application_a37d38002b6278343af012a08000381d1}{m\_Window}})\ \textcolor{keywordflow}{return}\ \&\doxymbox{\hyperlink{class_engine_1_1_application_aa4d9a8c948e785dbe1d21542de42be6d}{s\_Instance}}-\/>\doxymbox{\hyperlink{class_engine_1_1_application_a37d38002b6278343af012a08000381d1}{m\_Window}};}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ Logger::LogMessage(Logger::LogType::Critical,\ \textcolor{stringliteral}{"{}Window\ Invalid!"{}});\ EG\_ASSERT(\textcolor{keyword}{false});\ \}\};}
+\DoxyCodeLine{00309\ \ \ \ \ \};}
+\DoxyCodeLine{00310\ }
+\DoxyCodeLine{00333\ \ \ \ \ \textcolor{keyword}{extern}\ \doxymbox{\hyperlink{class_engine_1_1_application}{Application}}*\ \doxymbox{\hyperlink{_application_8h_a35016cfcb578c1f00f887ab607ff7fb9}{CreateApplication}}();}
+\DoxyCodeLine{00334\ \}}
+\DoxyCodeLine{00335\ }
+\DoxyCodeLine{00336\ \textcolor{comment}{//quaternions\ and\ what\ not}}
+\DoxyCodeLine{00337\ \textcolor{preprocessor}{\#define\ GLM\_ENABLE\_EXPERIMENTAL}}
+
+\end{DoxyCode}

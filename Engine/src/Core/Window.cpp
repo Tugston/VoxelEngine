@@ -116,6 +116,8 @@ namespace Engine
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
+
+		//need to do this.
 		//glfwWindowHint(GLFW_DECORATED, GLFW_FALSE); //remove decoration for full screen and windowed borderless, add it back for windowed
 
 		m_RenderWindow = glfwCreateWindow(m_Info.width, m_Info.height, m_Info.name.c_str(), NULL, NULL);

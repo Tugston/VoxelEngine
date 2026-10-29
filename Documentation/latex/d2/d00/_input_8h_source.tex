@@ -1,0 +1,127 @@
+\doxysection{Input.\+h}
+\hypertarget{_input_8h_source}{}\label{_input_8h_source}\index{Engine/src/Input/Input.h@{Engine/src/Input/Input.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ Input.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/02-\/17\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ Provides\ helpers,\ polling,\ and\ interrupt\ actions\ for\ all\ supported\ inputs}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//ENGINE}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}Input/KeyDefines.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}Core/Logger.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}Core/Core.h"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//STND}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{//VENDOR}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{struct\ }GLFWwindow;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{namespace\ }Engine}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_engine_1_1_input_system}{InputSystem}}}
+\DoxyCodeLine{00034\ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{enum\ class}\ InputMode}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ GameOnly\ =\ 0,}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ GameAndUI,}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ UIOnly,}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ Debug}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{enum\ class}\ ScrollDirection:\ UINT8}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ Up\ =\ 1,}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ Down\ =\ -\/1}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{comment}{//bit\ flag}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{enum\ class}\ MouseMoveDirection:\ UINT8}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ Stationary\ =\ 0,\ \ \ \ \ \textcolor{comment}{//storing\ as\ char\ and\ enum\ is\ uint\ obviously,\ so\ just\ handling\ the\ 0\ manually\ to\ avoid\ cast}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ Left\ \ \ \ \ \ \ =\ 1\ <<\ 0,\ \ \ \ \textcolor{comment}{//0001}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ Right\ \ \ \ \ \ =\ 1\ <<\ 1,\ \ \ \ \textcolor{comment}{//0010}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ Up\ \ \ \ \ \ \ \ \ =\ 1\ <<\ 2,\ \ \ \ \textcolor{comment}{//0100}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ Down\ \ \ \ \ \ \ =\ 1\ <<\ 3\ \ \ \ \ \textcolor{comment}{//1000}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ Init();}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{comment}{//polls\ the\ first\ frame\ the\ key\ is\ pressed}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{comment}{//resets\ once\ key\ is\ released}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ KeyTapped(EngineKeys\ key);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{comment}{//polls\ the\ entire\ time\ the\ key\ is\ held}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ KeyPressed(EngineKeys\ key);}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ KeyReleased(EngineKeys\ key);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ glm::vec2\ GetMousePos();}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{comment}{//sets\ the\ previous\ mouse\ pos\ as\ well}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{comment}{//see\ <Input.cpp>}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ glm::vec2\ GetMouseDelta();}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ GetMouseX();}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ GetMouseY();}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ SetPreviousMousePos(\textcolor{keyword}{const}\ glm::vec2\&\ pos);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ GetScrollDirection();}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ SetCurrentInputMode(InputMode\ newInputMode);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ InputMode\ GetInputMode()\ \{\ \textcolor{keywordflow}{return}\ m\_CurrentInputMode;\ \};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{comment}{//returns\ the\ current\ byte\ data\ of\ the\ mouse\ position}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{char}\ GetRawMouseDirection()\ \{\ \textcolor{keywordflow}{return}\ m\_MouseDirection;\ \};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ MouseIdleDetection(\textcolor{keywordtype}{float}\ deltaTime);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ MousePositionCallBack(GLFWwindow*\ window,\ \textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y);}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ ScrollWheelCallBack(GLFWwindow*\ window,\ \textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ glm::vec2\ m\_MousePos;}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ glm::vec2\ m\_PreviousMousePos;}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ m\_MouseMoveTolerance;\ \ \textcolor{comment}{//screen\ coords\ are\ posotive\ whole\ numbers}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{comment}{//can\ store\ the\ direction\ data\ in\ a\ byte}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ m\_MouseDirection;}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{comment}{//idle\ mouse\ time}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ m\_IdleTime;}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ m\_ScrollDir;}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{comment}{//determines\ if\ the\ input\ was\ handled\ or\ not}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::unordered\_map<EngineKeys,\ bool>\ m\_HandledMap;}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ InputMode\ m\_CurrentInputMode;}
+\DoxyCodeLine{00113\ \ \ \ \ \};}
+\DoxyCodeLine{00114\ \}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \textcolor{comment}{//these\ appropriately\ simplify\ the\ api\ (\ imo\ :/\ )}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#define\ ENGINE\_MOUSE\_IDLE\ \ \ Engine::InputSystem::GetRawMouseDirection()\ ==\ 0}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#define\ ENGINE\_MOUSE\_UP\ \ \ \ \ Engine::InputSystem::GetRawMouseDirection()\ \&\ (char)Engine::InputSystem::MouseMoveDirection::Up}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#define\ ENGINE\_MOUSE\_DOWN\ \ \ Engine::InputSystem::GetRawMouseDirection()\ \&\ (char)Engine::InputSystem::MouseMoveDirection::Down}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#define\ ENGINE\_MOUSE\_LEFT\ \ \ Engine::InputSystem::GetRawMouseDirection()\ \&\ (char)Engine::InputSystem::MouseMoveDirection::Left}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#define\ ENGINE\_MOUSE\_RIGHT\ \ Engine::InputSystem::GetRawMouseDirection()\ \&\ (char)Engine::InputSystem::MouseMoveDirection::Right}}
+
+\end{DoxyCode}

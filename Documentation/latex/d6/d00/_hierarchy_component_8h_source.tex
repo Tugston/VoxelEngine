@@ -1,0 +1,45 @@
+\doxysection{Hierarchy\+Component.\+h}
+\hypertarget{_hierarchy_component_8h_source}{}\label{_hierarchy_component_8h_source}\index{Engine/src/Scene/ECS/Components/Data/HierarchyComponent.h@{Engine/src/Scene/ECS/Components/Data/HierarchyComponent.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ HierarchyComponent.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/12-\/17\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ Hierarchy\ component\ that\ every\ entity\ has\ by\ default.\ This\ component\ is\ meant\ to\ store\ }}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//ENGN}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include"{}Core/Core.h"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//STND}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include<limits>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }Engine::Scene::ECS::Components}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{constexpr}\ UINT32\ INVALID\_ENTITY\ =\ (std::numeric\_limits<UINT32>::max)();\ \textcolor{comment}{//Entity\ ID}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{struct\ }HierarchyComponent}
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ HierarchyComponent()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ HierarchyComponent(UINT32\ parent,\ UINT32\ firstChild,\ UINT32\ nextSibling):}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ parentEntity(parent),\ firstChildEntity(firstChild),\ nextSiblingEntity(nextSibling)\ \{\}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ UINT32\ parentEntity\ \ \ \ \ \ =\ INVALID\_ENTITY;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ UINT32\ firstChildEntity\ \ =\ INVALID\_ENTITY;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ UINT32\ nextSiblingEntity\ =\ INVALID\_ENTITY;}
+\DoxyCodeLine{00036\ \ \ \ \ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \}}
+
+\end{DoxyCode}

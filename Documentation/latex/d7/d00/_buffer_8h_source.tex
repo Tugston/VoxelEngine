@@ -1,0 +1,139 @@
+\doxysection{Buffer.\+h}
+\hypertarget{_buffer_8h_source}{}\label{_buffer_8h_source}\index{Engine/src/Renderer/Architecture/Buffer.h@{Engine/src/Renderer/Architecture/Buffer.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ Buffer.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/26-\/03\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ Basic\ wrapper\ around\ all\ OpenGL\ buffers\ the\ engine\ requires\ as\ needed\ }}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//STND}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{comment}{//ENGINE}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}Core/Core.h"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }Engine::Renderer}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//currently\ working\ on\ this,\ but\ just\ pushing\ this\ since\ I\ have\ the\ editor\ updated}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{class\ }BaseBuffer}
+\DoxyCodeLine{00028\ \ \ \ \ \{\ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ BaseBuffer()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \string~BaseBuffer()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Create()\ =\ 0;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Bind()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ UnBind()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Release()\ =\ 0;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ UINT32\ GetID()\ \{\ \textcolor{keywordflow}{return}\ m\_ID;\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ UINT32\ m\_ID\ =\ (std::numeric\_limits<UINT32>::max)();}
+\DoxyCodeLine{00043\ \ \ \ \ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{class\ }VertexBuffer\ :\ \textcolor{keyword}{public}\ BaseBuffer}
+\DoxyCodeLine{00046\ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ VertexBuffer()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \string~VertexBuffer();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ VertexBuffer(VertexBuffer\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ VertexBuffer\&\ operator=(VertexBuffer\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ VertexBuffer(VertexBuffer\&\&\ other)\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ VertexBuffer\&\ operator=(VertexBuffer\&\&\ other)\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Create()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Bind()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ UnBind()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ BufferData(std::vector<float>\&\ data,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ drawType)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Release()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00065\ \ \ \ \ \};}
+\DoxyCodeLine{00066\ \ \ \ \ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{//Index\ buffer\ requires\ a\ VAO\ to\ be\ bound}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{class\ }IndexBuffer\ :\ \textcolor{keyword}{public}\ BaseBuffer}
+\DoxyCodeLine{00069\ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ IndexBuffer()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \string~IndexBuffer();}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ IndexBuffer(IndexBuffer\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ IndexBuffer\&\ operator=(IndexBuffer\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ IndexBuffer(IndexBuffer\&\&\ other)\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ IndexBuffer\&\ operator=(IndexBuffer\&\&\ other)\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Create()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Bind()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ UnBind()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ BufferData(std::vector<unsigned\ int>\&\ data,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ drawType)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Release()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00088\ \ \ \ \ \};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{class\ }FrameBuffer\ :\ \textcolor{keyword}{public}\ BaseBuffer}
+\DoxyCodeLine{00091\ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ FrameBuffer()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \string~FrameBuffer();}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ FrameBuffer(\textcolor{keyword}{const}\ FrameBuffer\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ FrameBuffer\&\ operator=(\textcolor{keyword}{const}\ FrameBuffer\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ FrameBuffer(FrameBuffer\&\&\ other)\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ FrameBuffer\&\ operator=(FrameBuffer\&\&\ other)\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Create()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Bind()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ UnBind()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ BufferTexture2D(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ attachment,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ source,\ \textcolor{keywordtype}{int}\ mipMap)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Release()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00110\ \ \ \ \ \};}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keyword}{class\ }RenderBuffer\ :\ \textcolor{keyword}{public}\ BaseBuffer}
+\DoxyCodeLine{00113\ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ RenderBuffer()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \string~RenderBuffer();}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ RenderBuffer(\textcolor{keyword}{const}\ RenderBuffer\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ RenderBuffer\&\ operator=(\textcolor{keyword}{const}\ RenderBuffer\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ RenderBuffer(RenderBuffer\&\&\ other)\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ RenderBuffer\&\ operator=(RenderBuffer\&\&\ other)\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Create()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Bind()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ UnBind()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ RenderBufferStorage(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ format,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height);}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Release()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00132\ \ \ \ \ \};}
+\DoxyCodeLine{00133\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,33 @@
+\doxysection{Render\+Passes.\+h}
+\hypertarget{_render_passes_8h_source}{}\label{_render_passes_8h_source}\index{Engine/src/Renderer/Core/RenderPasses.h@{Engine/src/Renderer/Core/RenderPasses.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ Renderer.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2026-\/03-\/26\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ Pipline\ that\ handles\ every\ single\ vertex,\ render\ pass,\ lighting\ calculation,\ or\ whatever\ required\ to\ draw\ the\ scene}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <Core/Core.h>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//the\ scene\ needs\ a\ render\ type\ as\ well,}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//there\ may\ even\ be\ more\ in\ the\ future\ so\ providing\ a\ common\ type}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }Engine::Renderer}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{enum\ class}\ RenderPasses:\ UINT8}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ Opaque,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ Translucent}
+\DoxyCodeLine{00026\ \ \ \ \ \};}
+\DoxyCodeLine{00027\ \}}
+
+\end{DoxyCode}

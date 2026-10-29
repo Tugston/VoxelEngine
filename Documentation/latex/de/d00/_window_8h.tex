@@ -1,0 +1,39 @@
+\doxysection{Engine/\+src/\+\+Core/\+\+Window.h File Reference}
+\hypertarget{_window_8h}{}\label{_window_8h}\index{Engine/src/Core/Window.h@{Engine/src/Core/Window.h}}
+
+
+GLFW window wrapper class.  
+
+
+{\ttfamily \+\#include "{}Core/\+\+Core.\+h"{}}\newline
+{\ttfamily \+\#include "{}Maths/\+\+Math.\+h"{}}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_engine_1_1_window}{Engine::\+\+Window}}
+\item 
+struct \doxymbox{\hyperlink{struct_engine_1_1_window_1_1_window_info}{Engine::\+\+Window::\+\+Window\+Info}}
+\begin{DoxyCompactList}\small\item\em struct for glfw user pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_window_8h_a5156aa16c2af225cc7dee34cb6ad065e}\label{_window_8h_a5156aa16c2af225cc7dee34cb6ad065e} 
+using {\bfseries Engine::\+\+Window\+Resize\+Callback} = std::\+function$<$void(int, int)$>$
+\begin{DoxyCompactList}\small\item\em Shorthand for the std::\+function callback with two integer parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+GLFW window wrapper class. 
+
+This class simplifies some of the GLFW window functions and utilities. Plus it abstracts a lot of the base setup from the application.
+
+\begin{DoxyNote}{Note}
+This class includes functions that modify the native window\textquotesingle{}s properties that are not included in glfw. Please see the \doxylink{class_engine_1_1_window_native_functions}{Native Functions} group.
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Vincent Pierce 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+February 25, 2025 
+\end{DoxyDate}

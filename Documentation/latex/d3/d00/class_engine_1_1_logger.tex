@@ -1,0 +1,48 @@
+\doxysection{Engine::Logger Class Reference}
+\hypertarget{class_engine_1_1_logger}{}\label{class_engine_1_1_logger}\index{Engine::Logger@{Engine::Logger}}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_logger_af0c083ecfdd3e3d2b3ab051d625afd74}\label{class_engine_1_1_logger_af0c083ecfdd3e3d2b3ab051d625afd74} 
+enum class {\bfseries Log\+Type} \{ {\bfseries Message}
+, {\bfseries Warning}
+, {\bfseries Error}
+, {\bfseries Critical}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_logger_a503a4ab1cd89e57a9169675e3e42c125}\label{class_engine_1_1_logger_a503a4ab1cd89e57a9169675e3e42c125} 
+static bool {\bfseries Init} ()
+\item 
+\Hypertarget{class_engine_1_1_logger_a39d60f072e7daefd3e500887908d63db}\label{class_engine_1_1_logger_a39d60f072e7daefd3e500887908d63db} 
+{\footnotesize template$<$typename... Args$>$ }\\static void {\bfseries Log\+Message} (Log\+Type type, std::\+string\+\_\+view message, Args \&\&... args)
+\item 
+\Hypertarget{class_engine_1_1_logger_a033fcea6a10536224ed0a6faa8b178c6}\label{class_engine_1_1_logger_a033fcea6a10536224ed0a6faa8b178c6} 
+static std::\+shared\+\_\+ptr$<$ spdlog::\+logger $>$ {\bfseries Get\+Engine\+Logger} ()
+\item 
+\Hypertarget{class_engine_1_1_logger_a82964d6bae85072d963816469a264fcc}\label{class_engine_1_1_logger_a82964d6bae85072d963816469a264fcc} 
+static std::\+shared\+\_\+ptr$<$ spdlog::\+logger $>$ {\bfseries Get\+Game\+Logger} ()
+\item 
+\Hypertarget{class_engine_1_1_logger_ab539c0603d04e5d33d013f637d2fc11d}\label{class_engine_1_1_logger_ab539c0603d04e5d33d013f637d2fc11d} 
+static std::\+shared\+\_\+ptr$<$ spdlog::\+logger $>$ {\bfseries Get\+Editor\+Logger} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_logger_af891b5eac8867c55fb9c23c27c7c1e98}\label{class_engine_1_1_logger_af891b5eac8867c55fb9c23c27c7c1e98} 
+static std::\+shared\+\_\+ptr$<$ spdlog::\+logger $>$ {\bfseries s\+\_\+\+Engine\+Logger}
+\item 
+\Hypertarget{class_engine_1_1_logger_afdbc06e0477b8ce473f80415629c357e}\label{class_engine_1_1_logger_afdbc06e0477b8ce473f80415629c357e} 
+static std::\+shared\+\_\+ptr$<$ spdlog::\+logger $>$ {\bfseries s\+\_\+\+Game\+Logger}
+\item 
+\Hypertarget{class_engine_1_1_logger_aa17358806d9a951f0ffef8df681c8d7b}\label{class_engine_1_1_logger_aa17358806d9a951f0ffef8df681c8d7b} 
+static std::\+shared\+\_\+ptr$<$ spdlog::\+logger $>$ {\bfseries s\+\_\+\+Editor\+Logger}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Core/Logger.\+h\item 
+Engine/\+src/\+\+Core/Logger.\+cpp\end{DoxyCompactItemize}

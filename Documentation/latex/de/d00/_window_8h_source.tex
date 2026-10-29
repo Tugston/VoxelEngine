@@ -1,0 +1,105 @@
+\doxysection{Window.\+h}
+\hypertarget{_window_8h_source}{}\label{_window_8h_source}\index{Engine/src/Core/Window.h@{Engine/src/Core/Window.h}}
+\doxymbox{\hyperlink{_window_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ Window.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/02-\/25\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ Wrapper\ for\ GLFW\ window\ and\ supporting\ functions}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ GLFW\_EXPOSE\_NATIVE\_WIN32\ }\textcolor{comment}{//allow\ the\ underlying\ win32\ window\ to\ be\ accessible}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ NOMINMAX\ }\textcolor{comment}{//fix\ the\ min\ max\ collusion\ with\ stnd\ lib}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{comment}{//ENGINE}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}Core/Core.h"{}}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ "{}Maths/Math.h"{}}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{comment}{//STND}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{struct\ }GLFWwindow;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{namespace\ }Engine}
+\DoxyCodeLine{00043\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{using\ }\doxymbox{\hyperlink{_window_8h_a5156aa16c2af225cc7dee34cb6ad065e}{WindowResizeCallback}}\ =\ std::function<void(\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int})>;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_engine_1_1_window_a3b1292c8f06176ebcea484f2ccb7c3d5}{Window}}}
+\DoxyCodeLine{00048\ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_window_a3b1292c8f06176ebcea484f2ccb7c3d5}{Window}}();}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_window_a3b1292c8f06176ebcea484f2ccb7c3d5}{Window}}(\textcolor{keyword}{const}\ std::string\&\ name);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_window_a3b1292c8f06176ebcea484f2ccb7c3d5}{Window}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ width,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ height);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_window_a3b1292c8f06176ebcea484f2ccb7c3d5}{\string~Window}}();}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \doxymbox{\hyperlink{class_engine_1_1_window_aad1df5318f89f0607094990c9bcf8f83}{GetWidth}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_engine_1_1_window_a76d644443b09e0ffa1b29d82b433dec0}{m\_Info}}.\doxymbox{\hyperlink{struct_engine_1_1_window_1_1_window_info_a411ed3a2124ad5b3687475cf681d92f7}{width}};\ \};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \doxymbox{\hyperlink{class_engine_1_1_window_aa974779226b6ba1543ef19b6508c195f}{GetHeight}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_engine_1_1_window_a76d644443b09e0ffa1b29d82b433dec0}{m\_Info}}.\doxymbox{\hyperlink{struct_engine_1_1_window_1_1_window_info_a56b8fc7e2eefa371f675027ce333748f}{height}};\ \};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ std::string\_view\ \doxymbox{\hyperlink{class_engine_1_1_window_aeef8b9f680a5df8774143076d9fe29a2}{GetName}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_engine_1_1_window_a76d644443b09e0ffa1b29d82b433dec0}{m\_Info}}.name;\ \};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ GLFWwindow*\ \doxymbox{\hyperlink{class_engine_1_1_window_a9407b767a1ce0f06e931db56023c694b}{GetGLFWWindow}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_engine_1_1_window_ac74276b95d44904347a879068d1714ba}{m\_RenderWindow}};\ \};}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{comment}{//*******}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{comment}{//natives}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{comment}{//*******}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_1_1_window_a6bbed0fc522df6a64d1689db8dafe2fc}{SetWindowBorderColor}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector3}{Maths::Vector3<uint8\_t>}}\&\ color)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_1_1_window_ad947456c53169934e2b5696e81bfd8cf}{SetWindowHeadingColor}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector3}{Maths::Vector3<uint8\_t>}}\&\ color)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{comment}{//*******}}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{comment}{//natives}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{comment}{//*******}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_1_1_window_abdfb635798da8d4084880ee8499884f2}{PollEvents}}();}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_1_1_window_a3d0331358bec60305c7da660e4556d4b}{DestroyWindow}}();}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_1_1_window_abb7acac18eb1edff6779c9746cb2baa2}{SwapBuffers}}();}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_1_1_window_a6ad269dc64e2c560f9dfe072b32744c8}{SetFrameSize}}(\doxymbox{\hyperlink{_window_8h_a5156aa16c2af225cc7dee34cb6ad065e}{WindowResizeCallback}}\ callbackFunction);}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{_window_8h_a5156aa16c2af225cc7dee34cb6ad065e}{WindowResizeCallback}}\ \doxymbox{\hyperlink{class_engine_1_1_window_aa561134baac128aa0de800cec569adb4}{GetResizeCallback}}()\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_engine_1_1_window_a76d644443b09e0ffa1b29d82b433dec0}{m\_Info}}.\doxymbox{\hyperlink{struct_engine_1_1_window_1_1_window_info_a2374b86a57a78bcadf274e2cd260b34b}{resizeCallback}};\ \};}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ std::pair<int,\ int>\ \doxymbox{\hyperlink{class_engine_1_1_window_a3e7291ad75ce5d9d5ab2d31feab25e4b}{GetBufferSize}}()\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_engine_1_1_window_a76d644443b09e0ffa1b29d82b433dec0}{m\_Info}}.\doxymbox{\hyperlink{struct_engine_1_1_window_1_1_window_info_aff56ac54f433e6157a181b4bd2f65f05}{bufferSize}};\ \};}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_1_1_window_a83026e1959db722fede5bb24a6bb1b49}{SetupWindow}}();}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_1_1_window_a89447a0d9637db70d1eede8e339705a2}{InitializeGLFW}}();}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ GLFWwindow*\ \doxymbox{\hyperlink{class_engine_1_1_window_ac74276b95d44904347a879068d1714ba}{m\_RenderWindow}};}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_engine_1_1_window_1_1_window_info}{WindowInfo}}}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ name\ =\ \textcolor{stringliteral}{"{}Voxel\ Game"{}};\ }
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \doxymbox{\hyperlink{struct_engine_1_1_window_1_1_window_info_a411ed3a2124ad5b3687475cf681d92f7}{width}}\ =\ 800;\ }
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \doxymbox{\hyperlink{struct_engine_1_1_window_1_1_window_info_a56b8fc7e2eefa371f675027ce333748f}{height}}\ =\ 500;\ }
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{_window_8h_a5156aa16c2af225cc7dee34cb6ad065e}{WindowResizeCallback}}\ \doxymbox{\hyperlink{struct_engine_1_1_window_1_1_window_info_a2374b86a57a78bcadf274e2cd260b34b}{resizeCallback}};\ }
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ std::pair<int,\ int>\ \doxymbox{\hyperlink{struct_engine_1_1_window_1_1_window_info_aff56ac54f433e6157a181b4bd2f65f05}{bufferSize}};\ }
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_engine_1_1_window_1_1_window_info}{WindowInfo}}\ \doxymbox{\hyperlink{class_engine_1_1_window_a76d644443b09e0ffa1b29d82b433dec0}{m\_Info}};}
+\DoxyCodeLine{00223\ \ \ \ \ \};}
+\DoxyCodeLine{00224\ \}}
+
+\end{DoxyCode}

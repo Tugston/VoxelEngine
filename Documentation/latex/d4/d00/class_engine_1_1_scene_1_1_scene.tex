@@ -1,0 +1,44 @@
+\doxysection{Engine::Scene::Scene Class Reference}
+\hypertarget{class_engine_1_1_scene_1_1_scene}{}\label{class_engine_1_1_scene_1_1_scene}\index{Engine::Scene::Scene@{Engine::Scene::Scene}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_scene_a825ac9cb08837709e83183a00c5e6476}\label{class_engine_1_1_scene_1_1_scene_a825ac9cb08837709e83183a00c5e6476} 
+{\bfseries Scene} (std::\+string\+\_\+view name)
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_scene_a659c6a5558b332490c9bb17685ddc1c7}\label{class_engine_1_1_scene_1_1_scene_a659c6a5558b332490c9bb17685ddc1c7} 
+ECS::\+\+Entity\+ID {\bfseries Register\+Object} ()
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_scene_a9143b694abd334d9a4944381477c2cd2}\label{class_engine_1_1_scene_1_1_scene_a9143b694abd334d9a4944381477c2cd2} 
+const std::\+vector$<$ ECS::\+\+Entity\+ID $>$ {\bfseries Collect\+Render\+Data} (Renderer::\+\+Render\+Passes type)
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_scene_ad000f26d9327e54db1e6204bd162dbb5}\label{class_engine_1_1_scene_1_1_scene_ad000f26d9327e54db1e6204bd162dbb5} 
+\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::\+\+Registry}} \& {\bfseries Get\+Registry} ()
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_scene_a59e864cd2cbc593a0eca18af4794be99}\label{class_engine_1_1_scene_1_1_scene_a59e864cd2cbc593a0eca18af4794be99} 
+void {\bfseries Add\+UI} () const
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_scene_a4e3c20583f7bc97335b767212e11708f}\label{class_engine_1_1_scene_1_1_scene_a4e3c20583f7bc97335b767212e11708f} 
+void {\bfseries Remove\+UI} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_scene_a8f51a874b9a0f3f476e9945eaa875411}\label{class_engine_1_1_scene_1_1_scene_a8f51a874b9a0f3f476e9945eaa875411} 
+void {\bfseries Setup\+Scene} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_scene_aeed25cffa15399860686dcc97f6f41c8}\label{class_engine_1_1_scene_1_1_scene_aeed25cffa15399860686dcc97f6f41c8} 
+std::\+string {\bfseries m\+\_\+\+Name} = "{}Example Scene"{}
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_scene_a4c199c56306ed67c20925367fabe5b90}\label{class_engine_1_1_scene_1_1_scene_a4c199c56306ed67c20925367fabe5b90} 
+std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::\+\+Registry}} $>$ {\bfseries m\+\_\+\+Registry}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Scene/Scene.\+h\item 
+Engine/\+src/\+\+Scene/Scene.\+cpp\end{DoxyCompactItemize}

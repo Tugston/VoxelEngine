@@ -1,0 +1,36 @@
+\doxysection{Arrow.\+h}
+\hypertarget{_arrow_8h_source}{}\label{_arrow_8h_source}\index{Engine/src/SharedResources/PrimitiveShapes/ThreeDimensions/Arrow.h@{Engine/src/SharedResources/PrimitiveShapes/ThreeDimensions/Arrow.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ Arrow.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2026-\/04-\/04\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ helper\ function\ to\ create\ an\ arrow\ mesh\ as\ an\ engine\ base\ primitive}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//ENGN}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}SharedResources/GenericResources/Mesh.h"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }Engine::Utility}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//this\ is\ just\ a\ container\ exposed\ since\ the\ arrow\ has\ quite\ a\ few\ adjustments}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_engine_1_1_utility_1_1_arrow_construct}{ArrowConstruct}}\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ sideCount\ =\ 6;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ baseRadius\ =\ 0.5f;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ coneHeight\ =\ 0.8f;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ stemHeight\ =\ 0.5f;}
+\DoxyCodeLine{00027\ \ \ \ \ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \doxymbox{\hyperlink{struct_engine_1_1_utility_1_1_mesh}{Mesh}}\ CreateArrow(\doxymbox{\hyperlink{struct_engine_1_1_utility_1_1_arrow_construct}{ArrowConstruct}}\ construct\ =\ \{\});}
+\DoxyCodeLine{00030\ \}}
+
+\end{DoxyCode}

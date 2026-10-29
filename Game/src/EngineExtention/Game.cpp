@@ -81,7 +81,7 @@ namespace VoxelGame
 
 		virtual void Tick() override
 		{
-			while (m_Running)
+			while (ShouldRun())
 			{		
 				if (InputSystem::KeyPressed(EngineKeys::W))
 				{

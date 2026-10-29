@@ -1,0 +1,55 @@
+\doxysection{Engine::Layer Class Reference}
+\hypertarget{class_engine_1_1_layer}{}\label{class_engine_1_1_layer}\index{Engine::Layer@{Engine::Layer}}
+Inheritance diagram for Engine::Layer:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.647059cm]{d0/d00/class_engine_1_1_layer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_layer_ac4e47e89367b881056ebe060ac666d17}\label{class_engine_1_1_layer_ac4e47e89367b881056ebe060ac666d17} 
+virtual void {\bfseries Attach} ()=0
+\item 
+\Hypertarget{class_engine_1_1_layer_abd0dcc053f89c55bcdfb95f15c3b05a7}\label{class_engine_1_1_layer_abd0dcc053f89c55bcdfb95f15c3b05a7} 
+virtual void {\bfseries Detach} ()=0
+\item 
+\Hypertarget{class_engine_1_1_layer_a3ab76ecb2b31086a5a197ab05d148899}\label{class_engine_1_1_layer_a3ab76ecb2b31086a5a197ab05d148899} 
+virtual std::\+vector$<$ Entity\+ID $>$ {\bfseries Get\+Draw\+Data} (Renderer::\+\+Render\+Passes pass, ECSRegistry \&registry)=0
+\item 
+\Hypertarget{class_engine_1_1_layer_aa334cfbbbd9e15501db15724d5e4cab6}\label{class_engine_1_1_layer_aa334cfbbbd9e15501db15724d5e4cab6} 
+virtual void {\bfseries Input\+Event} ()=0
+\item 
+\Hypertarget{class_engine_1_1_layer_a83ecc4c2835e59651ffa7549e45ec73b}\label{class_engine_1_1_layer_a83ecc4c2835e59651ffa7549e45ec73b} 
+Layer\+ID {\bfseries Get\+ID} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_layer_a23a01cd647dc22a81556e82ac570ddc0}\label{class_engine_1_1_layer_a23a01cd647dc22a81556e82ac570ddc0} 
+using {\bfseries ECSRegistry} = \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{Scene::\+\+ECS::\+\+Registry}}
+\item 
+\Hypertarget{class_engine_1_1_layer_aa9deb79eba21806373b690667dd1318d}\label{class_engine_1_1_layer_aa9deb79eba21806373b690667dd1318d} 
+using {\bfseries Entity\+ID} = Scene::\+\+ECS::\+\+Entity\+ID
+\item 
+\Hypertarget{class_engine_1_1_layer_a3561a77fb2a87e0fe85ebc73fe2d1576}\label{class_engine_1_1_layer_a3561a77fb2a87e0fe85ebc73fe2d1576} 
+using {\bfseries Render\+Component} = \doxymbox{\hyperlink{struct_engine_1_1_scene_1_1_e_c_s_1_1_components_1_1_renderable}{Scene::\+\+ECS::\+\+Components::\+\+Renderable}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_layer_a90fd42f6c7b7dadb433ad74c60a6dd1d}\label{class_engine_1_1_layer_a90fd42f6c7b7dadb433ad74c60a6dd1d} 
+{\bfseries Layer} (Layer\+ID id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_layer_a5e69315fda7d845b58d268743601aac7}\label{class_engine_1_1_layer_a5e69315fda7d845b58d268743601aac7} 
+Layer\+ID {\bfseries m\+\_\+\+ID} = Layer\+ID::\+\+Unknown
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Core/\+\+Layers/Layer.\+h\end{DoxyCompactItemize}

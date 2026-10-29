@@ -1,0 +1,47 @@
+\doxysection{Mesh\+Object.\+h}
+\hypertarget{_mesh_object_8h_source}{}\label{_mesh_object_8h_source}\index{Engine/src/Scene/ECS/GameObjects/MeshObject.h@{Engine/src/Scene/ECS/GameObjects/MeshObject.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ MeshObject.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/12-\/20\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ Entity\ that\ automatically\ sets\ up\ a\ mesh\ component\ on\ it}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//ENGN}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}GameObject.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}Scene/ECS/Components/Renders/MeshComponent.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}Scene/ECS/Components/Tags/RenderComponent.h"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }Engine::Scene::ECS}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{enum\ class}\ MeshType:\ UINT8}
+\DoxyCodeLine{00024\ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ CUBE\_MESH\ =\ 0,}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ CONE\_MESH,}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ CYLINDER\_MESH,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ SPHERE\_MESH,}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ ARROW\_MESH}
+\DoxyCodeLine{00030\ \ \ \ \ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{class\ }MeshObject\ :\ \textcolor{keyword}{public}\ GameObject3D}
+\DoxyCodeLine{00033\ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ MeshObject(\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::Registry}}\&\ registry,\ MeshType\ type\ =\ MeshType::CUBE\_MESH,\ std::optional<UINT16>\ sideCount\ =\ std::nullopt);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ MeshObject(\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::Registry}}\&\ registry,\ std::string\_view\ fileName);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ MeshObject(\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::Registry}}\&\ registry,\ \doxymbox{\hyperlink{struct_engine_1_1_scene_1_1_e_c_s_1_1_components_1_1_transform_component3_d}{Components::TransformComponent3D}}\ transform,\ MeshType\ type\ =\ MeshType::CUBE\_MESH,\ std::optional<UINT16>\ sideCount\ =\ std::nullopt);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ MeshObject(\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::Registry}}\&\ registry,\ \doxymbox{\hyperlink{struct_engine_1_1_scene_1_1_e_c_s_1_1_components_1_1_transform_component3_d}{Components::TransformComponent3D}}\ transform,\ std::string\_view\ fileName);}
+\DoxyCodeLine{00040\ \ \ \ \ \};}
+\DoxyCodeLine{00041\ \}}
+
+\end{DoxyCode}

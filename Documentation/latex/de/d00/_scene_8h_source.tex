@@ -1,0 +1,77 @@
+\doxysection{Scene.\+h}
+\hypertarget{_scene_8h_source}{}\label{_scene_8h_source}\index{Engine/src/Scene/Scene.h@{Engine/src/Scene/Scene.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ Scene.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/03-\/14\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ Ecosystem\ for\ housing,\ management,\ and\ modification\ of\ entities.\ Various\ global\ controls\ and\ settings.\ (exagerrated\ explanation\ of\ a\ level)}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//ENGINE}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}Core/Core.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}Core/Layers/LayerStack.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}Core/Layers/EngineLayers.h"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}./ECS/Registry.h"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}../Renderer/Core/RenderPasses.h"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{//STND}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <string\_view>}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{namespace\ }Engine::Scene}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{class\ }Scene}
+\DoxyCodeLine{00030\ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ Scene();}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ Scene(std::string\_view\ name);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \string~Scene();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ ECS::EntityID\ RegisterObject();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{comment}{//returns\ data\ in\ proper\ layer\ rendering\ order}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{//takes\ in\ the\ current\ render\ pass\ for\ appropriate\ data}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<ECS::EntityID>\ CollectRenderData(Renderer::RenderPasses\ type);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{comment}{//returns\ the\ scene\ registry,\ automatically\ checks\ validity}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::Registry}}\&\ GetRegistry();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ AddUI()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ RemoveUI()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{//need\ to\ get\ items\ under\ the\ mouse}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{comment}{//this\ is\ what\ I\ am\ working\ on\ next!!!}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//\ \ ECS::GameObject*\ GetObjectUnderMouse();}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{comment}{//DEBUG\ ONLY}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(EG\_DEBUG)\ ||\ (APP\_DEBUG)}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ EnableFullDebugView()\textcolor{keyword}{\ const\ }\{\ LayerStack::PushWorldLayer(\textcolor{keyword}{new}\ \doxymbox{\hyperlink{class_engine_1_1_engine_world_layer}{EngineWorldLayer}}());\ LayerStack::PushUILayer(\textcolor{keyword}{new}\ \doxymbox{\hyperlink{class_engine_1_1_engine_u_i_layer}{EngineUILayer}}());\ \};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ EnableDebugUI()\textcolor{keyword}{\ const\ }\{\ LayerStack::PushUILayer(\textcolor{keyword}{new}\ \doxymbox{\hyperlink{class_engine_1_1_engine_u_i_layer}{EngineUILayer}}());\ \};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ EnableDebugGeometry()\textcolor{keyword}{\ const\ }\{\ LayerStack::PushWorldLayer(\textcolor{keyword}{new}\ \doxymbox{\hyperlink{class_engine_1_1_engine_world_layer}{EngineWorldLayer}}());\ \};}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DisableFullDebugView()\textcolor{keyword}{\ const\ }\{\ REMOVE\_ENGINE\_UI\_LAYER;\ REMOVE\_ENGINE\_DEBUG\_LAYER;\ \};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DisableDebugUI()\textcolor{keyword}{\ const\ }\{\ REMOVE\_ENGINE\_UI\_LAYER;\ \};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DisableDebugGeometry()\textcolor{keyword}{\ const\ }\{\ REMOVE\_ENGINE\_DEBUG\_LAYER;\ \};}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ SetupScene();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ std::string\ m\_Name\ =\ \textcolor{stringliteral}{"{}Example\ Scene"{}};}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ std::unique\_ptr<ECS::Registry>\ m\_Registry;}
+\DoxyCodeLine{00069\ \ \ \ \ \};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \}}
+
+\end{DoxyCode}

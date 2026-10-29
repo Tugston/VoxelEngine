@@ -1,0 +1,40 @@
+\doxysection{Entry\+Point.\+h}
+\hypertarget{_entry_point_8h_source}{}\label{_entry_point_8h_source}\index{Engine/src/Core/EntryPoint.h@{Engine/src/Core/EntryPoint.h}}
+\doxymbox{\hyperlink{_entry_point_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ EntryPoint.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/02-\/17\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ Main\ function}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{comment}{//ENGINE}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_application_8h}{Application.h}}"{}}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#include\ "{}Logger.h"{}}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#ifdef\ ENGINE\_PLATFORM\_WINDOWS}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00060\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{_entry_point_8h_a1fa3253ca11014c1b01923a1674ff19c}{main}}(\textcolor{keywordtype}{int}\ arc,\ \textcolor{keywordtype}{char}**\ argv)}
+\DoxyCodeLine{00061\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ Engine::Logger::Init();}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{auto}*\ game\ =\ \doxymbox{\hyperlink{_application_8h_a35016cfcb578c1f00f887ab607ff7fb9}{Engine::CreateApplication}}();}
+\DoxyCodeLine{00064\ \ \ \ \ game-\/>Start();}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{delete}\ game;}
+\DoxyCodeLine{00066\ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,110 @@
+\doxysection{Array\+Object.\+h}
+\hypertarget{_array_object_8h_source}{}\label{_array_object_8h_source}\index{Engine/src/Renderer/Architecture/ArrayObject.h@{Engine/src/Renderer/Architecture/ArrayObject.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ ArrayObject.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/26-\/03\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ Basic\ wrapper\ around\ OpenGL\ array\ objects}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//ENGINE}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}Core/Core.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}Renderer/Architecture/Buffer.h"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{comment}{//STND}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{namespace\ }Engine::Renderer}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//data\ types\ for\ the\ attrib\ pointer}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{enum\ class}\ ShaderDataType}
+\DoxyCodeLine{00029\ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ Bool\ =\ 0,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ Int,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ Int2,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ Int3,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ Int4,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ Float,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ Float2,}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ Float3,}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ Float4,}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ Mat3,}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ Mat4}
+\DoxyCodeLine{00041\ \ \ \ \ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//since\ some\ ShaderDataTypes\ have\ the\ same\ size\ (ie\ Int,\ Float)}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//have\ to\ make\ a\ helper\ function\ for\ parsing\ the\ size,\ because\ they\ cannot\ be\ stored\ directly\ in\ the\ enum}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{static}\ uint32\_t\ ParseShaderDataType(ShaderDataType\ type)}
+\DoxyCodeLine{00046\ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ShaderDataType::Bool:\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(bool);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ShaderDataType::Int:\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(int);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ShaderDataType::Int2:\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(int)\ *\ 2;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ShaderDataType::Int3:\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(int)\ *\ 3;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ShaderDataType::Int4:\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(int)\ *\ 4;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ShaderDataType::Float:\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(float);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ShaderDataType::Float2:\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(float)\ *\ 2;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ShaderDataType::Float3:\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(float)\ *\ 3;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ShaderDataType::Float4:\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(float)\ *\ 4;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ShaderDataType::Mat3:\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(float)\ *\ 3\ *\ 3;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ShaderDataType::Mat4:\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(float)\ *\ 4\ *\ 4;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{struct\ }AttribData}
+\DoxyCodeLine{00065\ \ \ \ \ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ ShaderDataType\ type;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ int32\_t\ size\ =\ 0;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ normalized\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ UINT32\ stride\ =\ 0;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ offset\ =\ 0;}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ AttribData()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ AttribData(ShaderDataType\ type,\ \textcolor{keywordtype}{bool}\ normalized\ =\ \textcolor{keyword}{false},\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ offset\ =\ 0)\ :}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ type(type),\ size(ParseShaderDataType(type)),\ normalized(normalized),\ offset(offset)}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \{\}}
+\DoxyCodeLine{00077\ \ \ \ \ \};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{class\ }ArrayObject}
+\DoxyCodeLine{00080\ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ ArrayObject()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \string~ArrayObject();}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ ArrayObject(ArrayObject\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ ArrayObject\&\ operator=(ArrayObject\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ ArrayObject(ArrayObject\&\&\ other)\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ ArrayObject\&\ operator=(ArrayObject\&\&\ other)\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Create();}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Bind()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ UnBind()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ SetAttribData(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ index,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_engine_1_1_renderer_1_1_attrib_data}{AttribData}}\&\ data,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_engine_1_1_renderer_1_1_vertex_buffer}{VertexBuffer}}\&\ vertBuffer,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_engine_1_1_renderer_1_1_index_buffer}{IndexBuffer}}\&\ indexBuffer);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Release();}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ UINT32\ m\_ID\ =\ (std::numeric\_limits<UINT32>::max)();}
+\DoxyCodeLine{00102\ \ \ \ \ \};}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \}}
+
+\end{DoxyCode}

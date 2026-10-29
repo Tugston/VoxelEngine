@@ -1,0 +1,115 @@
+\doxysection{Logger.\+h}
+\hypertarget{_logger_8h_source}{}\label{_logger_8h_source}\index{Engine/src/Core/Logger.h@{Engine/src/Core/Logger.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ Logger.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/02-\/15\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ Wrapper\ to\ simplify\ spdlog\ and\ provide\ engine\ and\ game\ differential\ logging}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//ENGINE}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}Core/Core.h"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//VENDOR}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <spdlog/spdlog.h>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//STND}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{comment}{//Logger\ Detection}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#ifdef\ EG\_PRJ}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(APP\_DEBUG)\ }\textcolor{comment}{//check\ app\ debug\ first,\ because\ engine\ may\ also\ be\ valid\ in\ game\ project}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ GET\_LOGGER()\ ::Engine::Logger::GetGameLogger()}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\ \ \ \ \#elif\ defined(EDTR\_DEBUG)}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ GET\_LOGGER()\ ::Engine::Logger::GetEditorLogger()}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\ \ \ \ \#elif\ defined(EG\_DEBUG)}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ GET\_LOGGER()\ ::Engine::Logger::GetEngineLogger()}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ GET\_LOGGER(x)}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\ \ \ \ \#endif\ }\textcolor{comment}{//APP\_DEBUG}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\ \ \ \ \#define\ GET\_LOGGER(x)}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//EG\_PRJ\ determines\ windows\ support,\ so\ shouldnt\ ever\ reach\ invalid\ logger}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{comment}{//Log\ Type\ Macros}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#if\ defined(EG\_DEBUG)\ ||\ defined(APP\_DEBUG)\ ||\ defined(EDTR\_DEBUG)}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ LOG\_MESSAGE(...)\ \ \ \ GET\_LOGGER()-\/>info(\_\_VA\_ARGS\_\_)\ }}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ LOG\_WARNING(...)\ \ \ \ GET\_LOGGER()-\/>warn(\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ LOG\_ERROR(...)\ \ \ \ \ \ GET\_LOGGER()-\/>error(\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ LOG\_FATAL(...)\ \ \ \ \ \ GET\_LOGGER()-\/>critical(\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ LOG\_MESSAGE(x)}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ LOG\_WARNING(x)}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ LOG\_ERROR(x)}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ LOG\_FATAL(x)}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{comment}{//internal\ use\ only,\ tired\ of\ writing\ out\ these\ logs\ everywhere}}
+\DoxyCodeLine{00056\ \textcolor{comment}{//but\ nothing\ is\ rly\ stopping\ external\ use,\ so\ use\ them\ I\ guess}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#if\ defined(EG\_DEBUG)\ ||\ defined(EDTR\_DEBUG)\ ||\ defined(APP\_DEBUG)}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ LOG\_MSG(...)\ \ \ \ Engine::Logger::LogMessage(Engine::Logger::LogType::Message,\ \_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ LOG\_WARN(...)\ \ \ Engine::Logger::LogMessage(Engine::Logger::LogType::Warning,\ \_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ LOG\_ERR(...)\ \ \ \ Engine::Logger::LogMessage(Engine::Logger::LogType::Error,\ \_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ LOG\_CRIT(...)\ \ \ Engine::Logger::LogMessage(Engine::Logger::LogType::Critical,\ \_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ LOG\_MSG(...)}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ LOG\_Warn(...)}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#define\ LOG\_ERR(...)}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ LOG\_CRIT(...)}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{keyword}{namespace\ }Engine}
+\DoxyCodeLine{00070\ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_engine_1_1_logger}{Logger}}}
+\DoxyCodeLine{00072\ \ \ \ \ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum\ class}\ LogType}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ Message,}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ Warning,}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ Error,}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ Critical}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ Init();}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ LogMessage(LogType\ type,\ std::string\_view\ message,\ Args\&\&...\ args)}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ formattedMsg\ =\ std::vformat(message,\ std::make\_format\_args(args...));}
+\DoxyCodeLine{00089\ \ \ \ \ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ LogType::Message:\ \ \ \ \ \ LOG\_MESSAGE(formattedMsg);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ LogType::Warning:\ \ \ \ \ \ LOG\_WARNING(formattedMsg);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ LogType::Error:\ \ \ \ \ \ \ \ LOG\_ERROR(formattedMsg);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ LogType::Critical:\ \ \ \ \ LOG\_FATAL(formattedMsg);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<spdlog::logger>\ GetEngineLogger()\ \ \ \ \{\ \textcolor{keywordflow}{return}\ s\_EngineLogger;\ \}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<spdlog::logger>\ GetGameLogger()\ \ \ \ \ \ \{\ \textcolor{keywordflow}{return}\ s\_GameLogger;\ \}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<spdlog::logger>\ GetEditorLogger()\ \ \ \ \{\ \textcolor{keywordflow}{return}\ s\_EditorLogger;\ \}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<spdlog::logger>\ s\_EngineLogger;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<spdlog::logger>\ s\_GameLogger;}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<spdlog::logger>\ s\_EditorLogger;}
+\DoxyCodeLine{00107\ \ \ \ \ \};}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \}}
+
+\end{DoxyCode}

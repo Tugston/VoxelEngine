@@ -1,0 +1,82 @@
+\doxysection{Engine::Camera::Orthographic\+Camera Class Reference}
+\hypertarget{class_engine_1_1_camera_1_1_orthographic_camera}{}\label{class_engine_1_1_camera_1_1_orthographic_camera}\index{Engine::Camera::OrthographicCamera@{Engine::Camera::OrthographicCamera}}
+Inheritance diagram for Engine::Camera::Orthographic\+Camera:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{dd/d00/class_engine_1_1_camera_1_1_orthographic_camera}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \doxymbox{\hyperlink{class_engine_1_1_camera_1_1_editor_camera}{Engine::\+\+Camera::\+\+Editor\+Camera}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_a790ae1cc579b51eb886c91298ed5f48b}\label{class_engine_1_1_camera_1_1_editor_camera_a790ae1cc579b51eb886c91298ed5f48b} 
+enum class {\bfseries Move\+Direction} : UINT8 \{ {\bfseries Forward} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 0
+, {\bfseries Backwards} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 2
+, {\bfseries Left} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 3
+, {\bfseries Right} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 4
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_engine_1_1_camera_1_1_editor_camera}{Engine::\+\+Camera::\+\+Editor\+Camera}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries Process\+Rotation} (const glm::\+vec2 \&mouse\+Delta, bool constrain\+Pitch)=0
+\item 
+virtual void {\bfseries Process\+Location} (Move\+Direction direction, float delta\+Time)=0
+\item 
+virtual void {\bfseries Update\+Projection} (float width, float height)=0
+\item 
+void {\bfseries Set\+Speed} (float speed)
+\item 
+void {\bfseries Set\+Sensitivity} (float sensitivity)
+\item 
+glm::\+mat4 {\bfseries Get\+Projection\+Matrix} () const
+\item 
+glm::\+mat4 {\bfseries Get\+View\+Matrix} () const
+\item 
+glm::\+vec3 {\bfseries Get\+Forward\+Vector} () const
+\item 
+glm::\+vec3 {\bfseries Get\+Up\+Vector} () const
+\item 
+glm::\+vec3 {\bfseries Get\+Right\+Vector} () const
+\item 
+glm::\+vec3 {\bfseries Get\+Euler\+Rotation} () const
+\item 
+glm::\+quat {\bfseries Get\+Quat\+Rotation} () const
+\item 
+\doxymbox{\hyperlink{struct_engine_1_1_camera_1_1_camera_settings}{Camera\+Settings}} {\bfseries Get\+Settings} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{class_engine_1_1_camera_1_1_editor_camera}{Engine::\+\+Camera::\+\+Editor\+Camera}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Editor\+Camera} (const glm::\+vec3 \&position)
+\item 
+{\bfseries Editor\+Camera} (const glm::\+vec3 \&position, const glm::\+vec3 \&rotation, float speed)
+\item 
+void {\bfseries Update\+Vectors} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{class_engine_1_1_camera_1_1_editor_camera}{Engine::\+\+Camera::\+\+Editor\+Camera}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{struct_engine_1_1_camera_1_1_camera_settings}{Camera\+Settings}} {\bfseries m\+\_\+\+Settings}
+\item 
+glm::\+quat {\bfseries m\+\_\+\+Rotation} = glm::\+quat(glm::\+vec3(0.f, 0.f, 0.f))
+\item 
+glm::\+vec3 {\bfseries m\+\_\+\+Euler\+Rotation} = glm::\+vec3(0.f, 0.f, 0.f)
+\item 
+glm::\+vec3 {\bfseries m\+\_\+\+Location}
+\item 
+glm::\+vec3 {\bfseries m\+\_\+\+Forward\+Vector} = glm::\+vec3(0.f, 0.f, -\/1.f)
+\item 
+glm::\+vec3 {\bfseries m\+\_\+\+Right\+Vector}
+\item 
+glm::\+vec3 {\bfseries m\+\_\+\+Up\+Vector} = glm::\+vec3(0.f, 1.f, 0.f)
+\item 
+glm::\+mat4 {\bfseries m\+\_\+\+Projection\+Matrix}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Core/\+\+Cameras/Orthographic\+Camera.\+h\item 
+Engine/\+src/\+\+Core/\+\+Cameras/Orthographic\+Camera.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,125 @@
+\doxysection{Layer\+Stack.\+h}
+\hypertarget{_layer_stack_8h_source}{}\label{_layer_stack_8h_source}\index{Engine/src/Core/Layers/LayerStack.h@{Engine/src/Core/Layers/LayerStack.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ LayerStack.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/03-\/08\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ Controls\ the\ layers\ of\ entities\ to\ aid\ the\ renderer\ and\ debug\ views\ and\ what\ not}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//ENGINE}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}Core/Layers/Layer.h"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//STND}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include<vector>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//I\ am\ going\ for\ a\ simple\ setup\ where\ each\ scene\ will\ have\ the\ same\ layers}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//my\ current\ idea\ for\ layers\ is\ as\ so}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//Game\ -\/>\ Engine\ Debug\ Graphics\ -\/>\ Game\ UI\ -\/>\ Engine\ UI\ Debug}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//this\ is\ really\ only\ a\ system\ for\ the\ Game's\ UI\ to\ be\ layered\ on\ top\ of\ the\ Game's\ 3d\ rendering}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//and\ it\ will\ be\ like\ that\ in\ every\ scene,\ which\ is\ why\ I\ made\ this\ static}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{namespace\ }Engine}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_engine_1_1_layer_stack}{LayerStack}}}
+\DoxyCodeLine{00031\ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ Init();}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Destroy();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ PushWorldLayer(\doxymbox{\hyperlink{class_engine_1_1_layer}{Layer}}*\ layer);\ \ \ \textcolor{comment}{//actual\ 3d\ layers\ for\ both\ engine\ debug\ 3d\ and\ game\ world}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ PushUILayer(\doxymbox{\hyperlink{class_engine_1_1_layer}{Layer}}*\ layer);\ \ \ \ \ \ \textcolor{comment}{//ui\ layers}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Clear();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//clear\ all\ layers}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ RemoveLayer(\textcolor{keyword}{const}\ std::vector<Layer*>::iterator\&\ LayerPosition);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{comment}{//take\ advantage\ of\ the\ layer\ "{}stack"{}\ actually\ being\ an\ underlying\ vector}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ CheckLayerExists(LayerID\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::vector<Layer*>::iterator\ Top();}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::vector<Layer*>::iterator\ Bottom();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{//current\ location\ stores\ the\ halfway\ point,\ ie,\ where\ Space\ and\ UI\ layers\ meet}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::vector<Layer*>::iterator\ CurrentLocation();}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ CurrentLocationVal()\ \{\ \textcolor{keywordflow}{return}\ m\_emplaceIdex;\ \};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keyword}{inline}\ std::vector<Layer*>\ GetLayers()\ \{\ \textcolor{keywordflow}{return}\ m\_Layers;\ \};}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::vector<Layer*>\ m\_Layers;\ \textcolor{comment}{//Layer\ Stack\ will\ have\ full\ control\ over\ layers,\ so\ not\ worrying\ about\ smart\ pointers}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ m\_emplaceIdex;}
+\DoxyCodeLine{00057\ \ \ \ \ \};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{//Setting\ these\ to\ macros\ so\ it\ avoids\ a\ series\ of\ function\ calls}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//basically,\ the\ engine\ application\ needs\ to\ control\ these,\ and\ they\ are\ used\ for\ debugging}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#if\ defined(EG\_DEBUG)\ ||\ defined(APP\_DEBUG)}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\ \ \ \ \#ifndef\ REMOVE\_ENGINE\_UI\_LAYER}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\ \ \ \ \#define\ REMOVE\_ENGINE\_UI\_LAYER\ \(\backslash\)}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ for(std::vector<Layer*>::iterator\ i\ =\ Engine::LayerStack::CurrentLocation();\ i\ <\ Engine::LayerStack::Bottom();\ i++)\{\(\backslash\)}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ if((*i)-\/>GetID()\ ==\ LayerID::EngineUI)\{\(\backslash\)}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Engine::LayerStack::RemoveLayer(i);\(\backslash\)}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ break;\(\backslash\)}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \}\(\backslash\)}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \};}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{comment}{//remove\ the\ engine\ render\ layer\ from\ the\ layer\ stack}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\ \ \ \ \#ifndef\ REMOVE\_ENGINE\_DEBUG\_LAYER}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\ \ \ \ \#define\ REMOVE\_ENGINE\_DEBUG\_LAYER\ \(\backslash\)}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ for(std::vector<Layer*>::iterator\ i\ =\ Engine::LayerStack::Top();\ i\ <\ Engine::LayerStack::CurrentLocation();\ i++)\{\(\backslash\)}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ if((*i)-\/>GetID()\ ==\ LayerID::EngineWorld)\{\(\backslash\)}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Engine::LayerStack::RemoveLayer(i);\(\backslash\)}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ break;\(\backslash\)}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \}\(\backslash\)}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \};}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{comment}{//maybe\ the\ game\ world\ layer\ will\ need\ to\ be\ removed\ to\ test\ engine\ debug\ features\ }}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{comment}{//so\ adding\ it\ just\ in\ case,\ debug\ only\ obviously}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\ \ \ \ \#ifndef\ REMOVE\_GAME\_WORLD\_LAYER}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\ \ \ \ \#define\ REMOVE\_GAME\_WORLD\_LAYER(x)\(\backslash\)}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ for(std::vector<Layer*>::iterator\ i\ =\ Engine::LayerStack::Top();\ i\ <\ Engine::LayerStack::CurrentLocation();\ i++)\{\(\backslash\)}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ if((*i)-\/>GetID()\ ==\ x)\{\(\backslash\)}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Engine::LayerStack::RemoveLayer(i);\(\backslash\)}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ break;\(\backslash\)}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \}\(\backslash\)}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \};}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\ \ \ \ \#ifndef\ REMOVE\_ENGINE\_UI\_LAYER}}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\ \ \ \ \#define\ REMOVE\_ENGINE\_UI\_LAYER}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\ \ \ \ \#ifndef\ REMOVE\_ENGINE\_DEBGUG\_LAYER}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\ \ \ \ \#define\ REMOVE\_ENGINE\_DEBUG\_LAYER}}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\ \ \ \ \#ifndef\ REMOVE\_GAME\_WORLD\_LAYER(x)}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\ \ \ \ \#define\ REMOVE\_GAME\_WORLD\_LAYER(x)}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \textcolor{comment}{//this\ macro\ is\ the\ only\ one\ available\ in\ the\ dist\ build\ so\ I\ am\ not\ having\ the\ world\ readably\ refer\ to\ layers}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#ifndef\ REMOVE\_UI}}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{comment}{//completely\ removes\ all\ ui\ from\ the\ screen}}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{comment}{//this\ includes\ disabling\ the\ rendering,\ input,\ and\ hit\ detection}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\ \ \ \ \#define\ REMOVE\_UI\(\backslash\)}}
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ for(std::vector<Layer*>::iterator\ i\ =\ Engine::LayerStack::CurrentLocation();\ i\ <\ Engine::LayerStack::Bottom();\ i++)\{\(\backslash\)}}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ Engine::LayerStack::RemoveLayer(i);\(\backslash\)}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ break;\(\backslash\)}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \};}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00119\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,37 @@
+\doxysection{Engine::Script\+Module Class Reference}
+\hypertarget{class_engine_1_1_script_module}{}\label{class_engine_1_1_script_module}\index{Engine::ScriptModule@{Engine::ScriptModule}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_script_module_ab5c04d1b801d17902b59c64ad1943405}\label{class_engine_1_1_script_module_ab5c04d1b801d17902b59c64ad1943405} 
+{\bfseries Script\+Module} (Script\+Module \&\&other)=default
+\item 
+\Hypertarget{class_engine_1_1_script_module_a445aa239b79034e57dc1e3717fd6b58e}\label{class_engine_1_1_script_module_a445aa239b79034e57dc1e3717fd6b58e} 
+Script\+Module \& {\bfseries operator=} (Script\+Module \&\&other)=default
+\item 
+\Hypertarget{class_engine_1_1_script_module_ae4cf37e4121e3530bbd006b2f093bf9f}\label{class_engine_1_1_script_module_ae4cf37e4121e3530bbd006b2f093bf9f} 
+virtual void {\bfseries Construct} ()=0
+\item 
+\Hypertarget{class_engine_1_1_script_module_aca0ff9bcc5fbcc674488040a674c8305}\label{class_engine_1_1_script_module_aca0ff9bcc5fbcc674488040a674c8305} 
+virtual void {\bfseries Start} ()=0
+\item 
+\Hypertarget{class_engine_1_1_script_module_a0dd5d002f6be0ea7badcc86d07aa4cdf}\label{class_engine_1_1_script_module_a0dd5d002f6be0ea7badcc86d07aa4cdf} 
+virtual void {\bfseries Tick} (float delta\+Time)=0
+\item 
+\Hypertarget{class_engine_1_1_script_module_a48379cd4678d6ebf9cbe1edf91a49033}\label{class_engine_1_1_script_module_a48379cd4678d6ebf9cbe1edf91a49033} 
+void {\bfseries Set\+Owner} (\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_game_object}{Scene::\+\+ECS::\+\+Game\+Object}} \texorpdfstring{$\ast$}{*}owner\+Ref) noexcept
+\item 
+\Hypertarget{class_engine_1_1_script_module_ac0a60d8d5febf894e3f462fabaaed69e}\label{class_engine_1_1_script_module_ac0a60d8d5febf894e3f462fabaaed69e} 
+\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_game_object}{Scene::\+\+ECS::\+\+Game\+Object}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Owner} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_script_module_ad14558a2365a5b0f4190de15a19ff703}\label{class_engine_1_1_script_module_ad14558a2365a5b0f4190de15a19ff703} 
+\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_game_object}{Scene::\+\+ECS::\+\+Game\+Object}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+\+Owner} = nullptr
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Core/Script\+Module.\+h\end{DoxyCompactItemize}

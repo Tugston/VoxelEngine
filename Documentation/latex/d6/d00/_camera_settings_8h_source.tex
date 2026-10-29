@@ -1,0 +1,50 @@
+\doxysection{Camera\+Settings.\+h}
+\hypertarget{_camera_settings_8h_source}{}\label{_camera_settings_8h_source}\index{Engine/src/Core/Cameras/CameraSettings.h@{Engine/src/Core/Cameras/CameraSettings.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ CameraSettings.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/03-\/28\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ Basic\ camera\ settings\ that\ are\ passed\ around.\ ECS\ could\ utilize\ this\ as\ well\ (not\ currently\ at\ that\ point\ as\ of\ 12/6/2025)}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//VENDOR}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <glm/matrix.hpp>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <glm/gtc/matrix\_transform.hpp>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <glm/gtc/quaternion.hpp>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }Engine::Camera}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{struct\ }CameraSettings}
+\DoxyCodeLine{00025\ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{comment}{//general\ settings}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ speed\ =\ 1.f;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ sensitivity\ =\ .025f;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ UINT8\ fov\ =\ 40;\ \textcolor{comment}{//removes\ float\ precision,\ but\ whole\ numbers\ are\ nice\ regardless}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{comment}{//view\ distance}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ nearPlane\ =\ .01f;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ farPlane\ =\ 1000.f;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{comment}{//window\ settings}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ apectRatio\ =\ 0;\ \textcolor{comment}{//CALCULATED\ IN\ CAMERA\ CONSTRUCTORS}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ CameraSettings()\ :\ speed(3.f),\ sensitivity(.8f),\ fov(40.f),\ nearPlane(.01f),\ farPlane(10000.f)\ \{\};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ CameraSettings(\textcolor{keywordtype}{float}\ sensitivity,\ \textcolor{keywordtype}{float}\ speed)\ :\ sensitivity(sensitivity),\ speed(speed)\ \{\};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ CameraSettings(\textcolor{keywordtype}{float}\ sensitivity,\ \textcolor{keywordtype}{float}\ fov,\ \textcolor{keywordtype}{float}\ speed)\ :\ sensitivity(sensitivity),\ fov(fov),\ speed(speed)\ \{\};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ CameraSettings(\textcolor{keywordtype}{float}\ fov)\ :\ fov(fov)\ \{\};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ CameraSettings(\textcolor{keyword}{const}\ CameraSettings\&\ settings)\ =\ \textcolor{keywordflow}{default};\ \textcolor{comment}{//no\ pointers,\ so\ this\ is\ fine}}
+\DoxyCodeLine{00043\ \ \ \ \ \};}
+\DoxyCodeLine{00044\ \}}
+
+\end{DoxyCode}

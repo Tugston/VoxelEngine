@@ -12,6 +12,7 @@
 #include "Editor.h"
 
 //ENGN
+#include <Engine.h>
 #include <Core/Cameras/PerspectiveCamera.h>
 
 #define HEADING_HEIGHT	45.f
@@ -65,6 +66,9 @@ namespace Editor
 		Application::Start();
 		LOG_MSG("Editor Started!");
 
+		//working on this, need to use game objects
+		//m_TestObject = m_SceneManager->
+
 		m_TestObject = std::make_unique<GameObject3D>(m_SceneManager.GetCurrentScene()->GetRegistry());
 
 		m_TestObject->AddComponent<Components::SpriteComponent>();
@@ -93,7 +97,7 @@ namespace Editor
 
 	void EditorApplication::Tick()
 	{
-		while (m_Running)
+		while (ShouldRun())
 		{
 			Utility::Material* spriteMaterial = &m_TestObject->GetComponent<Components::SpriteComponent>()->material;
 

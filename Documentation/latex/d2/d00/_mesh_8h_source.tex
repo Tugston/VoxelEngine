@@ -1,0 +1,85 @@
+\doxysection{Mesh.\+h}
+\hypertarget{_mesh_8h_source}{}\label{_mesh_8h_source}\index{Engine/src/SharedResources/GenericResources/Mesh.h@{Engine/src/SharedResources/GenericResources/Mesh.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ Mesh.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/03-\/26\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ Container\ for\ array\ objects,\ buffers,\ and\ special\ functionalities\ and\ data\ storage\ for\ various\ mesh\ types}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//ENGINE}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}Core/Core.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}Renderer/Architecture/Buffer.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}Renderer/Architecture/ArrayObject.h"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//VNDR}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{namespace\ }Engine::Utility}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{struct\ }Mesh}
+\DoxyCodeLine{00027\ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ Mesh()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ Mesh(\textcolor{keyword}{const}\ Mesh\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ Mesh\&\ operator=(\textcolor{keyword}{const}\ Mesh\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ Mesh(Mesh\&\&\ other)\ noexcept\ :}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ vao(std::move(other.vao)),\ vbo(std::move(other.vbo)),\ ebo(std::move(other.ebo)),\ indexCount(std::move(other.indexCount)),}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ primitiveMode(std::move(other.primitiveMode))}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ Mesh\&\ operator=(Mesh\&\&\ other)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ vao\ =\ std::move(other.vao);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ vbo\ =\ std::move(other.vbo);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ ebo\ =\ std::move(other.ebo);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Create()}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ vao.Create();}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ vbo.Create();}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ ebo.Create();}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_renderer_1_1_array_object}{Renderer::ArrayObject}}\ vao;}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_renderer_1_1_vertex_buffer}{Renderer::VertexBuffer}}\ vbo;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_renderer_1_1_index_buffer}{Renderer::IndexBuffer}}\ ebo;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ UINT32\ indexCount\ =\ 0;\ \textcolor{comment}{//amount\ of\ total\ indexes}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ UINT32\ primitiveMode\ =\ 0x0004;\ \textcolor{comment}{//GL\_TRIANGLES}}
+\DoxyCodeLine{00060\ \ \ \ \ \};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{struct\ }InstancedMesh\ :\ \textcolor{keyword}{public}\ Mesh}
+\DoxyCodeLine{00063\ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ InstancedMesh()\ \{\};}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{/*\ \ InstancedMesh(const\ InstancedMesh\&\ other)}}
+\DoxyCodeLine{00066\ \textcolor{comment}{\ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{00067\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ vao\ =\ other.vao;}}
+\DoxyCodeLine{00068\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ vbo\ =\ other.vbo;}}
+\DoxyCodeLine{00069\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ ebo\ =\ other.ebo;}}
+\DoxyCodeLine{00070\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ indexCount\ =\ other.indexCount;}}
+\DoxyCodeLine{00071\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ primitiveMode\ =\ other.primitiveMode;}}
+\DoxyCodeLine{00072\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ instanceVBO\ =\ other.instanceVBO;}}
+\DoxyCodeLine{00073\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ instances\ =\ other.instances;}}
+\DoxyCodeLine{00074\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}\ */}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_renderer_1_1_index_buffer}{Renderer::IndexBuffer}}\ instanceVBO;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ std::vector<glm::mat4>\ instances;}
+\DoxyCodeLine{00078\ \ \ \ \ \};}
+\DoxyCodeLine{00079\ \}}
+
+\end{DoxyCode}

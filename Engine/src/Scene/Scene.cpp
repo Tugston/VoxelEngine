@@ -42,10 +42,11 @@ namespace Engine::Scene
 	const std::vector<ECS::EntityID> Scene::CollectRenderData(Renderer::RenderPasses type)
 	{
 		std::vector<ECS::EntityID> sortedData;
-
-		for (size_t i = 0; i < LayerStack::GetLayers().size(); i++)
+		
+		const std::vector<Engine::Layer*> layers = LayerStack::GetLayers();
+		for (size_t i = 0; i < layers.size(); i++)
 		{
-			std::vector<ECS::EntityID> currentData = LayerStack::GetLayers().at(i)->GetDrawData(type, GetRegistry());
+			std::vector<ECS::EntityID> currentData = layers.at(i)->GetDrawData(type, GetRegistry());
 
 			//layers not rendering anything will return one id and it is maxed
 			if (currentData[0] == (std::numeric_limits<UINT32>::max)())

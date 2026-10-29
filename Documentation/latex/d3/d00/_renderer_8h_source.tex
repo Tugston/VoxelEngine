@@ -1,0 +1,95 @@
+\doxysection{Renderer.\+h}
+\hypertarget{_renderer_8h_source}{}\label{_renderer_8h_source}\index{Engine/src/Renderer/Core/Renderer.h@{Engine/src/Renderer/Core/Renderer.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ Renderer.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/14-\/03\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ Pipline\ that\ handles\ every\ single\ vertex,\ render\ pass,\ lighting\ calculation,\ or\ whatever\ required\ to\ draw\ the\ scene}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//STND}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <variant>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//ENGINE}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}Core/Core.h"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}RenderObjects.h"{}}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{namespace\ }Engine::Camera}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_engine_1_1_camera_1_1_editor_camera}{EditorCamera}};}
+\DoxyCodeLine{00028\ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{namespace\ }Engine::Utility}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_engine_1_1_utility_1_1_texture2_d}{Texture2D}};}
+\DoxyCodeLine{00033\ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{namespace\ }Engine::Renderer}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_engine_1_1_renderer_1_1_frame_buffer}{FrameBuffer}};}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{using\ }ViewSize\ =\ std::pair<unsigned\ int,\ unsigned\ int>;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//fill\ packets\ with\ all\ possible\ types\ that\ can\ be\ in\ each\ category\ of\ queues}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{using\ }OpaquePackets\ =\ std::variant<MeshObject,\ InstanceMeshObject>;}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{class\ }Renderer}
+\DoxyCodeLine{00044\ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum\ class}\ RenderTarget:\ UINT8}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_window}{Window}},}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ FrameBufferTexture}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ Renderer(ViewSize\ viewportSize);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ Renderer(ViewSize\ viewportSize,\ RenderTarget\ target);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \string~Renderer();}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ BeginRender(\doxymbox{\hyperlink{class_engine_1_1_camera_1_1_editor_camera}{Engine::Camera::EditorCamera}}*\ camera);}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ EndRender();}
+\DoxyCodeLine{00058\ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//this\ works\ with\ the\ RenderObject\ function\ so\ any\ renderObject\ can\ be\ passed\ as\ the\ api}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ SubmitObject(\doxymbox{\hyperlink{struct_engine_1_1_renderer_1_1_render_object}{RenderObject}}\&\ renderObject);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ std::function<void(\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int})>\ Resize(\doxymbox{\hyperlink{class_engine_1_1_camera_1_1_editor_camera}{Camera::EditorCamera}}*\ camera\ =\ \textcolor{keyword}{nullptr});\ \textcolor{comment}{//utilized\ for\ application\ window\ resizing\ callback}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{comment}{//EDITOR\ SPECIFICS}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ GetRenderTexture()\ \{\ \textcolor{keywordflow}{return}\ m\_TextureColorBuffer-\/>GetID();\ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ SetupRenderTexture();}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ ClearScreen();}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ ClearQueues();\ \textcolor{comment}{//there\ shouldnt\ be\ any\ data\ left\ over\ from\ previous\ frame,\ but\ just\ in\ case}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Object\ Registering}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ RegisterOpaqueObject(OpaquePackets\ mesh);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ RenderTarget\ m\_RenderTarget;\ \ \ \ }
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{comment}{//render\ queues}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ std::queue<OpaquePackets>\ m\_OpaqueSceneObjects;}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{struct\ }MeshObject;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{struct\ }InstanceMeshObject;}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{comment}{//EXTRA\ DATA\ THAT\ SHOULD\ NOT\ BE\ IN\ THE\ GAME\ BUT\ RENDERER\ NEEDS\ IT}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_renderer_1_1_frame_buffer}{FrameBuffer}}*\ m\_FrameBuffer;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_utility_1_1_texture2_d}{Utility::Texture2D}}*\ m\_TextureColorBuffer;}
+\DoxyCodeLine{00088\ \ \ \ \ \};}
+\DoxyCodeLine{00089\ \}}
+
+\end{DoxyCode}

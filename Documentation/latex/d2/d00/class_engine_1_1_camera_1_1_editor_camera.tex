@@ -1,0 +1,117 @@
+\doxysection{Engine::Camera::Editor\+Camera Class Reference}
+\hypertarget{class_engine_1_1_camera_1_1_editor_camera}{}\label{class_engine_1_1_camera_1_1_editor_camera}\index{Engine::Camera::EditorCamera@{Engine::Camera::EditorCamera}}
+Inheritance diagram for Engine::Camera::Editor\+Camera:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d2/d00/class_engine_1_1_camera_1_1_editor_camera}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_a790ae1cc579b51eb886c91298ed5f48b}\label{class_engine_1_1_camera_1_1_editor_camera_a790ae1cc579b51eb886c91298ed5f48b} 
+enum class {\bfseries Move\+Direction} : UINT8 \{ {\bfseries Forward} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 0
+, {\bfseries Backwards} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 2
+, {\bfseries Left} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 3
+, {\bfseries Right} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 4
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_af76c7ed77241e470398fb14d48337e62}\label{class_engine_1_1_camera_1_1_editor_camera_af76c7ed77241e470398fb14d48337e62} 
+virtual void {\bfseries Process\+Rotation} (const glm::\+vec2 \&mouse\+Delta, bool constrain\+Pitch)=0
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_a8ead413970b726cf82aa006c6fc701b9}\label{class_engine_1_1_camera_1_1_editor_camera_a8ead413970b726cf82aa006c6fc701b9} 
+virtual void {\bfseries Process\+Location} (Move\+Direction direction, float delta\+Time)=0
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_afcae2efeaa0fb94fcd565bab10adc38e}\label{class_engine_1_1_camera_1_1_editor_camera_afcae2efeaa0fb94fcd565bab10adc38e} 
+virtual void {\bfseries Update\+Projection} (float width, float height)=0
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_af6131601856e7ac864d990f7937aa087}\label{class_engine_1_1_camera_1_1_editor_camera_af6131601856e7ac864d990f7937aa087} 
+void {\bfseries Set\+Speed} (float speed)
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_aa8feda25c7c88c3628f06e71e9363b6f}\label{class_engine_1_1_camera_1_1_editor_camera_aa8feda25c7c88c3628f06e71e9363b6f} 
+void {\bfseries Set\+Sensitivity} (float sensitivity)
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_a02cd141e22829b764a0423acaca37d08}\label{class_engine_1_1_camera_1_1_editor_camera_a02cd141e22829b764a0423acaca37d08} 
+glm::\+mat4 {\bfseries Get\+Projection\+Matrix} () const
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_a5aca6f9632d9bba5837071c6920f536e}\label{class_engine_1_1_camera_1_1_editor_camera_a5aca6f9632d9bba5837071c6920f536e} 
+glm::\+mat4 {\bfseries Get\+View\+Matrix} () const
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_afda6700f7a269bdeb58886417d16cd73}\label{class_engine_1_1_camera_1_1_editor_camera_afda6700f7a269bdeb58886417d16cd73} 
+glm::\+vec3 {\bfseries Get\+Forward\+Vector} () const
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_a5372ddaec0a768bbf1fe639f06781a6c}\label{class_engine_1_1_camera_1_1_editor_camera_a5372ddaec0a768bbf1fe639f06781a6c} 
+glm::\+vec3 {\bfseries Get\+Up\+Vector} () const
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_a7b0210c2c5b7c20366d944e28f55cab4}\label{class_engine_1_1_camera_1_1_editor_camera_a7b0210c2c5b7c20366d944e28f55cab4} 
+glm::\+vec3 {\bfseries Get\+Right\+Vector} () const
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_a99261a9e430ff7d9c1c4a6f2d49230ba}\label{class_engine_1_1_camera_1_1_editor_camera_a99261a9e430ff7d9c1c4a6f2d49230ba} 
+glm::\+vec3 {\bfseries Get\+Euler\+Rotation} () const
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_ad662fed3600e5e1258b949e8f8f6459d}\label{class_engine_1_1_camera_1_1_editor_camera_ad662fed3600e5e1258b949e8f8f6459d} 
+glm::\+quat {\bfseries Get\+Quat\+Rotation} () const
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_a266d062ee26d54ad03a18cd2af2b9ac0}\label{class_engine_1_1_camera_1_1_editor_camera_a266d062ee26d54ad03a18cd2af2b9ac0} 
+\doxymbox{\hyperlink{struct_engine_1_1_camera_1_1_camera_settings}{Camera\+Settings}} {\bfseries Get\+Settings} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_ad6982c5872019f1549c0717300917001}\label{class_engine_1_1_camera_1_1_editor_camera_ad6982c5872019f1549c0717300917001} 
+{\bfseries Editor\+Camera} (const glm::\+vec3 \&position)
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_adea683df5cf513000c39ace609f63194}\label{class_engine_1_1_camera_1_1_editor_camera_adea683df5cf513000c39ace609f63194} 
+{\bfseries Editor\+Camera} (const glm::\+vec3 \&position, const glm::\+vec3 \&rotation, float speed)
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_a02d3799339e158a526372227051247e6}\label{class_engine_1_1_camera_1_1_editor_camera_a02d3799339e158a526372227051247e6} 
+void {\bfseries Update\+Vectors} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_ae1527fed871742650a61595c3d3930b1}\label{class_engine_1_1_camera_1_1_editor_camera_ae1527fed871742650a61595c3d3930b1} 
+\doxymbox{\hyperlink{struct_engine_1_1_camera_1_1_camera_settings}{Camera\+Settings}} {\bfseries m\+\_\+\+Settings}
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_a976a226e5294729705090f086a4d1ce2}\label{class_engine_1_1_camera_1_1_editor_camera_a976a226e5294729705090f086a4d1ce2} 
+glm::\+quat {\bfseries m\+\_\+\+Rotation} = glm::\+quat(glm::\+vec3(0.f, 0.f, 0.f))
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_ae411c39db3fdfb38ab5cd4eb6c95507d}\label{class_engine_1_1_camera_1_1_editor_camera_ae411c39db3fdfb38ab5cd4eb6c95507d} 
+glm::\+vec3 {\bfseries m\+\_\+\+Euler\+Rotation} = glm::\+vec3(0.f, 0.f, 0.f)
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_a06eabc51e479b14f3cdbc4ea9887fdb6}\label{class_engine_1_1_camera_1_1_editor_camera_a06eabc51e479b14f3cdbc4ea9887fdb6} 
+glm::\+vec3 {\bfseries m\+\_\+\+Location}
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_a831d6d353dc6a711ed738762279add56}\label{class_engine_1_1_camera_1_1_editor_camera_a831d6d353dc6a711ed738762279add56} 
+glm::\+vec3 {\bfseries m\+\_\+\+Forward\+Vector} = glm::\+vec3(0.f, 0.f, -\/1.f)
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_a7d13ad9d6814198a2353bde0fd85eaf8}\label{class_engine_1_1_camera_1_1_editor_camera_a7d13ad9d6814198a2353bde0fd85eaf8} 
+glm::\+vec3 {\bfseries m\+\_\+\+Right\+Vector}
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_adf70562276d9666c0075152c358d83bf}\label{class_engine_1_1_camera_1_1_editor_camera_adf70562276d9666c0075152c358d83bf} 
+glm::\+vec3 {\bfseries m\+\_\+\+Up\+Vector} = glm::\+vec3(0.f, 1.f, 0.f)
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_a6a1bb959a188c90dbb230ce78c3c1226}\label{class_engine_1_1_camera_1_1_editor_camera_a6a1bb959a188c90dbb230ce78c3c1226} 
+glm::\+mat4 {\bfseries m\+\_\+\+Projection\+Matrix}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_a67dc491d9adf86cf148c5731a741072e}\label{class_engine_1_1_camera_1_1_editor_camera_a67dc491d9adf86cf148c5731a741072e} 
+void {\bfseries Update\+Rotation} (const glm::\+vec3 \&new\+Rotation)
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_a7999bb23b33b035361e991718df64080}\label{class_engine_1_1_camera_1_1_editor_camera_a7999bb23b33b035361e991718df64080} 
+glm::\+vec3 {\bfseries Calculate\+Up\+Vector} () const
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_a2691df02db103c6b964aade91c7fb708}\label{class_engine_1_1_camera_1_1_editor_camera_a2691df02db103c6b964aade91c7fb708} 
+glm::\+vec3 {\bfseries Calculate\+Right\+Vector} () const
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Core/\+\+Cameras/Editor\+Camera.\+h\item 
+Engine/\+src/\+\+Core/\+\+Cameras/Editor\+Camera.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,100 @@
+\doxysection{Texture.\+h}
+\hypertarget{_texture_8h_source}{}\label{_texture_8h_source}\index{Engine/src/SharedResources/GenericResources/Texture.h@{Engine/src/SharedResources/GenericResources/Texture.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ Texture.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/11-\/22\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ wrapper\ class\ around\ opengl\ texture\ calls\ and\ id}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{//ENGINE}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}Core/Core.h"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <stb/stb\_image.h>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }Engine::Utility}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//these\ values\ were\ sourced\ from\ the\ gl\ constants\ data\ sheet}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//raw.githubusercontent.com/KhronosGroup/OpenGL-\/Registry/master/xml/gl.xml?utm}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{enum\ class}\ TextureParamName\ :\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}}
+\DoxyCodeLine{00027\ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ DEPTH\_STENCIL\_TEXTURE\_MODE\ \ =\ 0x90EA,}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ TEXTURE\_BASE\_LEVEL\ \ \ \ \ \ \ \ \ \ =\ 0x813c,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ TEXTURE\_COMPARE\_FUNC\ \ \ \ \ \ \ \ =\ 0x884D,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ TEXTURE\_COMPARE\_MODE\ \ \ \ \ \ \ \ =\ 0x884C,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ TEXTURE\_LOD\_BIAS\ \ \ \ \ \ \ \ \ \ \ \ =\ 0x8501,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ TEXTURE\_MIN\_FILTER\ \ \ \ \ \ \ \ \ \ =\ 0x2801,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ TEXTURE\_MAG\_FILTER\ \ \ \ \ \ \ \ \ \ =\ 0x2800,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ TEXTURE\_MIN\_LOD\ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x813A,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ TEXTURE\_MAX\_LOD\ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x813B,}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ TEXTURE\_MAX\_LEVEL\ \ \ \ \ \ \ \ \ \ \ =\ 0x813D,}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ TEXTURE\_SWIZZLE\_R\ \ \ \ \ \ \ \ \ \ \ =\ 0x8E42,}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ TEXTURE\_SWIZZLE\_G\ \ \ \ \ \ \ \ \ \ \ =\ 0x8E43,}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ TEXTURE\_SWIZZLE\_B\ \ \ \ \ \ \ \ \ \ \ =\ 0x8E44,}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ TEXTURE\_SWIZZLE\_A\ \ \ \ \ \ \ \ \ \ \ =\ 0x8E45,}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ TEXTURE\_WRAP\_S\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x2802,}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ TEXTURE\_WRAP\_T\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x2803,}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ TEXTURE\_WRAP\_R\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x8072,}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Vector\ Commands\ only}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ TEXTURE\_BORDER\_COLOR\ \ \ \ \ \ \ \ =\ 0x1004,}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ TEXTURE\_SWIZZLE\_RGBA\ \ \ \ \ \ \ \ =\ 0x8E46}
+\DoxyCodeLine{00049\ \ \ \ \ \};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//empty\ texture\ will\ return\ empty\ file\ name!}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{struct\ }TextureDefaultParams}
+\DoxyCodeLine{00053\ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ TextureDefaultParams(std::string\_view\ fileName\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keywordtype}{int}\ width\ =\ 1280,\ \textcolor{keywordtype}{int}\ height\ =\ 720):\ fileName(fileName),\ width(width),\ height(height)\ \{\}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ std::string\_view\ fileName\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ width;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ height;}
+\DoxyCodeLine{00059\ \ \ \ \ \};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{class\ }Texture}
+\DoxyCodeLine{00062\ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{comment}{//create\ is\ utilized\ to\ source\ an\ image\ for\ the\ texture\ and\ create\ empty\ is\ just\ passed\ params}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Create(std::string\_view\ filename)\ =\ 0;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ CreateEmpty(\doxymbox{\hyperlink{struct_engine_1_1_utility_1_1_texture_default_params}{TextureDefaultParams}}\ params)\ =\ 0;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Bind()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ UnBind()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ GetID()\ \{\ \textcolor{keywordflow}{return}\ m\_Id;\ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \string~Texture();}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ Texture();}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ m\_Id\ =\ 0;}
+\DoxyCodeLine{00078\ \ \ \ \ \};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{class\ }Texture2D\ :\ \textcolor{keyword}{public}\ Texture}
+\DoxyCodeLine{00081\ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ Texture2D()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \string~Texture2D();}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Create(std::string\_view\ filename)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ CreateEmpty(\doxymbox{\hyperlink{struct_engine_1_1_utility_1_1_texture_default_params}{TextureDefaultParams}}\ params)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Bind()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ UnBind()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ SetFilter(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ minFilter,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ magFilter)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ SetWrap(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ wrapS,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ wrapT)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00093\ \ \ \ \ \};}
+\DoxyCodeLine{00094\ \}}
+
+\end{DoxyCode}

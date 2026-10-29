@@ -1,0 +1,85 @@
+\doxysection{Engine/\+src/\+\+Core/\+\+Application.h File Reference}
+\hypertarget{_application_8h}{}\label{_application_8h}\index{Engine/src/Core/Application.h@{Engine/src/Core/Application.h}}
+
+
+The overarching class for engine processes.  
+
+
+{\ttfamily \+\#include "{}Core/\+\+Core.\+h"{}}\newline
+{\ttfamily \+\#include "{}Renderer/\+\+Core/\+\+Renderer.\+h"{}}\newline
+{\ttfamily \+\#include "{}Input/\+\+Input.\+h"{}}\newline
+{\ttfamily \+\#include "{}Core/\+\+Window.\+h"{}}\newline
+{\ttfamily \+\#include "{}Core/\+\+Debug/\+\+Debug\+UI.\+h"{}}\newline
+{\ttfamily \+\#include "{}Scene/\+\+Scene\+Manager.\+h"{}}\newline
+{\ttfamily \+\#include "{}Core/\+\+Cameras/\+\+Perspective\+Camera.\+h"{}}\newline
+{\ttfamily \+\#include $<$cstdint$>$}\newline
+{\ttfamily \+\#include $<$functional$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_engine_1_1_application}{Engine::\+\+Application}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_engine_1_1_application}{Application}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{_application_8h_a35016cfcb578c1f00f887ab607ff7fb9}{Engine::\+\+Create\+Application}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_engine_1_1_application}{Application} creation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The overarching class for engine processes. 
+
+This is the main driver signleton class that controls all the backend engine tasks such as rendering, calculating delta, engine setup, providing api, etc.
+
+\begin{DoxyWarning}{Warning}
+Be sure to define Create\+Application in your game, see the \doxylink{_application_8h_create_application}{Create\+Application} function for specific details. 
+\end{DoxyWarning}
+\begin{DoxyNote}{Note}
+For a list of all functions available for use in your game, check the Engine API.
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Vincent Pierce 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+February 17, 2025 
+\end{DoxyDate}
+
+
+\label{_application_8h_doc-func-members}
+\Hypertarget{_application_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_application_8h_a35016cfcb578c1f00f887ab607ff7fb9}\index{Application.h@{Application.h}!CreateApplication@{CreateApplication}}
+\index{CreateApplication@{CreateApplication}!Application.h@{Application.h}}
+\doxysubsubsection{\texorpdfstring{CreateApplication()}{CreateApplication()}}
+{\footnotesize\ttfamily \label{_application_8h_a35016cfcb578c1f00f887ab607ff7fb9} 
+Application \texorpdfstring{$\ast$}{*} Engine::\+\+Create\+Application (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Application creation. 
+
+This function must be defined in your application in order to supply the proper application class
+
+\begin{DoxyPostcond}{Postcondition}
+Instantiates and returns the game\textquotesingle{}s custom application
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A raw pointer to the custom game instance
+\end{DoxyReturn}
+\hypertarget{_application_8h_autotoc_md0}{}\doxysubsubsubsection{\texorpdfstring{Example Usage}{Example Usage}}\label{_application_8h_autotoc_md0}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{class\ }YourCustomGame\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_engine_1_1_application}{Engine::Application}}\ \{\ ...\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\doxymbox{\hyperlink{class_engine_1_1_application}{Engine::Application}}*\ \doxymbox{\hyperlink{_application_8h_a35016cfcb578c1f00f887ab607ff7fb9}{Engine::CreateApplication}}()\ \{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ YourCustomGame();}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\begin{DoxyNote}{Note}
+In future versions of the engine this may be deprecated
+\end{DoxyNote}
+\label{_application_8h_create_application}%
+\Hypertarget{_application_8h_create_application}%

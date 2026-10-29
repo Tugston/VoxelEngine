@@ -1,0 +1,132 @@
+\doxysection{Engine::Camera::Perspective\+Camera Class Reference}
+\hypertarget{class_engine_1_1_camera_1_1_perspective_camera}{}\label{class_engine_1_1_camera_1_1_perspective_camera}\index{Engine::Camera::PerspectiveCamera@{Engine::Camera::PerspectiveCamera}}
+Inheritance diagram for Engine::Camera::Perspective\+Camera:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d2/d00/class_engine_1_1_camera_1_1_perspective_camera}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_perspective_camera_aef93e71982b1d7a55ea03d0e4bb91545}\label{class_engine_1_1_camera_1_1_perspective_camera_aef93e71982b1d7a55ea03d0e4bb91545} 
+{\bfseries Perspective\+Camera} (const glm::\+vec3 \&position)
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_perspective_camera_a36b9c6bbf601a8b54debd481d547e177}\label{class_engine_1_1_camera_1_1_perspective_camera_a36b9c6bbf601a8b54debd481d547e177} 
+{\bfseries Perspective\+Camera} (const glm::\+vec3 \&position, UINT8 fov)
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_perspective_camera_aba649998f35a05110e098dfa8a311e66}\label{class_engine_1_1_camera_1_1_perspective_camera_aba649998f35a05110e098dfa8a311e66} 
+{\bfseries Perspective\+Camera} (const glm::\+vec3 \&position, const glm::\+vec3 \&rotation, UINT8 fov, float speed)
+\item 
+virtual void \doxymbox{\hyperlink{class_engine_1_1_camera_1_1_perspective_camera_af519e6eff55e8b14f817a11f213ea9c2}{Process\+Location}} (Move\+Direction direction, float delta\+Time) override
+\item 
+virtual void \doxymbox{\hyperlink{class_engine_1_1_camera_1_1_perspective_camera_aabb08397627a1fad667851a049a373a9}{Process\+Rotation}} (const glm::\+vec2 \&mouse\+Delta, bool constrain\+Pitch) override
+\item 
+virtual void \doxymbox{\hyperlink{class_engine_1_1_camera_1_1_perspective_camera_a750abfbcd120eea5baebddaab3d67595}{Update\+Projection}} (float width, float height) override
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_perspective_camera_a69fe5585bd28b8da69a7b932792b30b6}\label{class_engine_1_1_camera_1_1_perspective_camera_a69fe5585bd28b8da69a7b932792b30b6} 
+void {\bfseries Set\+Fov} (float fov)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_engine_1_1_camera_1_1_editor_camera}{Engine::\+\+Camera::\+\+Editor\+Camera}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Set\+Speed} (float speed)
+\item 
+void {\bfseries Set\+Sensitivity} (float sensitivity)
+\item 
+glm::\+mat4 {\bfseries Get\+Projection\+Matrix} () const
+\item 
+glm::\+mat4 {\bfseries Get\+View\+Matrix} () const
+\item 
+glm::\+vec3 {\bfseries Get\+Forward\+Vector} () const
+\item 
+glm::\+vec3 {\bfseries Get\+Up\+Vector} () const
+\item 
+glm::\+vec3 {\bfseries Get\+Right\+Vector} () const
+\item 
+glm::\+vec3 {\bfseries Get\+Euler\+Rotation} () const
+\item 
+glm::\+quat {\bfseries Get\+Quat\+Rotation} () const
+\item 
+\doxymbox{\hyperlink{struct_engine_1_1_camera_1_1_camera_settings}{Camera\+Settings}} {\bfseries Get\+Settings} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \doxymbox{\hyperlink{class_engine_1_1_camera_1_1_editor_camera}{Engine::\+\+Camera::\+\+Editor\+Camera}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_camera_1_1_editor_camera_a790ae1cc579b51eb886c91298ed5f48b}\label{class_engine_1_1_camera_1_1_editor_camera_a790ae1cc579b51eb886c91298ed5f48b} 
+enum class {\bfseries Move\+Direction} : UINT8 \{ {\bfseries Forward} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 0
+, {\bfseries Backwards} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 2
+, {\bfseries Left} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 3
+, {\bfseries Right} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 4
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{class_engine_1_1_camera_1_1_editor_camera}{Engine::\+\+Camera::\+\+Editor\+Camera}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Editor\+Camera} (const glm::\+vec3 \&position)
+\item 
+{\bfseries Editor\+Camera} (const glm::\+vec3 \&position, const glm::\+vec3 \&rotation, float speed)
+\item 
+void {\bfseries Update\+Vectors} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{class_engine_1_1_camera_1_1_editor_camera}{Engine::\+\+Camera::\+\+Editor\+Camera}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{struct_engine_1_1_camera_1_1_camera_settings}{Camera\+Settings}} {\bfseries m\+\_\+\+Settings}
+\item 
+glm::\+quat {\bfseries m\+\_\+\+Rotation} = glm::\+quat(glm::\+vec3(0.f, 0.f, 0.f))
+\item 
+glm::\+vec3 {\bfseries m\+\_\+\+Euler\+Rotation} = glm::\+vec3(0.f, 0.f, 0.f)
+\item 
+glm::\+vec3 {\bfseries m\+\_\+\+Location}
+\item 
+glm::\+vec3 {\bfseries m\+\_\+\+Forward\+Vector} = glm::\+vec3(0.f, 0.f, -\/1.f)
+\item 
+glm::\+vec3 {\bfseries m\+\_\+\+Right\+Vector}
+\item 
+glm::\+vec3 {\bfseries m\+\_\+\+Up\+Vector} = glm::\+vec3(0.f, 1.f, 0.f)
+\item 
+glm::\+mat4 {\bfseries m\+\_\+\+Projection\+Matrix}
+\end{DoxyCompactItemize}
+
+
+\label{class_engine_1_1_camera_1_1_perspective_camera_doc-func-members}
+\Hypertarget{class_engine_1_1_camera_1_1_perspective_camera_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_engine_1_1_camera_1_1_perspective_camera_af519e6eff55e8b14f817a11f213ea9c2}\index{Engine::Camera::PerspectiveCamera@{Engine::Camera::PerspectiveCamera}!ProcessLocation@{ProcessLocation}}
+\index{ProcessLocation@{ProcessLocation}!Engine::Camera::PerspectiveCamera@{Engine::Camera::PerspectiveCamera}}
+\doxysubsubsection{\texorpdfstring{ProcessLocation()}{ProcessLocation()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_camera_1_1_perspective_camera_af519e6eff55e8b14f817a11f213ea9c2} 
+void Engine::\+\+Camera::\+\+Perspective\+Camera::\+\+Process\+Location (\begin{DoxyParamCaption}\item[{Move\+Direction}]{direction}{, }\item[{float}]{delta\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_engine_1_1_camera_1_1_editor_camera}{Engine::\+\+Camera::\+\+Editor\+Camera}}.
+
+\Hypertarget{class_engine_1_1_camera_1_1_perspective_camera_aabb08397627a1fad667851a049a373a9}\index{Engine::Camera::PerspectiveCamera@{Engine::Camera::PerspectiveCamera}!ProcessRotation@{ProcessRotation}}
+\index{ProcessRotation@{ProcessRotation}!Engine::Camera::PerspectiveCamera@{Engine::Camera::PerspectiveCamera}}
+\doxysubsubsection{\texorpdfstring{ProcessRotation()}{ProcessRotation()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_camera_1_1_perspective_camera_aabb08397627a1fad667851a049a373a9} 
+void Engine::\+\+Camera::\+\+Perspective\+Camera::\+\+Process\+Rotation (\begin{DoxyParamCaption}\item[{const glm::\+vec2 \&}]{mouse\+Delta}{, }\item[{bool}]{constrain\+Pitch}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_engine_1_1_camera_1_1_editor_camera}{Engine::\+\+Camera::\+\+Editor\+Camera}}.
+
+\Hypertarget{class_engine_1_1_camera_1_1_perspective_camera_a750abfbcd120eea5baebddaab3d67595}\index{Engine::Camera::PerspectiveCamera@{Engine::Camera::PerspectiveCamera}!UpdateProjection@{UpdateProjection}}
+\index{UpdateProjection@{UpdateProjection}!Engine::Camera::PerspectiveCamera@{Engine::Camera::PerspectiveCamera}}
+\doxysubsubsection{\texorpdfstring{UpdateProjection()}{UpdateProjection()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_camera_1_1_perspective_camera_a750abfbcd120eea5baebddaab3d67595} 
+void Engine::\+\+Camera::\+\+Perspective\+Camera::\+\+Update\+Projection (\begin{DoxyParamCaption}\item[{float}]{width}{, }\item[{float}]{height}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_engine_1_1_camera_1_1_editor_camera}{Engine::\+\+Camera::\+\+Editor\+Camera}}.
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Core/\+\+Cameras/Perspective\+Camera.\+h\item 
+Engine/\+src/\+\+Core/\+\+Cameras/Perspective\+Camera.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,77 @@
+\doxysection{Engine::Renderer::Mesh\+Object Struct Reference}
+\hypertarget{struct_engine_1_1_renderer_1_1_mesh_object}{}\label{struct_engine_1_1_renderer_1_1_mesh_object}\index{Engine::Renderer::MeshObject@{Engine::Renderer::MeshObject}}
+Inheritance diagram for Engine::Renderer::Mesh\+Object:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d5/d00/struct_engine_1_1_renderer_1_1_mesh_object}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_engine_1_1_renderer_1_1_mesh_object_a3daf69a4c83b57e9370a8cc46c067f82}\label{struct_engine_1_1_renderer_1_1_mesh_object_a3daf69a4c83b57e9370a8cc46c067f82} 
+{\bfseries Mesh\+Object} (glm::\+mat4 transform, const \doxymbox{\hyperlink{struct_engine_1_1_utility_1_1_mesh}{Utility::\+\+Mesh}} \texorpdfstring{$\ast$}{*}mesh, const \doxymbox{\hyperlink{struct_engine_1_1_utility_1_1_material}{Utility::\+\+Material}} \texorpdfstring{$\ast$}{*}material)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{struct_engine_1_1_renderer_1_1_render_object}{Engine::\+\+Renderer::\+\+Render\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Render\+Object} (glm::\+mat4 transform)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_engine_1_1_renderer_1_1_mesh_object_a618256b8009358c7d8d7c55ef56d11de}\label{struct_engine_1_1_renderer_1_1_mesh_object_a618256b8009358c7d8d7c55ef56d11de} 
+const \doxymbox{\hyperlink{struct_engine_1_1_utility_1_1_mesh}{Utility::\+\+Mesh}} \texorpdfstring{$\ast$}{*} {\bfseries mesh} = nullptr
+\item 
+\Hypertarget{struct_engine_1_1_renderer_1_1_mesh_object_a45485a11a9be09876d12a957dd42e0a6}\label{struct_engine_1_1_renderer_1_1_mesh_object_a45485a11a9be09876d12a957dd42e0a6} 
+const \doxymbox{\hyperlink{struct_engine_1_1_utility_1_1_material}{Utility::\+\+Material}} \texorpdfstring{$\ast$}{*} {\bfseries material} = nullptr
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \doxymbox{\hyperlink{struct_engine_1_1_renderer_1_1_render_object}{Engine::\+\+Renderer::\+\+Render\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+glm::\+mat4 {\bfseries transform} \{\}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{struct_engine_1_1_renderer_1_1_mesh_object_a746980a64bcaa2b0b5b13a16599e6408}{Submit\+To\+Render}} (Renderer \texorpdfstring{$\ast$}{*}renderer) const override
+\item 
+virtual void \doxymbox{\hyperlink{struct_engine_1_1_renderer_1_1_mesh_object_a197f5676630bf57cd86e4cf8b8d1bad7}{Render}} () const override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_engine_1_1_renderer_1_1_mesh_object_a70538530bc36e033e360880ef311df61}\label{struct_engine_1_1_renderer_1_1_mesh_object_a70538530bc36e033e360880ef311df61} 
+class {\bfseries Renderer}
+\end{DoxyCompactItemize}
+
+
+\label{struct_engine_1_1_renderer_1_1_mesh_object_doc-func-members}
+\Hypertarget{struct_engine_1_1_renderer_1_1_mesh_object_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_engine_1_1_renderer_1_1_mesh_object_a197f5676630bf57cd86e4cf8b8d1bad7}\index{Engine::Renderer::MeshObject@{Engine::Renderer::MeshObject}!Render@{Render}}
+\index{Render@{Render}!Engine::Renderer::MeshObject@{Engine::Renderer::MeshObject}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily \label{struct_engine_1_1_renderer_1_1_mesh_object_a197f5676630bf57cd86e4cf8b8d1bad7} 
+void Engine::\+\+Renderer::\+\+Mesh\+Object::\+\+Render (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{struct_engine_1_1_renderer_1_1_render_object}{Engine::\+\+Renderer::\+\+Render\+Object}}.
+
+\Hypertarget{struct_engine_1_1_renderer_1_1_mesh_object_a746980a64bcaa2b0b5b13a16599e6408}\index{Engine::Renderer::MeshObject@{Engine::Renderer::MeshObject}!SubmitToRender@{SubmitToRender}}
+\index{SubmitToRender@{SubmitToRender}!Engine::Renderer::MeshObject@{Engine::Renderer::MeshObject}}
+\doxysubsubsection{\texorpdfstring{SubmitToRender()}{SubmitToRender()}}
+{\footnotesize\ttfamily \label{struct_engine_1_1_renderer_1_1_mesh_object_a746980a64bcaa2b0b5b13a16599e6408} 
+void Engine::\+\+Renderer::\+\+Mesh\+Object::\+\+Submit\+To\+Render (\begin{DoxyParamCaption}\item[{Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{struct_engine_1_1_renderer_1_1_render_object}{Engine::\+\+Renderer::\+\+Render\+Object}}.
+
+
+
+The documentation for this struct was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Renderer/\+\+Core/Render\+Objects.\+h\item 
+Engine/\+src/\+\+Renderer/\+\+Core/Render\+Objects.\+cpp\end{DoxyCompactItemize}

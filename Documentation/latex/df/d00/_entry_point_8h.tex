@@ -1,0 +1,55 @@
+\doxysection{Engine/\+src/\+\+Core/\+\+Entry\+Point.h File Reference}
+\hypertarget{_entry_point_8h}{}\label{_entry_point_8h}\index{Engine/src/Core/EntryPoint.h@{Engine/src/Core/EntryPoint.h}}
+
+
+The main function for the engine.  
+
+
+{\ttfamily \+\#include "{}Application.\+h"{}}\newline
+{\ttfamily \+\#include "{}Logger.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{_entry_point_8h_a1fa3253ca11014c1b01923a1674ff19c}{main}} (int arc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\begin{DoxyCompactList}\small\item\em Starting point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The main function for the engine. 
+
+This file must only be included once! It must be placed at the top of your game\textquotesingle{}s application CPP file. Includes protection for Windows only.
+
+\begin{DoxyAuthor}{Author}
+Vincent Pierce 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+February 17, 2025 
+\end{DoxyDate}
+
+
+\label{_entry_point_8h_doc-func-members}
+\Hypertarget{_entry_point_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_entry_point_8h_a1fa3253ca11014c1b01923a1674ff19c}\index{EntryPoint.h@{EntryPoint.h}!main@{main}}
+\index{main@{main}!EntryPoint.h@{EntryPoint.h}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{_entry_point_8h_a1fa3253ca11014c1b01923a1674ff19c} 
+int main (\begin{DoxyParamCaption}\item[{int}]{arc}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv}{}\end{DoxyParamCaption})}
+
+
+
+Starting point. 
+
+\begin{DoxyPostcond}{Postcondition}
+Instantiates, boots, and executes the application context, then deletes it when finished.
+\end{DoxyPostcond}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em argc} & The argument count indicating the total parameters provided \\
+\hline
+\doxymbox{\texttt{in}}  & {\em argv} & Specific pointer array for each CLI argument\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Command-\/line arguments are parsed by the platform but are currently bypassed by the engine. 
+\end{DoxyNote}

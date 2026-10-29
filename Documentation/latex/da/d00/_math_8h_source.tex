@@ -1,0 +1,176 @@
+\doxysection{Math.\+h}
+\hypertarget{_math_8h_source}{}\label{_math_8h_source}\index{Engine/src/Core/Maths/Math.h@{Engine/src/Core/Maths/Math.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ Math.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/12-\/12\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ The\ engine's\ own\ math\ implementations\ to\ abstract\ glm\ from\ the\ user\ application}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//STND}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }Engine::Maths}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ t>}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{struct\ }Vector2}
+\DoxyCodeLine{00024\ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ Vector2()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ Vector2(t\ x,\ t\ y)\ :\ x(x),\ y(y)\ \{\}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ t\ x\ =\ 0;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ t\ y\ =\ 0;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ Vector2<t>\ operator+(\textcolor{keyword}{const}\ Vector2<t>\&\ other)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}(Vector2<t>(other.x\ +\ x,\ other.y\ +\ y));\ \}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ Vector2<t>\ operator-\/(\textcolor{keyword}{const}\ Vector2<t>\&\ other)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}(Vector2<t>(x\ -\/\ other.x,\ y\ -\/\ other.y));\ \}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ Vector2<t>\ operator=(\textcolor{keyword}{const}\ Vector2<t>\&\ other)}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ ==\ \&other)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>x\ =\ other.x;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>y\ =\ other.y;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ t\ Dot(\textcolor{keyword}{const}\ Vector2<t>\&\ other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00043\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (x\ *\ other.x)\ +\ (y\ *\ other.y);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ t\ Dot(\textcolor{keyword}{const}\ Vector2<t>\&\ first,\ \textcolor{keyword}{const}\ Vector2<t>\&\ second)}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (first.x\ *\ second.x)\ +\ (first.y\ *\ second.y);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ t\ Cross(\textcolor{keyword}{const}\ Vector2<t>\&\ other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00053\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (x\ -\/\ other.y)\ -\/\ (y\ -\/\ other.x);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ t\ Cross(\textcolor{keyword}{const}\ Vector2<t>\&\ first,\ \textcolor{keyword}{const}\ Vector2<t>\&\ second)}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (first.x\ -\/\ second.y)\ -\/\ (first.y\ -\/\ second.x);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{comment}{//this\ will\ have\ a\ serious\ problem\ if\ you\ hit\ the\ max\ size\ of\ t,\ ie\ (t\_max\ *\ t\_max)}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{comment}{//but\ thats\ a\ problem\ for\ later,\ for\ now\ the\ engine\ is\ just\ going\ to\ be\ used\ very\ carefully\ to\ avoid\ that}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{comment}{//this\ is\ actually\ true\ for\ all\ these\ functions\ and\ the\ ones\ in\ the\ Vector3,\ and\ Rotator\ as\ well.}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ Vector2\ Normalize()}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ t\ length\ =\ std::sqrt((x\ *\ x)\ +\ (y\ *\ y));}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Vector2(x\ /\ length,\ y\ /\ length);}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ t>}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{struct\ }Vector3}
+\DoxyCodeLine{00075\ \ \ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ Vector3()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ Vector3(t\ x,\ t\ y,\ t\ z)\ :\ x(x),\ y(y),\ z(z)\ \{\}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ Vector3(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector2}{Vector2<t>}}\&\ vec2)\ :\ x(vec2.x),\ y(vec2.y),\ z(0)\ \{\}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ t\ x\ =\ 0;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ t\ y\ =\ 0;}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ t\ z\ =\ 0;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ Vector3<t>\ operator+(\textcolor{keyword}{const}\ Vector3<t>\&\ other)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Vector3<t>(x\ +\ other.x,\ y\ +\ other.y,\ z\ +\ other.z);\ \}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ Vector3<t>\ operator-\/(\textcolor{keyword}{const}\ Vector3<t>\&\ other)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Vector3<t>(x\ -\/\ other.x,\ y\ -\/\ other.y,\ z\ -\/\ other.z);\ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ Vector3<t>\ operator*(\textcolor{keyword}{const}\ Vector3<t>\&\ other)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Vector3<t>(x\ *\ other.x,\ y\ *\ other.y,\ z\ *\ other.z);\ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ Vector3<t>\ operator*(\textcolor{keywordtype}{float}\ scalar)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Vector3<t>(x\ *\ scalar,\ y\ *\ scalar,\ z\ *\ scalar);\ \}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ Vector3<t>\ operator=(\textcolor{keyword}{const}\ Vector3<t>\&\ other)}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ ==\ \&other)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>x\ =\ other.x;}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>y\ =\ other.y;}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>z\ =\ other.z;}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Floor()}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ std::floor(x);}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ y\ =\ std::floor(y);}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ z\ =\ std::floor(z);}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ Vector3<t>\ Absolute()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00105\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Vector3<t>(std::abs(x),\ std::abs(y),\ std::abs(z));}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ Length()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00110\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::sqrt((x\ *\ x)\ +\ (y\ *\ y)\ +\ (z\ *\ z));}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ t\ Dot(\textcolor{keyword}{const}\ Vector3<t>\&\ other)}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (x\ *\ other.x)\ +\ (y\ *\ other.y)\ +\ (z\ *\ other.z);}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ t\ Dot(\textcolor{keyword}{const}\ Vector3<t>\&\ first,\ \textcolor{keyword}{const}\ Vector3<t>\&\ second)}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (first.x\ *\ second.x)\ +\ (first.y\ *\ second.y)\ +\ (first.z\ *\ second.z);}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{comment}{//other\ value\ is\ the\ direction\ of\ cross\ (left\ hand\ rule)}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ Vector3<t>\ Cross(\textcolor{keyword}{const}\ Vector3<t>\&\ other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00126\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Vector3<t>\{}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (y\ *\ other.z)\ -\/\ (z\ *\ other.y),}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (z\ *\ other.x)\ -\/\ (x\ *\ other.z),}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (x\ *\ other.y)\ -\/\ (y\ *\ other.x)}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{comment}{//literally\ the\ same\ as\ above\ just\ copy\ pasted\ and\ adjusted}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ Vector3<t>\ Cross(\textcolor{keyword}{const}\ Vector3<t>\&\ first,\ \textcolor{keyword}{const}\ Vector3<t>\&\ second)}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Vector3<t>\{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (first.y\ *\ second.z)\ -\/\ (first.z\ *\ second.y),}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (first.z\ *\ second.x)\ -\/\ (first.x\ *\ second.z),}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (first.x\ *\ second.y)\ -\/\ (first.y\ *\ second.x)}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ Vector3\ Normalize()}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ t\ length\ =\ std::sqrt((x\ *\ x)\ +\ (y\ *\ y)\ +\ (z\ *\ z));}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Vector3(x\ /\ length,\ y\ /\ length,\ z\ /\ length);}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ Vector3\ Normalize(\textcolor{keyword}{const}\ Vector3<t>\&\ vector)}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ t\ length\ =\ std::sqrt((vector.x\ *\ vector.x)\ +\ (vector.y\ *\ vector.y)\ +\ (vector.z\ +\ vector.z));}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (length\ >\ 0)}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Vector3(vector.x\ /\ length,\ vector.y\ /\ length,\ vector.z\ /\ length);}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Vector3(vector.x,\ vector.y,\ vector.z);}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00158\ \ \ \ \ \};}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_rotator2}{Rotator2}}}
+\DoxyCodeLine{00161\ \ \ \ \ \{}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \ \ \};}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_rotator3}{Rotator3}}}
+\DoxyCodeLine{00166\ \ \ \ \ \{}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \ \ \ \ \};}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,94 @@
+\doxysection{Game\+Object.\+h}
+\hypertarget{_game_object_8h_source}{}\label{_game_object_8h_source}\index{Engine/src/Scene/ECS/GameObjects/GameObject.h@{Engine/src/Scene/ECS/GameObjects/GameObject.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ GameObject.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/03-\/26\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ Pure\ abstraction\ class\ over\ the\ ecs.\ Allows\ end\ user\ to\ utilize\ entities\ more\ efficiently.\ Can\ opt\ out\ of\ using\ it\ if\ desired.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//ENGINE}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}Core/Core.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}Core/Logger.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}Scene/Scene.h"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}Scene/ECS/Components/Data/TransformComponent.h"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{//maybe\ there\ is\ a\ better\ place\ for\ this,\ I\ might\ add\ some\ default\ engine\ settings\ or\ something}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//so\ then\ this\ can\ be\ easily\ customizable\ in\ engine\ preferences\ or\ something?}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//but\ right\ now,\ just\ going\ to\ be\ a\ macro\ here\ until\ there\ are\ more\ default\ settings}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#ifndef\ DEFAULT\_COLOR}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ DEFAULT\_COLOR\ glm::vec3\{0.9f,\ 0.7f,\ 0.5f\}}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{namespace\ }Engine::Scene::ECS}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{class\ }GameObject}
+\DoxyCodeLine{00033\ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{comment}{//delete\ default\ for\ now,\ until\ I\ get\ the\ scene\ manager\ all\ setup}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ GameObject()\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ GameObject(\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::Registry}}\&\ registry);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \string~GameObject();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ t,\ \textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ AddComponent(Args\&\&...\ args)}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_MSG(\textcolor{stringliteral}{"{}<GameObject.h>\ Adding\ \{\}\ component\ to\ Object\ [\ \{\}\ ]"{}},\ \textcolor{keyword}{typeid}(t).name(),\ m\_ID);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ m\_Registry.AddComponent<t>(m\_ID,\ std::forward<Args>(args)...);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ t>}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ RemoveComponent(t*\&\ componentRef)}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_MSG(\textcolor{stringliteral}{"{}<GameObject.h>\ Removing\ \{\}\ component\ from\ Object\ [\ \{\}\ ]"{}},\ \textcolor{keyword}{typeid}(t).name(),\ m\_ID);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ m\_Registry.RemoveComponent<t>(m\_ID);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{comment}{//returns\ nullptr\ if\ component\ cannot\ be\ found}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ t>}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ t*\ GetComponent()}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_Registry.GetComponent<t>(m\_ID);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{comment}{//this\ is\ utilized\ for\ testing,\ objectID\ is\ internal\ use}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ EntityID\ GetID()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_ID;\ \}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ EntityID\ m\_ID;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Game\ Objects\ will\ never\ outlive\ the\ Scene,\ which\ contains\ the\ ECS\ registry}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Before\ a\ scene\ ends,\ it\ cleans\ up\ all\ the\ current\ GameObjects\ that\ are\ stored\ in\ the\ Scene\ Manager}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::Registry}}\&\ m\_Registry;}
+\DoxyCodeLine{00071\ \ \ \ \ \};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{class\ }GameObject2D\ :\ \textcolor{keyword}{public}\ GameObject}
+\DoxyCodeLine{00074\ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ GameObject2D(\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::Registry}}\&\ registry);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ GameObject2D(\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::Registry}}\&\ registry,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_engine_1_1_scene_1_1_e_c_s_1_1_components_1_1_transform_component2_d}{Components::TransformComponent2D}}\&\ transform);}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \string~GameObject2D();}
+\DoxyCodeLine{00079\ \ \ \ \ \};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{class\ }GameObject3D\ :\ \textcolor{keyword}{public}\ GameObject}
+\DoxyCodeLine{00082\ \ \ \ \ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ GameObject3D(\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::Registry}}\&\ registry);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ GameObject3D(\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::Registry}}\&\ registry,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_engine_1_1_scene_1_1_e_c_s_1_1_components_1_1_transform_component3_d}{Components::TransformComponent3D}}\&\ transform);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \string~GameObject3D();}
+\DoxyCodeLine{00087\ \ \ \ \ \};}
+\DoxyCodeLine{00088\ \}}
+
+\end{DoxyCode}

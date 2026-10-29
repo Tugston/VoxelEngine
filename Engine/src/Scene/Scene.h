@@ -46,6 +46,10 @@ namespace Engine::Scene
 		void AddUI() const;
 		void RemoveUI() const;
 
+		//need to get items under the mouse
+		//this is what I am working on next!!!
+	//	ECS::GameObject* GetObjectUnderMouse();
+
 		//DEBUG ONLY
 	#if defined(EG_DEBUG) || (APP_DEBUG)
 		inline void EnableFullDebugView() const { LayerStack::PushWorldLayer(new EngineWorldLayer()); LayerStack::PushUILayer(new EngineUILayer()); };

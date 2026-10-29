@@ -1,0 +1,107 @@
+\doxysection{Engine::Engine\+UILayer Class Reference}
+\hypertarget{class_engine_1_1_engine_u_i_layer}{}\label{class_engine_1_1_engine_u_i_layer}\index{Engine::EngineUILayer@{Engine::EngineUILayer}}
+Inheritance diagram for Engine::Engine\+UILayer:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d7/d00/class_engine_1_1_engine_u_i_layer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{class_engine_1_1_engine_u_i_layer_a2cbbbb9f3637582170b410e8a2df3075}{Attach}} () override
+\item 
+virtual void \doxymbox{\hyperlink{class_engine_1_1_engine_u_i_layer_a637b361da15a3df575c1c4d2b6dba010}{Detach}} () override
+\item 
+virtual std::\+vector$<$ Entity\+ID $>$ \doxymbox{\hyperlink{class_engine_1_1_engine_u_i_layer_ad4b78e149a480cba09a168081fe496e1}{Get\+Draw\+Data}} (Renderer::\+\+Render\+Passes pass, ECSRegistry \&registry) override
+\item 
+virtual void \doxymbox{\hyperlink{class_engine_1_1_engine_u_i_layer_ad5e96727413d32fb79b0f97c045fa42e}{Input\+Event}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_engine_1_1_layer}{Engine::\+\+Layer}}}
+\begin{DoxyCompactItemize}
+\item 
+Layer\+ID {\bfseries Get\+ID} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_engine_u_i_layer_af82bd29dca8ca42dd7969d5be28b9dd1}\label{class_engine_1_1_engine_u_i_layer_af82bd29dca8ca42dd7969d5be28b9dd1} 
+bool {\bfseries m\+\_\+\+Show\+All\+Data} = false
+\item 
+\Hypertarget{class_engine_1_1_engine_u_i_layer_a6a93fb37d307e66b8723c70f2a93f2ab}\label{class_engine_1_1_engine_u_i_layer_a6a93fb37d307e66b8723c70f2a93f2ab} 
+int {\bfseries m\+\_\+\+Test\+Int} = 0
+\item 
+\Hypertarget{class_engine_1_1_engine_u_i_layer_a16766004211b182f00fdbbf6597433df}\label{class_engine_1_1_engine_u_i_layer_a16766004211b182f00fdbbf6597433df} 
+float {\bfseries m\+\_\+\+Test\+Float} = 0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Types inherited from \doxymbox{\hyperlink{class_engine_1_1_layer}{Engine::\+\+Layer}}}
+\begin{DoxyCompactItemize}
+\item 
+using {\bfseries ECSRegistry} = \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{Scene::\+\+ECS::\+\+Registry}}
+\item 
+using {\bfseries Entity\+ID} = Scene::\+\+ECS::\+\+Entity\+ID
+\item 
+using {\bfseries Render\+Component} = \doxymbox{\hyperlink{struct_engine_1_1_scene_1_1_e_c_s_1_1_components_1_1_renderable}{Scene::\+\+ECS::\+\+Components::\+\+Renderable}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{class_engine_1_1_layer}{Engine::\+\+Layer}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Layer} (Layer\+ID id)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{class_engine_1_1_layer}{Engine::\+\+Layer}}}
+\begin{DoxyCompactItemize}
+\item 
+Layer\+ID {\bfseries m\+\_\+\+ID} = Layer\+ID::\+\+Unknown
+\end{DoxyCompactItemize}
+
+
+\label{class_engine_1_1_engine_u_i_layer_doc-func-members}
+\Hypertarget{class_engine_1_1_engine_u_i_layer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_engine_1_1_engine_u_i_layer_a2cbbbb9f3637582170b410e8a2df3075}\index{Engine::EngineUILayer@{Engine::EngineUILayer}!Attach@{Attach}}
+\index{Attach@{Attach}!Engine::EngineUILayer@{Engine::EngineUILayer}}
+\doxysubsubsection{\texorpdfstring{Attach()}{Attach()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_engine_u_i_layer_a2cbbbb9f3637582170b410e8a2df3075} 
+void Engine::\+\+Engine\+UILayer::\+\+Attach (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_engine_1_1_layer}{Engine::\+\+Layer}}.
+
+\Hypertarget{class_engine_1_1_engine_u_i_layer_a637b361da15a3df575c1c4d2b6dba010}\index{Engine::EngineUILayer@{Engine::EngineUILayer}!Detach@{Detach}}
+\index{Detach@{Detach}!Engine::EngineUILayer@{Engine::EngineUILayer}}
+\doxysubsubsection{\texorpdfstring{Detach()}{Detach()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_engine_u_i_layer_a637b361da15a3df575c1c4d2b6dba010} 
+void Engine::\+\+Engine\+UILayer::\+\+Detach (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_engine_1_1_layer}{Engine::\+\+Layer}}.
+
+\Hypertarget{class_engine_1_1_engine_u_i_layer_ad4b78e149a480cba09a168081fe496e1}\index{Engine::EngineUILayer@{Engine::EngineUILayer}!GetDrawData@{GetDrawData}}
+\index{GetDrawData@{GetDrawData}!Engine::EngineUILayer@{Engine::EngineUILayer}}
+\doxysubsubsection{\texorpdfstring{GetDrawData()}{GetDrawData()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_engine_u_i_layer_ad4b78e149a480cba09a168081fe496e1} 
+std::\+vector$<$ Engine\+UILayer::\+\+Entity\+ID $>$ Engine::\+\+Engine\+UILayer::\+\+Get\+Draw\+Data (\begin{DoxyParamCaption}\item[{Renderer::\+\+Render\+Passes}]{pass}{, }\item[{ECSRegistry \&}]{registry}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_engine_1_1_layer}{Engine::\+\+Layer}}.
+
+\Hypertarget{class_engine_1_1_engine_u_i_layer_ad5e96727413d32fb79b0f97c045fa42e}\index{Engine::EngineUILayer@{Engine::EngineUILayer}!InputEvent@{InputEvent}}
+\index{InputEvent@{InputEvent}!Engine::EngineUILayer@{Engine::EngineUILayer}}
+\doxysubsubsection{\texorpdfstring{InputEvent()}{InputEvent()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_engine_u_i_layer_ad5e96727413d32fb79b0f97c045fa42e} 
+void Engine::\+\+Engine\+UILayer::\+\+Input\+Event (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_engine_1_1_layer}{Engine::\+\+Layer}}.
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Core/\+\+Layers/Engine\+Layers.\+h\item 
+Engine/\+src/\+\+Core/\+\+Layers/Engine\+Layers.\+cpp\end{DoxyCompactItemize}

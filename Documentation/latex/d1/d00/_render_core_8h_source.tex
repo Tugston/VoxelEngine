@@ -1,0 +1,71 @@
+\doxysection{Render\+Core.\+h}
+\hypertarget{_render_core_8h_source}{}\label{_render_core_8h_source}\index{Engine/src/Renderer/Core/RenderCore.h@{Engine/src/Renderer/Core/RenderCore.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ RenderCore.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/14-\/03\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ Simple\ seperation\ of\ Glew\ in\ the\ case\ something\ may\ need\ to\ utilize\ it\ besides\ the\ renderer}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{//ENGINE}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}Core/Logger.h"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{comment}{//VENDOR}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <GL/glew.h>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <GL/GL.h>}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{namespace\ }Core}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//NOTE:\ OPENGL\ ERRS\ DON'T\ ASSERT}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{extern}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ CheckOpenGLError(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ statement,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fileName,\ \textcolor{keywordtype}{int}\ line)}
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ GLenum\ err\ =\ glGetError();}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (err\ !=\ GL\_NO\_ERROR)}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ errmsg\ =\ std::format(\textcolor{stringliteral}{"{}OpenGL\ error\ \{\},\ at\ \{\}:\{\}\ -\/\ for\ \{\}\(\backslash\)n"{}},\ err,\ fileName,\ line,\ statement);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ Engine::Logger::LogMessage(Engine::Logger::LogType::Critical,\ errmsg);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00035\ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{00036\ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{comment}{//opengl\ error\ debug\ msg}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#ifdef\ EG\_DEBUG}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\ \ \ \ \#ifndef\ GL\_CHECK}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ GL\_CHECK(statement)\ do\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ statement;\ \(\backslash\)}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core::CheckOpenGLError(\#statement,\ \_\_FILE\_\_,\ \_\_LINE\_\_);\ \(\backslash\)}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ while\ (glGetError())}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\ \ \ \ \#ifndef\ GL\_CHECK}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ GL\_CHECK(x)}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{comment}{//disable\ integrated\ graphics,\ incase\ a\ graphics\ card\ and\ integrated\ gpu\ are\ present}}
+\DoxyCodeLine{00054\ \textcolor{comment}{//intel\ cpus\ must\ handle\ this\ themselves\ in\ their\ system\ settings}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#ifdef\ EG\_DEBUG}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00057\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{inline}\ \_\_declspec(dllexport)\ DWORD\ NvOptimusEnablement\ =\ 1;}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{inline}\ \_\_declspec(dllexport)\ \textcolor{keywordtype}{int}\ AmdPowerXpressRequestHighPerformance\ =\ 0;}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00062\ \}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00065\ }
+
+\end{DoxyCode}

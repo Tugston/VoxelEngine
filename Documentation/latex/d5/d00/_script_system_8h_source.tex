@@ -1,0 +1,30 @@
+\doxysection{Script\+System.\+h}
+\hypertarget{_script_system_8h_source}{}\label{_script_system_8h_source}\index{Engine/src/Scene/ECS/Systems/ScriptSystem.h@{Engine/src/Scene/ECS/Systems/ScriptSystem.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ ScriptSystem.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/12-\/20\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ System\ for\ handling\ all\ of\ the\ entities\ that\ have\ scripts}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//ENGN}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}Scene/ECS/Registry.h"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }Engine::Scene::ECS::Systems}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ SysOnScriptConstruct(ECS::Registry\&\ registry);}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ SysOnScriptStart(ECS::Registry\&\ registry);}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ SysOnScriptTick(ECS::Registry\&\ registry,\ \textcolor{keywordtype}{float}\ deltaTime);}
+\DoxyCodeLine{00024\ \}}
+
+\end{DoxyCode}

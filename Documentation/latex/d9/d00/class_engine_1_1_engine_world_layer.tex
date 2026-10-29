@@ -1,0 +1,95 @@
+\doxysection{Engine::Engine\+World\+Layer Class Reference}
+\hypertarget{class_engine_1_1_engine_world_layer}{}\label{class_engine_1_1_engine_world_layer}\index{Engine::EngineWorldLayer@{Engine::EngineWorldLayer}}
+Inheritance diagram for Engine::Engine\+World\+Layer:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d9/d00/class_engine_1_1_engine_world_layer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{class_engine_1_1_engine_world_layer_a3582bebb742a403ff84cd3779372b684}{Attach}} () override
+\item 
+virtual void \doxymbox{\hyperlink{class_engine_1_1_engine_world_layer_a4e11432dae1744ebafa0c2f7c9045032}{Detach}} () override
+\item 
+virtual std::\+vector$<$ Entity\+ID $>$ \doxymbox{\hyperlink{class_engine_1_1_engine_world_layer_a7ea2d5a510514ef0ac55eeeed241388f}{Get\+Draw\+Data}} (Renderer::\+\+Render\+Passes pass, ECSRegistry \&registry) override
+\item 
+virtual void \doxymbox{\hyperlink{class_engine_1_1_engine_world_layer_a8254e8581615cbcf3015c277cd6558f2}{Input\+Event}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_engine_1_1_layer}{Engine::\+\+Layer}}}
+\begin{DoxyCompactItemize}
+\item 
+Layer\+ID {\bfseries Get\+ID} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Types inherited from \doxymbox{\hyperlink{class_engine_1_1_layer}{Engine::\+\+Layer}}}
+\begin{DoxyCompactItemize}
+\item 
+using {\bfseries ECSRegistry} = \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{Scene::\+\+ECS::\+\+Registry}}
+\item 
+using {\bfseries Entity\+ID} = Scene::\+\+ECS::\+\+Entity\+ID
+\item 
+using {\bfseries Render\+Component} = \doxymbox{\hyperlink{struct_engine_1_1_scene_1_1_e_c_s_1_1_components_1_1_renderable}{Scene::\+\+ECS::\+\+Components::\+\+Renderable}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{class_engine_1_1_layer}{Engine::\+\+Layer}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Layer} (Layer\+ID id)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{class_engine_1_1_layer}{Engine::\+\+Layer}}}
+\begin{DoxyCompactItemize}
+\item 
+Layer\+ID {\bfseries m\+\_\+\+ID} = Layer\+ID::\+\+Unknown
+\end{DoxyCompactItemize}
+
+
+\label{class_engine_1_1_engine_world_layer_doc-func-members}
+\Hypertarget{class_engine_1_1_engine_world_layer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_engine_1_1_engine_world_layer_a3582bebb742a403ff84cd3779372b684}\index{Engine::EngineWorldLayer@{Engine::EngineWorldLayer}!Attach@{Attach}}
+\index{Attach@{Attach}!Engine::EngineWorldLayer@{Engine::EngineWorldLayer}}
+\doxysubsubsection{\texorpdfstring{Attach()}{Attach()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_engine_world_layer_a3582bebb742a403ff84cd3779372b684} 
+void Engine::\+\+Engine\+World\+Layer::\+\+Attach (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_engine_1_1_layer}{Engine::\+\+Layer}}.
+
+\Hypertarget{class_engine_1_1_engine_world_layer_a4e11432dae1744ebafa0c2f7c9045032}\index{Engine::EngineWorldLayer@{Engine::EngineWorldLayer}!Detach@{Detach}}
+\index{Detach@{Detach}!Engine::EngineWorldLayer@{Engine::EngineWorldLayer}}
+\doxysubsubsection{\texorpdfstring{Detach()}{Detach()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_engine_world_layer_a4e11432dae1744ebafa0c2f7c9045032} 
+void Engine::\+\+Engine\+World\+Layer::\+\+Detach (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_engine_1_1_layer}{Engine::\+\+Layer}}.
+
+\Hypertarget{class_engine_1_1_engine_world_layer_a7ea2d5a510514ef0ac55eeeed241388f}\index{Engine::EngineWorldLayer@{Engine::EngineWorldLayer}!GetDrawData@{GetDrawData}}
+\index{GetDrawData@{GetDrawData}!Engine::EngineWorldLayer@{Engine::EngineWorldLayer}}
+\doxysubsubsection{\texorpdfstring{GetDrawData()}{GetDrawData()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_engine_world_layer_a7ea2d5a510514ef0ac55eeeed241388f} 
+std::\+vector$<$ Engine\+World\+Layer::\+\+Entity\+ID $>$ Engine::\+\+Engine\+World\+Layer::\+\+Get\+Draw\+Data (\begin{DoxyParamCaption}\item[{Renderer::\+\+Render\+Passes}]{pass}{, }\item[{ECSRegistry \&}]{registry}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_engine_1_1_layer}{Engine::\+\+Layer}}.
+
+\Hypertarget{class_engine_1_1_engine_world_layer_a8254e8581615cbcf3015c277cd6558f2}\index{Engine::EngineWorldLayer@{Engine::EngineWorldLayer}!InputEvent@{InputEvent}}
+\index{InputEvent@{InputEvent}!Engine::EngineWorldLayer@{Engine::EngineWorldLayer}}
+\doxysubsubsection{\texorpdfstring{InputEvent()}{InputEvent()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_engine_world_layer_a8254e8581615cbcf3015c277cd6558f2} 
+void Engine::\+\+Engine\+World\+Layer::\+\+Input\+Event (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_engine_1_1_layer}{Engine::\+\+Layer}}.
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Core/\+\+Layers/Engine\+Layers.\+h\item 
+Engine/\+src/\+\+Core/\+\+Layers/Engine\+Layers.\+cpp\end{DoxyCompactItemize}

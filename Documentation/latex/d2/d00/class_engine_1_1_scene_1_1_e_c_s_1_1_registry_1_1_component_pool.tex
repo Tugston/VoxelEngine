@@ -1,0 +1,78 @@
+\doxysection{Engine::Scene::ECS::Registry::Component\+Pool\texorpdfstring{$<$}{<} t \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool}{}\label{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool}\index{Engine::Scene::ECS::Registry::ComponentPool$<$ t $>$@{Engine::Scene::ECS::Registry::ComponentPool$<$ t $>$}}
+Inheritance diagram for Engine::Scene::ECS::Registry::Component\+Pool\texorpdfstring{$<$}{<} t \texorpdfstring{$>$}{>}:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d2/d00/class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool_a194a1b3891fb018f5443fc7eaf5dcbfb}\label{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool_a194a1b3891fb018f5443fc7eaf5dcbfb} 
+{\footnotesize template$<$typename... Args$>$ }\\void {\bfseries Add} (Entity\+ID entity\+ID, Args \&\&... args)
+\item 
+virtual void \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool_aaa300159d570f05b17a0bfb0514a520c}{Remove\+Component}} (Entity\+ID entity\+ID) override
+\item 
+virtual bool \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool_a16476c6d86de0a8dfefc0b6e3346bc78}{Has\+Component}} (Entity\+ID id) const override
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool_a6257d832624b55620805c5e555f5c56d}\label{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool_a6257d832624b55620805c5e555f5c56d} 
+{\footnotesize template$<$typename t$>$ }\\t \texorpdfstring{$\ast$}{*} {\bfseries Get\+Component} (Entity\+ID id)
+\item 
+virtual void \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool_a7c2c1b086ce0c6f5d84947548d50fcbc}{Get\+Raw}} (Entity\+ID id) override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool_af5d7119f35950290a4c4be52814a7156}\label{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool_af5d7119f35950290a4c4be52814a7156} 
+std::\+vector$<$ Entity\+ID $>$ {\bfseries dense\+Entities}
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool_abf66f10d9c555a8af6dec788ff55cb94}\label{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool_abf66f10d9c555a8af6dec788ff55cb94} 
+std::\+vector$<$ t $>$ {\bfseries dense\+Components}
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool_a16d767efc702b493388d39f3f470d00e}\label{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool_a16d767efc702b493388d39f3f470d00e} 
+std::\+vector$<$ int $>$ {\bfseries sparse}
+\end{DoxyCompactItemize}
+
+
+\label{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool_doc-func-members}
+\Hypertarget{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool_a7c2c1b086ce0c6f5d84947548d50fcbc}\index{Engine::Scene::ECS::Registry::ComponentPool$<$ t $>$@{Engine::Scene::ECS::Registry::ComponentPool$<$ t $>$}!GetRaw@{GetRaw}}
+\index{GetRaw@{GetRaw}!Engine::Scene::ECS::Registry::ComponentPool$<$ t $>$@{Engine::Scene::ECS::Registry::ComponentPool$<$ t $>$}}
+\doxysubsubsection{\texorpdfstring{GetRaw()}{GetRaw()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool_a7c2c1b086ce0c6f5d84947548d50fcbc} 
+template$<$typename t$>$ \\
+virtual void \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool}{Engine::\+\+Scene::\+\+ECS::\+\+Registry::\+\+Component\+Pool}}$<$ t $>$::\+\+Get\+Raw (\begin{DoxyParamCaption}\item[{Entity\+ID}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool}{Engine::\+\+Scene::\+\+ECS::\+\+Registry::\+\+Inherit\+Pool}}.
+
+\Hypertarget{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool_a16476c6d86de0a8dfefc0b6e3346bc78}\index{Engine::Scene::ECS::Registry::ComponentPool$<$ t $>$@{Engine::Scene::ECS::Registry::ComponentPool$<$ t $>$}!HasComponent@{HasComponent}}
+\index{HasComponent@{HasComponent}!Engine::Scene::ECS::Registry::ComponentPool$<$ t $>$@{Engine::Scene::ECS::Registry::ComponentPool$<$ t $>$}}
+\doxysubsubsection{\texorpdfstring{HasComponent()}{HasComponent()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool_a16476c6d86de0a8dfefc0b6e3346bc78} 
+template$<$typename t$>$ \\
+virtual bool \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool}{Engine::\+\+Scene::\+\+ECS::\+\+Registry::\+\+Component\+Pool}}$<$ t $>$::\+\+Has\+Component (\begin{DoxyParamCaption}\item[{Entity\+ID}]{id}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool}{Engine::\+\+Scene::\+\+ECS::\+\+Registry::\+\+Inherit\+Pool}}.
+
+\Hypertarget{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool_aaa300159d570f05b17a0bfb0514a520c}\index{Engine::Scene::ECS::Registry::ComponentPool$<$ t $>$@{Engine::Scene::ECS::Registry::ComponentPool$<$ t $>$}!RemoveComponent@{RemoveComponent}}
+\index{RemoveComponent@{RemoveComponent}!Engine::Scene::ECS::Registry::ComponentPool$<$ t $>$@{Engine::Scene::ECS::Registry::ComponentPool$<$ t $>$}}
+\doxysubsubsection{\texorpdfstring{RemoveComponent()}{RemoveComponent()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool_aaa300159d570f05b17a0bfb0514a520c} 
+template$<$typename t$>$ \\
+virtual void \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool}{Engine::\+\+Scene::\+\+ECS::\+\+Registry::\+\+Component\+Pool}}$<$ t $>$::\+\+Remove\+Component (\begin{DoxyParamCaption}\item[{Entity\+ID}]{entity\+ID}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool}{Engine::\+\+Scene::\+\+ECS::\+\+Registry::\+\+Inherit\+Pool}}.
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Scene/\+\+ECS/Registry.\+h\end{DoxyCompactItemize}

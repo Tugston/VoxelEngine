@@ -1,0 +1,114 @@
+\doxysection{Engine::Input\+System Class Reference}
+\hypertarget{class_engine_1_1_input_system}{}\label{class_engine_1_1_input_system}\index{Engine::InputSystem@{Engine::InputSystem}}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_input_system_a23e311c3af6c9c4afe25d0d0c76636ed}\label{class_engine_1_1_input_system_a23e311c3af6c9c4afe25d0d0c76636ed} 
+enum class {\bfseries Input\+Mode} \{ {\bfseries Game\+Only} = 0
+, {\bfseries Game\+And\+UI}
+, {\bfseries UIOnly}
+, {\bfseries Debug}
+ \}
+\item 
+\Hypertarget{class_engine_1_1_input_system_a2c636b3c78bbd73f555d647041bde6b7}\label{class_engine_1_1_input_system_a2c636b3c78bbd73f555d647041bde6b7} 
+enum class {\bfseries Scroll\+Direction} : UINT8 \{ {\bfseries Up} = 1
+, {\bfseries Down} = -\/1
+ \}
+\item 
+\Hypertarget{class_engine_1_1_input_system_a9f526b7145f349cac7b3a8d42ba6ae44}\label{class_engine_1_1_input_system_a9f526b7145f349cac7b3a8d42ba6ae44} 
+enum class {\bfseries Mouse\+Move\+Direction} : UINT8 \{ \newline
+{\bfseries Stationary} = 0
+, {\bfseries Left} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 0
+, {\bfseries Right} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 1
+, {\bfseries Up} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 2
+, \newline
+{\bfseries Down} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 3
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_input_system_ab92d6482eec508c3855e72fa4b20eec4}\label{class_engine_1_1_input_system_ab92d6482eec508c3855e72fa4b20eec4} 
+static bool {\bfseries Init} ()
+\item 
+\Hypertarget{class_engine_1_1_input_system_a9223dbfa52ba343b416ec7188979d63f}\label{class_engine_1_1_input_system_a9223dbfa52ba343b416ec7188979d63f} 
+static bool {\bfseries Key\+Tapped} (Engine\+Keys key)
+\item 
+\Hypertarget{class_engine_1_1_input_system_afad49fe81c0487fed8f208f66af0e643}\label{class_engine_1_1_input_system_afad49fe81c0487fed8f208f66af0e643} 
+static bool {\bfseries Key\+Pressed} (Engine\+Keys key)
+\item 
+\Hypertarget{class_engine_1_1_input_system_acc29e7ef2d65bdb272ebbcacdb0b5a1c}\label{class_engine_1_1_input_system_acc29e7ef2d65bdb272ebbcacdb0b5a1c} 
+static bool {\bfseries Key\+Released} (Engine\+Keys key)
+\item 
+\Hypertarget{class_engine_1_1_input_system_aef46a1d7d36fd3842fa0ea997b4c5b99}\label{class_engine_1_1_input_system_aef46a1d7d36fd3842fa0ea997b4c5b99} 
+static glm::\+vec2 {\bfseries Get\+Mouse\+Pos} ()
+\item 
+\Hypertarget{class_engine_1_1_input_system_af2e5fd70fab674c9bc6f12658b71942d}\label{class_engine_1_1_input_system_af2e5fd70fab674c9bc6f12658b71942d} 
+static glm::\+vec2 {\bfseries Get\+Mouse\+Delta} ()
+\item 
+\Hypertarget{class_engine_1_1_input_system_ad7ce6d1a81fd8a9b1a4be84a0cc698da}\label{class_engine_1_1_input_system_ad7ce6d1a81fd8a9b1a4be84a0cc698da} 
+static float {\bfseries Get\+MouseX} ()
+\item 
+\Hypertarget{class_engine_1_1_input_system_aae0791d32395a2b7c29075e382f794d4}\label{class_engine_1_1_input_system_aae0791d32395a2b7c29075e382f794d4} 
+static float {\bfseries Get\+MouseY} ()
+\item 
+\Hypertarget{class_engine_1_1_input_system_abb935bcc0d7963067d5f12271d495e00}\label{class_engine_1_1_input_system_abb935bcc0d7963067d5f12271d495e00} 
+static void {\bfseries Set\+Previous\+Mouse\+Pos} (const glm::\+vec2 \&pos)
+\item 
+\Hypertarget{class_engine_1_1_input_system_ac9d2b515a4b9a9c4ef60c3e9ad036367}\label{class_engine_1_1_input_system_ac9d2b515a4b9a9c4ef60c3e9ad036367} 
+static float {\bfseries Get\+Scroll\+Direction} ()
+\item 
+\Hypertarget{class_engine_1_1_input_system_afef75d3d1bc742448295b26e5388922f}\label{class_engine_1_1_input_system_afef75d3d1bc742448295b26e5388922f} 
+static void {\bfseries Set\+Current\+Input\+Mode} (Input\+Mode new\+Input\+Mode)
+\item 
+\Hypertarget{class_engine_1_1_input_system_a22ed42109537409b9e54f5a60cee9a02}\label{class_engine_1_1_input_system_a22ed42109537409b9e54f5a60cee9a02} 
+static Input\+Mode {\bfseries Get\+Input\+Mode} ()
+\item 
+\Hypertarget{class_engine_1_1_input_system_a7d43da7e9b475f7a03ef0f0ee2907605}\label{class_engine_1_1_input_system_a7d43da7e9b475f7a03ef0f0ee2907605} 
+static char {\bfseries Get\+Raw\+Mouse\+Direction} ()
+\item 
+\Hypertarget{class_engine_1_1_input_system_a7e42d57bdc9d425485eb15ae1243609c}\label{class_engine_1_1_input_system_a7e42d57bdc9d425485eb15ae1243609c} 
+static void {\bfseries Mouse\+Idle\+Detection} (float delta\+Time)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_input_system_aa48ac3a66e76652654dfaeef7dadab46}\label{class_engine_1_1_input_system_aa48ac3a66e76652654dfaeef7dadab46} 
+static void {\bfseries Mouse\+Position\+Call\+Back} (GLFWwindow \texorpdfstring{$\ast$}{*}window, double x, double y)
+\item 
+\Hypertarget{class_engine_1_1_input_system_ae7869dd72507f91824f97456b6269129}\label{class_engine_1_1_input_system_ae7869dd72507f91824f97456b6269129} 
+static void {\bfseries Scroll\+Wheel\+Call\+Back} (GLFWwindow \texorpdfstring{$\ast$}{*}window, double x, double y)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_input_system_a12d7eec126572b0f2884b30e1145ed5a}\label{class_engine_1_1_input_system_a12d7eec126572b0f2884b30e1145ed5a} 
+static glm::\+vec2 {\bfseries m\+\_\+\+Mouse\+Pos} = glm::\+vec2(0.f, 0.f)
+\item 
+\Hypertarget{class_engine_1_1_input_system_adf9f445c0cd445aebb34bc9f7c21347b}\label{class_engine_1_1_input_system_adf9f445c0cd445aebb34bc9f7c21347b} 
+static glm::\+vec2 {\bfseries m\+\_\+\+Previous\+Mouse\+Pos} = glm::\+vec2(0.f, 0.f)
+\item 
+\Hypertarget{class_engine_1_1_input_system_ac737f0b49f40f3e490e76bf75b45e25f}\label{class_engine_1_1_input_system_ac737f0b49f40f3e490e76bf75b45e25f} 
+static unsigned char {\bfseries m\+\_\+\+Mouse\+Move\+Tolerance} = 1
+\item 
+\Hypertarget{class_engine_1_1_input_system_a2c2131c3cca0604e04ac80d12e612ae7}\label{class_engine_1_1_input_system_a2c2131c3cca0604e04ac80d12e612ae7} 
+static unsigned char {\bfseries m\+\_\+\+Mouse\+Direction} = 0
+\item 
+\Hypertarget{class_engine_1_1_input_system_a00e26ef99e43275629fa0c065b309815}\label{class_engine_1_1_input_system_a00e26ef99e43275629fa0c065b309815} 
+static float {\bfseries m\+\_\+\+Idle\+Time} = 0.f
+\item 
+\Hypertarget{class_engine_1_1_input_system_a33f2fbfbeb05fec6daa4c11bc0121084}\label{class_engine_1_1_input_system_a33f2fbfbeb05fec6daa4c11bc0121084} 
+static double {\bfseries m\+\_\+\+Scroll\+Dir} = 0.f
+\item 
+\Hypertarget{class_engine_1_1_input_system_a574c437d819c65e5238a80ba58c2c8f9}\label{class_engine_1_1_input_system_a574c437d819c65e5238a80ba58c2c8f9} 
+static std::\+unordered\+\_\+map$<$ Engine\+Keys, bool $>$ {\bfseries m\+\_\+\+Handled\+Map} = \{\}
+\item 
+\Hypertarget{class_engine_1_1_input_system_a5cac73f77f75baf134b8cef8d10351fe}\label{class_engine_1_1_input_system_a5cac73f77f75baf134b8cef8d10351fe} 
+static Input\+Mode {\bfseries m\+\_\+\+Current\+Input\+Mode} = Input\+System::\+\+Input\+Mode::\+\+Game\+Only
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Input/Input.\+h\item 
+Engine/\+src/\+\+Input/Input.\+cpp\end{DoxyCompactItemize}

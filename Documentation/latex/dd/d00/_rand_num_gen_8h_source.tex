@@ -1,0 +1,38 @@
+\doxysection{Rand\+Num\+Gen.\+h}
+\hypertarget{_rand_num_gen_8h_source}{}\label{_rand_num_gen_8h_source}\index{Engine/src/Core/RandNumGen.h@{Engine/src/Core/RandNumGen.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ RandNumGen.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2026-\/01-\/15\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ Utility\ functions\ for\ generating\ random\ numbers}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//ENGN}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}Logger.h"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//STND}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }Engine::Utility}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{/*\ INTERNAL\ USE\ ONLY\ DO\ NOT\ OVERRIDE\ */}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{bool}\ InitializeRandomGenerators();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{double}\ RandomFloatInRange(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ min,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ max);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{long}\ RandomNumberInRange(\textcolor{keyword}{const}\ \textcolor{keywordtype}{long}\ min,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{long}\ max);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ }
+
+\end{DoxyCode}

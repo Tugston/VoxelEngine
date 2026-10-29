@@ -1,0 +1,33 @@
+\doxysection{Layer\+ID.\+h}
+\hypertarget{_layer_i_d_8h_source}{}\label{_layer_i_d_8h_source}\index{Engine/src/Core/Layers/LayerID.h@{Engine/src/Core/Layers/LayerID.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ LayerID.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2026-\/03-\/26\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ Global\ type\ for\ the\ layer\ id's\ since\ it\ is\ required\ in\ components}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}Core/Core.h"{}}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{namespace\ }Engine}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{enum\ class}\ LayerID:\ UINT8\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ Unknown\ \ \ \ \ =\ 0,\ \ \ \ \textcolor{comment}{//error\ state\ (although,\ I\ don't\ really\ have\ an\ implementation\ for\ it,\ just\ used\ for\ initialization)}}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ EngineWorld\ =\ 1,}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ EngineUI\ \ \ \ =\ 2,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ GameWorld\ \ \ =\ 3,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ GameUI\ \ \ \ \ \ =\ 4}
+\DoxyCodeLine{00026\ \ \ \ \ \};}
+\DoxyCodeLine{00027\ \}}
+
+\end{DoxyCode}

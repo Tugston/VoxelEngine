@@ -1,0 +1,50 @@
+\doxysection{Transform\+Component.\+h}
+\hypertarget{_transform_component_8h_source}{}\label{_transform_component_8h_source}\index{Engine/src/Scene/ECS/Components/Data/TransformComponent.h@{Engine/src/Scene/ECS/Components/Data/TransformComponent.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ Transform.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/11-\/26\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ Transform\ components\ that\ ever\ entity\ has\ by\ default.\ Can\ be\ removed\ on\ a\ user\ basis.\ Currently\ utilizing\ Euler\ rotation,\ want\ to\ convert}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*\ to\ quaternions\ at\ some\ point}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{//ENGN}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}./Core/Maths/Math.h"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }Engine::Scene::ECS::Components}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{struct\ }TransformComponent2D}
+\DoxyCodeLine{00024\ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ TransformComponent2D()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ TransformComponent2D(\doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector2}{Maths::Vector2<float>}}\ location,\ \doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector2}{Maths::Vector2<float>}}\ rotation,\ \doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector2}{Maths::Vector2<float>}}\ scale)\ :}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ location(location),\ rotation(rotation),\ scale(scale)\ \{\}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector2}{Maths::Vector2<float>}}\ location\{\ 0.f,\ 0.f\};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector2}{Maths::Vector2<float>}}\ rotation\{\ 0.f,\ 0.f\ \};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector2}{Maths::Vector2<float>}}\ scale\{\ 1.f,\ 1.f\ \};}
+\DoxyCodeLine{00032\ \ \ \ \ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{struct\ }TransformComponent3D}
+\DoxyCodeLine{00035\ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ TransformComponent3D()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ TransformComponent3D(\doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector3}{Maths::Vector3<float>}}\ location,\ \doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector3}{Maths::Vector3<float>}}\ rotation,\ \doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector3}{Maths::Vector3<float>}}\ scale)\ :}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ location(location),\ rotation(rotation),\ scale(scale)\ \{\}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector3}{Maths::Vector3<float>}}\ location\{\ 0.f,\ 0.f,\ 0.f\ \};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector3}{Maths::Vector3<float>}}\ rotation\{\ 0.f,\ 0.f,\ 0.f\ \};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector3}{Maths::Vector3<float>}}\ scale\{\ 1.f,\ 1.f,\ 1.f\ \};}
+\DoxyCodeLine{00043\ \ \ \ \ \};}
+\DoxyCodeLine{00044\ \}}
+
+\end{DoxyCode}

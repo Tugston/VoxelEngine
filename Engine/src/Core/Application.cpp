@@ -135,8 +135,11 @@ namespace Engine
 		CurrentFrames++;
 
 		static double fpsTimer = currentTime;
+
+		//check to see if at least 1 second has elapsed since the last FPS update
 		if (currentTime - fpsTimer >= 1)
 		{
+			//store the current frames and reset everything
 			m_FrameRate = CurrentFrames;
 			CurrentFrames = 0;
 			fpsTimer = currentTime;

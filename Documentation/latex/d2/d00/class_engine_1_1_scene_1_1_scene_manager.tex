@@ -1,0 +1,35 @@
+\doxysection{Engine::Scene::Scene\+Manager Class Reference}
+\hypertarget{class_engine_1_1_scene_1_1_scene_manager}{}\label{class_engine_1_1_scene_1_1_scene_manager}\index{Engine::Scene::SceneManager@{Engine::Scene::SceneManager}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_scene_manager_a3394b4fdd863537fdf27ac8836045390}\label{class_engine_1_1_scene_1_1_scene_manager_a3394b4fdd863537fdf27ac8836045390} 
+void {\bfseries Create\+Scene} (std::\+string\+\_\+view scene\+Name)
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_scene_manager_a8599abe097f3eb5238cf2a4b2f867c0e}\label{class_engine_1_1_scene_1_1_scene_manager_a8599abe097f3eb5238cf2a4b2f867c0e} 
+void {\bfseries Load\+Scene} (std::\+string\+\_\+view scene\+Name)
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_scene_manager_a545765d4fb3ea479a0073bd4d8f303b5}\label{class_engine_1_1_scene_1_1_scene_manager_a545765d4fb3ea479a0073bd4d8f303b5} 
+void {\bfseries Save\+Current\+Scene} ()
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_scene_manager_a378c3817b566d350e023bab06926d224}\label{class_engine_1_1_scene_1_1_scene_manager_a378c3817b566d350e023bab06926d224} 
+\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_scene}{Scene}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Current\+Scene} ()
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_scene_manager_af61b4110005ac894dd5a2248be1418fb}\label{class_engine_1_1_scene_1_1_scene_manager_af61b4110005ac894dd5a2248be1418fb} 
+{\footnotesize template$<$typename t, typename... Args$>$ }\\\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_game_object}{ECS::\+\+Game\+Object}} \texorpdfstring{$\ast$}{*} {\bfseries Create\+Entity} (Args \&\&... args)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_scene_manager_a2988d6a83010bdbce275509e64a70e8e}\label{class_engine_1_1_scene_1_1_scene_manager_a2988d6a83010bdbce275509e64a70e8e} 
+std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_scene}{Scene}} $>$ {\bfseries m\+\_\+\+Current\+Scene} = nullptr
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_scene_manager_acc37bea13f5fb631e3285eaa0f416575}\label{class_engine_1_1_scene_1_1_scene_manager_acc37bea13f5fb631e3285eaa0f416575} 
+std::\+vector$<$ std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_game_object}{ECS::\+\+Game\+Object}} $>$ $>$ {\bfseries m\+\_\+\+Object\+Pool}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Scene/Scene\+Manager.\+h\item 
+Engine/\+src/\+\+Scene/Scene\+Manager.\+cpp\end{DoxyCompactItemize}

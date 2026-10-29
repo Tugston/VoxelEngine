@@ -1,0 +1,62 @@
+\doxysection{Core.\+h}
+\hypertarget{_core_8h_source}{}\label{_core_8h_source}\index{Engine/src/Core/Core.h@{Engine/src/Core/Core.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ Core.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/02-\/15\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ The\ very\ core\ systems\ of\ the\ entire\ engine\ and\ all\ ecosystems.\ Dynamic\ linking\ macros\ should\ be\ defined\ here,\ but\ I\ had\ issues\ with\ it}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <numbers>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//premake\ system\ config\ check}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#ifdef\ ENGINE\_PLATFORM\_WINDOWS}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ EG\_PRJ\ }\textcolor{comment}{//Engine\ Project\ (used\ as\ an\ easy\ way\ to\ differentiate\ the\ projects\ for\ other\ macros,\ without\ needing\ to\ check\ ENGINE\_BUILD\_DLL)}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\ \ \ \ \#error\ Sorry!\ ONLY\ SUPPORTED\ ON\ WINDOWS!\ (FUTURE\ ME\ HERE:\ MAY\ ADD\ MORE\ IN\ THE\ FUTURE,\ BUT\ ITS\ A\ PAIN\ AT\ THIS\ POINT!,\ I\ AM\ HAVING\ TO\ STATIC\ LINK\ INSTEAD\ OF\ DYNAMIC\ LINK\ AND\ THIS\ ALONE\ IS\ PAINFUL)}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{//I\ need\ to\ make\ a\ custom\ (debug\ only)\ assertion\ soon,\ before\ assertions\ get\ out\ of\ hand}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#ifdef\ EG\_DEBUG}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\ \ \ \ \#ifndef\ EG\_ASSERT}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ EG\_ASSERT(...)\ assert(\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\ \ \ \ \#ifndef\ EG\_ASSERT}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ EG\_ASSERT(x)}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{//allow\ the\ application\ to\ handle\ gl.h}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#ifndef\ GLFW\_INCLUDE\_NONE}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ GLFW\_INCLUDE\_NONE}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{comment}{//type\ defines}}
+\DoxyCodeLine{00044\ \textcolor{comment}{//lots\ of\ these\ are\ competing\ with\ basetsd.h,\ so\ carefully\ use\ these}}
+\DoxyCodeLine{00045\ \textcolor{comment}{//could\ consider\ making\ macros,\ but\ typenames\ are\ cleaner\ imo\ and\ serving\ their\ designed\ purpose}}
+\DoxyCodeLine{00046\ \textcolor{keyword}{namespace\ }Engine\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{using\ }UINT8\ =\ uint8\_t;}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{using\ }UINT16\ =\ uint16\_t;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{using\ }UINT32\ =\ uint32\_t;}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{using\ }UINT64\ =\ uint64\_t;}
+\DoxyCodeLine{00051\ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{comment}{//API\ MACROS}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ EG\_PI\ \ \ \ \ \ \ \ \ \ \ std::numbers::pi}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ EG\_PI\_FLOAT\ \ \ \ \ (float)std::numbers::pi}}
+
+\end{DoxyCode}

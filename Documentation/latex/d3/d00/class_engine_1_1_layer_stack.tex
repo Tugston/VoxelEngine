@@ -1,0 +1,56 @@
+\doxysection{Engine::Layer\+Stack Class Reference}
+\hypertarget{class_engine_1_1_layer_stack}{}\label{class_engine_1_1_layer_stack}\index{Engine::LayerStack@{Engine::LayerStack}}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_layer_stack_a8e0fe8e5e319f5bdcfcc9968b87818f8}\label{class_engine_1_1_layer_stack_a8e0fe8e5e319f5bdcfcc9968b87818f8} 
+static bool {\bfseries Init} ()
+\item 
+\Hypertarget{class_engine_1_1_layer_stack_a29743846c7a24402f2d5d63e9a362b63}\label{class_engine_1_1_layer_stack_a29743846c7a24402f2d5d63e9a362b63} 
+static void {\bfseries Destroy} ()
+\item 
+\Hypertarget{class_engine_1_1_layer_stack_ac7d8cc5195c98a471187609f3bc4f56e}\label{class_engine_1_1_layer_stack_ac7d8cc5195c98a471187609f3bc4f56e} 
+static void {\bfseries Push\+World\+Layer} (\doxymbox{\hyperlink{class_engine_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*}layer)
+\item 
+\Hypertarget{class_engine_1_1_layer_stack_afc7d00e57e763c5bc7039dc60d93460d}\label{class_engine_1_1_layer_stack_afc7d00e57e763c5bc7039dc60d93460d} 
+static void {\bfseries Push\+UILayer} (\doxymbox{\hyperlink{class_engine_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*}layer)
+\item 
+\Hypertarget{class_engine_1_1_layer_stack_ad3ba8716fdaf6d9b78084f82af898d5e}\label{class_engine_1_1_layer_stack_ad3ba8716fdaf6d9b78084f82af898d5e} 
+static void {\bfseries Clear} ()
+\item 
+\Hypertarget{class_engine_1_1_layer_stack_ab1afee7fa32f08047a92393a210b5357}\label{class_engine_1_1_layer_stack_ab1afee7fa32f08047a92393a210b5357} 
+static void {\bfseries Remove\+Layer} (const std::\+vector$<$ \doxymbox{\hyperlink{class_engine_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*} $>$::\+iterator \&Layer\+Position)
+\item 
+\Hypertarget{class_engine_1_1_layer_stack_a22b95c656221f2e6071dfa3bc4a26536}\label{class_engine_1_1_layer_stack_a22b95c656221f2e6071dfa3bc4a26536} 
+static const bool {\bfseries Check\+Layer\+Exists} (Layer\+ID id)
+\item 
+\Hypertarget{class_engine_1_1_layer_stack_aa0db79c12765c1fa8da774b748c99657}\label{class_engine_1_1_layer_stack_aa0db79c12765c1fa8da774b748c99657} 
+static std::\+vector$<$ \doxymbox{\hyperlink{class_engine_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*} $>$::\+iterator {\bfseries Top} ()
+\item 
+\Hypertarget{class_engine_1_1_layer_stack_a0cb80c78e613d90b5971c8895ceec1dd}\label{class_engine_1_1_layer_stack_a0cb80c78e613d90b5971c8895ceec1dd} 
+static std::\+vector$<$ \doxymbox{\hyperlink{class_engine_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*} $>$::\+iterator {\bfseries Bottom} ()
+\item 
+\Hypertarget{class_engine_1_1_layer_stack_af80d824c7a66e0a69c9247d8bcdb48ee}\label{class_engine_1_1_layer_stack_af80d824c7a66e0a69c9247d8bcdb48ee} 
+static std::\+vector$<$ \doxymbox{\hyperlink{class_engine_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*} $>$::\+iterator {\bfseries Current\+Location} ()
+\item 
+\Hypertarget{class_engine_1_1_layer_stack_a6de548203efec3ca2f8be7f388dedf2c}\label{class_engine_1_1_layer_stack_a6de548203efec3ca2f8be7f388dedf2c} 
+static unsigned int {\bfseries Current\+Location\+Val} ()
+\item 
+\Hypertarget{class_engine_1_1_layer_stack_aaaedb9e7f28b054ddcd478fa830c31d8}\label{class_engine_1_1_layer_stack_aaaedb9e7f28b054ddcd478fa830c31d8} 
+static const std::\+vector$<$ \doxymbox{\hyperlink{class_engine_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries Get\+Layers} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_layer_stack_a51f3ae362dab97efe897783939d1ae1b}\label{class_engine_1_1_layer_stack_a51f3ae362dab97efe897783939d1ae1b} 
+static std::\+vector$<$ \doxymbox{\hyperlink{class_engine_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries m\+\_\+\+Layers} = \{\}
+\item 
+\Hypertarget{class_engine_1_1_layer_stack_ae5e5fff7b7be2a113451a1f0fda57f2f}\label{class_engine_1_1_layer_stack_ae5e5fff7b7be2a113451a1f0fda57f2f} 
+static unsigned int {\bfseries m\+\_\+emplace\+Idex} = 0
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Core/\+\+Layers/Layer\+Stack.\+h\item 
+Engine/\+src/\+\+Core/\+\+Layers/Layer\+Stack.\+cpp\end{DoxyCompactItemize}

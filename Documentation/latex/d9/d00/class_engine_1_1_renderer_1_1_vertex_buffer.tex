@@ -1,0 +1,99 @@
+\doxysection{Engine::Renderer::Vertex\+Buffer Class Reference}
+\hypertarget{class_engine_1_1_renderer_1_1_vertex_buffer}{}\label{class_engine_1_1_renderer_1_1_vertex_buffer}\index{Engine::Renderer::VertexBuffer@{Engine::Renderer::VertexBuffer}}
+Inheritance diagram for Engine::Renderer::Vertex\+Buffer:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d9/d00/class_engine_1_1_renderer_1_1_vertex_buffer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_renderer_1_1_vertex_buffer_af55589ab571c9e06167b2b063027c194}\label{class_engine_1_1_renderer_1_1_vertex_buffer_af55589ab571c9e06167b2b063027c194} 
+{\bfseries Vertex\+Buffer} (Vertex\+Buffer \&)=delete
+\item 
+\Hypertarget{class_engine_1_1_renderer_1_1_vertex_buffer_a59dd657ecb8d353209d46b71bda2aab4}\label{class_engine_1_1_renderer_1_1_vertex_buffer_a59dd657ecb8d353209d46b71bda2aab4} 
+Vertex\+Buffer \& {\bfseries operator=} (Vertex\+Buffer \&)=delete
+\item 
+\Hypertarget{class_engine_1_1_renderer_1_1_vertex_buffer_a42fac77b14b0d435cffcdef92c9210e2}\label{class_engine_1_1_renderer_1_1_vertex_buffer_a42fac77b14b0d435cffcdef92c9210e2} 
+{\bfseries Vertex\+Buffer} (Vertex\+Buffer \&\&other) noexcept
+\item 
+\Hypertarget{class_engine_1_1_renderer_1_1_vertex_buffer_a7b46226452c1f83402f3fcc239a313c4}\label{class_engine_1_1_renderer_1_1_vertex_buffer_a7b46226452c1f83402f3fcc239a313c4} 
+Vertex\+Buffer \& {\bfseries operator=} (Vertex\+Buffer \&\&other) noexcept
+\item 
+virtual void \doxymbox{\hyperlink{class_engine_1_1_renderer_1_1_vertex_buffer_a0a042d377735f5e598e40cf74e3a6fc3}{Create}} () override
+\item 
+virtual void \doxymbox{\hyperlink{class_engine_1_1_renderer_1_1_vertex_buffer_a9dea98a6f62dc4bc58f98b0474b660c6}{Bind}} () const override
+\item 
+virtual void \doxymbox{\hyperlink{class_engine_1_1_renderer_1_1_vertex_buffer_aaa72bf5a566ad37d6fadeeb0cbfa6f8f}{Un\+Bind}} () const override
+\item 
+\Hypertarget{class_engine_1_1_renderer_1_1_vertex_buffer_af0bb726f04532500d651c5871cb575dc}\label{class_engine_1_1_renderer_1_1_vertex_buffer_af0bb726f04532500d651c5871cb575dc} 
+void {\bfseries Buffer\+Data} (std::\+vector$<$ float $>$ \&data, unsigned int draw\+Type) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_engine_1_1_renderer_1_1_base_buffer}{Engine::\+\+Renderer::\+\+Base\+Buffer}}}
+\begin{DoxyCompactItemize}
+\item 
+UINT32 {\bfseries Get\+ID} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{class_engine_1_1_renderer_1_1_vertex_buffer_a64f370f1a7caebd0812006e75b7eb74d}{Release}} () override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{class_engine_1_1_renderer_1_1_base_buffer}{Engine::\+\+Renderer::\+\+Base\+Buffer}}}
+\begin{DoxyCompactItemize}
+\item 
+UINT32 {\bfseries m\+\_\+\+ID} = (std::\+numeric\+\_\+limits$<$UINT32$>$::\+max)()
+\end{DoxyCompactItemize}
+
+
+\label{class_engine_1_1_renderer_1_1_vertex_buffer_doc-func-members}
+\Hypertarget{class_engine_1_1_renderer_1_1_vertex_buffer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_engine_1_1_renderer_1_1_vertex_buffer_a9dea98a6f62dc4bc58f98b0474b660c6}\index{Engine::Renderer::VertexBuffer@{Engine::Renderer::VertexBuffer}!Bind@{Bind}}
+\index{Bind@{Bind}!Engine::Renderer::VertexBuffer@{Engine::Renderer::VertexBuffer}}
+\doxysubsubsection{\texorpdfstring{Bind()}{Bind()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_renderer_1_1_vertex_buffer_a9dea98a6f62dc4bc58f98b0474b660c6} 
+void Engine::\+\+Renderer::\+\+Vertex\+Buffer::\+\+Bind (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_engine_1_1_renderer_1_1_base_buffer}{Engine::\+\+Renderer::\+\+Base\+Buffer}}.
+
+\Hypertarget{class_engine_1_1_renderer_1_1_vertex_buffer_a0a042d377735f5e598e40cf74e3a6fc3}\index{Engine::Renderer::VertexBuffer@{Engine::Renderer::VertexBuffer}!Create@{Create}}
+\index{Create@{Create}!Engine::Renderer::VertexBuffer@{Engine::Renderer::VertexBuffer}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_renderer_1_1_vertex_buffer_a0a042d377735f5e598e40cf74e3a6fc3} 
+void Engine::\+\+Renderer::\+\+Vertex\+Buffer::\+\+Create (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_engine_1_1_renderer_1_1_base_buffer}{Engine::\+\+Renderer::\+\+Base\+Buffer}}.
+
+\Hypertarget{class_engine_1_1_renderer_1_1_vertex_buffer_a64f370f1a7caebd0812006e75b7eb74d}\index{Engine::Renderer::VertexBuffer@{Engine::Renderer::VertexBuffer}!Release@{Release}}
+\index{Release@{Release}!Engine::Renderer::VertexBuffer@{Engine::Renderer::VertexBuffer}}
+\doxysubsubsection{\texorpdfstring{Release()}{Release()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_renderer_1_1_vertex_buffer_a64f370f1a7caebd0812006e75b7eb74d} 
+void Engine::\+\+Renderer::\+\+Vertex\+Buffer::\+\+Release (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_engine_1_1_renderer_1_1_base_buffer}{Engine::\+\+Renderer::\+\+Base\+Buffer}}.
+
+\Hypertarget{class_engine_1_1_renderer_1_1_vertex_buffer_aaa72bf5a566ad37d6fadeeb0cbfa6f8f}\index{Engine::Renderer::VertexBuffer@{Engine::Renderer::VertexBuffer}!UnBind@{UnBind}}
+\index{UnBind@{UnBind}!Engine::Renderer::VertexBuffer@{Engine::Renderer::VertexBuffer}}
+\doxysubsubsection{\texorpdfstring{UnBind()}{UnBind()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_renderer_1_1_vertex_buffer_aaa72bf5a566ad37d6fadeeb0cbfa6f8f} 
+void Engine::\+\+Renderer::\+\+Vertex\+Buffer::\+\+Un\+Bind (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_engine_1_1_renderer_1_1_base_buffer}{Engine::\+\+Renderer::\+\+Base\+Buffer}}.
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Renderer/\+\+Architecture/Buffer.\+h\item 
+Engine/\+src/\+\+Renderer/\+\+Architecture/Buffer.\+cpp\end{DoxyCompactItemize}

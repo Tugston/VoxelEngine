@@ -1,0 +1,76 @@
+\doxysection{Internal\+Math.\+h}
+\hypertarget{_internal_math_8h_source}{}\label{_internal_math_8h_source}\index{Engine/src/Core/Maths/InternalMath.h@{Engine/src/Core/Maths/InternalMath.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ InternalMath.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/12-\/12\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ NOT\ EXPOSED\ TO\ ENGINE\ API,\ handles\ type\ conversions\ between\ Maths\ and\ GLM}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//VENDOR}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include<glm/glm.hpp>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <glm/gtc/matrix\_transform.hpp>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{comment}{//ENGN}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}Core/Core.h"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}Math.h"{}}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{namespace\ }Engine::Maths}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ t>}
+\DoxyCodeLine{00027\ \ \ \ \ glm::vec2\ ConvertVec2ToGLM(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector2}{Vector2<t>}}\&\ conversion)}
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ glm::vec2(conversion.x,\ conversion.y);}
+\DoxyCodeLine{00030\ \ \ \ \ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ t>}
+\DoxyCodeLine{00033\ \ \ \ \ \doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector2}{Vector2<t>}}\ ConvertVec2ToMaths(\textcolor{keyword}{const}\ glm::vec2\&\ conversion)}
+\DoxyCodeLine{00034\ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector2}{Vector2<t>}}(\textcolor{keyword}{static\_cast<}t\textcolor{keyword}{>}(conversion.x),\ \textcolor{keyword}{static\_cast<}t\textcolor{keyword}{>}(conversion.y));}
+\DoxyCodeLine{00036\ \ \ \ \ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ t>}
+\DoxyCodeLine{00039\ \ \ \ \ glm::vec3\ ConvertVec3ToGLM(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector3}{Vector3<t>}}\&\ conversion)}
+\DoxyCodeLine{00040\ \ \ \ \ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ glm::vec3(conversion.x,\ conversion.y,\ conversion.z);}
+\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ t>}
+\DoxyCodeLine{00045\ \ \ \ \ \doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector3}{Vector3<t>}}\ ConvertVec3ToMaths(\textcolor{keyword}{const}\ glm::vec3\&\ conversion)}
+\DoxyCodeLine{00046\ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector3}{Vector3<t>}}(\textcolor{keyword}{static\_cast<}t\textcolor{keyword}{>}(conversion.x),\ \textcolor{keyword}{static\_cast<}t\textcolor{keyword}{>}(conversion.y));}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00051\ \textcolor{comment}{\ \ \ \ m\_ModelMatrix\ =\ glm::translate(m\_ModelMatrix,\ glm::vec3(0.f,\ 0.f,\ -\/3.f));}}
+\DoxyCodeLine{00052\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ m\_ModelMatrix\ =\ glm::rotate(m\_ModelMatrix,\ (0\ *\ (EG\_PI\_FLOAT\ /\ 180)),\ glm::vec3(0.f,\ 1.f,\ 0.f));}}
+\DoxyCodeLine{00053\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ m\_ModelMatrix\ =\ glm::scale(m\_ModelMatrix,\ glm::vec3(1.f,\ 1.f,\ 1.f));}}
+\DoxyCodeLine{00054\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ t>}
+\DoxyCodeLine{00057\ \ \ \ \ glm::mat4\ Transform3DToModelMatrix(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector3}{Vector3<t>}}\&\ location,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector3}{Vector3<t>}}\&\ rotation,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector3}{Vector3<t>}}\&\ scale)}
+\DoxyCodeLine{00058\ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ glm::mat4\ modelMatrix\ =\ glm::mat4(1.f);}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ \ modelMatrix\ =\ glm::translate(modelMatrix,\ glm::vec3(0.f,\ 0.f,\ -\/3.f));}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{//\ \ modelMatrix\ =\ glm::rotate(modelMatrix,\ (0\ *\ (EG\_PI\_FLOAT\ /\ 180)),\ glm::vec3(0.f,\ 1.f,\ 0.f));}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ \ modelMatrix\ =\ glm::scale(modelMatrix,\ glm::vec3(1.f,\ 1.f,\ 1.f));}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ modelMatrix\ =\ glm::translate(modelMatrix,\ ConvertVec3ToGLM<t>(location));}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ modelMatrix\ =\ glm::rotate(modelMatrix,\ glm::radians(rotation.x),\ glm::vec3\{1.f,\ 0.f,\ 0.f\});}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ modelMatrix\ =\ glm::rotate(modelMatrix,\ glm::radians(rotation.y),\ glm::vec3\{0.f,\ 1.f,\ 0.f\});}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ modelMatrix\ =\ glm::rotate(modelMatrix,\ glm::radians(rotation.z),\ glm::vec3\{0.f,\ 0.f,\ 1.f\});}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ modelMatrix\ =\ glm::scale(modelMatrix,\ ConvertVec3ToGLM<t>(scale));}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ modelMatrix;}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
+\DoxyCodeLine{00070\ \}}
+
+\end{DoxyCode}

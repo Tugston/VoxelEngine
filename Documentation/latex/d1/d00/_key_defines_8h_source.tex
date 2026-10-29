@@ -1,0 +1,111 @@
+\doxysection{Key\+Defines.\+h}
+\hypertarget{_key_defines_8h_source}{}\label{_key_defines_8h_source}\index{Engine/src/Input/KeyDefines.h@{Engine/src/Input/KeyDefines.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ KeyDefines.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Project:\ Voxel\ Engine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Author:\ Vincent\ Pierce}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Created:\ 2025-\/02-\/17\ (yyyy/mm/dd)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ Description:\ Coorelate\ supported\ keys\ to\ glfw's\ system}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Copyright\ (C)\ 2025\ Vincent\ Pierce}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ SPDX-\/License-\/Identifier:\ GPL-\/3.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ See\ License\ in\ root\ directory\ for\ additional\ details.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//ENGINE}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}Core/Core.h"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//VENDOR}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <glfw/glfw3.h>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }Engine}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{enum\ class}\ EngineKeys}
+\DoxyCodeLine{00025\ \ \ \ \ \{}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{comment}{//MOUSE}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ LeftClick\ \ \ =\ \ \ \ \ \ \ GLFW\_MOUSE\_BUTTON\_1,}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ RightClick\ \ =\ \ \ \ \ \ \ GLFW\_MOUSE\_BUTTON\_2,}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{comment}{//ALPHABET\ KEYS}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ Q\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_Q,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ W\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_W,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ E\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_E,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ R\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_R,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ T\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_T,}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ Y\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_Y,}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ U\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_U,}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ I\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_I,}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ O\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_O,}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ P\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_P,}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ A\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_A,}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ S\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_S,}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ D\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_D,}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ F\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_F,}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ G\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_G,}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ H\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_H,}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ J\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_J,}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ K\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_K,}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ L\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_L,}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ Z\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_Z,}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ X\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_X,}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ C\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_C,}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ V\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_V,}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ B\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_B,}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ N\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_N,}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ M\ \ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_M,}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//NUMBER\ KEYS}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ ONE\ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_1,}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ TWO\ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_2,}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ THREE\ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_3,}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ FOUR\ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_4,}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ FIVE\ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_5,}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ SIX\ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_6,}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ SEVEN\ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_7,}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ EIGHT\ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_8,}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ NINE\ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_9,}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ ZERO\ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_0,}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{comment}{//MODIFICATION\ KEYS}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ Space\ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_SPACE,}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ Enter\ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_ENTER,}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ BackSpace\ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_BACKSPACE,}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ TAB\ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_TAB,}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ ESC\ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_ESCAPE,}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ CAPS\ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_CAPS\_LOCK,}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ LSHIFT\ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_LEFT\_SHIFT,}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ RSHIFT\ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_RIGHT\_SHIFT,}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ LCTRL\ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_LEFT\_CONTROL,}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ RCTRL\ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_RIGHT\_CONTROL,}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ LALT\ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_LEFT\_ALT,}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ RALT\ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_RIGHT\_ALT,}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ LARROW\ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_LEFT,}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ RARROW\ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_RIGHT,}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ DARROW\ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_DOWN,}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ UARROW\ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_UP,}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{comment}{//SPECIAL\ KEYS}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ MINUS\ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_MINUS,}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ EQUAL\ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_EQUAL,}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ F1\ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_F1,}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ F2\ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_F2,}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ F3\ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_F3,}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ F4\ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_F4,}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ F5\ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_F5,}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ F6\ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_F6,}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ F7\ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_F7,}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ F8\ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_F8,}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ F9\ \ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_F9,}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ F10\ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_F10,}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ F11\ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_F11,}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ F12\ \ \ \ \ \ \ \ \ =\ \ \ \ \ \ \ GLFW\_KEY\_F12}
+\DoxyCodeLine{00104\ \ \ \ \ \};}
+\DoxyCodeLine{00105\ \}}
+
+\end{DoxyCode}

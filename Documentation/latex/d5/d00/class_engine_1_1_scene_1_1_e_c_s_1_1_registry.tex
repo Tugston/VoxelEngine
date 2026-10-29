@@ -1,0 +1,62 @@
+\doxysection{Engine::Scene::ECS::Registry Class Reference}
+\hypertarget{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{}\label{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}\index{Engine::Scene::ECS::Registry@{Engine::Scene::ECS::Registry}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_view}{Component\+View}}
+\item 
+class \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool}{Inherit\+Pool}}
+\item 
+class \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool}{Component\+Pool}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_a977cc02d09f16713020b86c10655dc91}\label{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_a977cc02d09f16713020b86c10655dc91} 
+Entity\+ID {\bfseries Create\+Entity} ()
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_a68ca6146968087fde10a52950a31916c}\label{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_a68ca6146968087fde10a52950a31916c} 
+void {\bfseries Setup\+Entity\+Family} (Entity\+ID parent\+Entity)
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_aa85f418548dba89ac64d7624e7c79f6a}\label{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_aa85f418548dba89ac64d7624e7c79f6a} 
+void {\bfseries Delete\+Entity} (Entity\+ID entity\+ID)
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_ab664bb77e7f6c55bc743b26eba49cb25}\label{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_ab664bb77e7f6c55bc743b26eba49cb25} 
+{\footnotesize template$<$typename t, typename... Args$>$ }\\void {\bfseries Add\+Component} (Entity\+ID entity\+ID, Args \&\&... args)
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_af26ddec8f729251f9edbd7546b941118}\label{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_af26ddec8f729251f9edbd7546b941118} 
+{\footnotesize template$<$typename t$>$ }\\void {\bfseries Remove\+Component} (Entity\+ID entity\+ID)
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_ad310a970bceed2ff7c5f3dac94ef1e65}\label{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_ad310a970bceed2ff7c5f3dac94ef1e65} 
+{\footnotesize template$<$typename t$>$ }\\t \texorpdfstring{$\ast$}{*} {\bfseries Get\+Component} (Entity\+ID entity\+ID)
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_a00b4ec1e3e17732e091a5859666c5344}\label{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_a00b4ec1e3e17732e091a5859666c5344} 
+{\footnotesize template$<$typename... t$>$ }\\auto {\bfseries Get\+Components} (Entity\+ID id)
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_ad7d392d741b6d56406a55f0505f17689}\label{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_ad7d392d741b6d56406a55f0505f17689} 
+{\footnotesize template$<$typename t$>$ }\\const std::\+vector$<$ Entity\+ID $>$ \texorpdfstring{$\ast$}{*} {\bfseries Get\+All\+Entities\+With\+Component} ()
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_a651d93a76b11590c4195b6164c0ac1ca}\label{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_a651d93a76b11590c4195b6164c0ac1ca} 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_view}{Component\+View}} $>$ {\bfseries Get\+All\+Entity\+Components} (Entity\+ID entity)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_a11bf316e340039245b1d5f52da14550d}\label{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_a11bf316e340039245b1d5f52da14550d} 
+{\footnotesize template$<$typename t$>$ }\\\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool}{Component\+Pool}}$<$ t $>$ \texorpdfstring{$\ast$}{*} {\bfseries Get\+Pool} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_a3e11a3dc45fa5eacbfd5238c2e68d4fb}\label{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_a3e11a3dc45fa5eacbfd5238c2e68d4fb} 
+std::\+unordered\+\_\+map$<$ std::\+type\+\_\+index, std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool}{Inherit\+Pool}} $>$ $>$ {\bfseries m\+\_\+\+Components}
+\item 
+\Hypertarget{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_ac166bf49d0d82e51ebede4f234afe065}\label{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_ac166bf49d0d82e51ebede4f234afe065} 
+Entity\+ID {\bfseries m\+\_\+\+Next\+Entity\+ID} = 0
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Scene/\+\+ECS/Registry.\+h\item 
+Engine/\+src/\+\+Scene/\+\+ECS/Registry.\+cpp\end{DoxyCompactItemize}

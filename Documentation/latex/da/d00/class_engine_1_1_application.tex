@@ -1,0 +1,482 @@
+\doxysection{Engine::Application Class Reference}
+\hypertarget{class_engine_1_1_application}{}\label{class_engine_1_1_application}\index{Engine::Application@{Engine::Application}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{class_engine_1_1_application_aa473bd543c92402f19ce0d4ff4002442}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Starts the process of running the game and starting runtime systems. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_engine_1_1_application_a38a9c8a9bd54b694eb432827247e6d8c}{Tick}} ()
+\begin{DoxyCompactList}\small\item\em Begin the main event loop of the entire application. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_engine_1_1_application_a463c6b35c62f2ee778917b9d99af65ec}{Should\+Run}} ()
+\begin{DoxyCompactList}\small\item\em Returns the m\+\_\+\+Running variable. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_engine_1_1_application_afcb4d929b975056af03a69d9d8fa2ea9}{Set\+View\+Target\+Camera}} (std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_engine_1_1_camera_1_1_editor_camera}{Camera::\+\+Editor\+Camera}} $>$ camera)
+\begin{DoxyCompactList}\small\item\em Set the default camera to the one created in the editor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \doxymbox{\hyperlink{class_engine_1_1_application_a0191bb93ec2fb8ca91fcb70a60b8a2b5}{Quit\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Quits the game completely. \end{DoxyCompactList}\item 
+static const unsigned int \doxymbox{\hyperlink{class_engine_1_1_application_ae2cad2a50b82a1c4cef5186db376153b}{Get\+Frame\+Rate}} ()
+\begin{DoxyCompactList}\small\item\em Frame rate getter. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{class_engine_1_1_camera_1_1_editor_camera}{Camera::\+\+Editor\+Camera}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_engine_1_1_application_a225cb0e2ab00b84cbfdff2c9b7b480a1}{Get\+Camera}} ()
+\begin{DoxyCompactList}\small\item\em Free flying editor camera. \end{DoxyCompactList}\item 
+\Hypertarget{class_engine_1_1_application_a04bdb0fd821e878b920538ab9b3dcc74}\label{class_engine_1_1_application_a04bdb0fd821e878b920538ab9b3dcc74} 
+static const \doxymbox{\hyperlink{class_engine_1_1_window}{Window}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Window} ()
+\begin{DoxyCompactList}\small\item\em Returns the window or crashes, should always return a value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_application_aa4d9a8c948e785dbe1d21542de42be6d}\label{class_engine_1_1_application_aa4d9a8c948e785dbe1d21542de42be6d} 
+static \doxymbox{\hyperlink{class_engine_1_1_application_aafb4be83f26204bdebf131e261bbf4e4}{Application}} \texorpdfstring{$\ast$}{*} {\bfseries s\+\_\+\+Instance} = nullptr
+\begin{DoxyCompactList}\small\item\em Class instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+const float \doxymbox{\hyperlink{class_engine_1_1_application_ab74e908f50c64b5fa86d35dc0d2928cf}{Get\+Delta\+Time}} () const
+\begin{DoxyCompactList}\small\item\em Delta time getter. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_engine_1_1_application_a4616a5b523d4163f63f76dcdeb240167}{Create\+Level}} (std::\+string\+\_\+view level\+Name)
+\begin{DoxyCompactList}\small\item\em Utilize the \doxylink{class_engine_1_1_scene_1_1_scene_manager}{Scene::\+\+Scene\+Manager} to create a new level. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_engine_1_1_application_aaba50eeba7fe9cd0f7ebed718cb4361c}{Load\+Level}} (std::\+string\+\_\+view level\+Name)
+\begin{DoxyCompactList}\small\item\em Open an existing level. \end{DoxyCompactList}\item 
+\Hypertarget{class_engine_1_1_application_af242894e2e00f34e004bd875d570dfe7}\label{class_engine_1_1_application_af242894e2e00f34e004bd875d570dfe7} 
+const \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_scene}{Scene::\+\+Scene}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+World} ()
+\begin{DoxyCompactList}\small\item\em Returns the currently loaded scene in the \doxylink{class_engine_1_1_scene_1_1_scene_manager}{Scene::\+\+Scene\+Manager}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Editor Specifics \& Meta\+Data}\par
+{\em Functions that are mostly meant for an editor application to take advantage of, but also provide general metadata of the engine. }\begin{DoxyCompactItemize}
+\item 
+unsigned int \doxymbox{\hyperlink{class_engine_1_1_application_a1c3a329f1212f6cca1a97aa388d5670f}{Get\+Render\+Screen\+Texture}} ()
+\begin{DoxyCompactList}\small\item\em Used by the editor to render the camera view onto a texture pane. \end{DoxyCompactList}\item 
+const std::\+string\+\_\+view \doxymbox{\hyperlink{class_engine_1_1_application_a3bcf761f579ba94e27156f3bafbb2fa8}{Get\+Window\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the window name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_application_abc9791b7db37e70517c7455f5bccb6da}\label{class_engine_1_1_application_abc9791b7db37e70517c7455f5bccb6da} 
+\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_scene_manager}{Scene::\+\+Scene\+Manager}} {\bfseries m\+\_\+\+Scene\+Manager}
+\begin{DoxyCompactList}\small\item\em Manages the scene processes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_engine_1_1_application_ab8954479e3ad2b140aef49930b776e93}{Initialize\+Engine\+Root\+Systems}} () const
+\begin{DoxyCompactList}\small\item\em Sets up all the critical systems for the engine. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_engine_1_1_application_abc177c62b3b0d553f28f91bd59ed7a5b}{Process\+Input}} () const
+\begin{DoxyCompactList}\small\item\em Input polling for each layer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Rendering}\par
+{\em This group of functions represents every utility that has to do with rendering the scene in some form. }\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_engine_1_1_application_acbe20aa5886a591958c12937ea8bde04}{Draw}} (float delta\+Time)
+\begin{DoxyCompactList}\small\item\em Handles all draw calls in the application. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_engine_1_1_application_a69aeb77e8f654c7d11ff64eed9004233}{Swap\+Buffer}} ()
+\begin{DoxyCompactList}\small\item\em Swap the back buffer to the front. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_engine_1_1_application_a7c03874deb6fd6484ed179ba4f37a600}{Calculate\+Delta\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Calculates the delta time between each frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_engine_1_1_application_a25077d891fc8e95f609ff1b4ec772bd1}\label{class_engine_1_1_application_a25077d891fc8e95f609ff1b4ec772bd1} 
+float {\bfseries m\+\_\+\+Delta\+Time} = 0
+\begin{DoxyCompactList}\small\item\em The time taken to render the current and last frame. \end{DoxyCompactList}\item 
+float \doxymbox{\hyperlink{class_engine_1_1_application_af9b37577e49f44e520509c5783a28487}{m\+\_\+\+Previous\+Time}} = 0
+\begin{DoxyCompactList}\small\item\em Temporary value for the m\+\_\+\+Delta\+Time calculation. \end{DoxyCompactList}\item 
+\Hypertarget{class_engine_1_1_application_a49ef60eb7c943948b0c2a24d8add3853}\label{class_engine_1_1_application_a49ef60eb7c943948b0c2a24d8add3853} 
+unsigned int {\bfseries m\+\_\+\+Frame\+Rate} = 0
+\begin{DoxyCompactList}\small\item\em How many frames are running per second. \end{DoxyCompactList}\item 
+\Hypertarget{class_engine_1_1_application_a5b43b4bf89e85879731eea766012108d}\label{class_engine_1_1_application_a5b43b4bf89e85879731eea766012108d} 
+bool {\bfseries m\+\_\+\+Running} = true
+\begin{DoxyCompactList}\small\item\em \doxylink{class_engine_1_1_application}{Application} run control, true is running and false immediately terminates. \end{DoxyCompactList}\item 
+\Hypertarget{class_engine_1_1_application_a37d38002b6278343af012a08000381d1}\label{class_engine_1_1_application_a37d38002b6278343af012a08000381d1} 
+\doxymbox{\hyperlink{class_engine_1_1_window}{Window}} {\bfseries m\+\_\+\+Window}
+\begin{DoxyCompactList}\small\item\em The application window. \end{DoxyCompactList}\item 
+std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{class_engine_1_1_renderer_1_1_renderer}{Renderer::\+\+Renderer}} $>$ \doxymbox{\hyperlink{class_engine_1_1_application_aa16f9830cc85a8510b207018244e134e}{m\+\_\+\+Renderer}}
+\begin{DoxyCompactList}\small\item\em The renderer for drawing. \end{DoxyCompactList}\item 
+\Hypertarget{class_engine_1_1_application_a67284e2af7e9bfced8c14a5fe1a617df}\label{class_engine_1_1_application_a67284e2af7e9bfced8c14a5fe1a617df} 
+std::\+weak\+\_\+ptr$<$ \doxymbox{\hyperlink{class_engine_1_1_camera_1_1_editor_camera}{Camera::\+\+Editor\+Camera}} $>$ {\bfseries m\+\_\+\+Camera}
+\begin{DoxyCompactList}\small\item\em reference to the current active \doxylink{class_engine_1_1_camera_1_1_editor_camera}{Camera::\+\+Editor\+Camera} in the application. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Construction, Initialization, Destruction}
+The Constructors, Destructor, and any other helper setup functions. These may be useful in various situations. \begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_engine_1_1_application_aafb4be83f26204bdebf131e261bbf4e4}{Application}} ()
+\begin{DoxyCompactList}\small\item\em Create application with all default settings. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_engine_1_1_application_ae1036e5a4f6f86992967959895478bf0}{Application}} (std::\+string\+\_\+view application\+Name)
+\begin{DoxyCompactList}\small\item\em Create an application with a custom name. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_engine_1_1_application_a09aba14fd72f604f58fabafb79528f97}{Application}} (Renderer::\+\+Renderer::\+\+Render\+Target render\+Target)
+\begin{DoxyCompactList}\small\item\em Create application with custom render target. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_engine_1_1_application_ab8c516c372e34b0961c11107be9cc5fc}{Application}} (std::\+string\+\_\+view application\+Name, Renderer::\+\+Renderer::\+\+Render\+Target render\+Target)
+\begin{DoxyCompactList}\small\item\em Create application with both a name as well as render target. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_engine_1_1_application_aa8a9745dbd56969a77cab6c81a16cdda}{\texorpdfstring{$\sim$}{\string~}\+Application}} ()
+\begin{DoxyCompactList}\small\item\em Cleans up the entire application upon closing. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_engine_1_1_application_af1f8ad5ad0b74bebe8c745a561d8ca36}{Initialize}} ()
+\begin{DoxyCompactList}\small\item\em Sets up the engine\textquotesingle{}s core systems, static instance, and resources. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{class_engine_1_1_application_doc-constructors}
+\Hypertarget{class_engine_1_1_application_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_engine_1_1_application_aafb4be83f26204bdebf131e261bbf4e4}\index{Engine::Application@{Engine::Application}!Application@{Application}}
+\index{Application@{Application}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{Application()}{Application()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_aafb4be83f26204bdebf131e261bbf4e4} 
+Engine::\+\+Application::\+\+Application (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Create application with all default settings. 
+
+Calls \doxylink{class_engine_1_1_application_af1f8ad5ad0b74bebe8c745a561d8ca36}{Initialize()} for setup. The application name is \textquotesingle{}Voxel Game\textquotesingle{} and render target is set to a \doxylink{class_engine_1_1_window}{Window} by default \Hypertarget{class_engine_1_1_application_ae1036e5a4f6f86992967959895478bf0}\index{Engine::Application@{Engine::Application}!Application@{Application}}
+\index{Application@{Application}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{Application()}{Application()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_ae1036e5a4f6f86992967959895478bf0} 
+Engine::\+\+Application::\+\+Application (\begin{DoxyParamCaption}\item[{std::\+string\+\_\+view}]{application\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Create an application with a custom name. 
+
+Calls \doxylink{class_engine_1_1_application_af1f8ad5ad0b74bebe8c745a561d8ca36}{Initialize()} for setup. The render target is still set to a \doxylink{class_engine_1_1_window}{Window} by default. 
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em application\+Name} & A string\+\_\+view used to set the name of the application window. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_engine_1_1_application_a09aba14fd72f604f58fabafb79528f97}\index{Engine::Application@{Engine::Application}!Application@{Application}}
+\index{Application@{Application}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{Application()}{Application()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_a09aba14fd72f604f58fabafb79528f97} 
+Engine::\+\+Application::\+\+Application (\begin{DoxyParamCaption}\item[{Renderer::\+\+Renderer::\+\+Render\+Target}]{render\+Target}{}\end{DoxyParamCaption})}
+
+
+
+Create application with custom render target. 
+
+Calls \doxylink{class_engine_1_1_application_af1f8ad5ad0b74bebe8c745a561d8ca36}{Initialize()} for setup. The name is set to the default name of \textquotesingle{}Voxel Game\textquotesingle{}, useful for making a custom editor 
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em render\+Target} & Used to specify window or texture rendering preferences for the renderer \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_engine_1_1_application_ab8c516c372e34b0961c11107be9cc5fc}\index{Engine::Application@{Engine::Application}!Application@{Application}}
+\index{Application@{Application}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{Application()}{Application()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_ab8c516c372e34b0961c11107be9cc5fc} 
+Engine::\+\+Application::\+\+Application (\begin{DoxyParamCaption}\item[{std::\+string\+\_\+view}]{application\+Name}{, }\item[{Renderer::\+\+Renderer::\+\+Render\+Target}]{render\+Target}{}\end{DoxyParamCaption})}
+
+
+
+Create application with both a name as well as render target. 
+
+Calls \doxylink{class_engine_1_1_application_af1f8ad5ad0b74bebe8c745a561d8ca36}{Initialize()} for setup. Both the name and render target may be set to the desired value, useful for making a custom editor 
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em application\+Name} & Sets the name of the application window at the top. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em render\+Target} & Used to specify window or texture rendering preferences for the renderer \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_engine_1_1_application_aa8a9745dbd56969a77cab6c81a16cdda}\index{Engine::Application@{Engine::Application}!````~Application@{\texorpdfstring{$\sim$}{\string~}Application}}
+\index{````~Application@{\texorpdfstring{$\sim$}{\string~}Application}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Application()}{\string~Application()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_aa8a9745dbd56969a77cab6c81a16cdda} 
+Engine::\+\+Application::\+\texorpdfstring{$\sim$}{\string~}\+Application (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Cleans up the entire application upon closing. 
+
+The application is shutting down by this point, so cleanup is fairly redundant. However, this destructor cleans up the layer stack just in case. 
+
+\label{class_engine_1_1_application_doc-func-members}
+\Hypertarget{class_engine_1_1_application_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_engine_1_1_application_a7c03874deb6fd6484ed179ba4f37a600}\index{Engine::Application@{Engine::Application}!CalculateDeltaTime@{CalculateDeltaTime}}
+\index{CalculateDeltaTime@{CalculateDeltaTime}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{CalculateDeltaTime()}{CalculateDeltaTime()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_a7c03874deb6fd6484ed179ba4f37a600} 
+void Engine::\+\+Application::\+\+Calculate\+Delta\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Calculates the delta time between each frame. 
+
+This function calculates delta time by subtracting the glfw runtime by m\+\_\+\+Previous\+Time, then assigns it as the new m\+\_\+\+Previous\+Time. This functions handles the calculation for the m\+\_\+\+Frame\+Rate as well.
+
+\begin{DoxyPostcond}{Postcondition}
+The m\+\_\+\+Delta\+Time and m\+\_\+\+Frame\+Rate values are set each frame 
+\end{DoxyPostcond}
+\Hypertarget{class_engine_1_1_application_a4616a5b523d4163f63f76dcdeb240167}\index{Engine::Application@{Engine::Application}!CreateLevel@{CreateLevel}}
+\index{CreateLevel@{CreateLevel}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{CreateLevel()}{CreateLevel()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_a4616a5b523d4163f63f76dcdeb240167} 
+void Engine::\+\+Application::\+\+Create\+Level (\begin{DoxyParamCaption}\item[{std::\+string\+\_\+view}]{level\+Name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Utilize the \doxylink{class_engine_1_1_scene_1_1_scene_manager}{Scene::\+\+Scene\+Manager} to create a new level. 
+
+This function just calls the Create Scene function inside the \doxylink{class_engine_1_1_scene_1_1_scene_manager}{Scene::\+\+Scene\+Manager} class, and passes the level\+Name.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em level\+Name} & Provide the unique name identifier for the generated level \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_engine_1_1_application_acbe20aa5886a591958c12937ea8bde04}\index{Engine::Application@{Engine::Application}!Draw@{Draw}}
+\index{Draw@{Draw}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_acbe20aa5886a591958c12937ea8bde04} 
+void Engine::\+\+Application::\+\+Draw (\begin{DoxyParamCaption}\item[{float}]{delta\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Handles all draw calls in the application. 
+
+Begins the frame rendering using the m\+\_\+\+Renderer by calling Renderer::\+\+Renderer::\+\+Begin\+Render() and supplying the current camera. Performs all rendering calls in proper order and then calls Renderer::\+\+Renderer::\+\+End\+Render() to finalize the drawing, cleanup, and render the scene. Finally calls \doxylink{class_engine_1_1_application_a69aeb77e8f654c7d11ff64eed9004233}{Swap\+Buffer()} to display the frame.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em delta\+Time} & The current value for m\+\_\+\+Delta\+Time calculated in \doxylink{class_engine_1_1_application_a7c03874deb6fd6484ed179ba4f37a600}{Calculate\+Delta\+Time()}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_engine_1_1_application_a225cb0e2ab00b84cbfdff2c9b7b480a1}\index{Engine::Application@{Engine::Application}!GetCamera@{GetCamera}}
+\index{GetCamera@{GetCamera}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{GetCamera()}{GetCamera()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_a225cb0e2ab00b84cbfdff2c9b7b480a1} 
+\doxymbox{\hyperlink{class_engine_1_1_camera_1_1_editor_camera}{Camera::\+\+Editor\+Camera}} \texorpdfstring{$\ast$}{*} Engine::\+\+Application::\+\+Get\+Camera (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Free flying editor camera. 
+
+This is an editor camera and strictly meant for an editor or game debugging view. A game should utilize a Scene::\+\+ECS::\+\+Components::\+\+Perspective\+Camera or a Scene::\+\+ECS::\+\+Components::\+\+Orthographic\+Camera for playing.
+
+\begin{DoxyWarning}{Warning}
+The pointer is not checked for validity. This can return null. However, a camera should always be valid. 
+\end{DoxyWarning}
+\begin{DoxyNote}{Note}
+As of version 0.\+0.\+2 the camera components do not exist yet. So, the \doxylink{class_engine_1_1_camera_1_1_editor_camera}{Camera::\+\+Editor\+Camera} may turn into more of a camera management system. The editor camera itself will just be a ECS component... maybe?
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+The current pointer stored in m\+\_\+\+Camera variable. 
+\end{DoxyReturn}
+\Hypertarget{class_engine_1_1_application_ab74e908f50c64b5fa86d35dc0d2928cf}\index{Engine::Application@{Engine::Application}!GetDeltaTime@{GetDeltaTime}}
+\index{GetDeltaTime@{GetDeltaTime}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{GetDeltaTime()}{GetDeltaTime()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_ab74e908f50c64b5fa86d35dc0d2928cf} 
+const float Engine::\+\+Application::\+\+Get\+Delta\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Delta time getter. 
+
+The function does not modify the application class, just a wrapper to ensure modifying m\+\_\+\+Delta\+Time through \doxylink{class_engine_1_1_application_a7c03874deb6fd6484ed179ba4f37a600}{Calculate\+Delta\+Time()} remains private. \begin{DoxyReturn}{Returns}
+The time between the last and current frame. 
+\end{DoxyReturn}
+\Hypertarget{class_engine_1_1_application_ae2cad2a50b82a1c4cef5186db376153b}\index{Engine::Application@{Engine::Application}!GetFrameRate@{GetFrameRate}}
+\index{GetFrameRate@{GetFrameRate}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{GetFrameRate()}{GetFrameRate()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_ae2cad2a50b82a1c4cef5186db376153b} 
+const unsigned int Engine::\+\+Application::\+\+Get\+Frame\+Rate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Frame rate getter. 
+
+This function allows anything to access and the m\+\_\+\+Frame\+Rate without modifying the true. \begin{DoxyReturn}{Returns}
+The current frame rate calculated in the \doxylink{class_engine_1_1_application_a7c03874deb6fd6484ed179ba4f37a600}{Calculate\+Delta\+Time()} function. 
+\end{DoxyReturn}
+\Hypertarget{class_engine_1_1_application_a1c3a329f1212f6cca1a97aa388d5670f}\index{Engine::Application@{Engine::Application}!GetRenderScreenTexture@{GetRenderScreenTexture}}
+\index{GetRenderScreenTexture@{GetRenderScreenTexture}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{GetRenderScreenTexture()}{GetRenderScreenTexture()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_a1c3a329f1212f6cca1a97aa388d5670f} 
+unsigned int Engine::\+\+Application::\+\+Get\+Render\+Screen\+Texture (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Used by the editor to render the camera view onto a texture pane. 
+
+\begin{DoxyReturn}{Returns}
+The integer texture from Renderer::\+\+Renderer::\+\+Get\+Render\+Texture() 
+\end{DoxyReturn}
+\Hypertarget{class_engine_1_1_application_a3bcf761f579ba94e27156f3bafbb2fa8}\index{Engine::Application@{Engine::Application}!GetWindowName@{GetWindowName}}
+\index{GetWindowName@{GetWindowName}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{GetWindowName()}{GetWindowName()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_a3bcf761f579ba94e27156f3bafbb2fa8} 
+const std::\+string\+\_\+view Engine::\+\+Application::\+\+Get\+Window\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Getter for the window name. 
+
+Call the \doxylink{class_engine_1_1_window_aeef8b9f680a5df8774143076d9fe29a2}{Engine::\+\+Window::\+\+Get\+Name()} function on the m\+\_\+\+Window variable in order to access the application\textquotesingle{}s name within the application for whatever reason. \begin{DoxyReturn}{Returns}
+The name stored in \doxylink{class_engine_1_1_window}{Engine::\+\+Window} 
+\end{DoxyReturn}
+\Hypertarget{class_engine_1_1_application_af1f8ad5ad0b74bebe8c745a561d8ca36}\index{Engine::Application@{Engine::Application}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_af1f8ad5ad0b74bebe8c745a561d8ca36} 
+void Engine::\+\+Application::\+\+Initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Sets up the engine\textquotesingle{}s core systems, static instance, and resources. 
+
+Sets the static instance first, calls \doxylink{class_engine_1_1_application_ab8954479e3ad2b140aef49930b776e93}{Initialize\+Engine\+Root\+Systems()}, and sets the window resize callback function. Log\textquotesingle{}s a warning when all critical systems have been initialized properly.
+
+\begin{DoxyPostcond}{Postcondition}
+The static instance should be valid, m\+\_\+\+Window receives the resize callback from the renderer 
+\end{DoxyPostcond}
+\Hypertarget{class_engine_1_1_application_ab8954479e3ad2b140aef49930b776e93}\index{Engine::Application@{Engine::Application}!InitializeEngineRootSystems@{InitializeEngineRootSystems}}
+\index{InitializeEngineRootSystems@{InitializeEngineRootSystems}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{InitializeEngineRootSystems()}{InitializeEngineRootSystems()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_ab8954479e3ad2b140aef49930b776e93} 
+void Engine::\+\+Application::\+\+Initialize\+Engine\+Root\+Systems (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Sets up all the critical systems for the engine. 
+
+As of version 0.\+0.\+2, this initializes the \doxylink{class_engine_1_1_input_system}{Input\+System}, \doxylink{class_engine_1_1_layer_stack}{Layer\+Stack}, and Utility::\+\+Initialize\+Random\+Generators() \begin{DoxyPostcond}{Postcondition}
+The systems are initialized with a corresponding log stating success or failure. 
+\end{DoxyPostcond}
+\Hypertarget{class_engine_1_1_application_aaba50eeba7fe9cd0f7ebed718cb4361c}\index{Engine::Application@{Engine::Application}!LoadLevel@{LoadLevel}}
+\index{LoadLevel@{LoadLevel}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{LoadLevel()}{LoadLevel()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_aaba50eeba7fe9cd0f7ebed718cb4361c} 
+void Engine::\+\+Application::\+\+Load\+Level (\begin{DoxyParamCaption}\item[{std::\+string\+\_\+view}]{level\+Name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Open an existing level. 
+
+\begin{DoxyNote}{Note}
+This functionality is still a work in progress as of Engine version 0.\+0.\+2.
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em level\+Name} & Provide the name of the level wanting to be loaded, if level name does not exist do nothing. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_engine_1_1_application_abc177c62b3b0d553f28f91bd59ed7a5b}\index{Engine::Application@{Engine::Application}!ProcessInput@{ProcessInput}}
+\index{ProcessInput@{ProcessInput}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{ProcessInput()}{ProcessInput()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_abc177c62b3b0d553f28f91bd59ed7a5b} 
+void Engine::\+\+Application::\+\+Process\+Input (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Input polling for each layer. 
+
+Loops through each layer and provides the input event. Allows the layers to consume the input value to not propogate to the next layers. \begin{DoxyNote}{Note}
+as of version 0.\+0.\+2 the layers do not consume or process input at all. This is a work in progress feature. 
+\end{DoxyNote}
+\Hypertarget{class_engine_1_1_application_a0191bb93ec2fb8ca91fcb70a60b8a2b5}\index{Engine::Application@{Engine::Application}!QuitGame@{QuitGame}}
+\index{QuitGame@{QuitGame}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{QuitGame()}{QuitGame()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_a0191bb93ec2fb8ca91fcb70a60b8a2b5} 
+void Engine::\+\+Application::\+\+Quit\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Quits the game completely. 
+
+Set m\+\_\+\+Running to false and call destroy on \doxylink{class_engine_1_1_window}{Window} class. \begin{DoxyNote}{Note}
+In the future the function will listen and await a dispatched event from the game and do final cleanup once game is clean. Currently not implemented in version 0.\+0.\+2. 
+\end{DoxyNote}
+\Hypertarget{class_engine_1_1_application_afcb4d929b975056af03a69d9d8fa2ea9}\index{Engine::Application@{Engine::Application}!SetViewTargetCamera@{SetViewTargetCamera}}
+\index{SetViewTargetCamera@{SetViewTargetCamera}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{SetViewTargetCamera()}{SetViewTargetCamera()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_afcb4d929b975056af03a69d9d8fa2ea9} 
+void Engine::\+\+Application::\+\+Set\+View\+Target\+Camera (\begin{DoxyParamCaption}\item[{std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_engine_1_1_camera_1_1_editor_camera}{Camera::\+\+Editor\+Camera}} $>$}]{camera}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the default camera to the one created in the editor. 
+
+\begin{DoxyPostcond}{Postcondition}
+The m\+\_\+\+Camera pointer value is now valid, assuming it is properly set and not null. 
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+See \doxylink{class_engine_1_1_application_a225cb0e2ab00b84cbfdff2c9b7b480a1}{Get\+Camera()} documents for more information. 
+\end{DoxyNote}
+\Hypertarget{class_engine_1_1_application_a463c6b35c62f2ee778917b9d99af65ec}\index{Engine::Application@{Engine::Application}!ShouldRun@{ShouldRun}}
+\index{ShouldRun@{ShouldRun}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{ShouldRun()}{ShouldRun()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_a463c6b35c62f2ee778917b9d99af65ec} 
+bool Engine::\+\+Application::\+\+Should\+Run (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the m\+\_\+\+Running variable. 
+
+\begin{DoxyNote}{Note}
+This is inside a getter because \doxylink{class_engine_1_1_application_a0191bb93ec2fb8ca91fcb70a60b8a2b5}{Quit\+Game()} is responsible for cleanup and some systems may screw up if game abruptly ends. 
+\end{DoxyNote}
+\Hypertarget{class_engine_1_1_application_aa473bd543c92402f19ce0d4ff4002442}\index{Engine::Application@{Engine::Application}!Start@{Start}}
+\index{Start@{Start}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_aa473bd543c92402f19ce0d4ff4002442} 
+void Engine::\+\+Application::\+\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Starts the process of running the game and starting runtime systems. 
+
+As of right now the start function calls the script systems construct and start events. This will change in the future.
+
+\begin{DoxyNote}{Note}
+This start function MUST be called at the very top of the game\textquotesingle{}s Start function to ensure all systems are setup. 
+\end{DoxyNote}
+\Hypertarget{class_engine_1_1_application_a69aeb77e8f654c7d11ff64eed9004233}\index{Engine::Application@{Engine::Application}!SwapBuffer@{SwapBuffer}}
+\index{SwapBuffer@{SwapBuffer}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{SwapBuffer()}{SwapBuffer()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_a69aeb77e8f654c7d11ff64eed9004233} 
+virtual void Engine::\+\+Application::\+\+Swap\+Buffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Swap the back buffer to the front. 
+
+This function calls the m\+\_\+\+Window swap buffers function in \doxylink{class_engine_1_1_window}{Engine::\+\+Window} \Hypertarget{class_engine_1_1_application_a38a9c8a9bd54b694eb432827247e6d8c}\index{Engine::Application@{Engine::Application}!Tick@{Tick}}
+\index{Tick@{Tick}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{Tick()}{Tick()}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_a38a9c8a9bd54b694eb432827247e6d8c} 
+void Engine::\+\+Application::\+\+Tick (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Begin the main event loop of the entire application. 
+
+Tick immediately calls \doxylink{class_engine_1_1_application_a7c03874deb6fd6484ed179ba4f37a600}{Calculate\+Delta\+Time()} for the next update, then input events are processed, Tick is called for all scripts, the m\+\_\+\+Window polls for events, and finally \doxylink{class_engine_1_1_application_acbe20aa5886a591958c12937ea8bde04}{Draw()} is called.
+
+\begin{DoxyNote}{Note}
+The Tick function does not incorprate the loop itself. This must be created in the game\textquotesingle{}s Tick. Also, the engine\textquotesingle{}s Tick function must be called last inside the loop. Various systems are polling for events that the Engine Tick handles. Delta Time can be acquired by calling \doxylink{class_engine_1_1_application_ab74e908f50c64b5fa86d35dc0d2928cf}{Get\+Delta\+Time()}. 
+\end{DoxyNote}
+
+
+\label{class_engine_1_1_application_doc-variable-members}
+\Hypertarget{class_engine_1_1_application_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_engine_1_1_application_af9b37577e49f44e520509c5783a28487}\index{Engine::Application@{Engine::Application}!m\_PreviousTime@{m\_PreviousTime}}
+\index{m\_PreviousTime@{m\_PreviousTime}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{m\_PreviousTime}{m\_PreviousTime}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_af9b37577e49f44e520509c5783a28487} 
+float Engine::\+\+Application::\+m\+\_\+\+Previous\+Time = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Temporary value for the m\+\_\+\+Delta\+Time calculation. 
+
+The \doxylink{class_engine_1_1_application_a7c03874deb6fd6484ed179ba4f37a600}{Calculate\+Delta\+Time()} function needs a way to remember the previous runtime before this value is set. So, it needs a variable storage value and cannot be a static variable in the function because the value is needed before. \Hypertarget{class_engine_1_1_application_aa16f9830cc85a8510b207018244e134e}\index{Engine::Application@{Engine::Application}!m\_Renderer@{m\_Renderer}}
+\index{m\_Renderer@{m\_Renderer}!Engine::Application@{Engine::Application}}
+\doxysubsubsection{\texorpdfstring{m\_Renderer}{m\_Renderer}}
+{\footnotesize\ttfamily \label{class_engine_1_1_application_aa16f9830cc85a8510b207018244e134e} 
+std::\+unique\+\_\+ptr$<$\doxymbox{\hyperlink{class_engine_1_1_renderer_1_1_renderer}{Renderer::\+\+Renderer}}$>$ Engine::\+\+Application::\+m\+\_\+\+Renderer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The renderer for drawing. 
+
+The renderer is instantiated on the heap due to it\textquotesingle{}s large size. In version 0.\+0.\+2 it does not currently contain a bunch of packet types. However, the renderer will quickly grow in size as more draw calls are added. See \doxylink{class_engine_1_1_renderer_1_1_renderer}{Renderer::\+\+Renderer} for more details. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Core/\doxymbox{\hyperlink{_application_8h}{Application.\+h}}\item 
+Engine/\+src/\+\+Core/Application.\+cpp\end{DoxyCompactItemize}
