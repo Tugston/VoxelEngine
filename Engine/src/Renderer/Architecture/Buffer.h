@@ -20,7 +20,7 @@
 //ENGINE
 #include "Core/Core.h"
 
-namespace Engine::Renderer
+namespace Viper::Renderer
 {
 
 	//currently working on this, but just pushing this since I have the editor updated

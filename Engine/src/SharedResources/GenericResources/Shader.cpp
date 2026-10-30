@@ -24,7 +24,7 @@
 #include "glm/ext.hpp"
 
 
-namespace Engine::Utility
+namespace Viper::Utility
 {
 	Shader::Shader()
 	{

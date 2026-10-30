@@ -17,7 +17,7 @@
 #include "Core/Maths/Math.h"
 #include "Core/Logger.h"
 
-namespace Engine::Utility
+namespace Viper::Utility
 {
     Mesh CreateCone(UINT16 sideCount)
     {

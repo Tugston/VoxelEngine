@@ -22,17 +22,17 @@
 #include "Core/Core.h"
 #include "RenderObjects.h"
 
-namespace Engine::Camera
+namespace Viper::Camera
 {
 	class EditorCamera;
 }
 
-namespace Engine::Utility
+namespace Viper::Utility
 {
 	class Texture2D;
 }
 
-namespace Engine::Renderer
+namespace Viper::Renderer
 {
 	class FrameBuffer;
 	using ViewSize = std::pair<unsigned int, unsigned int>;
@@ -53,7 +53,7 @@ namespace Engine::Renderer
 		Renderer(ViewSize viewportSize, RenderTarget target);
 		~Renderer();
 		
-		void BeginRender(Engine::Camera::EditorCamera* camera);
+		void BeginRender(Viper::Camera::EditorCamera* camera);
 		void EndRender();
 	
 		//this works with the RenderObject function so any renderObject can be passed as the api

@@ -17,7 +17,7 @@
 
 #include <memory>
 
-namespace Engine::Renderer
+namespace Viper::Renderer
 {
 	//another converter that handles what type the attrib actually is
 	static GLenum ShaderDataTypeConversion(ShaderDataType type)

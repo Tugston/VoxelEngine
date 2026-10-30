@@ -12,7 +12,7 @@
 #include "egpch.h"
 #include "Conversions.h"
 
-namespace Engine::Maths
+namespace Viper::Maths
 {
     unsigned int RGBtoHex(const Vector3<uint8_t>& color)
     {

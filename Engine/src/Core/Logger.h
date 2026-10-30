@@ -26,11 +26,11 @@
 //Logger Detection
 #ifdef EG_PRJ
 	#if defined(APP_DEBUG) //check app debug first, because engine may also be valid in game project
-		#define GET_LOGGER() ::Engine::Logger::GetGameLogger()
+		#define GET_LOGGER() ::Viper::Logger::GetGameLogger()
 	#elif defined(EDTR_DEBUG)
-		#define GET_LOGGER() ::Engine::Logger::GetEditorLogger()
+		#define GET_LOGGER() ::Viper::Logger::GetEditorLogger()
 	#elif defined(EG_DEBUG)
-		#define GET_LOGGER() ::Engine::Logger::GetEngineLogger()
+		#define GET_LOGGER() ::Viper::Logger::GetEngineLogger()
 	#else
 		#define GET_LOGGER(x)
 	#endif //APP_DEBUG
@@ -55,10 +55,10 @@
 //internal use only, tired of writing out these logs everywhere
 //but nothing is rly stopping external use, so use them I guess
 #if defined(EG_DEBUG) || defined(EDTR_DEBUG) || defined(APP_DEBUG)
-#define LOG_MSG(...)	Engine::Logger::LogMessage(Engine::Logger::LogType::Message, __VA_ARGS__)
-#define LOG_WARN(...)	Engine::Logger::LogMessage(Engine::Logger::LogType::Warning, __VA_ARGS__)
-#define LOG_ERR(...)	Engine::Logger::LogMessage(Engine::Logger::LogType::Error, __VA_ARGS__)
-#define LOG_CRIT(...)	Engine::Logger::LogMessage(Engine::Logger::LogType::Critical, __VA_ARGS__)
+#define LOG_MSG(...)	Viper::Logger::LogMessage(Viper::Logger::LogType::Message, __VA_ARGS__)
+#define LOG_WARN(...)	Viper::Logger::LogMessage(Viper::Logger::LogType::Warning, __VA_ARGS__)
+#define LOG_ERR(...)	Viper::Logger::LogMessage(Viper::Logger::LogType::Error, __VA_ARGS__)
+#define LOG_CRIT(...)	Viper::Logger::LogMessage(Viper::Logger::LogType::Critical, __VA_ARGS__)
 #else
 #define LOG_MSG(...)
 #define LOG_Warn(...)
@@ -66,7 +66,7 @@
 #define LOG_CRIT(...)
 #endif
 
-namespace Engine
+namespace Viper
 {
 	class Logger
 	{

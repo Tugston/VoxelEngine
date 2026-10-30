@@ -12,7 +12,7 @@
 #include "egpch.h"
 #include "EditorCamera.h"
 
-namespace Engine::Camera
+namespace Viper::Camera
 {
 	EditorCamera::EditorCamera() :
 		m_Settings(), m_Location(glm::vec3(0.f, 0.f, 0.f)), m_ProjectionMatrix(), m_RightVector()

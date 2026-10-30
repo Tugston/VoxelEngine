@@ -30,7 +30,7 @@ namespace Core
 		if (err != GL_NO_ERROR)
 		{
 			std::string errmsg = std::format("OpenGL error {}, at {}:{} - for {}\n", err, fileName, line, statement);
-			Engine::Logger::LogMessage(Engine::Logger::LogType::Critical, errmsg);
+			Viper::Logger::LogMessage(Viper::Logger::LogType::Critical, errmsg);
 		}
 	}	
 }

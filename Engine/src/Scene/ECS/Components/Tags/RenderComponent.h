@@ -16,7 +16,7 @@
 //ENGN
 #include "Core/Layers/LayerID.h"
 
-namespace Engine::Scene::ECS::Components
+namespace Viper::Scene::ECS::Components
 {
 	struct Renderable {
 		Renderable() = default;

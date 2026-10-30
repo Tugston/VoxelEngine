@@ -17,7 +17,7 @@
 
 //VNDR
 
-namespace Engine::Utility
+namespace Viper::Utility
 {
 	//************
 	//Base Texture

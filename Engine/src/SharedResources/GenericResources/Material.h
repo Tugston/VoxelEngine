@@ -22,7 +22,7 @@
 #include "Shader.h"
 #include "Texture.h"
 
-namespace Engine::Utility
+namespace Viper::Utility
 {
 	struct Material
 	{

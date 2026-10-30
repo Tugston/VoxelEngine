@@ -18,7 +18,7 @@
 //ENGN
 #include "Scene/ECS/GameObjects/ScriptableObject.h";
 
-namespace Engine::Scene::ECS::Systems
+namespace Viper::Scene::ECS::Systems
 {
 
 	void SysOnScriptConstruct(ECS::Registry& registry)

@@ -42,7 +42,7 @@ namespace Editor
 	class TransformTable3D {
 	public:
 		TransformTable3D(Maths::Vector3<t>* locRef, Maths::Vector3<t>* rotRef, Maths::Vector3<t>* scaleRef) :
-			m_LocationSlot("", &locRef->x, &locRef->y, &locRef->z), m_RotationSlot("", &rotRef->x, &rotRef->y, &rotRef->z), m_ScaleSlot("", &scaleRef->x, &scaleRef->y, &scaleRef->z)
+			m_LocationSlot("Location", &locRef->x, &locRef->y, &locRef->z), m_RotationSlot("Rotation", &rotRef->x, &rotRef->y, &rotRef->z), m_ScaleSlot("Scale", &scaleRef->x, &scaleRef->y, &scaleRef->z)
 		{
 
 		};

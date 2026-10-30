@@ -13,8 +13,10 @@
 */
 
 //ENGINE
+#define NAMESPACE_VIPER
 #include<Engine.h>
 #include<Core/EntryPoint.h> //entry point
+
 
 #include "../MovementScript.h"
 #include "../BaseColorFlashScript.h"
@@ -142,7 +144,7 @@ namespace VoxelGame
 	};
 }
 
-Application* Engine::CreateApplication()
+Application* Viper::CreateApplication()
 {
 	return new VoxelGame::Game();
 }

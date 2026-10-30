@@ -17,7 +17,7 @@
 #include "SharedResources/GenericResources/Mesh.h"
 #include "SharedResources/GenericResources/Material.h"
 
-namespace Engine::Scene::ECS::Components
+namespace Viper::Scene::ECS::Components
 {
 	struct LandscapeComponent
 	{

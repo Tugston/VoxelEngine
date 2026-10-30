@@ -13,6 +13,8 @@
 */
 #pragma once
 
+#define NAMESPACE_VIPER
+
 //STND
 #include<algorithm>
 

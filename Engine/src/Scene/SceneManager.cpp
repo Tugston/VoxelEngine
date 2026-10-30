@@ -15,7 +15,7 @@
 //ENGN
 #include "Scene.h"
 
-namespace Engine::Scene
+namespace Viper::Scene
 {
 	SceneManager::SceneManager()
 	{

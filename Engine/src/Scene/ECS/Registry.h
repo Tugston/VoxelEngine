@@ -24,7 +24,7 @@
 #include "./Core/Logger.h"
 
 
-namespace Engine::Scene::ECS
+namespace Viper::Scene::ECS
 {
 	using EntityID = UINT32;
 	using ComponentTypeID = size_t;
@@ -74,7 +74,7 @@ namespace Engine::Scene::ECS
 			if (pool->HasComponent(entityID))
 				pool->RemoveComponent(entityID);
 			else
-				LOG_MSG("<Registry.h> (RemoveComponent) Entity [ {} ] does not contain {} component, removed nothing", entityID, typeid(t).name());
+				ViperLOG_MSG("<Registry.h> (RemoveComponent) Entity [ {} ] does not contain {} component, removed nothing", entityID, typeid(t).name());
 		}
 
 		template<typename t>

@@ -12,7 +12,7 @@
 #include "egpch.h"
 #include "OrthographicCamera.h"
 
-namespace Engine::Camera 
+namespace Viper::Camera 
 {
 	OrthographicCamera::OrthographicCamera()
 	{

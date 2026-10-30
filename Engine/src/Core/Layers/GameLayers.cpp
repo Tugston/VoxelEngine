@@ -18,7 +18,7 @@
 #include "Core/Layers/EngineLayers.h"
 #include "Input/Input.h" //temporary include, game objects should handle the actual inputs
 
-namespace Engine
+namespace Viper
 {
 
 	//***********//
@@ -72,12 +72,12 @@ namespace Engine
 
 #ifdef EG_DEBUG
 
-			if (InputSystem::KeyTapped(Engine::EngineKeys::F2))
+			if (InputSystem::KeyTapped(Viper::EngineKeys::F2))
 			{
 				LOG_MSG("Entering Engine Layer!");
 				InputSystem::SetCurrentInputMode(InputSystem::InputMode::Debug);
 			}
-			else if (InputSystem::KeyTapped(Engine::EngineKeys::F3))
+			else if (InputSystem::KeyTapped(Viper::EngineKeys::F3))
 			{
 				LOG_MSG("Currently Game World Layer!");
 			}
@@ -117,7 +117,7 @@ namespace Engine
 
 	void UILayer::Attach()
 	{
-		Engine::Logger::LogMessage(Engine::Logger::LogType::Error, "UI Layer Attached!");
+		Viper::Logger::LogMessage(Viper::Logger::LogType::Error, "UI Layer Attached!");
 	}
 
 	void UILayer::Detach()

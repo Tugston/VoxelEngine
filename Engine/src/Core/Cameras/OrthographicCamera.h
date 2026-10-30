@@ -17,7 +17,7 @@
 
 //WIP - not important right now
 
-namespace Engine::Camera
+namespace Viper::Camera
 {
 	class OrthographicCamera : public EditorCamera {
 	public:

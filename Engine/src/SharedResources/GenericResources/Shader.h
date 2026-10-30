@@ -22,7 +22,7 @@
 //VENDOR
 #include <glm/glm.hpp>
 
-namespace Engine::Utility
+namespace Viper::Utility
 {
 	//if no file path is provided for the shader, the generic engine shader will be used!
 	class Shader

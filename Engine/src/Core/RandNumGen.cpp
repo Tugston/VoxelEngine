@@ -12,7 +12,7 @@
 #include "egpch.h"
 #include "RandNumGen.h"
 
-namespace Engine::Utility
+namespace Viper::Utility
 {
 	static std::mt19937 gen;
 

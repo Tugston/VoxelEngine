@@ -20,7 +20,7 @@
 
 //script module is shared pointer for the ECS to access it easier
 
-namespace Engine::Scene::ECS
+namespace Viper::Scene::ECS
 {
 	class ScriptableObject2D : public GameObject2D
 	{

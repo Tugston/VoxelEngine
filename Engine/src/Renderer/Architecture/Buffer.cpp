@@ -20,7 +20,7 @@ Release();\
 m_ID = other.m_ID;\
 other.m_ID = (std::numeric_limits<UINT32>::max)();\
 
-namespace Engine::Renderer
+namespace Viper::Renderer
 {
 	//*************
 	//Vertex Buffer

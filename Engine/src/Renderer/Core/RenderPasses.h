@@ -17,7 +17,7 @@
 
 //the scene needs a render type as well,
 //there may even be more in the future so providing a common type
-namespace Engine::Renderer
+namespace Viper::Renderer
 {
 	enum class RenderPasses: UINT8
 	{

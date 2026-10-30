@@ -17,7 +17,7 @@
 #include <utility>
 #include <cmath>
 
-namespace Engine::Maths
+namespace Viper::Maths
 {
 	template<typename t>
 	struct Vector2

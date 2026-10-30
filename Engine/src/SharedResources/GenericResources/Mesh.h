@@ -21,7 +21,7 @@
 //VNDR
 #include <glm/glm.hpp>
 
-namespace Engine::Utility
+namespace Viper::Utility
 {
 	struct Mesh
 	{

@@ -26,7 +26,7 @@
 
 #include "Core/Application.h"
 
-namespace Engine::Scene::ECS::Systems
+namespace Viper::Scene::ECS::Systems
 {
 
 	void SysRenderOpaqueMesh(Scene* scene, Renderer::Renderer* renderer)

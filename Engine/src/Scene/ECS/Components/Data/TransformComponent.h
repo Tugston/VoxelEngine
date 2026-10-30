@@ -17,7 +17,7 @@
 //ENGN
 #include "./Core/Maths/Math.h"
 
-namespace Engine::Scene::ECS::Components
+namespace Viper::Scene::ECS::Components
 {
 
 	struct TransformComponent2D

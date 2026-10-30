@@ -18,7 +18,7 @@
 #include "Scene/ECS/Components/Renders/MeshComponent.h"
 #include "Scene/ECS/Components/Tags/RenderComponent.h"
 
-namespace Engine::Scene::ECS
+namespace Viper::Scene::ECS
 {
 	enum class MeshType: UINT8
 	{

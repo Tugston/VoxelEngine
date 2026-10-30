@@ -27,7 +27,7 @@
 #define DEFAULT_COLOR glm::vec3{0.9f, 0.7f, 0.5f}
 #endif
 
-namespace Engine::Scene::ECS
+namespace Viper::Scene::ECS
 {
 	class GameObject
 	{

@@ -27,7 +27,7 @@
 struct GLFWwindow;
 
 
-namespace Engine
+namespace Viper
 {
 
 	class InputSystem
@@ -114,8 +114,8 @@ namespace Engine
 }
 
 //these appropriately simplify the api ( imo :/ )
-#define ENGINE_MOUSE_IDLE	Engine::InputSystem::GetRawMouseDirection() == 0
-#define ENGINE_MOUSE_UP		Engine::InputSystem::GetRawMouseDirection() & (char)Engine::InputSystem::MouseMoveDirection::Up
-#define ENGINE_MOUSE_DOWN	Engine::InputSystem::GetRawMouseDirection() & (char)Engine::InputSystem::MouseMoveDirection::Down
-#define ENGINE_MOUSE_LEFT	Engine::InputSystem::GetRawMouseDirection() & (char)Engine::InputSystem::MouseMoveDirection::Left
-#define ENGINE_MOUSE_RIGHT  Engine::InputSystem::GetRawMouseDirection() & (char)Engine::InputSystem::MouseMoveDirection::Right
+#define ENGINE_MOUSE_IDLE	Viper::InputSystem::GetRawMouseDirection() == 0
+#define ENGINE_MOUSE_UP		Viper::InputSystem::GetRawMouseDirection() & (char)Viper::InputSystem::MouseMoveDirection::Up
+#define ENGINE_MOUSE_DOWN	Viper::InputSystem::GetRawMouseDirection() & (char)Viper::InputSystem::MouseMoveDirection::Down
+#define ENGINE_MOUSE_LEFT	Viper::InputSystem::GetRawMouseDirection() & (char)Viper::InputSystem::MouseMoveDirection::Left
+#define ENGINE_MOUSE_RIGHT  Viper::InputSystem::GetRawMouseDirection() & (char)Viper::InputSystem::MouseMoveDirection::Right

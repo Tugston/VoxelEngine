@@ -15,7 +15,7 @@
 
 #include "CameraSettings.h"
 
-namespace Engine::Camera
+namespace Viper::Camera
 {
 	class EditorCamera {
 	protected:

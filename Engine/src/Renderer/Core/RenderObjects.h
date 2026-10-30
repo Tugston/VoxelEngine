@@ -23,7 +23,7 @@
 //STND
 #include <memory>
 
-namespace Engine::Renderer
+namespace Viper::Renderer
 {
 	class Renderer;
 

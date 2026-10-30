@@ -16,7 +16,7 @@
 #include "Renderer.h"
 #include "RenderCore.h"
 
-namespace Engine::Renderer
+namespace Viper::Renderer
 {
 	//***********
 	//MESH OBJECT

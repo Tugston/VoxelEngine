@@ -17,7 +17,7 @@
 #include "Core/Logger.h"
 
 
-namespace Engine::Scene
+namespace Viper::Scene
 {
 
 	Scene::Scene()
@@ -43,7 +43,7 @@ namespace Engine::Scene
 	{
 		std::vector<ECS::EntityID> sortedData;
 		
-		const std::vector<Engine::Layer*> layers = LayerStack::GetLayers();
+		const std::vector<Viper::Layer*> layers = LayerStack::GetLayers();
 		for (size_t i = 0; i < layers.size(); i++)
 		{
 			std::vector<ECS::EntityID> currentData = layers.at(i)->GetDrawData(type, GetRegistry());

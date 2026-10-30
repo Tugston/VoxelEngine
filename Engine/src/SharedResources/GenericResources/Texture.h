@@ -19,7 +19,7 @@
 
 #include <stb/stb_image.h>
 
-namespace Engine::Utility
+namespace Viper::Utility
 {
 	//these values were sourced from the gl constants data sheet
 	//raw.githubusercontent.com/KhronosGroup/OpenGL-Registry/master/xml/gl.xml?utm

@@ -20,7 +20,7 @@
 #include "LayerID.h"
 #include "Scene/ECS/Components/Tags/RenderComponent.h"
 
-namespace Engine
+namespace Viper
 {
 	class Layer
 	{

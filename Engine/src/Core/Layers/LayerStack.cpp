@@ -15,7 +15,7 @@
 
 #include "Core/Logger.h"
 
-namespace Engine
+namespace Viper
 {
 	std::vector<Layer*> LayerStack::m_Layers = {};
 	unsigned int LayerStack::m_emplaceIdex = 0;

@@ -19,7 +19,7 @@
 //STND
 #include<limits>
 
-namespace Engine::Scene::ECS::Components
+namespace Viper::Scene::ECS::Components
 {
 
 	constexpr UINT32 INVALID_ENTITY = (std::numeric_limits<UINT32>::max)(); //Entity ID

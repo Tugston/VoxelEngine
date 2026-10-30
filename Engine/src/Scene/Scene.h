@@ -24,7 +24,7 @@
 #include <string>
 #include <string_view>
 
-namespace Engine::Scene
+namespace Viper::Scene
 {
 	class Scene
 	{

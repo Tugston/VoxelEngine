@@ -12,6 +12,7 @@
 * See License in root directory for additional details.
 */
 #pragma once
+#define NAMESPACE_VIPER
 #include "Engine.h"
 
 namespace VoxelGame

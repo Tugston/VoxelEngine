@@ -12,7 +12,7 @@
 #include "egpch.h"
 #include "Registry.h"
 
-namespace Engine::Scene::ECS
+namespace Viper::Scene::ECS
 {
 	std::vector<Registry::ComponentView> Registry::GetAllEntityComponents(EntityID entity)
 	{

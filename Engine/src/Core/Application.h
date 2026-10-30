@@ -39,7 +39,7 @@
 #include <cstdint>
 #include <functional>
 
-namespace Engine
+namespace Viper
 {
 	class Layer;
 
@@ -216,6 +216,7 @@ namespace Engine
 		/**
 		* @brief Swap the back buffer to the front
 		* @details This function calls the m_Window swap buffers function in Engine::Window 
+		* @note Virtual is set for override since texture rendering 
 		*/
 		virtual void SwapBuffer() { m_Window.SwapBuffers(); }
 

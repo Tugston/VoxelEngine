@@ -24,7 +24,7 @@
 #include <cassert>
 #include <dwmapi.h>
 
-namespace Engine
+namespace Viper
 {
 	Window::Window()
 	{
@@ -96,15 +96,14 @@ namespace Engine
 
 	void Window::SetFrameSize(WindowResizeCallback callbackFunction)
 	{
+		//assign the provided function so that it can be saved for when window changes size 
 		m_Info.resizeCallback = std::move(callbackFunction);
 
 		glfwSetFramebufferSizeCallback(m_RenderWindow, [](GLFWwindow* window, int width, int height)
 			{
 				WindowInfo* data = static_cast<WindowInfo*>(glfwGetWindowUserPointer(window));
 				if (data)
-				{
 					data->resizeCallback(width, height); //call the stored function
-				}
 			});
 	}
 
@@ -112,10 +111,11 @@ namespace Engine
 	{
 		Logger::LogMessage(Logger::LogType::Message, "Initializing Window...");	
 
+		//assign the context settings
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
-		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
+		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); //request the modern profile
+		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE); //strip away any deprecated opengl features in the modern profile
 
 		//need to do this.
 		//glfwWindowHint(GLFW_DECORATED, GLFW_FALSE); //remove decoration for full screen and windowed borderless, add it back for windowed
@@ -133,12 +133,12 @@ namespace Engine
 		glfwGetFramebufferSize(m_RenderWindow, &m_Info.bufferSize.first, &m_Info.bufferSize.second);
 
 		glfwMakeContextCurrent(m_RenderWindow);
-		glfwSetWindowUserPointer(m_RenderWindow, &m_Info);
+		glfwSetWindowUserPointer(m_RenderWindow, &m_Info); //assign the meta data and settings to the window
 
 		//enable / disable vsync
 		glfwSwapInterval(1);
 
-		Logger::LogMessage(Logger::LogType::Message, "Window Created...");
+		Logger::LogMessage(Logger::LogType::Message, "Window Successfully Created!");
 	}
 
 	void Window::InitializeGLFW()

@@ -23,7 +23,7 @@
 //I would like to add level streaming eventually and have scenes that can be loaded and closed during runtime which would allow the player to 
 //transition through scenes and not even realize it
 
-namespace Engine::Scene
+namespace Viper::Scene
 {
 	class SceneManager
 	{

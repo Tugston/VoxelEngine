@@ -21,7 +21,7 @@
 #include "Core/Core.h"
 #include "Math.h"
 
-namespace Engine::Maths
+namespace Viper::Maths
 {
 	template<typename t>
 	glm::vec2 ConvertVec2ToGLM(const Vector2<t>& conversion)

@@ -28,31 +28,31 @@ if(Utility::Shader* matShader = meshComp->material.shader)\
 	LOG_WARN("<MeshObject.cpp> Material Setup Failed on Object!");\
 }\
 
-namespace Engine::Scene::ECS
+namespace Viper::Scene::ECS
 {
 	static Utility::Mesh GetMeshType(MeshType type, std::optional<UINT16> sideCount)
 	{
 		switch (type)
 		{
-		case Engine::Scene::ECS::MeshType::CUBE_MESH:
+		case Viper::Scene::ECS::MeshType::CUBE_MESH:
 
-		case Engine::Scene::ECS::MeshType::CONE_MESH:
+		case Viper::Scene::ECS::MeshType::CONE_MESH:
 
 			if (sideCount.has_value())
 				return Utility::CreateCone(sideCount.value());
 			else
 				return Utility::CreateCone();
 
-		case Engine::Scene::ECS::MeshType::CYLINDER_MESH:
+		case Viper::Scene::ECS::MeshType::CYLINDER_MESH:
 
 			if (sideCount.has_value())
 				return Utility::CreateCyllinder(sideCount.value());
 			else
 				return Utility::CreateCyllinder();
 		
-		case Engine::Scene::ECS::MeshType::SPHERE_MESH:
+		case Viper::Scene::ECS::MeshType::SPHERE_MESH:
 			break;
-		case Engine::Scene::ECS::MeshType::ARROW_MESH:
+		case Viper::Scene::ECS::MeshType::ARROW_MESH:
 			return Utility::CreateArrow();
 		default:
 			break;

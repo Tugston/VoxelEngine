@@ -30,7 +30,7 @@ if(Utility::Shader* spriteShader = spriteComp->material.shader)\
 	LOG_WARN("<SpriteObject.cpp> Material Setup Failed on Object!");\
 }
 
-namespace Engine::Scene::ECS
+namespace Viper::Scene::ECS
 {
 	static Utility::Mesh GetMeshType(SpriteType type)
 	{

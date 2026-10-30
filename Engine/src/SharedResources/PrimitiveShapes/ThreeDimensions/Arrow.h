@@ -16,7 +16,7 @@
 //ENGN
 #include "SharedResources/GenericResources/Mesh.h"
 
-namespace Engine::Utility
+namespace Viper::Utility
 {
 	//this is just a container exposed since the arrow has quite a few adjustments
 	struct ArrowConstruct {

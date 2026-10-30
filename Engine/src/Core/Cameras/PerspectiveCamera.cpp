@@ -16,12 +16,12 @@
 #include "Core/Application.h"
 
 
-namespace Engine::Camera
+namespace Viper::Camera
 {
 	PerspectiveCamera::PerspectiveCamera()
 	{
 		m_Settings.fov = 90;
-		const Engine::Window* window = Application::GetWindow();
+		const Viper::Window* window = Application::GetWindow();
 		UpdateProjection(window->GetWidth(), window->GetHeight());
 	}
 
@@ -29,7 +29,7 @@ namespace Engine::Camera
 		EditorCamera(position)
 	{
 		m_Settings.fov = 90;
-		const Engine::Window* window = Application::GetWindow();
+		const Viper::Window* window = Application::GetWindow();
 		UpdateProjection(window->GetWidth(), window->GetHeight());
 	}
 
@@ -37,7 +37,7 @@ namespace Engine::Camera
 		EditorCamera(position)
 	{
 		m_Settings.fov = fov;
-		const Engine::Window* window = Application::GetWindow();
+		const Viper::Window* window = Application::GetWindow();
 		UpdateProjection(window->GetWidth(), window->GetHeight());
 	}
 
@@ -45,7 +45,7 @@ namespace Engine::Camera
 		EditorCamera(position, rotation, speed)
 	{
 		m_Settings.fov = fov;
-		const Engine::Window* window = Application::GetWindow();
+		const Viper::Window* window = Application::GetWindow();
 		UpdateProjection(window->GetWidth(), window->GetHeight());
 	}
 

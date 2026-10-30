@@ -13,17 +13,17 @@
 */
 #pragma once
 
-namespace Engine::Renderer
+namespace Viper::Renderer
 {
 	class Renderer;
 }
 
-namespace Engine::Scene
+namespace Viper::Scene
 {
 	class Scene;
 }
 
-namespace Engine::Scene::ECS::Systems
+namespace Viper::Scene::ECS::Systems
 {
 	//utilizes scene to retrieve the render data
 	void SysRenderOpaqueMesh(Scene* scene, Renderer::Renderer* renderer);

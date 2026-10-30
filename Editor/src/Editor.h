@@ -84,7 +84,7 @@ namespace Editor
 	};
 }
 
-Application* Engine::CreateApplication()
+Application* Viper::CreateApplication()
 {
 	LOG_MSG("Editor Application Created");
 	return new Editor::EditorApplication;

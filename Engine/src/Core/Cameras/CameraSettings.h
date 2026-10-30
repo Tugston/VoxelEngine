@@ -19,7 +19,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/quaternion.hpp>
 
-namespace Engine::Camera
+namespace Viper::Camera
 {
 	struct CameraSettings
 	{

@@ -16,7 +16,7 @@
 //ENGN
 #include "SharedResources/GenericResources/Mesh.h"
 
-namespace Engine::Utility
+namespace Viper::Utility
 {
 	Mesh CreateTriangle();
 }

@@ -18,7 +18,7 @@
 #include "SharedResources/GenericResources/Material.h"
 
 
-namespace Engine::Scene::ECS::Components
+namespace Viper::Scene::ECS::Components
 {
 	struct SpriteComponent
 	{

@@ -39,7 +39,7 @@
 ///Forward declaration for the glfw window class
 struct GLFWwindow;
 
-namespace Engine
+namespace Viper
 {
 	///Shorthand for the std::function callback with two integer parameters
 	using WindowResizeCallback = std::function<void(int, int)>;

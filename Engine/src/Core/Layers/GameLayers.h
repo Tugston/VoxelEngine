@@ -19,7 +19,7 @@
 
 #include "Core/Layers/LayerStack.h"
 
-namespace Engine
+namespace Viper
 {
 	class WorldLayer : public Layer
 	{

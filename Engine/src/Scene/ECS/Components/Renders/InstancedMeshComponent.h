@@ -19,7 +19,7 @@
 
 //wip - not important right now
 
-namespace Engine::Scene::ECS::Components
+namespace Viper::Scene::ECS::Components
 {
 	struct InstancedMeshComponent
 	{

@@ -14,7 +14,7 @@
 
 #include "Renderer/Core/RenderCore.h"
 
-namespace Engine::Utility
+namespace Viper::Utility
 {
     Mesh CreateTriangle()
     {

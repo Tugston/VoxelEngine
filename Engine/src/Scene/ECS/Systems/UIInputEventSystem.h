@@ -13,12 +13,12 @@
 */
 #pragma once
 
-namespace Engine::Scene
+namespace Viper::Scene
 {
 	class Scene;
 }
 
-namespace Engine::Scene::ECS::Systems
+namespace Viper::Scene::ECS::Systems
 {
 	void SysUIInputEvent(const std::shared_ptr<Scene>& scene);
 }

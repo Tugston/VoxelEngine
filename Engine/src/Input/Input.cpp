@@ -17,7 +17,7 @@
 
 #include <GL/GL.h>
 
-namespace Engine
+namespace Viper
 {
 	unsigned char InputSystem::m_MouseMoveTolerance = 1;
 

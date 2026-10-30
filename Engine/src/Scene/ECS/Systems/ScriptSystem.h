@@ -16,7 +16,7 @@
 //ENGN
 #include "Scene/ECS/Registry.h"
 
-namespace Engine::Scene::ECS::Systems
+namespace Viper::Scene::ECS::Systems
 {
 	void SysOnScriptConstruct(ECS::Registry& registry);
 	void SysOnScriptStart(ECS::Registry& registry);

@@ -19,7 +19,7 @@
 //VENDOR
 #include <glfw/glfw3.h>
 
-namespace Engine
+namespace Viper
 {
 	enum class EngineKeys
 	{

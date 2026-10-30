@@ -14,7 +14,7 @@
 #pragma once
 #include "EditorCamera.h"
 
-namespace Engine::Camera
+namespace Viper::Camera
 {
 	class PerspectiveCamera : public EditorCamera
 	{

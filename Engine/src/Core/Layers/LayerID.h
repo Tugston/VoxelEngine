@@ -15,7 +15,7 @@
 
 #include "Core/Core.h"
 
-namespace Engine
+namespace Viper
 {
 	enum class LayerID: UINT8 {
 		Unknown		= 0,	//error state (although, I don't really have an implementation for it, just used for initialization)

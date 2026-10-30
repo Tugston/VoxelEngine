@@ -15,7 +15,7 @@
 //STND
 #include <memory>
 
-namespace Engine::Scene::ECS
+namespace Viper::Scene::ECS
 {
 	//***********
 	//GAME OBJECT

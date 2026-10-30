@@ -16,7 +16,7 @@
 AddComponent<Components::ScriptComponent>(std::move(script), this);\
 Components::ScriptComponent* scriptComponent = GetComponent<Components::ScriptComponent>();\
 
-namespace Engine::Scene::ECS
+namespace Viper::Scene::ECS
 {
 	ScriptableObject2D::ScriptableObject2D(ECS::Registry& registry, std::unique_ptr<ScriptModule> script):
 		GameObject2D(registry)

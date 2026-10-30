@@ -59,8 +59,8 @@
 */
 int main(int arc, char** argv)
 {
-	Engine::Logger::Init();
-	auto* game = Engine::CreateApplication();
+	Viper::Logger::Init();
+	auto* game = Viper::CreateApplication();
 	game->Start();
 	delete game;
 }

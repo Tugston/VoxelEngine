@@ -22,7 +22,7 @@
 #include <cstdint>
 
 
-namespace Engine::Renderer
+namespace Viper::Renderer
 {
 	//data types for the attrib pointer
 	enum class ShaderDataType

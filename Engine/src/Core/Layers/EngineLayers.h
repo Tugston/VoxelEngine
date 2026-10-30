@@ -22,7 +22,7 @@
 //ENGINE
 #include "Core/Layers/Layer.h"
 
-namespace Engine
+namespace Viper
 {
 	class EngineWorldLayer : public Layer
 	{

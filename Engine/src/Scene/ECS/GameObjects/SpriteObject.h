@@ -18,7 +18,7 @@
 #include "../Components/Renders/SpriteComponent.h"
 #include "../Components/Tags/RenderComponent.h"
 
-namespace Engine::Scene::ECS
+namespace Viper::Scene::ECS
 {
 	enum class SpriteType: UINT8
 	{

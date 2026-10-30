@@ -16,7 +16,7 @@
 #include "spdlog/sinks/stdout_color_sinks.h"
 #include "spdlog/fmt/ostr.h"
 
-namespace Engine
+namespace Viper
 {
 	std::shared_ptr<spdlog::logger> Logger::s_EngineLogger;
 	std::shared_ptr<spdlog::logger> Logger::s_GameLogger;

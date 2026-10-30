@@ -19,7 +19,7 @@
 #include "Core/Cameras/OrthographicCamera.h"
 #include "SharedResources/GenericResources/Texture.h"
 
-namespace Engine::Renderer
+namespace Viper::Renderer
 {
 	//defaults to window, so no need to setup anything
 	Renderer::Renderer(ViewSize viewportSize):

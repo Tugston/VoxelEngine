@@ -13,7 +13,7 @@
 */
 #pragma once
 
-namespace Engine::Utility
+namespace Viper::Utility
 {
 	//remove atoi error checking
 	inline int FastATOI(const char* string)

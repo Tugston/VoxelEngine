@@ -43,7 +43,7 @@
 //type defines
 //lots of these are competing with basetsd.h, so carefully use these
 //could consider making macros, but typenames are cleaner imo and serving their designed purpose
-namespace Engine {
+namespace Viper {
 	using UINT8 = uint8_t;
 	using UINT16 = uint16_t;
 	using UINT32 = uint32_t;

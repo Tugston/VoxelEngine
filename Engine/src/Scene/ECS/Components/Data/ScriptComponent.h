@@ -20,7 +20,7 @@
 //ENGN
 #include "Core/ScriptModule.h"
 
-namespace Engine::Scene::ECS::Components
+namespace Viper::Scene::ECS::Components
 {
 	//setting script modules to shared pointers 
 	//so it can be accessed by systems and copied

@@ -22,7 +22,7 @@
 
 //this cpp file is a mess, and will always be, using the find tool (ctrl-f) is advised
 
-namespace Engine
+namespace Viper
 {
 	using namespace Scene::ECS;
 
@@ -62,7 +62,7 @@ namespace Engine
 	{
 		glfwTerminate();
 		LayerStack::Destroy();
-		LOG_MESSAGE("Application Stopped!");
+		LOG_MSG("Application Stopped!");
 	}
 
 	void Application::Initialize()
@@ -89,6 +89,7 @@ namespace Engine
 	{
 		CalculateDeltaTime();
 		ProcessInput();
+
 		InputSystem::MouseIdleDetection(m_DeltaTime);
 		InputSystem::SetPreviousMousePos(InputSystem::GetMousePos());
 
@@ -148,7 +149,7 @@ namespace Engine
 
 	void Application::InitializeEngineRootSystems() const
 	{
-		//terminate the engine if a system failed to initialize
+		//helper function to terminate the engine if a system failed to initialize
 		auto InitializeCheck = [](bool status, std::string_view message)
 		{
 			if (status)

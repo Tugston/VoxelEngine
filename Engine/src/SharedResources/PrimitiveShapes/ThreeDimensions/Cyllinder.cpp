@@ -17,7 +17,7 @@
 #include "Core/Logger.h"
 #include "Core/Maths/Math.h"
 
-namespace Engine::Utility
+namespace Viper::Utility
 {
 	Mesh CreateCyllinder(UINT16 sideCount)
 	{

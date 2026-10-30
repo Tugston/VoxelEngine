@@ -25,7 +25,7 @@
 //this is really only a system for the Game's UI to be layered on top of the Game's 3d rendering
 //and it will be like that in every scene, which is why I made this static
 
-namespace Engine
+namespace Viper
 {
 	class LayerStack
 	{
@@ -64,9 +64,9 @@ namespace Engine
 #if defined(EG_DEBUG) || defined(APP_DEBUG)
 	#ifndef REMOVE_ENGINE_UI_LAYER
 	#define REMOVE_ENGINE_UI_LAYER \
-		for(std::vector<Layer*>::iterator i = Engine::LayerStack::CurrentLocation(); i < Engine::LayerStack::Bottom(); i++){\
+		for(std::vector<Layer*>::iterator i = Viper::LayerStack::CurrentLocation(); i < Viper::LayerStack::Bottom(); i++){\
 			if((*i)->GetID() == LayerID::EngineUI){\
-				Engine::LayerStack::RemoveLayer(i);\
+				Viper::LayerStack::RemoveLayer(i);\
 				break;\
 			}\
 		};
@@ -75,9 +75,9 @@ namespace Engine
 	//remove the engine render layer from the layer stack
 	#ifndef REMOVE_ENGINE_DEBUG_LAYER
 	#define REMOVE_ENGINE_DEBUG_LAYER \
-		for(std::vector<Layer*>::iterator i = Engine::LayerStack::Top(); i < Engine::LayerStack::CurrentLocation(); i++){\
+		for(std::vector<Layer*>::iterator i = Viper::LayerStack::Top(); i < Viper::LayerStack::CurrentLocation(); i++){\
 			if((*i)->GetID() == LayerID::EngineWorld){\
-				Engine::LayerStack::RemoveLayer(i);\
+				Viper::LayerStack::RemoveLayer(i);\
 				break;\
 			}\
 		};
@@ -87,9 +87,9 @@ namespace Engine
 	//so adding it just in case, debug only obviously
 	#ifndef REMOVE_GAME_WORLD_LAYER
 	#define REMOVE_GAME_WORLD_LAYER(x)\
-		for(std::vector<Layer*>::iterator i = Engine::LayerStack::Top(); i < Engine::LayerStack::CurrentLocation(); i++){\
+		for(std::vector<Layer*>::iterator i = Viper::LayerStack::Top(); i < Viper::LayerStack::CurrentLocation(); i++){\
 			if((*i)->GetID() == x){\
-				Engine::LayerStack::RemoveLayer(i);\
+				Viper::LayerStack::RemoveLayer(i);\
 				break;\
 			}\
 		};
@@ -111,8 +111,8 @@ namespace Engine
 	//completely removes all ui from the screen
 	//this includes disabling the rendering, input, and hit detection
 	#define REMOVE_UI\
-		for(std::vector<Layer*>::iterator i = Engine::LayerStack::CurrentLocation(); i < Engine::LayerStack::Bottom(); i++){\
-			Engine::LayerStack::RemoveLayer(i);\
+		for(std::vector<Layer*>::iterator i = Viper::LayerStack::CurrentLocation(); i < Viper::LayerStack::Bottom(); i++){\
+			Viper::LayerStack::RemoveLayer(i);\
 			break;\
 		};
 #endif

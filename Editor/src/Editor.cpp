@@ -21,7 +21,7 @@ namespace Editor
 {		
 	ImGuiViewport* imguiViewport = nullptr;
 
-	EditorApplication::EditorApplication() : m_CurrentMode(EditorMode::PanelFocus), Application("Viper Editor", Engine::Renderer::Renderer::RenderTarget::FrameBufferTexture)
+	EditorApplication::EditorApplication() : m_CurrentMode(EditorMode::PanelFocus), Application("Viper Editor", Viper::Renderer::Renderer::RenderTarget::FrameBufferTexture)
 	{
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -132,7 +132,7 @@ namespace Editor
 		ImGui::RenderPlatformWindowsDefault();
 		glfwMakeContextCurrent(backupContext);
 
-		Application::SwapBuffer();
+		//Application::SwapBuffer();
 	}
 
 	void EditorApplication::Draw()

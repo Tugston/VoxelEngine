@@ -19,7 +19,7 @@
 #include "Core/Debug/DebugUI.h"
 
 
-namespace Engine
+namespace Viper
 {
 	//***********//
 	//WORLD LAYER//

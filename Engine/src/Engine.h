@@ -13,6 +13,12 @@
 */
 #pragma once
 
+/**
+* @file Engine.h
+* @brief Includes all neccessary files for the game, editor, or any other derived applications.
+* @details The 
+*/
+
 //STND
 #include	<numbers>
 
@@ -61,11 +67,12 @@
 
 //may update these in the future, since types could have conflations with games
 //or it may be better to have the game be in a game namespace actually, idk. Still deciding.
-using namespace Engine;
-using namespace Engine::Utility;
-using namespace Engine::Scene::ECS;
-using namespace Engine::Scene::ECS::Components;
-using namespace Engine::Camera;
-
+#ifdef NAMESPACE_VIPER
+using namespace Viper;
+using namespace Viper::Utility;
+using namespace Viper::Scene::ECS;
+using namespace Viper::Scene::ECS::Components;
+using namespace Viper::Camera;
+#endif
 
 
