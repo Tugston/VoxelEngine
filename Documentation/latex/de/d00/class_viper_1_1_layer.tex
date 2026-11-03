@@ -1,0 +1,55 @@
+\doxysection{Viper::Layer Class Reference}
+\hypertarget{class_viper_1_1_layer}{}\label{class_viper_1_1_layer}\index{Viper::Layer@{Viper::Layer}}
+Inheritance diagram for Viper::Layer:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.728395cm]{de/d00/class_viper_1_1_layer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_layer_adc97cf8f61fd91df4305f55086ef1e13}\label{class_viper_1_1_layer_adc97cf8f61fd91df4305f55086ef1e13} 
+virtual void {\bfseries Attach} ()=0
+\item 
+\Hypertarget{class_viper_1_1_layer_aa3cc6223ce152ebc72e5448a834db911}\label{class_viper_1_1_layer_aa3cc6223ce152ebc72e5448a834db911} 
+virtual void {\bfseries Detach} ()=0
+\item 
+\Hypertarget{class_viper_1_1_layer_a6b2131e3be6e1b91fd1f900b1f537018}\label{class_viper_1_1_layer_a6b2131e3be6e1b91fd1f900b1f537018} 
+virtual std::\+vector$<$ Entity\+ID $>$ {\bfseries Get\+Draw\+Data} (Renderer::\+\+Render\+Passes pass, ECSRegistry \&registry)=0
+\item 
+\Hypertarget{class_viper_1_1_layer_af77532af7a68036abe6771f4d9a7280b}\label{class_viper_1_1_layer_af77532af7a68036abe6771f4d9a7280b} 
+virtual void {\bfseries Input\+Event} ()=0
+\item 
+\Hypertarget{class_viper_1_1_layer_a92d323a89bf89d9479b1e34785d26e2d}\label{class_viper_1_1_layer_a92d323a89bf89d9479b1e34785d26e2d} 
+Layer\+ID {\bfseries Get\+ID} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_layer_a266148f7c5f92f8b88fc10031d6cfdea}\label{class_viper_1_1_layer_a266148f7c5f92f8b88fc10031d6cfdea} 
+using {\bfseries ECSRegistry} = \doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_registry}{Scene::\+\+ECS::\+\+Registry}}
+\item 
+\Hypertarget{class_viper_1_1_layer_ab745babceac034b0dda98efc28a9c523}\label{class_viper_1_1_layer_ab745babceac034b0dda98efc28a9c523} 
+using {\bfseries Entity\+ID} = Scene::\+\+ECS::\+\+Entity\+ID
+\item 
+\Hypertarget{class_viper_1_1_layer_ad6428f0ac6e3d675d1202b06004175f1}\label{class_viper_1_1_layer_ad6428f0ac6e3d675d1202b06004175f1} 
+using {\bfseries Render\+Component} = \doxymbox{\hyperlink{struct_viper_1_1_scene_1_1_e_c_s_1_1_components_1_1_renderable}{Scene::\+\+ECS::\+\+Components::\+\+Renderable}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_layer_af378b1d670d9a4154f54922164412926}\label{class_viper_1_1_layer_af378b1d670d9a4154f54922164412926} 
+{\bfseries Layer} (Layer\+ID id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_layer_a2131139f9270800d01e63b10d6c84e63}\label{class_viper_1_1_layer_a2131139f9270800d01e63b10d6c84e63} 
+Layer\+ID {\bfseries m\+\_\+\+ID} = Layer\+ID::\+\+Unknown
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Core/\+\+Layers/Layer.\+h\end{DoxyCompactItemize}

@@ -1,6 +1,6 @@
 \doxysection{Math.\+h}
 \hypertarget{_math_8h_source}{}\label{_math_8h_source}\index{Engine/src/Core/Maths/Math.h@{Engine/src/Core/Maths/Math.h}}
-
+\doxymbox{\hyperlink{_math_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{comment}{/*}}
 \DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ Math.h}}
@@ -17,160 +17,176 @@
 \DoxyCodeLine{00013\ \textcolor{comment}{*/}}
 \DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{comment}{//STND}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <utility>}}
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <cmath>}}
-\DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }Engine::Maths}
-\DoxyCodeLine{00021\ \{}
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ t>}
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{struct\ }Vector2}
-\DoxyCodeLine{00024\ \ \ \ \ \{}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ Vector2()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ Vector2(t\ x,\ t\ y)\ :\ x(x),\ y(y)\ \{\}}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ t\ x\ =\ 0;}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ t\ y\ =\ 0;}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ Vector2<t>\ operator+(\textcolor{keyword}{const}\ Vector2<t>\&\ other)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}(Vector2<t>(other.x\ +\ x,\ other.y\ +\ y));\ \}}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ Vector2<t>\ operator-\/(\textcolor{keyword}{const}\ Vector2<t>\&\ other)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}(Vector2<t>(x\ -\/\ other.x,\ y\ -\/\ other.y));\ \}}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ Vector2<t>\ operator=(\textcolor{keyword}{const}\ Vector2<t>\&\ other)}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ ==\ \&other)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>x\ =\ other.x;}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>y\ =\ other.y;}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ t\ Dot(\textcolor{keyword}{const}\ Vector2<t>\&\ other)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00043\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (x\ *\ other.x)\ +\ (y\ *\ other.y);}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ t\ Dot(\textcolor{keyword}{const}\ Vector2<t>\&\ first,\ \textcolor{keyword}{const}\ Vector2<t>\&\ second)}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (first.x\ *\ second.x)\ +\ (first.y\ *\ second.y);}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ t\ Cross(\textcolor{keyword}{const}\ Vector2<t>\&\ other)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00053\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (x\ -\/\ other.y)\ -\/\ (y\ -\/\ other.x);}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ t\ Cross(\textcolor{keyword}{const}\ Vector2<t>\&\ first,\ \textcolor{keyword}{const}\ Vector2<t>\&\ second)}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (first.x\ -\/\ second.y)\ -\/\ (first.y\ -\/\ second.x);}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00061\ }
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{comment}{//this\ will\ have\ a\ serious\ problem\ if\ you\ hit\ the\ max\ size\ of\ t,\ ie\ (t\_max\ *\ t\_max)}}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{comment}{//but\ thats\ a\ problem\ for\ later,\ for\ now\ the\ engine\ is\ just\ going\ to\ be\ used\ very\ carefully\ to\ avoid\ that}}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{comment}{//this\ is\ actually\ true\ for\ all\ these\ functions\ and\ the\ ones\ in\ the\ Vector3,\ and\ Rotator\ as\ well.}}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ Vector2\ Normalize()}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ t\ length\ =\ std::sqrt((x\ *\ x)\ +\ (y\ *\ y));}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Vector2(x\ /\ length,\ y\ /\ length);}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00070\ }
-\DoxyCodeLine{00071\ \ \ \ \ \};}
-\DoxyCodeLine{00072\ }
-\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ t>}
-\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{struct\ }Vector3}
-\DoxyCodeLine{00075\ \ \ \ \ \{}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ Vector3()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ Vector3(t\ x,\ t\ y,\ t\ z)\ :\ x(x),\ y(y),\ z(z)\ \{\}}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ Vector3(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_vector2}{Vector2<t>}}\&\ vec2)\ :\ x(vec2.x),\ y(vec2.y),\ z(0)\ \{\}}
-\DoxyCodeLine{00079\ }
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ t\ x\ =\ 0;}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ t\ y\ =\ 0;}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ t\ z\ =\ 0;}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ Vector3<t>\ operator+(\textcolor{keyword}{const}\ Vector3<t>\&\ other)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Vector3<t>(x\ +\ other.x,\ y\ +\ other.y,\ z\ +\ other.z);\ \}}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ Vector3<t>\ operator-\/(\textcolor{keyword}{const}\ Vector3<t>\&\ other)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Vector3<t>(x\ -\/\ other.x,\ y\ -\/\ other.y,\ z\ -\/\ other.z);\ \}}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ Vector3<t>\ operator*(\textcolor{keyword}{const}\ Vector3<t>\&\ other)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Vector3<t>(x\ *\ other.x,\ y\ *\ other.y,\ z\ *\ other.z);\ \}}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ Vector3<t>\ operator*(\textcolor{keywordtype}{float}\ scalar)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Vector3<t>(x\ *\ scalar,\ y\ *\ scalar,\ z\ *\ scalar);\ \}}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ Vector3<t>\ operator=(\textcolor{keyword}{const}\ Vector3<t>\&\ other)}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ ==\ \&other)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>x\ =\ other.x;}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>y\ =\ other.y;}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>z\ =\ other.z;}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00096\ }
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Floor()}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ std::floor(x);}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ y\ =\ std::floor(y);}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ z\ =\ std::floor(z);}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00103\ }
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ Vector3<t>\ Absolute()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00105\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Vector3<t>(std::abs(x),\ std::abs(y),\ std::abs(z));}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00108\ }
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ Length()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00110\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::sqrt((x\ *\ x)\ +\ (y\ *\ y)\ +\ (z\ *\ z));}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{comment}{//STND}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{namespace\ }Viper::Maths}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ t>}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}}
+\DoxyCodeLine{00034\ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a63da5872ffb034f4435abc068e36565e}{Vector2}}(t\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x}},\ t\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y}})\ :\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x}}(\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x}}),\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y}}(\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y}})\ \{\}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ t\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x}}\ =\ 0;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ t\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y}}\ =\ 0;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2<t>}}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7557fa31eee9757a2c86cc095c13b322}{operator+}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2<t>}}\&\ other)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}(\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2<t>}}(other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x}}\ +\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x}},\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y}}\ +\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y}}));\ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2<t>}}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_ac32a87f48ea24849781c778d9c0e7a6f}{operator-\/}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2<t>}}\&\ other)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}(\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2<t>}}(\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x}}\ -\/\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x}},\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y}}\ -\/\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y}}));\ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{comment}{//need\ to\ add\ multiplying.....}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2<t>}}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_ab7a040f87c8ae3645811eb2d35d8fa90}{operator=}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2<t>}}\&\ other)}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ ==\ \&other)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>x\ =\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x}};}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>y\ =\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y}};}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{comment}{//ADD\ FLOOR\ AND\ CEIL\ FUNCTIONS!}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{comment}{//ADD\ ROUNDING\ WITH\ THE\ DECIMAL\ PLACE!}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{comment}{//ADD\ LENGTH!}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ t\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a8e0fd8e74899c33494269bf9535fe389}{Dot}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2<t>}}\&\ other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00095\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x}}\ *\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x}})\ +\ (\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y}}\ *\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y}});}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ t\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a6dfe1d26b9656e1d13b145db02667ea4}{Dot}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2<t>}}\&\ first,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2<t>}}\&\ second)}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (first.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x}}\ *\ second.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x}})\ +\ (first.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y}}\ *\ second.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y}});}
 \DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00113\ }
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ t\ Dot(\textcolor{keyword}{const}\ Vector3<t>\&\ other)}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (x\ *\ other.x)\ +\ (y\ *\ other.y)\ +\ (z\ *\ other.z);}
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00118\ }
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ t\ Dot(\textcolor{keyword}{const}\ Vector3<t>\&\ first,\ \textcolor{keyword}{const}\ Vector3<t>\&\ second)}
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (first.x\ *\ second.x)\ +\ (first.y\ *\ second.y)\ +\ (first.z\ *\ second.z);}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00123\ }
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{comment}{//other\ value\ is\ the\ direction\ of\ cross\ (left\ hand\ rule)}}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ Vector3<t>\ Cross(\textcolor{keyword}{const}\ Vector3<t>\&\ other)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00126\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Vector3<t>\{}
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (y\ *\ other.z)\ -\/\ (z\ *\ other.y),}
-\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (z\ *\ other.x)\ -\/\ (x\ *\ other.z),}
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (x\ *\ other.y)\ -\/\ (y\ *\ other.x)}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00133\ }
-\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{comment}{//literally\ the\ same\ as\ above\ just\ copy\ pasted\ and\ adjusted}}
-\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ Vector3<t>\ Cross(\textcolor{keyword}{const}\ Vector3<t>\&\ first,\ \textcolor{keyword}{const}\ Vector3<t>\&\ second)}
-\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Vector3<t>\{}
-\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (first.y\ *\ second.z)\ -\/\ (first.z\ *\ second.y),}
-\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (first.z\ *\ second.x)\ -\/\ (first.x\ *\ second.z),}
-\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (first.x\ *\ second.y)\ -\/\ (first.y\ *\ second.x)}
-\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00143\ }
-\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ Vector3\ Normalize()}
-\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ t\ length\ =\ std::sqrt((x\ *\ x)\ +\ (y\ *\ y)\ +\ (z\ *\ z));}
-\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Vector3(x\ /\ length,\ y\ /\ length,\ z\ /\ length);}
-\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00149\ }
-\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ Vector3\ Normalize(\textcolor{keyword}{const}\ Vector3<t>\&\ vector)}
-\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ t\ length\ =\ std::sqrt((vector.x\ *\ vector.x)\ +\ (vector.y\ *\ vector.y)\ +\ (vector.z\ +\ vector.z));}
-\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (length\ >\ 0)}
-\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Vector3(vector.x\ /\ length,\ vector.y\ /\ length,\ vector.z\ /\ length);}
-\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Vector3(vector.x,\ vector.y,\ vector.z);}
-\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00158\ \ \ \ \ \};}
-\DoxyCodeLine{00159\ }
-\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_rotator2}{Rotator2}}}
-\DoxyCodeLine{00161\ \ \ \ \ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ t\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a00052ac6e21cb5b872023449caba729d}{Cross}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2<t>}}\&\ other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00121\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x}}\ -\/\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y}})\ -\/\ (\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y}}\ -\/\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x}});}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ t\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a5b0a971dcfb13761812b3e267fe74802}{Cross}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2<t>}}\&\ first,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2<t>}}\&\ second)}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (first.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x}}\ -\/\ second.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y}})\ -\/\ (first.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y}}\ -\/\ second.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x}});}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a8501fe113b5fa37dbb520930740769da}{Normalize}}()\ \textcolor{comment}{//need\ to\ check\ if\ the\ length\ is\ zero!\ Also,\ use\ the\ Length()\ function.}}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ t\ length\ =\ std::sqrt((\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x}}\ *\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x}})\ +\ (\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y}}\ *\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y}}));}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}(\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x}}\ /\ length,\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y}}\ /\ length);}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ \};}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ t>}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3}}}
+\DoxyCodeLine{00155\ \ \ \ \ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_aaf0fffc30073a75e10ed262d002db3c3}{Vector3}}(t\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}},\ t\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}},\ t\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}})\ :\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}}(\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}}),\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}}(\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}}),\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}}(\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}})\ \{\}}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a63104a409108cd011c232d60e91ce23c}{Vector3}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2}{Vector2<t>}}\&\ vec2)\ :\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}}(vec2.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}}),\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}}(vec2.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}})\ \{\}}
 \DoxyCodeLine{00162\ }
-\DoxyCodeLine{00163\ \ \ \ \ \};}
-\DoxyCodeLine{00164\ }
-\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_engine_1_1_maths_1_1_rotator3}{Rotator3}}}
-\DoxyCodeLine{00166\ \ \ \ \ \{}
-\DoxyCodeLine{00167\ }
-\DoxyCodeLine{00168\ \ \ \ \ \};}
-\DoxyCodeLine{00169\ }
-\DoxyCodeLine{00170\ \}}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ t\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}}\ =\ 0;}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ t\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}}\ =\ 0;}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ t\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}}\ =\ 0;}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7f935248f6764a382dd12262d7b9e66e}{operator+}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}\&\ other)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}(\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}}\ +\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}},\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}}\ +\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}},\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}}\ +\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}});\ \}}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a3732a521eeb29dc19c5c118fc8eb6dbd}{operator-\/}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}\&\ other)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}(\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}}\ -\/\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}},\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}}\ -\/\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}},\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}}\ -\/\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}});\ \}}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a56d8d7b2b406f57876303456354d4a99}{operator*}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}\&\ other)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}(\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}}\ *\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}},\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}}\ *\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}},\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}}\ *\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}});\ \}}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a3ef38e2ad422d0a9dfa123829b5ec6df}{operator*}}(\textcolor{keywordtype}{float}\ scalar)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}(\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}}\ *\ scalar,\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}}\ *\ scalar,\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}}\ *\ scalar);\ \}}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_abb51f5ae6c98043da5ac74bd4f542da8}{operator=}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}\&\ other)}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ ==\ \&other)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>x\ =\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}};}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>y\ =\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}};}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>z\ =\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}};}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a2872c7b07ef21f6a16178875755f0234}{Floor}}()}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}}\ =\ std::floor(\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}});}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}}\ =\ std::floor(\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}});}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}}\ =\ std::floor(\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}});}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \textcolor{comment}{//add\ ceil}}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \textcolor{comment}{//add\ rounding\ with\ the\ decimal\ place}}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a1993b5362139fe262c33878741613d4c}{Absolute}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00241\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}(std::abs(\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}}),\ std::abs(\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}}),\ std::abs(\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}}));}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_adbbb7a4e241c868a44a72340dc1826c9}{Length}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00251\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::sqrt((\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}}\ *\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}})\ +\ (\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}}\ *\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}})\ +\ (\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}}\ *\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}}));}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ t\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7713ebe58af21113488c67ee21680bac}{Dot}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}\&\ other)}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}}\ *\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}})\ +\ (\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}}\ *\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}})\ +\ (\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}}\ *\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}});}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ t\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ad5705a6da123ef19bb74c06b85aa04de}{Dot}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}\&\ first,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}\&\ second)}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (first.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}}\ *\ second.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}})\ +\ (first.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}}\ *\ second.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}})\ +\ (first.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}}\ *\ second.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}});}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00281\ }
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ad58ec7d74dda9339ac1321a089e94036}{Cross}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}\&\ other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00300\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}\{}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}}\ *\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}})\ -\/\ (\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}}\ *\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}}),}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}}\ *\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}})\ -\/\ (\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}}\ *\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}}),}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}}\ *\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}})\ -\/\ (\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}}\ *\ other.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}})}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00307\ }
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_af495a4dc654b1095dfd71bc2133528f6}{Cross}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}\&\ first,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}\&\ second)}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}\{}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (first.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}}\ *\ second.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}})\ -\/\ (first.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}}\ *\ second.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}}),}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (first.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}}\ *\ second.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}})\ -\/\ (first.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}}\ *\ second.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}}),}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (first.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}}\ *\ second.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}})\ -\/\ (first.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}}\ *\ second.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}})}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00335\ }
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3}}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_adc9ef78893d6a188090dc502d81fa74c}{Normalize}}()}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//fix\ this\ to\ check\ if\ zero}}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ t\ lengthStore\ =\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_adbbb7a4e241c868a44a72340dc1826c9}{Length}}();}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3}}(\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}}\ /\ lengthStore,\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}}\ /\ lengthStore,\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}}\ /\ lengthStore);}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00350\ }
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3}}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ae2ef99eeac2d595077c51436933cb297}{Normalize}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3<t>}}\&\ vector)}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//use\ the\ length\ function\ instead\ of\ redoing\ this!}}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ t\ length\ =\ std::sqrt((vector.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}}\ *\ vector.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}})\ +\ (vector.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}}\ *\ vector.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}})\ +\ (vector.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}}\ +\ vector.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}}));}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (length\ >\ 0)}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3}}(vector.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}}\ /\ length,\ vector.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}}\ /\ length,\ vector.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}}\ /\ length);}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a6dbd36e05a57e9f670145faf126d4630}{Vector3}}(vector.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a734140a61e172babf9b6ea6b245c5847}{x}},\ vector.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_a7ac4f0fbb181cf86a7afcd43b24186c6}{y}},\ vector.\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3_ac789fadc4121807c5b091776090938c7}{z}});}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00368\ \ \ \ \ \};}
+\DoxyCodeLine{00369\ }
+\DoxyCodeLine{00370\ \ \ \ \ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_rotator2}{Rotator2}}}
+\DoxyCodeLine{00371\ \ \ \ \ \{}
+\DoxyCodeLine{00372\ }
+\DoxyCodeLine{00373\ \ \ \ \ \};}
+\DoxyCodeLine{00374\ }
+\DoxyCodeLine{00375\ \ \ \ \ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_rotator3}{Rotator3}}}
+\DoxyCodeLine{00376\ \ \ \ \ \{}
+\DoxyCodeLine{00377\ }
+\DoxyCodeLine{00378\ \ \ \ \ \};}
+\DoxyCodeLine{00379\ }
+\DoxyCodeLine{00380\ \}}
 
 \end{DoxyCode}

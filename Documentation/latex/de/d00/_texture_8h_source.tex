@@ -19,11 +19,11 @@
 \DoxyCodeLine{00015\ }
 \DoxyCodeLine{00016\ }
 \DoxyCodeLine{00017\ \textcolor{comment}{//ENGINE}}
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}Core/Core.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_core_8h}{Core/Core.h}}"{}}}
 \DoxyCodeLine{00019\ }
 \DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <stb/stb\_image.h>}}
 \DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }Engine::Utility}
+\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }Viper::Utility}
 \DoxyCodeLine{00023\ \{}
 \DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//these\ values\ were\ sourced\ from\ the\ gl\ constants\ data\ sheet}}
 \DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//raw.githubusercontent.com/KhronosGroup/OpenGL-\/Registry/master/xml/gl.xml?utm}}
@@ -67,7 +67,7 @@
 \DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{comment}{//create\ is\ utilized\ to\ source\ an\ image\ for\ the\ texture\ and\ create\ empty\ is\ just\ passed\ params}}
 \DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Create(std::string\_view\ filename)\ =\ 0;}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ CreateEmpty(\doxymbox{\hyperlink{struct_engine_1_1_utility_1_1_texture_default_params}{TextureDefaultParams}}\ params)\ =\ 0;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ CreateEmpty(\doxymbox{\hyperlink{struct_viper_1_1_utility_1_1_texture_default_params}{TextureDefaultParams}}\ params)\ =\ 0;}
 \DoxyCodeLine{00067\ }
 \DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Bind()\ \textcolor{keyword}{const}\ =\ 0;}
 \DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ UnBind()\ \textcolor{keyword}{const}\ =\ 0;}
@@ -88,7 +88,7 @@
 \DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \string~Texture2D();}
 \DoxyCodeLine{00085\ }
 \DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Create(std::string\_view\ filename)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ CreateEmpty(\doxymbox{\hyperlink{struct_engine_1_1_utility_1_1_texture_default_params}{TextureDefaultParams}}\ params)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ CreateEmpty(\doxymbox{\hyperlink{struct_viper_1_1_utility_1_1_texture_default_params}{TextureDefaultParams}}\ params)\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Bind()\ \textcolor{keyword}{const\ override};}
 \DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ UnBind()\ \textcolor{keyword}{const\ override};}
 \DoxyCodeLine{00090\ }

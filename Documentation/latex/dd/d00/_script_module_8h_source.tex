@@ -17,48 +17,62 @@
 \DoxyCodeLine{00013\ \textcolor{comment}{*/}}
 \DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{comment}{//ENGN}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}Scene/ECS/GameObjects/GameObject.h"{}}}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \textcolor{comment}{//STND}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <memory>}}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }Engine}
-\DoxyCodeLine{00023\ \{}
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{class\ }ScriptModule}
-\DoxyCodeLine{00025\ \ \ \ \ \{}
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{comment}{//using\ classe's\ constructor\ cannot\ gurantee\ engine\ is\ fully\ initialized!}}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{comment}{//so\ please\ only\ utilize\ this\ for\ setting\ script\ members\ from\ the\ application}}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ ScriptModule()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \string~ScriptModule()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00016\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00017\ \textcolor{comment}{*\ @file\ ScriptModule.h}}
+\DoxyCodeLine{00018\ \textcolor{comment}{*\ @brief\ Base\ class\ for\ creating\ scripts\ in\ the\ game.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{*\ }}
+\DoxyCodeLine{00020\ \textcolor{comment}{*\ @details\ Pure\ virtual\ class\ that\ provides\ all\ the\ functions\ required\ to\ get\ a\ script\ registered\ and\ working\ with\ the\ ECS}}
+\DoxyCodeLine{00021\ \textcolor{comment}{*\ }}
+\DoxyCodeLine{00022\ \textcolor{comment}{*\ @author\ Vincent\ Pierce}}
+\DoxyCodeLine{00023\ \textcolor{comment}{*\ @date\ December\ 23,\ 2025}}
+\DoxyCodeLine{00024\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{comment}{//ENGN}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}Scene/ECS/GameObjects/GameObject.h"{}}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{comment}{//STND}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <memory>}}
 \DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ ScriptModule(ScriptModule\&\&\ other)\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ ScriptModule\&\ operator=(ScriptModule\&\&\ other)\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Construct()\ =\ 0;}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Start()\ =\ 0;}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Tick(\textcolor{keywordtype}{float}\ deltaTime)\ =\ 0;}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ SetOwner(\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_game_object}{Scene::ECS::GameObject}}*\ ownerRef)\ \textcolor{keyword}{noexcept}}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//I\ only\ want\ script\ owners\ to\ be\ set\ once\ }}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_Owner\ ||\ !ownerRef)}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ m\_Owner\ =\ ownerRef;}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00048\ }
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_game_object}{Scene::ECS::GameObject}}*\ GetOwner()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00050\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_Owner;}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00053\ }
-\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{comment}{//this\ component\ is\ destroyed\ when\ the\ owning\ game\ object\ is\ destroyed\ anyways}}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_game_object}{Scene::ECS::GameObject}}*\ m\_Owner\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00057\ \ \ \ \ \};}
-\DoxyCodeLine{00058\ \}}
+\DoxyCodeLine{00032\ \textcolor{keyword}{namespace\ }Viper}
+\DoxyCodeLine{00033\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{class\ }ScriptModule}
+\DoxyCodeLine{00035\ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ \ \ \ \ \ \ \ *\ @brief\ Override\ constructor\ for\ each\ script\ usage\ as\ needed.}}
+\DoxyCodeLine{00039\ \textcolor{comment}{\ \ \ \ \ \ \ \ *\ @details\ See\ Construct()\ for\ the\ official\ constructor\ utilized\ by\ the\ engine\ processess.}}
+\DoxyCodeLine{00040\ \textcolor{comment}{\ \ \ \ \ \ \ \ *\ @warning\ Using\ the\ class\ constructor\ cannot\ guarantee\ engine\ is\ fully\ initialized!\ As\ of\ version\ 0.0.2,\ please\ only\ utilize\ this\ for\ setting\ script\ member\ value\ from\ the\ application\ class.}}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ ScriptModule()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{class_viper_1_1_script_module_a470551e38098cc17ca43ca7c1414519b}{\string~ScriptModule}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ ScriptModule(ScriptModule\&\&\ other)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ ScriptModule\&\ operator=(ScriptModule\&\&\ other)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_viper_1_1_script_module_ae56d560d35369e7eb93b4a18444edeeb}{Construct}}()\ =\ 0;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_viper_1_1_script_module_a368cf100e5e836e49105e80a2c0250cf}{Start}}()\ =\ 0;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_viper_1_1_script_module_ac7ef51b557b8e3264e9b8e3cc56065b9}{Tick}}(\textcolor{keywordtype}{float}\ deltaTime)\ =\ 0;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_viper_1_1_script_module_a20db656b5b2271db747c5bd4760f3fd4}{SetOwner}}(\doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_game_object}{Scene::ECS::GameObject}}*\ ownerRef)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//I\ only\ want\ script\ owners\ to\ be\ set\ once\ }}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{class_viper_1_1_script_module_a7710c844de962b5f6a6586f2c1111e88}{m\_Owner}}\ ||\ !ownerRef)}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_viper_1_1_script_module_a7710c844de962b5f6a6586f2c1111e88}{m\_Owner}}\ =\ ownerRef;}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_game_object}{Scene::ECS::GameObject}}*\ \doxymbox{\hyperlink{class_viper_1_1_script_module_af23638aefe5161810264c8d12df27ed9}{GetOwner}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00086\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_viper_1_1_script_module_a7710c844de962b5f6a6586f2c1111e88}{m\_Owner}};}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_game_object}{Scene::ECS::GameObject}}*\ \doxymbox{\hyperlink{class_viper_1_1_script_module_a7710c844de962b5f6a6586f2c1111e88}{m\_Owner}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00096\ \ \ \ \ \};}
+\DoxyCodeLine{00097\ \}}
 
 \end{DoxyCode}

@@ -129,10 +129,10 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d9/d00/_editor
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;CameraSettings.h&quot;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">namespace </span>Engine::Camera</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">namespace </span>Viper::Camera</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
 <div class="foldopen" id="foldopen00020" data-start="{" data-end="};">
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="../../d2/d00/class_engine_1_1_camera_1_1_editor_camera.html">   20</a></span>    <span class="keyword">class </span>EditorCamera {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="../../d3/d00/class_viper_1_1_camera_1_1_editor_camera.html">   20</a></span>    <span class="keyword">class </span>EditorCamera {</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">protected</span>:</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        EditorCamera();</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        EditorCamera(<span class="keyword">const</span> glm::vec3&amp; position);</div>
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d9/d00/_editor
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        glm::vec3 GetRightVector()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_RightVector; } <span class="comment">//returns normalized</span></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        glm::vec3 GetEulerRotation()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_EulerRotation; }</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        glm::quat GetQuatRotation()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_Rotation; }</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <a class="code hl_struct" href="../../d5/d00/struct_engine_1_1_camera_1_1_camera_settings.html">CameraSettings</a> GetSettings()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_Settings; }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <a class="code hl_struct" href="../../d2/d00/struct_viper_1_1_camera_1_1_camera_settings.html">CameraSettings</a> GetSettings()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_Settings; }</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">protected</span>:</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordtype">void</span> UpdateVectors();</div>
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d9/d00/_editor
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        glm::vec3 CalculateRightVector() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <a class="code hl_struct" href="../../d5/d00/struct_engine_1_1_camera_1_1_camera_settings.html">CameraSettings</a> m_Settings;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <a class="code hl_struct" href="../../d2/d00/struct_viper_1_1_camera_1_1_camera_settings.html">CameraSettings</a> m_Settings;</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        glm::quat m_Rotation = glm::quat(glm::vec3(0.f, 0.f, 0.f));</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        glm::vec3 m_EulerRotation = glm::vec3(0.f, 0.f, 0.f);</div>
@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d9/d00/_editor
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>}</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="ttc" id="astruct_engine_1_1_camera_1_1_camera_settings_html"><div class="ttname"><a href="../../d5/d00/struct_engine_1_1_camera_1_1_camera_settings.html">Engine::Camera::CameraSettings</a></div><div class="ttdef"><b>Definition</b> CameraSettings.h:25</div></div>
+<div class="ttc" id="astruct_viper_1_1_camera_1_1_camera_settings_html"><div class="ttname"><a href="../../d2/d00/struct_viper_1_1_camera_1_1_camera_settings.html">Viper::Camera::CameraSettings</a></div><div class="ttdef"><b>Definition</b> CameraSettings.h:25</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

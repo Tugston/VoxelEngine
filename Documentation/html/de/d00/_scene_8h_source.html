@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('de/d00/_scene_
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">//ENGINE</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;Core/Core.h&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="../../d4/d00/_core_8h.html">Core/Core.h</a>&quot;</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;Core/Layers/LayerStack.h&quot;</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;Core/Layers/EngineLayers.h&quot;</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;./ECS/Registry.h&quot;</span></div>
@@ -138,10 +138,10 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('de/d00/_scene_
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &lt;string_view&gt;</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">namespace </span>Engine::Scene</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">namespace </span>Viper::Scene</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>{</div>
 <div class="foldopen" id="foldopen00029" data-start="{" data-end="};">
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="../../d4/d00/class_engine_1_1_scene_1_1_scene.html">   29</a></span>    <span class="keyword">class </span>Scene</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="../../de/d00/class_viper_1_1_scene_1_1_scene.html">   29</a></span>    <span class="keyword">class </span>Scene</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    {</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        Scene();</div>
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('de/d00/_scene_
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keyword">const</span> std::vector&lt;ECS::EntityID&gt; CollectRenderData(Renderer::RenderPasses type);</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="comment">//returns the scene registry, automatically checks validity</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <a class="code hl_class" href="../../d5/d00/class_engine_1_1_scene_1_1_e_c_s_1_1_registry.html">ECS::Registry</a>&amp; GetRegistry();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <a class="code hl_class" href="../../d7/d00/class_viper_1_1_scene_1_1_e_c_s_1_1_registry.html">ECS::Registry</a>&amp; GetRegistry();</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordtype">void</span> AddUI() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordtype">void</span> RemoveUI() <span class="keyword">const</span>;</div>
@@ -167,9 +167,9 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('de/d00/_scene_
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="comment">//DEBUG ONLY</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">    #if defined(EG_DEBUG) || (APP_DEBUG)</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> EnableFullDebugView()<span class="keyword"> const </span>{ LayerStack::PushWorldLayer(<span class="keyword">new</span> <a class="code hl_class" href="../../d9/d00/class_engine_1_1_engine_world_layer.html">EngineWorldLayer</a>()); LayerStack::PushUILayer(<span class="keyword">new</span> <a class="code hl_class" href="../../d7/d00/class_engine_1_1_engine_u_i_layer.html">EngineUILayer</a>()); };</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> EnableDebugUI()<span class="keyword"> const </span>{ LayerStack::PushUILayer(<span class="keyword">new</span> <a class="code hl_class" href="../../d7/d00/class_engine_1_1_engine_u_i_layer.html">EngineUILayer</a>()); };</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> EnableDebugGeometry()<span class="keyword"> const </span>{ LayerStack::PushWorldLayer(<span class="keyword">new</span> <a class="code hl_class" href="../../d9/d00/class_engine_1_1_engine_world_layer.html">EngineWorldLayer</a>()); };</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> EnableFullDebugView()<span class="keyword"> const </span>{ LayerStack::PushWorldLayer(<span class="keyword">new</span> <a class="code hl_class" href="../../d3/d00/class_viper_1_1_engine_world_layer.html">EngineWorldLayer</a>()); LayerStack::PushUILayer(<span class="keyword">new</span> <a class="code hl_class" href="../../d4/d00/class_viper_1_1_engine_u_i_layer.html">EngineUILayer</a>()); };</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> EnableDebugUI()<span class="keyword"> const </span>{ LayerStack::PushUILayer(<span class="keyword">new</span> <a class="code hl_class" href="../../d4/d00/class_viper_1_1_engine_u_i_layer.html">EngineUILayer</a>()); };</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> EnableDebugGeometry()<span class="keyword"> const </span>{ LayerStack::PushWorldLayer(<span class="keyword">new</span> <a class="code hl_class" href="../../d3/d00/class_viper_1_1_engine_world_layer.html">EngineWorldLayer</a>()); };</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> DisableFullDebugView()<span class="keyword"> const </span>{ REMOVE_ENGINE_UI_LAYER; REMOVE_ENGINE_DEBUG_LAYER; };</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> DisableDebugUI()<span class="keyword"> const </span>{ REMOVE_ENGINE_UI_LAYER; };</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> DisableDebugGeometry()<span class="keyword"> const </span>{ REMOVE_ENGINE_DEBUG_LAYER; };</div>
@@ -185,9 +185,10 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('de/d00/_scene_
 </div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>}</div>
-<div class="ttc" id="aclass_engine_1_1_engine_u_i_layer_html"><div class="ttname"><a href="../../d7/d00/class_engine_1_1_engine_u_i_layer.html">Engine::EngineUILayer</a></div><div class="ttdef"><b>Definition</b> EngineLayers.h:42</div></div>
-<div class="ttc" id="aclass_engine_1_1_engine_world_layer_html"><div class="ttname"><a href="../../d9/d00/class_engine_1_1_engine_world_layer.html">Engine::EngineWorldLayer</a></div><div class="ttdef"><b>Definition</b> EngineLayers.h:28</div></div>
-<div class="ttc" id="aclass_engine_1_1_scene_1_1_e_c_s_1_1_registry_html"><div class="ttname"><a href="../../d5/d00/class_engine_1_1_scene_1_1_e_c_s_1_1_registry.html">Engine::Scene::ECS::Registry</a></div><div class="ttdef"><b>Definition</b> Registry.h:33</div></div>
+<div class="ttc" id="a_core_8h_html"><div class="ttname"><a href="../../d4/d00/_core_8h.html">Core.h</a></div><div class="ttdoc">Contains global types, macros, and values for the engine, game, and editor.</div></div>
+<div class="ttc" id="aclass_viper_1_1_engine_u_i_layer_html"><div class="ttname"><a href="../../d4/d00/class_viper_1_1_engine_u_i_layer.html">Viper::EngineUILayer</a></div><div class="ttdef"><b>Definition</b> EngineLayers.h:42</div></div>
+<div class="ttc" id="aclass_viper_1_1_engine_world_layer_html"><div class="ttname"><a href="../../d3/d00/class_viper_1_1_engine_world_layer.html">Viper::EngineWorldLayer</a></div><div class="ttdef"><b>Definition</b> EngineLayers.h:28</div></div>
+<div class="ttc" id="aclass_viper_1_1_scene_1_1_e_c_s_1_1_registry_html"><div class="ttname"><a href="../../d7/d00/class_viper_1_1_scene_1_1_e_c_s_1_1_registry.html">Viper::Scene::ECS::Registry</a></div><div class="ttdef"><b>Definition</b> Registry.h:33</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

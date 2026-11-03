@@ -134,21 +134,21 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d3/d00/_regist
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;any&gt;</span></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">//ENGINE</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;./Core/Core.h&quot;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;./Core/Logger.h&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="../../d4/d00/_core_8h.html">./Core/Core.h</a>&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="../../d6/d00/_logger_8h.html">./Core/Logger.h</a>&quot;</span></div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">namespace </span>Engine::Scene::ECS</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">namespace </span>Viper::Scene::ECS</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>{</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">using </span>EntityID = UINT32;</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">using </span>ComponentTypeID = size_t;</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
 <div class="foldopen" id="foldopen00032" data-start="{" data-end="};">
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="../../d5/d00/class_engine_1_1_scene_1_1_e_c_s_1_1_registry.html">   32</a></span>    <span class="keyword">class </span><a class="code hl_class" href="../../d5/d00/class_engine_1_1_scene_1_1_e_c_s_1_1_registry.html">Registry</a></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="../../d7/d00/class_viper_1_1_scene_1_1_e_c_s_1_1_registry.html">   32</a></span>    <span class="keyword">class </span><a class="code hl_class" href="../../d7/d00/class_viper_1_1_scene_1_1_e_c_s_1_1_registry.html">Registry</a></div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    {</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keyword">public</span>:</div>
 <div class="foldopen" id="foldopen00035" data-start="{" data-end="};">
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="../../d2/d00/struct_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_view.html">   35</a></span>        <span class="keyword">struct </span>ComponentView</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="../../df/d00/struct_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_view.html">   35</a></span>        <span class="keyword">struct </span>ComponentView</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        {</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            ComponentView(ComponentTypeID <span class="keywordtype">id</span>, <span class="keywordtype">void</span>* data): type(<span class="keywordtype">id</span>), data(data) {}</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            ComponentTypeID type;</div>
@@ -191,13 +191,13 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d3/d00/_regist
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            <span class="keywordflow">if</span> (pool-&gt;HasComponent(entityID))</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                pool-&gt;RemoveComponent(entityID);</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                LOG_MSG(<span class="stringliteral">&quot;&lt;Registry.h&gt; (RemoveComponent) Entity [ {} ] does not contain {} component, removed nothing&quot;</span>, entityID, <span class="keyword">typeid</span>(t).name());</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                ViperLOG_MSG(<span class="stringliteral">&quot;&lt;Registry.h&gt; (RemoveComponent) Entity [ {} ] does not contain {} component, removed nothing&quot;</span>, entityID, <span class="keyword">typeid</span>(t).name());</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        }</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> t&gt;</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        t* GetComponent(EntityID entityID)</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        {</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            <a class="code hl_class" href="../../d2/d00/class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool.html">ComponentPool&lt;t&gt;</a>* pool = GetPool&lt;t&gt;();</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            <a class="code hl_class" href="../../d3/d00/class_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool.html">ComponentPool&lt;t&gt;</a>* pool = GetPool&lt;t&gt;();</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            <span class="keywordflow">if</span> (pool-&gt;HasComponent(entityID))</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                <span class="keywordflow">return</span> pool-&gt;GetComponent&lt;t&gt;(entityID);</div>
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d3/d00/_regist
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> t&gt;</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keyword">const</span> std::vector&lt;EntityID&gt;* GetAllEntitiesWithComponent()</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        {</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            <span class="keyword">const</span> <a class="code hl_class" href="../../d2/d00/class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool.html">ComponentPool&lt;t&gt;</a>* pool = GetPool&lt;t&gt;();</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            <span class="keyword">const</span> <a class="code hl_class" href="../../d3/d00/class_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool.html">ComponentPool&lt;t&gt;</a>* pool = GetPool&lt;t&gt;();</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            <span class="keywordflow">return</span> &amp;pool-&gt;denseEntities;</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        }</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
@@ -224,9 +224,9 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d3/d00/_regist
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keyword">protected</span>:</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
 <div class="foldopen" id="foldopen00109" data-start="{" data-end="};">
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="../../d4/d00/class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool.html">  109</a></span>        <span class="keyword">class </span><a class="code hl_class" href="../../d4/d00/class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool.html">InheritPool</a> {</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="../../d4/d00/class_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool.html">  109</a></span>        <span class="keyword">class </span><a class="code hl_class" href="../../d4/d00/class_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool.html">InheritPool</a> {</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            <span class="keyword">virtual</span> <a class="code hl_class" href="../../d4/d00/class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool.html">~InheritPool</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            <span class="keyword">virtual</span> <a class="code hl_class" href="../../d4/d00/class_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool.html">~InheritPool</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            <span class="comment">//need to add these as the inherit so it can be accessed without the cast</span></div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            <span class="comment">//since the component pool needs to represent any type of component</span></div>
@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d3/d00/_regist
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="comment">//sparse set implementation that I think works</span></div>
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> t&gt;</div>
 <div class="foldopen" id="foldopen00123" data-start="{" data-end="};">
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="../../d2/d00/class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool.html">  123</a></span>        <span class="keyword">class </span>ComponentPool : <span class="keyword">public</span> <a class="code hl_class" href="../../d4/d00/class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool.html">InheritPool</a></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="../../d3/d00/class_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool.html">  123</a></span>        <span class="keyword">class </span>ComponentPool : <span class="keyword">public</span> <a class="code hl_class" href="../../d4/d00/class_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool.html">InheritPool</a></div>
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        {</div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            ComponentPool()</div>
@@ -337,7 +337,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d3/d00/_regist
 <div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    <span class="keyword">private</span>:</div>
 <div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        <span class="comment">//this the culptrit I was ranting about at the top</span></div>
 <div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> t&gt;</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        <a class="code hl_class" href="../../d2/d00/class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool.html">ComponentPool&lt;t&gt;</a>* GetPool()</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        <a class="code hl_class" href="../../d3/d00/class_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool.html">ComponentPool&lt;t&gt;</a>* GetPool()</div>
 <div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        {</div>
 <div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>            std::type_index poolID(<span class="keyword">typeid</span>(t));</div>
 <div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>            <span class="keyword">auto</span> foundPoolIt = m_Components.find(poolID);</div>
@@ -347,7 +347,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d3/d00/_regist
 <div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>            <span class="keywordflow">if</span> (foundPoolIt == m_Components.end())</div>
 <div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>            {</div>
 <div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>                std::unique_ptr&lt;ComponentPool&lt;t&gt;&gt; pool = std::make_unique&lt;ComponentPool&lt;t&gt;&gt;();</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>                <a class="code hl_class" href="../../d2/d00/class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool.html">ComponentPool&lt;t&gt;</a>* poolPtr = pool.get();</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>                <a class="code hl_class" href="../../d3/d00/class_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool.html">ComponentPool&lt;t&gt;</a>* poolPtr = pool.get();</div>
 <div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>                m_Components.emplace(poolID, std::move(pool));</div>
 <div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>                <span class="keywordflow">return</span> poolPtr;</div>
 <div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>            }</div>
@@ -362,9 +362,11 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d3/d00/_regist
 <div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    };</div>
 </div>
 <div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>}</div>
-<div class="ttc" id="aclass_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool_html"><div class="ttname"><a href="../../d2/d00/class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool.html">Engine::Scene::ECS::Registry::ComponentPool</a></div><div class="ttdef"><b>Definition</b> Registry.h:124</div></div>
-<div class="ttc" id="aclass_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool_html"><div class="ttname"><a href="../../d4/d00/class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool.html">Engine::Scene::ECS::Registry::InheritPool</a></div><div class="ttdef"><b>Definition</b> Registry.h:109</div></div>
-<div class="ttc" id="aclass_engine_1_1_scene_1_1_e_c_s_1_1_registry_html"><div class="ttname"><a href="../../d5/d00/class_engine_1_1_scene_1_1_e_c_s_1_1_registry.html">Engine::Scene::ECS::Registry</a></div><div class="ttdef"><b>Definition</b> Registry.h:33</div></div>
+<div class="ttc" id="a_core_8h_html"><div class="ttname"><a href="../../d4/d00/_core_8h.html">Core.h</a></div><div class="ttdoc">Contains global types, macros, and values for the engine, game, and editor.</div></div>
+<div class="ttc" id="a_logger_8h_html"><div class="ttname"><a href="../../d6/d00/_logger_8h.html">Logger.h</a></div><div class="ttdoc">Handles logging text to the console window.</div></div>
+<div class="ttc" id="aclass_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool_html"><div class="ttname"><a href="../../d3/d00/class_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool.html">Viper::Scene::ECS::Registry::ComponentPool</a></div><div class="ttdef"><b>Definition</b> Registry.h:124</div></div>
+<div class="ttc" id="aclass_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool_html"><div class="ttname"><a href="../../d4/d00/class_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool.html">Viper::Scene::ECS::Registry::InheritPool</a></div><div class="ttdef"><b>Definition</b> Registry.h:109</div></div>
+<div class="ttc" id="aclass_viper_1_1_scene_1_1_e_c_s_1_1_registry_html"><div class="ttname"><a href="../../d7/d00/class_viper_1_1_scene_1_1_e_c_s_1_1_registry.html">Viper::Scene::ECS::Registry</a></div><div class="ttdef"><b>Definition</b> Registry.h:33</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

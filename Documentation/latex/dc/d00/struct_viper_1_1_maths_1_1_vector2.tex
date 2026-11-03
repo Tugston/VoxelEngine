@@ -1,0 +1,213 @@
+\doxysection{Viper::Maths::Vector2\texorpdfstring{$<$}{<} t \texorpdfstring{$>$}{>} Struct Template Reference}
+\hypertarget{struct_viper_1_1_maths_1_1_vector2}{}\label{struct_viper_1_1_maths_1_1_vector2}\index{Viper::Maths::Vector2$<$ t $>$@{Viper::Maths::Vector2$<$ t $>$}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}\label{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35} 
+{\bfseries Vector2} ()=default
+\begin{DoxyCompactList}\small\item\em Assigns the \doxylink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x} and \doxylink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y} values to 0 by default. \end{DoxyCompactList}\item 
+\Hypertarget{struct_viper_1_1_maths_1_1_vector2_a63da5872ffb034f4435abc068e36565e}\label{struct_viper_1_1_maths_1_1_vector2_a63da5872ffb034f4435abc068e36565e} 
+{\bfseries Vector2} (t x, t y)
+\begin{DoxyCompactList}\small\item\em Create a new \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2} and assign a custom \doxylink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x} and \doxylink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y} value. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7557fa31eee9757a2c86cc095c13b322}{operator+}} (const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \&other) const
+\begin{DoxyCompactList}\small\item\em Addition operator overload function. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_ac32a87f48ea24849781c778d9c0e7a6f}{operator-\/}} (const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \&other) const
+\begin{DoxyCompactList}\small\item\em Subtraction operator overload function. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_ab7a040f87c8ae3645811eb2d35d8fa90}{operator=}} (const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \&other)
+\begin{DoxyCompactList}\small\item\em Assignment operator overload function. \end{DoxyCompactList}\item 
+t \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a8e0fd8e74899c33494269bf9535fe389}{Dot}} (const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \&other) const
+\begin{DoxyCompactList}\small\item\em Caculates the floating scale that represent the two \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2} direction simularity. \end{DoxyCompactList}\item 
+t \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a00052ac6e21cb5b872023449caba729d}{Cross}} (const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \&other) const
+\begin{DoxyCompactList}\small\item\em Calculates an orthogonal third direction from both vectors utilizing the current one. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}} \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a8501fe113b5fa37dbb520930740769da}{Normalize}} ()
+\begin{DoxyCompactList}\small\item\em Resize the \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2} down to a scaled direction between 0 and 1 while maintaining relevancy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static t \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a6dfe1d26b9656e1d13b145db02667ea4}{Dot}} (const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \&first, const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \&second)
+\begin{DoxyCompactList}\small\item\em Dot utility for two uninstantiated \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2} classes. \end{DoxyCompactList}\item 
+static t \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a5b0a971dcfb13761812b3e267fe74802}{Cross}} (const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \&first, const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \&second)
+\begin{DoxyCompactList}\small\item\em Calculates an orthogonal third direction from two uninstantiated vectors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}\label{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11} 
+t {\bfseries x} = 0
+\begin{DoxyCompactList}\small\item\em Left and right direction. \end{DoxyCompactList}\item 
+\Hypertarget{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}\label{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4} 
+t {\bfseries y} = 0
+\begin{DoxyCompactList}\small\item\em Up and down direction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{struct_viper_1_1_maths_1_1_vector2_doc-func-members}
+\Hypertarget{struct_viper_1_1_maths_1_1_vector2_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_viper_1_1_maths_1_1_vector2_a5b0a971dcfb13761812b3e267fe74802}\index{Viper::Maths::Vector2$<$ t $>$@{Viper::Maths::Vector2$<$ t $>$}!Cross@{Cross}}
+\index{Cross@{Cross}!Viper::Maths::Vector2$<$ t $>$@{Viper::Maths::Vector2$<$ t $>$}}
+\doxysubsubsection{\texorpdfstring{Cross()}{Cross()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{struct_viper_1_1_maths_1_1_vector2_a5b0a971dcfb13761812b3e267fe74802} 
+template$<$typename t$>$ \\
+t \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2}{Viper::\+\+Maths::\+\+Vector2}}$<$ t $>$::\+\+Cross (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \&}]{first}{, }\item[{const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \&}]{second}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Calculates an orthogonal third direction from two uninstantiated vectors. 
+
+Subtracts the first \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2} \doxylink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x} from the second \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2} \doxylink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y}. Perform the same operation for the first Vector \doxylink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y} and second \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2} \doxylink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x}. Then subtract both results.
+
+\begin{DoxyReturn}{Returns}
+The calculated orthogonal vector. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Order of the parameters matter. Swapping the first and second \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2} causes a positive and negative cross product differential. 
+\end{DoxyNote}
+\Hypertarget{struct_viper_1_1_maths_1_1_vector2_a00052ac6e21cb5b872023449caba729d}\index{Viper::Maths::Vector2$<$ t $>$@{Viper::Maths::Vector2$<$ t $>$}!Cross@{Cross}}
+\index{Cross@{Cross}!Viper::Maths::Vector2$<$ t $>$@{Viper::Maths::Vector2$<$ t $>$}}
+\doxysubsubsection{\texorpdfstring{Cross()}{Cross()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{struct_viper_1_1_maths_1_1_vector2_a00052ac6e21cb5b872023449caba729d} 
+template$<$typename t$>$ \\
+t \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2}{Viper::\+\+Maths::\+\+Vector2}}$<$ t $>$::\+\+Cross (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calculates an orthogonal third direction from both vectors utilizing the current one. 
+
+Subtracts the current \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2} \doxylink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x} from the other\textquotesingle{}s y. Performs the same operation for the other two parameters. Finally subtracts both results. This operation follows the (flat) Left Hand rule.
+
+\begin{DoxyReturn}{Returns}
+The calculated orthogonal vector. 
+\end{DoxyReturn}
+\Hypertarget{struct_viper_1_1_maths_1_1_vector2_a6dfe1d26b9656e1d13b145db02667ea4}\index{Viper::Maths::Vector2$<$ t $>$@{Viper::Maths::Vector2$<$ t $>$}!Dot@{Dot}}
+\index{Dot@{Dot}!Viper::Maths::Vector2$<$ t $>$@{Viper::Maths::Vector2$<$ t $>$}}
+\doxysubsubsection{\texorpdfstring{Dot()}{Dot()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{struct_viper_1_1_maths_1_1_vector2_a6dfe1d26b9656e1d13b145db02667ea4} 
+template$<$typename t$>$ \\
+t \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2}{Viper::\+\+Maths::\+\+Vector2}}$<$ t $>$::\+\+Dot (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \&}]{first}{, }\item[{const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \&}]{second}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Dot utility for two uninstantiated \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2} classes. 
+
+Calculates the floating scale that represents the two \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2} direction simularity.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em first} & The first \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2} of the calculation. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em second} & The second \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2} needed for the calculation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The order of the first and second \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2} does not matter.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Calculated dot product. 
+\end{DoxyReturn}
+\Hypertarget{struct_viper_1_1_maths_1_1_vector2_a8e0fd8e74899c33494269bf9535fe389}\index{Viper::Maths::Vector2$<$ t $>$@{Viper::Maths::Vector2$<$ t $>$}!Dot@{Dot}}
+\index{Dot@{Dot}!Viper::Maths::Vector2$<$ t $>$@{Viper::Maths::Vector2$<$ t $>$}}
+\doxysubsubsection{\texorpdfstring{Dot()}{Dot()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{struct_viper_1_1_maths_1_1_vector2_a8e0fd8e74899c33494269bf9535fe389} 
+template$<$typename t$>$ \\
+t \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2}{Viper::\+\+Maths::\+\+Vector2}}$<$ t $>$::\+\+Dot (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Caculates the floating scale that represent the two \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2} direction simularity. 
+
+Multiply this \doxylink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x} by the other \doxylink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x} value. Do the same for \doxylink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y} and add the products together.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em other} & The other vector needing to be evaluated for the dot product. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Calculated dot product. 
+\end{DoxyReturn}
+\Hypertarget{struct_viper_1_1_maths_1_1_vector2_a8501fe113b5fa37dbb520930740769da}\index{Viper::Maths::Vector2$<$ t $>$@{Viper::Maths::Vector2$<$ t $>$}!Normalize@{Normalize}}
+\index{Normalize@{Normalize}!Viper::Maths::Vector2$<$ t $>$@{Viper::Maths::Vector2$<$ t $>$}}
+\doxysubsubsection{\texorpdfstring{Normalize()}{Normalize()}}
+{\footnotesize\ttfamily \label{struct_viper_1_1_maths_1_1_vector2_a8501fe113b5fa37dbb520930740769da} 
+template$<$typename t$>$ \\
+\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}} \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2}{Viper::\+\+Maths::\+\+Vector2}}$<$ t $>$::\+\+Normalize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Resize the \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2} down to a scaled direction between 0 and 1 while maintaining relevancy. 
+
+Calculates the total length of the \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2} by square rooting the results of \doxylink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x} squared added to \doxylink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y} squared. Then the final normalized vector has \doxylink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x} and \doxylink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y} divided by this length value.
+
+\begin{DoxyReturn}{Returns}
+The normalized value between 0 and 1 that is relevant to the original value.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+As of version 0.\+0.\+2, this function will have a serious problem if you hit the max size of t, ie (t\+\_\+max \texorpdfstring{$\ast$}{*} t\+\_\+max). This issue is technically present for all the functions in the \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2}. As of the current version, the solution is to not intentionally cause undefined behavior by Signed Overflow. 
+\end{DoxyWarning}
+\Hypertarget{struct_viper_1_1_maths_1_1_vector2_a7557fa31eee9757a2c86cc095c13b322}\index{Viper::Maths::Vector2$<$ t $>$@{Viper::Maths::Vector2$<$ t $>$}!operator+@{operator+}}
+\index{operator+@{operator+}!Viper::Maths::Vector2$<$ t $>$@{Viper::Maths::Vector2$<$ t $>$}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily \label{struct_viper_1_1_maths_1_1_vector2_a7557fa31eee9757a2c86cc095c13b322} 
+template$<$typename t$>$ \\
+\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2}{Viper::\+\+Maths::\+\+Vector2}}$<$ t $>$::\+operator+ (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Addition operator overload function. 
+
+Adds the \doxylink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x} and \doxylink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y} value of the second vector to the first one.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em other} & The second vector being added to this one. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2} from the calculated operation. 
+\end{DoxyReturn}
+\Hypertarget{struct_viper_1_1_maths_1_1_vector2_ac32a87f48ea24849781c778d9c0e7a6f}\index{Viper::Maths::Vector2$<$ t $>$@{Viper::Maths::Vector2$<$ t $>$}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Viper::Maths::Vector2$<$ t $>$@{Viper::Maths::Vector2$<$ t $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}}
+{\footnotesize\ttfamily \label{struct_viper_1_1_maths_1_1_vector2_ac32a87f48ea24849781c778d9c0e7a6f} 
+template$<$typename t$>$ \\
+\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2}{Viper::\+\+Maths::\+\+Vector2}}$<$ t $>$::\+operator-\/ (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Subtraction operator overload function. 
+
+Subtracts the second \doxylink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x} and \doxylink{struct_viper_1_1_maths_1_1_vector2_a4e13f2055e1db526c9fab6df877fece4}{y} vlaue from this one.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em other} & The second vector being subtracted from this one. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2} from the subtracted operation. 
+\end{DoxyReturn}
+\Hypertarget{struct_viper_1_1_maths_1_1_vector2_ab7a040f87c8ae3645811eb2d35d8fa90}\index{Viper::Maths::Vector2$<$ t $>$@{Viper::Maths::Vector2$<$ t $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!Viper::Maths::Vector2$<$ t $>$@{Viper::Maths::Vector2$<$ t $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{struct_viper_1_1_maths_1_1_vector2_ab7a040f87c8ae3645811eb2d35d8fa90} 
+template$<$typename t$>$ \\
+\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2}{Viper::\+\+Maths::\+\+Vector2}}$<$ t $>$::\+operator= (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2_a7b7b39d07dbe3a284c08ed8f87e7af35}{Vector2}}$<$ t $>$ \&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Assignment operator overload function. 
+
+Checks to ensure the current \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2} is not the same object as the reference being passed in. Assign the other \doxylink{struct_viper_1_1_maths_1_1_vector2_abb90e2eb9a7d6763050f92cd180d9b11}{x} value to the current one, and do the same for y. Then finally return.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em other} & The vector that is being assigned to this current one.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Dereferenced pointer to the current \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2}. If the other \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2} parameter is equal to the current one, just return the current as is. 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Core/\+\+Maths/\doxymbox{\hyperlink{_math_8h}{Math.\+h}}\end{DoxyCompactItemize}

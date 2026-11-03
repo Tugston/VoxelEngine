@@ -15,6 +15,15 @@
 #include <cassert>
 #include <numbers>
 
+/**
+* @file Core.h
+* @brief Contains global types, macros, and values for the engine, game, and editor.
+* @details Detects the os through premake build, currently only supported on Windows. Adds the assertion macro for major fatal errors that are better for the application to crash than continue. Defines GLFW_INCLUDE_NONE to allow application to handle gl.h. Defines various types and provides base utility macros.
+* 
+* @author Vincent Pierce
+* @date February 15, 2025
+*/
+
 //premake system config check
 #ifdef ENGINE_PLATFORM_WINDOWS
 		#define EG_PRJ //Engine Project (used as an easy way to differentiate the projects for other macros, without needing to check ENGINE_BUILD_DLL)
@@ -22,7 +31,8 @@
 	#error Sorry! ONLY SUPPORTED ON WINDOWS! (FUTURE ME HERE: MAY ADD MORE IN THE FUTURE, BUT ITS A PAIN AT THIS POINT!, I AM HAVING TO STATIC LINK INSTEAD OF DYNAMIC LINK AND THIS ALONE IS PAINFUL)
 #endif
 
-//I need to make a custom (debug only) assertion soon, before assertions get out of hand
+//I need to make a custom assertion soon, before assertions get out of hand.
+//Needs to work in distribution as well to display crash dump info.
 #ifdef EG_DEBUG
 	#ifndef EG_ASSERT
 		#define EG_ASSERT(...) assert(__VA_ARGS__)

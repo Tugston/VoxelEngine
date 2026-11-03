@@ -17,13 +17,13 @@ The overarching class for engine processes.
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \doxymbox{\hyperlink{class_engine_1_1_application}{Engine::\+\+Application}}
+class \doxymbox{\hyperlink{class_viper_1_1_application}{Viper::\+\+Application}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\doxymbox{\hyperlink{class_engine_1_1_application}{Application}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{_application_8h_a35016cfcb578c1f00f887ab607ff7fb9}{Engine::\+\+Create\+Application}} ()
-\begin{DoxyCompactList}\small\item\em \doxylink{class_engine_1_1_application}{Application} creation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxymbox{\hyperlink{class_viper_1_1_application}{Application}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{_application_8h_aca6e31aa2e27cb997913f2142d6380fc}{Viper::\+\+Create\+Application}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_viper_1_1_application}{Application} creation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -48,11 +48,11 @@ February 17, 2025
 \label{_application_8h_doc-func-members}
 \Hypertarget{_application_8h_doc-func-members}
 \doxysubsection{Function Documentation}
-\Hypertarget{_application_8h_a35016cfcb578c1f00f887ab607ff7fb9}\index{Application.h@{Application.h}!CreateApplication@{CreateApplication}}
+\Hypertarget{_application_8h_aca6e31aa2e27cb997913f2142d6380fc}\index{Application.h@{Application.h}!CreateApplication@{CreateApplication}}
 \index{CreateApplication@{CreateApplication}!Application.h@{Application.h}}
 \doxysubsubsection{\texorpdfstring{CreateApplication()}{CreateApplication()}}
-{\footnotesize\ttfamily \label{_application_8h_a35016cfcb578c1f00f887ab607ff7fb9} 
-Application \texorpdfstring{$\ast$}{*} Engine::\+\+Create\+Application (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+{\footnotesize\ttfamily \label{_application_8h_aca6e31aa2e27cb997913f2142d6380fc} 
+Application \texorpdfstring{$\ast$}{*} Viper::\+\+Create\+Application (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
 
 
 
@@ -69,9 +69,9 @@ A raw pointer to the custom game instance
 \hypertarget{_application_8h_autotoc_md0}{}\doxysubsubsubsection{\texorpdfstring{Example Usage}{Example Usage}}\label{_application_8h_autotoc_md0}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{class\ }YourCustomGame\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_engine_1_1_application}{Engine::Application}}\ \{\ ...\ \};}
+\DoxyCodeLine{\textcolor{keyword}{class\ }YourCustomGame\ :\ \textcolor{keyword}{public}\ Engine::Application\ \{\ ...\ \};}
 \DoxyCodeLine{}
-\DoxyCodeLine{\doxymbox{\hyperlink{class_engine_1_1_application}{Engine::Application}}*\ \doxymbox{\hyperlink{_application_8h_a35016cfcb578c1f00f887ab607ff7fb9}{Engine::CreateApplication}}()\ \{}
+\DoxyCodeLine{Engine::Application*\ Engine::CreateApplication()\ \{}
 \DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ YourCustomGame();}
 \DoxyCodeLine{\}}
 

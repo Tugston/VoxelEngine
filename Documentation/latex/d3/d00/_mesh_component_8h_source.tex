@@ -21,12 +21,12 @@
 \DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}SharedResources/GenericResources/Mesh.h"{}}}
 \DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}SharedResources/GenericResources/Material.h"{}}}
 \DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }Engine::Scene::ECS::Components}
+\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }Viper::Scene::ECS::Components}
 \DoxyCodeLine{00021\ \{}
 \DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{struct\ }MeshComponent}
 \DoxyCodeLine{00023\ \ \ \ \ \{}
 \DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ MeshComponent()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ MeshComponent(std::unique\_ptr<Utility::Mesh>\ mesh,\ \doxymbox{\hyperlink{struct_engine_1_1_utility_1_1_material}{Utility::Material}}\ mat):\ mesh(std::move(mesh)),\ material(material)\ \{\}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ MeshComponent(std::unique\_ptr<Utility::Mesh>\ mesh,\ \doxymbox{\hyperlink{struct_viper_1_1_utility_1_1_material}{Utility::Material}}\ mat):\ mesh(std::move(mesh)),\ material(material)\ \{\}}
 \DoxyCodeLine{00026\ }
 \DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ MeshComponent(\textcolor{keyword}{const}\ MeshComponent\&)\ =\ \textcolor{keyword}{delete};}
 \DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ MeshComponent\&\ operator=(\textcolor{keyword}{const}\ MeshComponent\&)\ =\ \textcolor{keyword}{delete};}
@@ -35,7 +35,7 @@
 \DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ MeshComponent\&\ operator=(MeshComponent\&\&)\ \textcolor{keyword}{noexcept}\ =\ \textcolor{keywordflow}{default};}
 \DoxyCodeLine{00032\ }
 \DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ std::unique\_ptr<Utility::Mesh>\ mesh;}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_engine_1_1_utility_1_1_material}{Utility::Material}}\ material;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_viper_1_1_utility_1_1_material}{Utility::Material}}\ material;}
 \DoxyCodeLine{00035\ \ \ \ \ \};}
 \DoxyCodeLine{00036\ \}}
 

@@ -1,0 +1,144 @@
+\doxysection{Engine/\+src/\+\+Core/\+\+Maths/\+\+Internal\+Math.h File Reference}
+\hypertarget{_internal_math_8h}{}\label{_internal_math_8h}\index{Engine/src/Core/Maths/InternalMath.h@{Engine/src/Core/Maths/InternalMath.h}}
+
+
+Viper\textquotesingle{}s math translation utility functions.  
+
+
+{\ttfamily \+\#include $<$glm/\+glm.\+hpp$>$}\newline
+{\ttfamily \+\#include $<$glm/\+gtc/\+matrix\+\_\+transform.\+hpp$>$}\newline
+{\ttfamily \+\#include "{}Core/\+\+Core.\+h"{}}\newline
+{\ttfamily \+\#include "{}Math.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename t$>$ }\\glm::\+vec2 \doxymbox{\hyperlink{_internal_math_8h_a967092eb8ca6832c9e117753133123bd}{Viper::\+\+Maths::\+\+Convert\+Vec2\+To\+GLM}} (const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2}{Vector2}}$<$ t $>$ \&conversion)
+\begin{DoxyCompactList}\small\item\em Convert a Viper \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2} to the corresponding glm vec2. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename t$>$ }\\\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2}{Vector2}}$<$ t $>$ \doxymbox{\hyperlink{_internal_math_8h_a79781194c07d25c3e2d95a6e0331cbea}{Viper::\+\+Maths::\+\+Convert\+Vec2\+To\+Maths}} (const glm::\+vec2 \&conversion)
+\begin{DoxyCompactList}\small\item\em Convert a glm vec2 to the corresponding Viper \doxylink{struct_viper_1_1_maths_1_1_vector2}{Vector2}. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename t$>$ }\\glm::\+vec3 \doxymbox{\hyperlink{_internal_math_8h_a110bc4cb96fac7611cb92a607f3baf06}{Viper::\+\+Maths::\+\+Convert\+Vec3\+To\+GLM}} (const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3}{Vector3}}$<$ t $>$ \&conversion)
+\begin{DoxyCompactList}\small\item\em Convert a Viper \doxylink{struct_viper_1_1_maths_1_1_vector3}{Vector3} to the corresponding glm vec3. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename t$>$ }\\\doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3}{Vector3}}$<$ t $>$ \doxymbox{\hyperlink{_internal_math_8h_ae3a50c1eac66fca8ced67ade1fc37ca6}{Viper::\+\+Maths::\+\+Convert\+Vec3\+To\+Maths}} (const glm::\+vec3 \&conversion)
+\begin{DoxyCompactList}\small\item\em Convert a glm vec3 to a Viper \doxylink{struct_viper_1_1_maths_1_1_vector3}{Vector3}. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename t$>$ }\\glm::\+mat4 \doxymbox{\hyperlink{_internal_math_8h_a7422eda244deded10837e38d4f46a094}{Viper::\+\+Maths::\+\+Transform3\+DTo\+Model\+Matrix}} (const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3}{Vector3}}$<$ t $>$ \&location, const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3}{Vector3}}$<$ t $>$ \&rotation, const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3}{Vector3}}$<$ t $>$ \&scale)
+\begin{DoxyCompactList}\small\item\em Create a model matrix from a Viper transform. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Viper\textquotesingle{}s math translation utility functions. 
+
+These functions are responsible for converting all available engine math types to glm values. This translation layer is needed for different rendering libraries. Some libs use their coordinate systems differently, and having this translation layer allows the game math to all remain the same. When a different renderer is being used, these functions will adapt properly. As of version 0.\+0.\+2 the engine only utilizes Open\+GL, but Vulcan may be supported eventually. \begin{DoxyNote}{Note}
+This header is not exposed to the engine API whatsoever.
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Vincent Pierce 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+December 12, 2025 
+\end{DoxyDate}
+
+
+\label{_internal_math_8h_doc-func-members}
+\Hypertarget{_internal_math_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_internal_math_8h_a967092eb8ca6832c9e117753133123bd}\index{InternalMath.h@{InternalMath.h}!ConvertVec2ToGLM@{ConvertVec2ToGLM}}
+\index{ConvertVec2ToGLM@{ConvertVec2ToGLM}!InternalMath.h@{InternalMath.h}}
+\doxysubsubsection{\texorpdfstring{ConvertVec2ToGLM()}{ConvertVec2ToGLM()}}
+{\footnotesize\ttfamily \label{_internal_math_8h_a967092eb8ca6832c9e117753133123bd} 
+template$<$typename t$>$ \\
+glm::\+vec2 Viper::\+\+Maths::\+\+Convert\+Vec2\+To\+GLM (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2}{Vector2}}$<$ t $>$ \&}]{conversion}{}\end{DoxyParamCaption})}
+
+
+
+Convert a Viper Vector2 to the corresponding glm vec2. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em conversion} & The Viper Vector2 to be converted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A glm vec2 consisting of the conversion\textquotesingle{}s values. 
+\end{DoxyReturn}
+\Hypertarget{_internal_math_8h_a79781194c07d25c3e2d95a6e0331cbea}\index{InternalMath.h@{InternalMath.h}!ConvertVec2ToMaths@{ConvertVec2ToMaths}}
+\index{ConvertVec2ToMaths@{ConvertVec2ToMaths}!InternalMath.h@{InternalMath.h}}
+\doxysubsubsection{\texorpdfstring{ConvertVec2ToMaths()}{ConvertVec2ToMaths()}}
+{\footnotesize\ttfamily \label{_internal_math_8h_a79781194c07d25c3e2d95a6e0331cbea} 
+template$<$typename t$>$ \\
+Vector2$<$ t $>$ Viper::\+\+Maths::\+\+Convert\+Vec2\+To\+Maths (\begin{DoxyParamCaption}\item[{const glm::\+vec2 \&}]{conversion}{}\end{DoxyParamCaption})}
+
+
+
+Convert a glm vec2 to the corresponding Viper Vector2. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em conversion} & The glm vec2 to be converted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Vector2 consisting of the conversion\textquotesingle{}s values. 
+\end{DoxyReturn}
+\Hypertarget{_internal_math_8h_a110bc4cb96fac7611cb92a607f3baf06}\index{InternalMath.h@{InternalMath.h}!ConvertVec3ToGLM@{ConvertVec3ToGLM}}
+\index{ConvertVec3ToGLM@{ConvertVec3ToGLM}!InternalMath.h@{InternalMath.h}}
+\doxysubsubsection{\texorpdfstring{ConvertVec3ToGLM()}{ConvertVec3ToGLM()}}
+{\footnotesize\ttfamily \label{_internal_math_8h_a110bc4cb96fac7611cb92a607f3baf06} 
+template$<$typename t$>$ \\
+glm::\+vec3 Viper::\+\+Maths::\+\+Convert\+Vec3\+To\+GLM (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3}{Vector3}}$<$ t $>$ \&}]{conversion}{}\end{DoxyParamCaption})}
+
+
+
+Convert a Viper Vector3 to the corresponding glm vec3. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em conversion} & The Viper Vector3 to be converted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A glm vec3 consisting of the conversion\textquotesingle{}s values. 
+\end{DoxyReturn}
+\Hypertarget{_internal_math_8h_ae3a50c1eac66fca8ced67ade1fc37ca6}\index{InternalMath.h@{InternalMath.h}!ConvertVec3ToMaths@{ConvertVec3ToMaths}}
+\index{ConvertVec3ToMaths@{ConvertVec3ToMaths}!InternalMath.h@{InternalMath.h}}
+\doxysubsubsection{\texorpdfstring{ConvertVec3ToMaths()}{ConvertVec3ToMaths()}}
+{\footnotesize\ttfamily \label{_internal_math_8h_ae3a50c1eac66fca8ced67ade1fc37ca6} 
+template$<$typename t$>$ \\
+Vector3$<$ t $>$ Viper::\+\+Maths::\+\+Convert\+Vec3\+To\+Maths (\begin{DoxyParamCaption}\item[{const glm::\+vec3 \&}]{conversion}{}\end{DoxyParamCaption})}
+
+
+
+Convert a glm vec3 to a Viper Vector3. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em a} & glm vec3 to be converted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Vector3 consisting of the conversion\textquotesingle{}s values. 
+\end{DoxyReturn}
+\Hypertarget{_internal_math_8h_a7422eda244deded10837e38d4f46a094}\index{InternalMath.h@{InternalMath.h}!Transform3DToModelMatrix@{Transform3DToModelMatrix}}
+\index{Transform3DToModelMatrix@{Transform3DToModelMatrix}!InternalMath.h@{InternalMath.h}}
+\doxysubsubsection{\texorpdfstring{Transform3DToModelMatrix()}{Transform3DToModelMatrix()}}
+{\footnotesize\ttfamily \label{_internal_math_8h_a7422eda244deded10837e38d4f46a094} 
+template$<$typename t$>$ \\
+glm::\+mat4 Viper::\+\+Maths::\+\+Transform3\+DTo\+Model\+Matrix (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3}{Vector3}}$<$ t $>$ \&}]{location}{, }\item[{const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3}{Vector3}}$<$ t $>$ \&}]{rotation}{, }\item[{const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3}{Vector3}}$<$ t $>$ \&}]{scale}{}\end{DoxyParamCaption})}
+
+
+
+Create a model matrix from a Viper transform. 
+
+Assigns a default glm mat4 model matrix. Translate the model matrix by converting the provided location to glm. Set the rotation by assigning glm rotate on each of the rotation parameter\textquotesingle{}s values. Lastly set the scale value to the model matrix by converting the Vector3 scale to glm vec3, and finalize the full model matrix.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em location} & The position of the model matrix to be calculated. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em rotation} & The rotation of the model matrix to be calculated. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em scale} & The scale of the model matrix to be calculated.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The final matrix which is placed in the world space. 
+\end{DoxyReturn}

@@ -1,0 +1,77 @@
+\doxysection{Viper::Renderer::Mesh\+Object Struct Reference}
+\hypertarget{struct_viper_1_1_renderer_1_1_mesh_object}{}\label{struct_viper_1_1_renderer_1_1_mesh_object}\index{Viper::Renderer::MeshObject@{Viper::Renderer::MeshObject}}
+Inheritance diagram for Viper::Renderer::Mesh\+Object:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d3/d00/struct_viper_1_1_renderer_1_1_mesh_object}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_viper_1_1_renderer_1_1_mesh_object_a0383861ab5f5c876285fc58d073d0fa1}\label{struct_viper_1_1_renderer_1_1_mesh_object_a0383861ab5f5c876285fc58d073d0fa1} 
+{\bfseries Mesh\+Object} (glm::\+mat4 transform, const \doxymbox{\hyperlink{struct_viper_1_1_utility_1_1_mesh}{Utility::\+\+Mesh}} \texorpdfstring{$\ast$}{*}mesh, const \doxymbox{\hyperlink{struct_viper_1_1_utility_1_1_material}{Utility::\+\+Material}} \texorpdfstring{$\ast$}{*}material)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{struct_viper_1_1_renderer_1_1_render_object}{Viper::\+\+Renderer::\+\+Render\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Render\+Object} (glm::\+mat4 transform)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_viper_1_1_renderer_1_1_mesh_object_af9017d84f0bba4a19a04f0d446f1e773}\label{struct_viper_1_1_renderer_1_1_mesh_object_af9017d84f0bba4a19a04f0d446f1e773} 
+const \doxymbox{\hyperlink{struct_viper_1_1_utility_1_1_mesh}{Utility::\+\+Mesh}} \texorpdfstring{$\ast$}{*} {\bfseries mesh} = nullptr
+\item 
+\Hypertarget{struct_viper_1_1_renderer_1_1_mesh_object_ad542471f04d21b4363ef47626a382899}\label{struct_viper_1_1_renderer_1_1_mesh_object_ad542471f04d21b4363ef47626a382899} 
+const \doxymbox{\hyperlink{struct_viper_1_1_utility_1_1_material}{Utility::\+\+Material}} \texorpdfstring{$\ast$}{*} {\bfseries material} = nullptr
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \doxymbox{\hyperlink{struct_viper_1_1_renderer_1_1_render_object}{Viper::\+\+Renderer::\+\+Render\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+glm::\+mat4 {\bfseries transform} \{\}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{struct_viper_1_1_renderer_1_1_mesh_object_a0cd576638b27e23e27d45e13460c0482}{Submit\+To\+Render}} (Renderer \texorpdfstring{$\ast$}{*}renderer) const override
+\item 
+virtual void \doxymbox{\hyperlink{struct_viper_1_1_renderer_1_1_mesh_object_ac583ee836964fcd8b004ef026bffe51b}{Render}} () const override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_viper_1_1_renderer_1_1_mesh_object_a70538530bc36e033e360880ef311df61}\label{struct_viper_1_1_renderer_1_1_mesh_object_a70538530bc36e033e360880ef311df61} 
+class {\bfseries Renderer}
+\end{DoxyCompactItemize}
+
+
+\label{struct_viper_1_1_renderer_1_1_mesh_object_doc-func-members}
+\Hypertarget{struct_viper_1_1_renderer_1_1_mesh_object_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_viper_1_1_renderer_1_1_mesh_object_ac583ee836964fcd8b004ef026bffe51b}\index{Viper::Renderer::MeshObject@{Viper::Renderer::MeshObject}!Render@{Render}}
+\index{Render@{Render}!Viper::Renderer::MeshObject@{Viper::Renderer::MeshObject}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily \label{struct_viper_1_1_renderer_1_1_mesh_object_ac583ee836964fcd8b004ef026bffe51b} 
+void Viper::\+\+Renderer::\+\+Mesh\+Object::\+\+Render (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{struct_viper_1_1_renderer_1_1_render_object}{Viper::\+\+Renderer::\+\+Render\+Object}}.
+
+\Hypertarget{struct_viper_1_1_renderer_1_1_mesh_object_a0cd576638b27e23e27d45e13460c0482}\index{Viper::Renderer::MeshObject@{Viper::Renderer::MeshObject}!SubmitToRender@{SubmitToRender}}
+\index{SubmitToRender@{SubmitToRender}!Viper::Renderer::MeshObject@{Viper::Renderer::MeshObject}}
+\doxysubsubsection{\texorpdfstring{SubmitToRender()}{SubmitToRender()}}
+{\footnotesize\ttfamily \label{struct_viper_1_1_renderer_1_1_mesh_object_a0cd576638b27e23e27d45e13460c0482} 
+void Viper::\+\+Renderer::\+\+Mesh\+Object::\+\+Submit\+To\+Render (\begin{DoxyParamCaption}\item[{Renderer \texorpdfstring{$\ast$}{*}}]{renderer}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{struct_viper_1_1_renderer_1_1_render_object}{Viper::\+\+Renderer::\+\+Render\+Object}}.
+
+
+
+The documentation for this struct was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Renderer/\+\+Core/Render\+Objects.\+h\item 
+Engine/\+src/\+\+Renderer/\+\+Core/Render\+Objects.\+cpp\end{DoxyCompactItemize}

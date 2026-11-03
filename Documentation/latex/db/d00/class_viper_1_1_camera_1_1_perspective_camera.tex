@@ -1,0 +1,132 @@
+\doxysection{Viper::Camera::Perspective\+Camera Class Reference}
+\hypertarget{class_viper_1_1_camera_1_1_perspective_camera}{}\label{class_viper_1_1_camera_1_1_perspective_camera}\index{Viper::Camera::PerspectiveCamera@{Viper::Camera::PerspectiveCamera}}
+Inheritance diagram for Viper::Camera::Perspective\+Camera:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{db/d00/class_viper_1_1_camera_1_1_perspective_camera}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_perspective_camera_a236776ccd6bbaf5f29aaaeaafba48379}\label{class_viper_1_1_camera_1_1_perspective_camera_a236776ccd6bbaf5f29aaaeaafba48379} 
+{\bfseries Perspective\+Camera} (const glm::\+vec3 \&position)
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_perspective_camera_a4a121302897ce37e354b22ef3fc97df0}\label{class_viper_1_1_camera_1_1_perspective_camera_a4a121302897ce37e354b22ef3fc97df0} 
+{\bfseries Perspective\+Camera} (const glm::\+vec3 \&position, UINT8 fov)
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_perspective_camera_a90576d3a1bdaa8508313953693eecd46}\label{class_viper_1_1_camera_1_1_perspective_camera_a90576d3a1bdaa8508313953693eecd46} 
+{\bfseries Perspective\+Camera} (const glm::\+vec3 \&position, const glm::\+vec3 \&rotation, UINT8 fov, float speed)
+\item 
+virtual void \doxymbox{\hyperlink{class_viper_1_1_camera_1_1_perspective_camera_abf6e2a29e042404dceb82110c232532b}{Process\+Location}} (Move\+Direction direction, float delta\+Time) override
+\item 
+virtual void \doxymbox{\hyperlink{class_viper_1_1_camera_1_1_perspective_camera_a4ff3aa4d4597759e26e5255302f51680}{Process\+Rotation}} (const glm::\+vec2 \&mouse\+Delta, bool constrain\+Pitch) override
+\item 
+virtual void \doxymbox{\hyperlink{class_viper_1_1_camera_1_1_perspective_camera_ab75a3188b23e000b3784590ee9d1ec78}{Update\+Projection}} (float width, float height) override
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_perspective_camera_a88f9f6ff5c8282dc729d813a8a390951}\label{class_viper_1_1_camera_1_1_perspective_camera_a88f9f6ff5c8282dc729d813a8a390951} 
+void {\bfseries Set\+Fov} (float fov)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_viper_1_1_camera_1_1_editor_camera}{Viper::\+\+Camera::\+\+Editor\+Camera}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Set\+Speed} (float speed)
+\item 
+void {\bfseries Set\+Sensitivity} (float sensitivity)
+\item 
+glm::\+mat4 {\bfseries Get\+Projection\+Matrix} () const
+\item 
+glm::\+mat4 {\bfseries Get\+View\+Matrix} () const
+\item 
+glm::\+vec3 {\bfseries Get\+Forward\+Vector} () const
+\item 
+glm::\+vec3 {\bfseries Get\+Up\+Vector} () const
+\item 
+glm::\+vec3 {\bfseries Get\+Right\+Vector} () const
+\item 
+glm::\+vec3 {\bfseries Get\+Euler\+Rotation} () const
+\item 
+glm::\+quat {\bfseries Get\+Quat\+Rotation} () const
+\item 
+\doxymbox{\hyperlink{struct_viper_1_1_camera_1_1_camera_settings}{Camera\+Settings}} {\bfseries Get\+Settings} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \doxymbox{\hyperlink{class_viper_1_1_camera_1_1_editor_camera}{Viper::\+\+Camera::\+\+Editor\+Camera}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_ae486b04d17e9256905916e44235b289b}\label{class_viper_1_1_camera_1_1_editor_camera_ae486b04d17e9256905916e44235b289b} 
+enum class {\bfseries Move\+Direction} : UINT8 \{ {\bfseries Forward} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 0
+, {\bfseries Backwards} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 2
+, {\bfseries Left} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 3
+, {\bfseries Right} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 4
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{class_viper_1_1_camera_1_1_editor_camera}{Viper::\+\+Camera::\+\+Editor\+Camera}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Editor\+Camera} (const glm::\+vec3 \&position)
+\item 
+{\bfseries Editor\+Camera} (const glm::\+vec3 \&position, const glm::\+vec3 \&rotation, float speed)
+\item 
+void {\bfseries Update\+Vectors} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{class_viper_1_1_camera_1_1_editor_camera}{Viper::\+\+Camera::\+\+Editor\+Camera}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{struct_viper_1_1_camera_1_1_camera_settings}{Camera\+Settings}} {\bfseries m\+\_\+\+Settings}
+\item 
+glm::\+quat {\bfseries m\+\_\+\+Rotation} = glm::\+quat(glm::\+vec3(0.f, 0.f, 0.f))
+\item 
+glm::\+vec3 {\bfseries m\+\_\+\+Euler\+Rotation} = glm::\+vec3(0.f, 0.f, 0.f)
+\item 
+glm::\+vec3 {\bfseries m\+\_\+\+Location}
+\item 
+glm::\+vec3 {\bfseries m\+\_\+\+Forward\+Vector} = glm::\+vec3(0.f, 0.f, -\/1.f)
+\item 
+glm::\+vec3 {\bfseries m\+\_\+\+Right\+Vector}
+\item 
+glm::\+vec3 {\bfseries m\+\_\+\+Up\+Vector} = glm::\+vec3(0.f, 1.f, 0.f)
+\item 
+glm::\+mat4 {\bfseries m\+\_\+\+Projection\+Matrix}
+\end{DoxyCompactItemize}
+
+
+\label{class_viper_1_1_camera_1_1_perspective_camera_doc-func-members}
+\Hypertarget{class_viper_1_1_camera_1_1_perspective_camera_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_viper_1_1_camera_1_1_perspective_camera_abf6e2a29e042404dceb82110c232532b}\index{Viper::Camera::PerspectiveCamera@{Viper::Camera::PerspectiveCamera}!ProcessLocation@{ProcessLocation}}
+\index{ProcessLocation@{ProcessLocation}!Viper::Camera::PerspectiveCamera@{Viper::Camera::PerspectiveCamera}}
+\doxysubsubsection{\texorpdfstring{ProcessLocation()}{ProcessLocation()}}
+{\footnotesize\ttfamily \label{class_viper_1_1_camera_1_1_perspective_camera_abf6e2a29e042404dceb82110c232532b} 
+void Viper::\+\+Camera::\+\+Perspective\+Camera::\+\+Process\+Location (\begin{DoxyParamCaption}\item[{Move\+Direction}]{direction}{, }\item[{float}]{delta\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_viper_1_1_camera_1_1_editor_camera}{Viper::\+\+Camera::\+\+Editor\+Camera}}.
+
+\Hypertarget{class_viper_1_1_camera_1_1_perspective_camera_a4ff3aa4d4597759e26e5255302f51680}\index{Viper::Camera::PerspectiveCamera@{Viper::Camera::PerspectiveCamera}!ProcessRotation@{ProcessRotation}}
+\index{ProcessRotation@{ProcessRotation}!Viper::Camera::PerspectiveCamera@{Viper::Camera::PerspectiveCamera}}
+\doxysubsubsection{\texorpdfstring{ProcessRotation()}{ProcessRotation()}}
+{\footnotesize\ttfamily \label{class_viper_1_1_camera_1_1_perspective_camera_a4ff3aa4d4597759e26e5255302f51680} 
+void Viper::\+\+Camera::\+\+Perspective\+Camera::\+\+Process\+Rotation (\begin{DoxyParamCaption}\item[{const glm::\+vec2 \&}]{mouse\+Delta}{, }\item[{bool}]{constrain\+Pitch}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_viper_1_1_camera_1_1_editor_camera}{Viper::\+\+Camera::\+\+Editor\+Camera}}.
+
+\Hypertarget{class_viper_1_1_camera_1_1_perspective_camera_ab75a3188b23e000b3784590ee9d1ec78}\index{Viper::Camera::PerspectiveCamera@{Viper::Camera::PerspectiveCamera}!UpdateProjection@{UpdateProjection}}
+\index{UpdateProjection@{UpdateProjection}!Viper::Camera::PerspectiveCamera@{Viper::Camera::PerspectiveCamera}}
+\doxysubsubsection{\texorpdfstring{UpdateProjection()}{UpdateProjection()}}
+{\footnotesize\ttfamily \label{class_viper_1_1_camera_1_1_perspective_camera_ab75a3188b23e000b3784590ee9d1ec78} 
+void Viper::\+\+Camera::\+\+Perspective\+Camera::\+\+Update\+Projection (\begin{DoxyParamCaption}\item[{float}]{width}{, }\item[{float}]{height}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_viper_1_1_camera_1_1_editor_camera}{Viper::\+\+Camera::\+\+Editor\+Camera}}.
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Core/\+\+Cameras/Perspective\+Camera.\+h\item 
+Engine/\+src/\+\+Core/\+\+Cameras/Perspective\+Camera.\+cpp\end{DoxyCompactItemize}

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['buffersize_0',['bufferSize',['../d3/d00/struct_engine_1_1_window_1_1_window_info.html#aff56ac54f433e6157a181b4bd2f65f05',1,'Engine::Window::WindowInfo']]]
+  ['buffersize_0',['bufferSize',['../d1/d00/struct_viper_1_1_window_1_1_window_info.html#a9e561d45ccbb312718efc4bf4dccfa35',1,'Viper::Window::WindowInfo']]]
 ];

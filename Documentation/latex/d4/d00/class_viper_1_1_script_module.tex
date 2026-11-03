@@ -1,0 +1,109 @@
+\doxysection{Viper::Script\+Module Class Reference}
+\hypertarget{class_viper_1_1_script_module}{}\label{class_viper_1_1_script_module}\index{Viper::ScriptModule@{Viper::ScriptModule}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_script_module_a470551e38098cc17ca43ca7c1414519b}\label{class_viper_1_1_script_module_a470551e38098cc17ca43ca7c1414519b} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Script\+Module} ()=default
+\begin{DoxyCompactList}\small\item\em Default assigned destructor in each script. \end{DoxyCompactList}\item 
+\Hypertarget{class_viper_1_1_script_module_a149cb5d15f3413f0948c969a7bf60bba}\label{class_viper_1_1_script_module_a149cb5d15f3413f0948c969a7bf60bba} 
+{\bfseries Script\+Module} (Script\+Module \&\&other)=default
+\item 
+\Hypertarget{class_viper_1_1_script_module_a80142a5c5d251143c7c18e6ada0012fd}\label{class_viper_1_1_script_module_a80142a5c5d251143c7c18e6ada0012fd} 
+Script\+Module \& {\bfseries operator=} (Script\+Module \&\&other)=default
+\item 
+virtual void \doxymbox{\hyperlink{class_viper_1_1_script_module_ae56d560d35369e7eb93b4a18444edeeb}{Construct}} ()=0
+\begin{DoxyCompactList}\small\item\em Official constructor for the \doxylink{class_viper_1_1_script_module}{Script\+Module} supported by the engine. \end{DoxyCompactList}\item 
+\Hypertarget{class_viper_1_1_script_module_a368cf100e5e836e49105e80a2c0250cf}\label{class_viper_1_1_script_module_a368cf100e5e836e49105e80a2c0250cf} 
+virtual void {\bfseries Start} ()=0
+\begin{DoxyCompactList}\small\item\em Called at the moment the script is loaded. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_viper_1_1_script_module_ac7ef51b557b8e3264e9b8e3cc56065b9}{Tick}} (float delta\+Time)=0
+\begin{DoxyCompactList}\small\item\em Called every frame tick of the application. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_viper_1_1_script_module_a20db656b5b2271db747c5bd4760f3fd4}{Set\+Owner}} (\doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_game_object}{Scene::\+\+ECS::\+\+Game\+Object}} \texorpdfstring{$\ast$}{*}owner\+Ref) noexcept
+\begin{DoxyCompactList}\small\item\em Assign the owner of the script for simple reference. \end{DoxyCompactList}\item 
+\Hypertarget{class_viper_1_1_script_module_af23638aefe5161810264c8d12df27ed9}\label{class_viper_1_1_script_module_af23638aefe5161810264c8d12df27ed9} 
+\doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_game_object}{Scene::\+\+ECS::\+\+Game\+Object}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Owner} () const
+\begin{DoxyCompactList}\small\item\em Returns value stored in \doxylink{class_viper_1_1_script_module_a7710c844de962b5f6a6586f2c1111e88}{m\+\_\+\+Owner}, does not do any validation checks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_game_object}{Scene::\+\+ECS::\+\+Game\+Object}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_viper_1_1_script_module_a7710c844de962b5f6a6586f2c1111e88}{m\+\_\+\+Owner}} = nullptr
+\begin{DoxyCompactList}\small\item\em The owning entity this script and \doxylink{struct_viper_1_1_scene_1_1_e_c_s_1_1_components_1_1_script_component}{Scene::\+\+ECS::\+\+Components::\+\+Script\+Component} is attached to. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{class_viper_1_1_script_module_doc-func-members}
+\Hypertarget{class_viper_1_1_script_module_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_viper_1_1_script_module_ae56d560d35369e7eb93b4a18444edeeb}\index{Viper::ScriptModule@{Viper::ScriptModule}!Construct@{Construct}}
+\index{Construct@{Construct}!Viper::ScriptModule@{Viper::ScriptModule}}
+\doxysubsubsection{\texorpdfstring{Construct()}{Construct()}}
+{\footnotesize\ttfamily \label{class_viper_1_1_script_module_ae56d560d35369e7eb93b4a18444edeeb} 
+virtual void Viper::\+\+Script\+Module::\+\+Construct (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Official constructor for the \doxylink{class_viper_1_1_script_module}{Script\+Module} supported by the engine. 
+
+This construct function will be called and processed while the editor application is running and is guranteed to occur before \doxylink{class_viper_1_1_script_module_a368cf100e5e836e49105e80a2c0250cf}{Start()}. This is called as soon as the Script is instantiated on the \doxylink{struct_viper_1_1_scene_1_1_e_c_s_1_1_components_1_1_script_component}{Scene::\+\+ECS::\+\+Components::\+\+Script\+Component}. In version 0.\+0.\+2 this feature is not implemented as of yet because the editor is still a work in progress.
+
+\begin{DoxyPostcond}{Postcondition}
+The script is prepared for \doxylink{class_viper_1_1_script_module_a368cf100e5e836e49105e80a2c0250cf}{Start()}. 
+\end{DoxyPostcond}
+\Hypertarget{class_viper_1_1_script_module_a20db656b5b2271db747c5bd4760f3fd4}\index{Viper::ScriptModule@{Viper::ScriptModule}!SetOwner@{SetOwner}}
+\index{SetOwner@{SetOwner}!Viper::ScriptModule@{Viper::ScriptModule}}
+\doxysubsubsection{\texorpdfstring{SetOwner()}{SetOwner()}}
+{\footnotesize\ttfamily \label{class_viper_1_1_script_module_a20db656b5b2271db747c5bd4760f3fd4} 
+void Viper::\+\+Script\+Module::\+\+Set\+Owner (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_game_object}{Scene::\+\+ECS::\+\+Game\+Object}} \texorpdfstring{$\ast$}{*}}]{owner\+Ref}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Assign the owner of the script for simple reference. 
+
+The scripts may need to interact with other entities attached to this entity. This checks if the owner is not already set as well if the owner\+Ref parameter is valid. If not, simply return without doing anything.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em owner\+Ref} & Reference to the entity that this script is attached to.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+In future versions this \doxylink{class_viper_1_1_scene_1_1_e_c_s_1_1_game_object}{Game\+Object} param will need to be exchanged to just and entity\+ID. As of version 0.\+0.\+2 having a \doxylink{class_viper_1_1_scene_1_1_e_c_s_1_1_game_object}{Game\+Object} passed in for the owner prevents the script module from working with the core ECS. 
+\end{DoxyNote}
+\Hypertarget{class_viper_1_1_script_module_ac7ef51b557b8e3264e9b8e3cc56065b9}\index{Viper::ScriptModule@{Viper::ScriptModule}!Tick@{Tick}}
+\index{Tick@{Tick}!Viper::ScriptModule@{Viper::ScriptModule}}
+\doxysubsubsection{\texorpdfstring{Tick()}{Tick()}}
+{\footnotesize\ttfamily \label{class_viper_1_1_script_module_ac7ef51b557b8e3264e9b8e3cc56065b9} 
+virtual void Viper::\+\+Script\+Module::\+\+Tick (\begin{DoxyParamCaption}\item[{float}]{delta\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Called every frame tick of the application. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em delta\+Time} & Calculated time between the current frame and last. \\
+\hline
+\end{DoxyParams}
+
+
+\label{class_viper_1_1_script_module_doc-variable-members}
+\Hypertarget{class_viper_1_1_script_module_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_viper_1_1_script_module_a7710c844de962b5f6a6586f2c1111e88}\index{Viper::ScriptModule@{Viper::ScriptModule}!m\_Owner@{m\_Owner}}
+\index{m\_Owner@{m\_Owner}!Viper::ScriptModule@{Viper::ScriptModule}}
+\doxysubsubsection{\texorpdfstring{m\_Owner}{m\_Owner}}
+{\footnotesize\ttfamily \label{class_viper_1_1_script_module_a7710c844de962b5f6a6586f2c1111e88} 
+\doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_game_object}{Scene::\+\+ECS::\+\+Game\+Object}}\texorpdfstring{$\ast$}{*} Viper::\+\+Script\+Module::\+m\+\_\+\+Owner = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The owning entity this script and \doxylink{struct_viper_1_1_scene_1_1_e_c_s_1_1_components_1_1_script_component}{Scene::\+\+ECS::\+\+Components::\+\+Script\+Component} is attached to. 
+
+\begin{DoxyNote}{Note}
+The owning component is destroyed when the owning game object is destroyed anyways. So, the pointer is should always be valid. 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Core/Script\+Module.\+h\end{DoxyCompactItemize}

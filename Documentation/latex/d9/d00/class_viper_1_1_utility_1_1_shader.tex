@@ -1,0 +1,73 @@
+\doxysection{Viper::Utility::Shader Class Reference}
+\hypertarget{class_viper_1_1_utility_1_1_shader}{}\label{class_viper_1_1_utility_1_1_shader}\index{Viper::Utility::Shader@{Viper::Utility::Shader}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_utility_1_1_shader_aee83858ece56b77df6ebbd2468d0f739}\label{class_viper_1_1_utility_1_1_shader_aee83858ece56b77df6ebbd2468d0f739} 
+{\bfseries Shader} (const std::\+string \&file\+Name)
+\item 
+\Hypertarget{class_viper_1_1_utility_1_1_shader_a369070770b488519d926aa5919aa4eeb}\label{class_viper_1_1_utility_1_1_shader_a369070770b488519d926aa5919aa4eeb} 
+void {\bfseries Create} ()
+\item 
+\Hypertarget{class_viper_1_1_utility_1_1_shader_adecdafa283e175f1c8cee9f13b63aa05}\label{class_viper_1_1_utility_1_1_shader_adecdafa283e175f1c8cee9f13b63aa05} 
+void {\bfseries Use} () const
+\item 
+\Hypertarget{class_viper_1_1_utility_1_1_shader_a21915b056bfa0efd3b7f565e89c0c104}\label{class_viper_1_1_utility_1_1_shader_a21915b056bfa0efd3b7f565e89c0c104} 
+void {\bfseries Set\+Uniform\+Float} (const std::\+string \&name, const float value) const
+\item 
+\Hypertarget{class_viper_1_1_utility_1_1_shader_ad9187a62bc1160a6be79a25975b28861}\label{class_viper_1_1_utility_1_1_shader_ad9187a62bc1160a6be79a25975b28861} 
+void {\bfseries Set\+Uniform\+Int} (const std::\+string \&name, const int value) const
+\item 
+\Hypertarget{class_viper_1_1_utility_1_1_shader_a2fc8d0ce6e68db32b41fe061aaab6e15}\label{class_viper_1_1_utility_1_1_shader_a2fc8d0ce6e68db32b41fe061aaab6e15} 
+void {\bfseries Set\+Uniform\+Vec2} (const std::\+string \&name, const glm::\+vec2 \&value) const
+\item 
+\Hypertarget{class_viper_1_1_utility_1_1_shader_add8905909436f6770b911220d279d0be}\label{class_viper_1_1_utility_1_1_shader_add8905909436f6770b911220d279d0be} 
+void {\bfseries Set\+Uniform\+Vec3} (const std::\+string \&name, const glm::\+vec3 \&value) const
+\item 
+\Hypertarget{class_viper_1_1_utility_1_1_shader_a8b53ae44aaceef0762e73b0ab8ac2b28}\label{class_viper_1_1_utility_1_1_shader_a8b53ae44aaceef0762e73b0ab8ac2b28} 
+void {\bfseries Set\+Uniform\+Vec4} (const std::\+string \&name, const glm::\+vec4 \&value) const
+\item 
+\Hypertarget{class_viper_1_1_utility_1_1_shader_a85d9a017338243a731e7ba17a2b04b6f}\label{class_viper_1_1_utility_1_1_shader_a85d9a017338243a731e7ba17a2b04b6f} 
+void {\bfseries Set\+Uniform\+Mat2} (const std::\+string \&name, const glm::\+mat2 \&value, bool transpose=false) const
+\item 
+\Hypertarget{class_viper_1_1_utility_1_1_shader_ab0465079272c72ee21e6801ce2ffac8b}\label{class_viper_1_1_utility_1_1_shader_ab0465079272c72ee21e6801ce2ffac8b} 
+void {\bfseries Set\+Uniform\+Mat3} (const std::\+string \&name, const glm::\+mat3 \&value, bool transpose=false) const
+\item 
+\Hypertarget{class_viper_1_1_utility_1_1_shader_a97c55710dc96f3bc8d20dd472fbec015}\label{class_viper_1_1_utility_1_1_shader_a97c55710dc96f3bc8d20dd472fbec015} 
+void {\bfseries Set\+Uniform\+Mat4} (const std::\+string \&name, const glm::\+mat4 \&value, bool transpose=false) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_utility_1_1_shader_a8ea4716138264fdb66706d1326aaebe9}\label{class_viper_1_1_utility_1_1_shader_a8ea4716138264fdb66706d1326aaebe9} 
+enum class {\bfseries Shader\+Type} : UINT8 \{ {\bfseries Fragment} = 0
+, {\bfseries Vertex}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_utility_1_1_shader_a4cbaa6277a762cda8a75407b9cde46db}\label{class_viper_1_1_utility_1_1_shader_a4cbaa6277a762cda8a75407b9cde46db} 
+std::\+string {\bfseries Read\+Src\+From\+File} (Shader\+Type type)
+\item 
+\Hypertarget{class_viper_1_1_utility_1_1_shader_a113b8f38976f66d013607de3f6f7f6b5}\label{class_viper_1_1_utility_1_1_shader_a113b8f38976f66d013607de3f6f7f6b5} 
+unsigned int {\bfseries Create\+Shader} (Shader\+Type type, const char \texorpdfstring{$\ast$}{*}src)
+\item 
+\Hypertarget{class_viper_1_1_utility_1_1_shader_a3e1d58cfed4ccecb3763a53d4c8bda94}\label{class_viper_1_1_utility_1_1_shader_a3e1d58cfed4ccecb3763a53d4c8bda94} 
+void {\bfseries Create\+Program} (unsigned int \&vert\+Shader, unsigned int \&frag\+Shader)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_utility_1_1_shader_a22d34676434f0e6aaf5954a3ba24fc9c}\label{class_viper_1_1_utility_1_1_shader_a22d34676434f0e6aaf5954a3ba24fc9c} 
+unsigned int {\bfseries m\+\_\+\+Program} = 0
+\item 
+\Hypertarget{class_viper_1_1_utility_1_1_shader_a6ec731d6753089b58fa4e6d413cde411}\label{class_viper_1_1_utility_1_1_shader_a6ec731d6753089b58fa4e6d413cde411} 
+std::\+string {\bfseries m\+\_\+\+File\+Path} = "{}"{}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Shared\+Resources/\+\+Generic\+Resources/Shader.\+h\item 
+Engine/\+src/\+\+Shared\+Resources/\+\+Generic\+Resources/Shader.\+cpp\end{DoxyCompactItemize}

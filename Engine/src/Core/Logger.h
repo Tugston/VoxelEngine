@@ -13,6 +13,13 @@
 */
 #pragma once
 
+/**
+* @file Logger.h
+* @brief Handles logging text to the console window
+* 
+* @details Logs various color text to the console representing the severity of the text. Each log also outputs the project it has been reported from. The time stamp for each log is also listed to indicate the exact frame it was called.
+*/
+
 //ENGINE
 #include "Core/Core.h"
 
@@ -26,11 +33,11 @@
 //Logger Detection
 #ifdef EG_PRJ
 	#if defined(APP_DEBUG) //check app debug first, because engine may also be valid in game project
-		#define GET_LOGGER() ::Viper::Logger::GetGameLogger()
-	#elif defined(EDTR_DEBUG)
-		#define GET_LOGGER() ::Viper::Logger::GetEditorLogger()
+		#define GET_LOGGER() GetGameLogger()
+	#elif defined(EDTR_DEBUG) //same with the editor
+		#define GET_LOGGER() GetEditorLogger()
 	#elif defined(EG_DEBUG)
-		#define GET_LOGGER() ::Viper::Logger::GetEngineLogger()
+		#define GET_LOGGER() GetEngineLogger()
 	#else
 		#define GET_LOGGER(x)
 	#endif //APP_DEBUG
@@ -40,6 +47,8 @@
 
 
 //Log Type Macros
+//DO NOT USE THESE, GET_LOGGER() intentionally prevents these macros to be utilized.
+//The proper LogMessage function performs formatting on the message.
 #if defined(EG_DEBUG) || defined(APP_DEBUG) || defined(EDTR_DEBUG)
 #define LOG_MESSAGE(...)	GET_LOGGER()->info(__VA_ARGS__) 
 #define LOG_WARNING(...)	GET_LOGGER()->warn(__VA_ARGS__)
@@ -71,7 +80,8 @@ namespace Viper
 	class Logger
 	{
 	public:
-
+		
+		/// Type to specify what type of log to output.
 		enum class LogType
 		{
 			Message,
@@ -80,8 +90,26 @@ namespace Viper
 			Critical
 		};
 
+		/**
+		* @brief Formats and setus up spd_log and verifies setup.
+		* @details Sets the pattern of the spd_log #s_EngineLogger, assigns a multithreaded logger object to the #s_EngineLogger, sets the level to trace. Proceeds to do the same for the #s_GameLogger and #s_EditorLogger. All loggers have the same patters setup of being highlighted by their severity color, displaying time in brackets, outputting logger name, and finally the formatted message.
+		* 
+		* @post Loggers are fully setup and initialized to print outputs.
+		* 
+		* @return True if all loggers are successfully created and initialized. Return false otherwise.
+		*/
 		static bool Init();
 
+		/**
+		* @brief Prints the provided message to the screen with args based on LogType
+		* @details Utilizes std::vformat to emplace the arg values into the printed message. Checks to see what LogType value was provided and utilizes a series of macros to print the appropriate severity through the correct logger.
+		* 
+		* @param[in] type The severity of the log to be printed.
+		* @param[in] message String to be printed to the console.
+		* @param[in] args Variable values to display in the string.
+		* 
+		* @note In order to display the args, add a {} for each value where it should be displayed. Then add the args in the order of the required printing.
+		*/
 		template <typename... Args>
 		static inline void LogMessage(LogType type, std::string_view message, Args&&... args)
 		{
@@ -96,13 +124,19 @@ namespace Viper
 			};
 		};
 
+	private:
+		/// Return #s_EngineLogger and utilized for the macro to make them look nice.
 		static std::shared_ptr<spdlog::logger> GetEngineLogger()	{ return s_EngineLogger; }
+		/// Return #s_GameLogger and utilized for the macro to make them look nice.
 		static std::shared_ptr<spdlog::logger> GetGameLogger()		{ return s_GameLogger; }
+		/// Return #s_EditorLogger and utilized for the macro to make them look nice.
 		static std::shared_ptr<spdlog::logger> GetEditorLogger()	{ return s_EditorLogger; }
 
-	private:
+		/// Configured to specify the message originated form the Engine.
 		static std::shared_ptr<spdlog::logger> s_EngineLogger;
+		/// Configured to specify the message originated from the Game.
 		static std::shared_ptr<spdlog::logger> s_GameLogger;
+		/// Configured to specify the message originated from the Editor.
 		static std::shared_ptr<spdlog::logger> s_EditorLogger;
 	};
 

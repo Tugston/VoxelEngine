@@ -18,8 +18,8 @@
 \DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00015\ }
 \DoxyCodeLine{00016\ \textcolor{comment}{//ENGINE}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}Core/Core.h"{}}}
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}Core/Logger.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_core_8h}{Core/Core.h}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_logger_8h}{Core/Logger.h}}"{}}}
 \DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}Scene/Scene.h"{}}}
 \DoxyCodeLine{00020\ }
 \DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}Scene/ECS/Components/Data/TransformComponent.h"{}}}
@@ -31,14 +31,14 @@
 \DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ DEFAULT\_COLOR\ glm::vec3\{0.9f,\ 0.7f,\ 0.5f\}}}
 \DoxyCodeLine{00028\ \textcolor{preprocessor}{\#endif}}
 \DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \textcolor{keyword}{namespace\ }Engine::Scene::ECS}
+\DoxyCodeLine{00030\ \textcolor{keyword}{namespace\ }Viper::Scene::ECS}
 \DoxyCodeLine{00031\ \{}
 \DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{class\ }GameObject}
 \DoxyCodeLine{00033\ \ \ \ \ \{}
 \DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{comment}{//delete\ default\ for\ now,\ until\ I\ get\ the\ scene\ manager\ all\ setup}}
 \DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ GameObject()\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ GameObject(\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::Registry}}\&\ registry);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ GameObject(\doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::Registry}}\&\ registry);}
 \DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \string~GameObject();}
 \DoxyCodeLine{00039\ }
 \DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{public}:}
@@ -71,22 +71,22 @@
 \DoxyCodeLine{00067\ }
 \DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Game\ Objects\ will\ never\ outlive\ the\ Scene,\ which\ contains\ the\ ECS\ registry}}
 \DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Before\ a\ scene\ ends,\ it\ cleans\ up\ all\ the\ current\ GameObjects\ that\ are\ stored\ in\ the\ Scene\ Manager}}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::Registry}}\&\ m\_Registry;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::Registry}}\&\ m\_Registry;}
 \DoxyCodeLine{00071\ \ \ \ \ \};}
 \DoxyCodeLine{00072\ }
 \DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{class\ }GameObject2D\ :\ \textcolor{keyword}{public}\ GameObject}
 \DoxyCodeLine{00074\ \ \ \ \ \{}
 \DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ GameObject2D(\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::Registry}}\&\ registry);}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ GameObject2D(\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::Registry}}\&\ registry,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_engine_1_1_scene_1_1_e_c_s_1_1_components_1_1_transform_component2_d}{Components::TransformComponent2D}}\&\ transform);}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ GameObject2D(\doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::Registry}}\&\ registry);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ GameObject2D(\doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::Registry}}\&\ registry,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_scene_1_1_e_c_s_1_1_components_1_1_transform_component2_d}{Components::TransformComponent2D}}\&\ transform);}
 \DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \string~GameObject2D();}
 \DoxyCodeLine{00079\ \ \ \ \ \};}
 \DoxyCodeLine{00080\ }
 \DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{class\ }GameObject3D\ :\ \textcolor{keyword}{public}\ GameObject}
 \DoxyCodeLine{00082\ \ \ \ \ \{}
 \DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ GameObject3D(\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::Registry}}\&\ registry);}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ GameObject3D(\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::Registry}}\&\ registry,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_engine_1_1_scene_1_1_e_c_s_1_1_components_1_1_transform_component3_d}{Components::TransformComponent3D}}\&\ transform);}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ GameObject3D(\doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::Registry}}\&\ registry);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ GameObject3D(\doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_registry}{ECS::Registry}}\&\ registry,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_scene_1_1_e_c_s_1_1_components_1_1_transform_component3_d}{Components::TransformComponent3D}}\&\ transform);}
 \DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \string~GameObject3D();}
 \DoxyCodeLine{00087\ \ \ \ \ \};}
 \DoxyCodeLine{00088\ \}}

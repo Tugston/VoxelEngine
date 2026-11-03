@@ -24,7 +24,7 @@
 \DoxyCodeLine{00020\ \textcolor{comment}{//ENGN}}
 \DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}Core/ScriptModule.h"{}}}
 \DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }Engine::Scene::ECS::Components}
+\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }Viper::Scene::ECS::Components}
 \DoxyCodeLine{00024\ \{}
 \DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//setting\ script\ modules\ to\ shared\ pointers\ }}
 \DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//so\ it\ can\ be\ accessed\ by\ systems\ and\ copied}}
@@ -35,9 +35,9 @@
 \DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ tickEnabled\ =\ \textcolor{keyword}{true};}
 \DoxyCodeLine{00032\ }
 \DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//store\ the\ owner\ here\ as\ well,\ so\ that\ the\ component\ can\ setup\ the\ scripts\ automatically}}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_game_object}{GameObject}}*\ owner\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_game_object}{GameObject}}*\ owner\ =\ \textcolor{keyword}{nullptr};}
 \DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ ScriptComponent(std::unique\_ptr<ScriptModule>\ script,\ \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_game_object}{GameObject}}*\ owner):}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ ScriptComponent(std::unique\_ptr<ScriptModule>\ script,\ \doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_game_object}{GameObject}}*\ owner):}
 \DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ owner(owner)}
 \DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ AddScript(std::move(script));}

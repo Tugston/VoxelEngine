@@ -27,9 +27,9 @@
 \DoxyCodeLine{00023\ \textcolor{comment}{//STND}}
 \DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <memory>}}
 \DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \textcolor{keyword}{namespace\ }Engine::Renderer}
+\DoxyCodeLine{00026\ \textcolor{keyword}{namespace\ }Viper::Renderer}
 \DoxyCodeLine{00027\ \{}
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_engine_1_1_renderer_1_1_renderer}{Renderer}};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_viper_1_1_renderer_1_1_renderer}{Renderer}};}
 \DoxyCodeLine{00029\ }
 \DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{struct\ }RenderObject\ \{}
 \DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ RenderObject(glm::mat4\ transform):\ transform(transform)\ \{\};}
@@ -44,10 +44,10 @@
 \DoxyCodeLine{00040\ }
 \DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{struct\ }MeshObject\ :\ \textcolor{keyword}{public}\ RenderObject}
 \DoxyCodeLine{00042\ \ \ \ \ \{}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ MeshObject(glm::mat4\ transform,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_engine_1_1_utility_1_1_mesh}{Utility::Mesh}}*\ mesh,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_engine_1_1_utility_1_1_material}{Utility::Material}}*\ material)\ :}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ MeshObject(glm::mat4\ transform,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_utility_1_1_mesh}{Utility::Mesh}}*\ mesh,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_utility_1_1_material}{Utility::Material}}*\ material)\ :}
 \DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ RenderObject(transform),\ mesh(mesh),\ material(material)\ \{\};}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_engine_1_1_utility_1_1_mesh}{Utility::Mesh}}*\ mesh\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_engine_1_1_utility_1_1_material}{Utility::Material}}*\ material\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_utility_1_1_mesh}{Utility::Mesh}}*\ mesh\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_utility_1_1_material}{Utility::Material}}*\ material\ =\ \textcolor{keyword}{nullptr};}
 \DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{private}:}
 \DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ SubmitToRender(Renderer*\ renderer)\ \textcolor{keyword}{const\ override};}
@@ -62,9 +62,9 @@
 \DoxyCodeLine{00058\ }
 \DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//each\ instance\ should\ only\ have\ a\ single\ actual\ mesh}}
 \DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{comment}{//the\ instancedMesh\ stores\ the\ }}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_engine_1_1_utility_1_1_instanced_mesh}{Utility::InstancedMesh}}*\ mesh;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_utility_1_1_instanced_mesh}{Utility::InstancedMesh}}*\ mesh;}
 \DoxyCodeLine{00062\ }
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_engine_1_1_utility_1_1_material}{Utility::Material}}*\ material\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_viper_1_1_utility_1_1_material}{Utility::Material}}*\ material\ =\ \textcolor{keyword}{nullptr};}
 \DoxyCodeLine{00064\ }
 \DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{private}:}
 \DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ SubmitToRender(Renderer*\ renderer)\ \textcolor{keyword}{const\ override};}

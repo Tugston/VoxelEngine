@@ -1,0 +1,33 @@
+\doxysection{Engine/\+src/\+\+Core/\+\+Maths/\+\+Math.h File Reference}
+\hypertarget{_math_8h}{}\label{_math_8h}\index{Engine/src/Core/Maths/Math.h@{Engine/src/Core/Maths/Math.h}}
+
+
+Viper\textquotesingle{}s own math library implementation which supports only the supported types used by the engine.  
+
+
+{\ttfamily \+\#include $<$utility$>$}\newline
+{\ttfamily \+\#include $<$cmath$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector2}{Viper::\+\+Maths::\+\+Vector2$<$ t $>$}}
+\item 
+struct \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3}{Viper::\+\+Maths::\+\+Vector3$<$ t $>$}}
+\item 
+struct \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_rotator2}{Viper::\+\+Maths::\+\+Rotator2}}
+\item 
+struct \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_rotator3}{Viper::\+\+Maths::\+\+Rotator3}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Viper\textquotesingle{}s own math library implementation which supports only the supported types used by the engine. 
+
+This math library is utilized in order to abstract glm from the user application. As of version 0.\+0.\+2 it provides Vectors and Rotators in both 2d and 3d with full math utility functions for each. Some utilities are statically copied as well to provide calculations without instantiating a new class object.
+
+\begin{DoxyAuthor}{Author}
+Vincent Pierce 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+December 12, 2025 
+\end{DoxyDate}

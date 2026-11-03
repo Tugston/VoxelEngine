@@ -1,0 +1,95 @@
+\doxysection{Viper::Engine\+World\+Layer Class Reference}
+\hypertarget{class_viper_1_1_engine_world_layer}{}\label{class_viper_1_1_engine_world_layer}\index{Viper::EngineWorldLayer@{Viper::EngineWorldLayer}}
+Inheritance diagram for Viper::Engine\+World\+Layer:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d3/d00/class_viper_1_1_engine_world_layer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{class_viper_1_1_engine_world_layer_a78867226f6ad05fee16ba6acf9c882ef}{Attach}} () override
+\item 
+virtual void \doxymbox{\hyperlink{class_viper_1_1_engine_world_layer_a77dcf260d6a720e22f5b0ad8b6830c7b}{Detach}} () override
+\item 
+virtual std::\+vector$<$ Entity\+ID $>$ \doxymbox{\hyperlink{class_viper_1_1_engine_world_layer_a88435b7fec2a8772986a66ce30bac3b6}{Get\+Draw\+Data}} (Renderer::\+\+Render\+Passes pass, ECSRegistry \&registry) override
+\item 
+virtual void \doxymbox{\hyperlink{class_viper_1_1_engine_world_layer_ac84ca9bdeb2c776bed3939dade9f54a7}{Input\+Event}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_viper_1_1_layer}{Viper::\+\+Layer}}}
+\begin{DoxyCompactItemize}
+\item 
+Layer\+ID {\bfseries Get\+ID} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Types inherited from \doxymbox{\hyperlink{class_viper_1_1_layer}{Viper::\+\+Layer}}}
+\begin{DoxyCompactItemize}
+\item 
+using {\bfseries ECSRegistry} = \doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_registry}{Scene::\+\+ECS::\+\+Registry}}
+\item 
+using {\bfseries Entity\+ID} = Scene::\+\+ECS::\+\+Entity\+ID
+\item 
+using {\bfseries Render\+Component} = \doxymbox{\hyperlink{struct_viper_1_1_scene_1_1_e_c_s_1_1_components_1_1_renderable}{Scene::\+\+ECS::\+\+Components::\+\+Renderable}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{class_viper_1_1_layer}{Viper::\+\+Layer}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Layer} (Layer\+ID id)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{class_viper_1_1_layer}{Viper::\+\+Layer}}}
+\begin{DoxyCompactItemize}
+\item 
+Layer\+ID {\bfseries m\+\_\+\+ID} = Layer\+ID::\+\+Unknown
+\end{DoxyCompactItemize}
+
+
+\label{class_viper_1_1_engine_world_layer_doc-func-members}
+\Hypertarget{class_viper_1_1_engine_world_layer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_viper_1_1_engine_world_layer_a78867226f6ad05fee16ba6acf9c882ef}\index{Viper::EngineWorldLayer@{Viper::EngineWorldLayer}!Attach@{Attach}}
+\index{Attach@{Attach}!Viper::EngineWorldLayer@{Viper::EngineWorldLayer}}
+\doxysubsubsection{\texorpdfstring{Attach()}{Attach()}}
+{\footnotesize\ttfamily \label{class_viper_1_1_engine_world_layer_a78867226f6ad05fee16ba6acf9c882ef} 
+void Viper::\+\+Engine\+World\+Layer::\+\+Attach (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_viper_1_1_layer}{Viper::\+\+Layer}}.
+
+\Hypertarget{class_viper_1_1_engine_world_layer_a77dcf260d6a720e22f5b0ad8b6830c7b}\index{Viper::EngineWorldLayer@{Viper::EngineWorldLayer}!Detach@{Detach}}
+\index{Detach@{Detach}!Viper::EngineWorldLayer@{Viper::EngineWorldLayer}}
+\doxysubsubsection{\texorpdfstring{Detach()}{Detach()}}
+{\footnotesize\ttfamily \label{class_viper_1_1_engine_world_layer_a77dcf260d6a720e22f5b0ad8b6830c7b} 
+void Viper::\+\+Engine\+World\+Layer::\+\+Detach (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_viper_1_1_layer}{Viper::\+\+Layer}}.
+
+\Hypertarget{class_viper_1_1_engine_world_layer_a88435b7fec2a8772986a66ce30bac3b6}\index{Viper::EngineWorldLayer@{Viper::EngineWorldLayer}!GetDrawData@{GetDrawData}}
+\index{GetDrawData@{GetDrawData}!Viper::EngineWorldLayer@{Viper::EngineWorldLayer}}
+\doxysubsubsection{\texorpdfstring{GetDrawData()}{GetDrawData()}}
+{\footnotesize\ttfamily \label{class_viper_1_1_engine_world_layer_a88435b7fec2a8772986a66ce30bac3b6} 
+std::\+vector$<$ Engine\+World\+Layer::\+\+Entity\+ID $>$ Viper::\+\+Engine\+World\+Layer::\+\+Get\+Draw\+Data (\begin{DoxyParamCaption}\item[{Renderer::\+\+Render\+Passes}]{pass}{, }\item[{ECSRegistry \&}]{registry}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_viper_1_1_layer}{Viper::\+\+Layer}}.
+
+\Hypertarget{class_viper_1_1_engine_world_layer_ac84ca9bdeb2c776bed3939dade9f54a7}\index{Viper::EngineWorldLayer@{Viper::EngineWorldLayer}!InputEvent@{InputEvent}}
+\index{InputEvent@{InputEvent}!Viper::EngineWorldLayer@{Viper::EngineWorldLayer}}
+\doxysubsubsection{\texorpdfstring{InputEvent()}{InputEvent()}}
+{\footnotesize\ttfamily \label{class_viper_1_1_engine_world_layer_ac84ca9bdeb2c776bed3939dade9f54a7} 
+void Viper::\+\+Engine\+World\+Layer::\+\+Input\+Event (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_viper_1_1_layer}{Viper::\+\+Layer}}.
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Core/\+\+Layers/Engine\+Layers.\+h\item 
+Engine/\+src/\+\+Core/\+\+Layers/Engine\+Layers.\+cpp\end{DoxyCompactItemize}

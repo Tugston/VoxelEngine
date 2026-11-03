@@ -1,0 +1,62 @@
+\doxysection{Viper::Scene::ECS::Registry Class Reference}
+\hypertarget{class_viper_1_1_scene_1_1_e_c_s_1_1_registry}{}\label{class_viper_1_1_scene_1_1_e_c_s_1_1_registry}\index{Viper::Scene::ECS::Registry@{Viper::Scene::ECS::Registry}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_view}{Component\+View}}
+\item 
+class \doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool}{Inherit\+Pool}}
+\item 
+class \doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool}{Component\+Pool}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_ae5b4af1dd93c766a568116ceed3c1173}\label{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_ae5b4af1dd93c766a568116ceed3c1173} 
+Entity\+ID {\bfseries Create\+Entity} ()
+\item 
+\Hypertarget{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_ad886760ea8cd8469be7296a1af3b5d09}\label{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_ad886760ea8cd8469be7296a1af3b5d09} 
+void {\bfseries Setup\+Entity\+Family} (Entity\+ID parent\+Entity)
+\item 
+\Hypertarget{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_a171af5b13b1b1b6b79bc9760bce0e64c}\label{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_a171af5b13b1b1b6b79bc9760bce0e64c} 
+void {\bfseries Delete\+Entity} (Entity\+ID entity\+ID)
+\item 
+\Hypertarget{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_aab3e06af41467989f542a39457b49f78}\label{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_aab3e06af41467989f542a39457b49f78} 
+{\footnotesize template$<$typename t, typename... Args$>$ }\\void {\bfseries Add\+Component} (Entity\+ID entity\+ID, Args \&\&... args)
+\item 
+\Hypertarget{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_a23b751d56ea3059ca7e4d59d9ae0bb0d}\label{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_a23b751d56ea3059ca7e4d59d9ae0bb0d} 
+{\footnotesize template$<$typename t$>$ }\\void {\bfseries Remove\+Component} (Entity\+ID entity\+ID)
+\item 
+\Hypertarget{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_a8f91ee92fd3b3e5995e3a3d565564363}\label{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_a8f91ee92fd3b3e5995e3a3d565564363} 
+{\footnotesize template$<$typename t$>$ }\\t \texorpdfstring{$\ast$}{*} {\bfseries Get\+Component} (Entity\+ID entity\+ID)
+\item 
+\Hypertarget{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_a36329fc2847010fe968bccbe7bb243c5}\label{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_a36329fc2847010fe968bccbe7bb243c5} 
+{\footnotesize template$<$typename... t$>$ }\\auto {\bfseries Get\+Components} (Entity\+ID id)
+\item 
+\Hypertarget{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_a0954ad41e29ab06b8c760be6031041b2}\label{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_a0954ad41e29ab06b8c760be6031041b2} 
+{\footnotesize template$<$typename t$>$ }\\const std::\+vector$<$ Entity\+ID $>$ \texorpdfstring{$\ast$}{*} {\bfseries Get\+All\+Entities\+With\+Component} ()
+\item 
+\Hypertarget{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_a958ba8991c6131f9de9e987248b5c3d3}\label{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_a958ba8991c6131f9de9e987248b5c3d3} 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_view}{Component\+View}} $>$ {\bfseries Get\+All\+Entity\+Components} (Entity\+ID entity)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_a45d73cb56cbba8f872f28df92300cd98}\label{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_a45d73cb56cbba8f872f28df92300cd98} 
+{\footnotesize template$<$typename t$>$ }\\\doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool}{Component\+Pool}}$<$ t $>$ \texorpdfstring{$\ast$}{*} {\bfseries Get\+Pool} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_ab75e69ca28dfee2207704e1fdec89e85}\label{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_ab75e69ca28dfee2207704e1fdec89e85} 
+std::\+unordered\+\_\+map$<$ std::\+type\+\_\+index, std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool}{Inherit\+Pool}} $>$ $>$ {\bfseries m\+\_\+\+Components}
+\item 
+\Hypertarget{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_ad7fee6846b7558d40127e6cd0c308432}\label{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_ad7fee6846b7558d40127e6cd0c308432} 
+Entity\+ID {\bfseries m\+\_\+\+Next\+Entity\+ID} = 0
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Scene/\+\+ECS/Registry.\+h\item 
+Engine/\+src/\+\+Scene/\+\+ECS/Registry.\+cpp\end{DoxyCompactItemize}

@@ -24,16 +24,16 @@
 \DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <any>}}
 \DoxyCodeLine{00021\ }
 \DoxyCodeLine{00022\ \textcolor{comment}{//ENGINE}}
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}./Core/Core.h"{}}}
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}./Core/Logger.h"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_core_8h}{./Core/Core.h}}"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_logger_8h}{./Core/Logger.h}}"{}}}
 \DoxyCodeLine{00025\ }
 \DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \textcolor{keyword}{namespace\ }Engine::Scene::ECS}
+\DoxyCodeLine{00027\ \textcolor{keyword}{namespace\ }Viper::Scene::ECS}
 \DoxyCodeLine{00028\ \{}
 \DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{using\ }EntityID\ =\ UINT32;}
 \DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{using\ }ComponentTypeID\ =\ size\_t;}
 \DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{Registry}}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_registry}{Registry}}}
 \DoxyCodeLine{00033\ \ \ \ \ \{}
 \DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }ComponentView}
@@ -78,13 +78,13 @@
 \DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pool-\/>HasComponent(entityID))}
 \DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pool-\/>RemoveComponent(entityID);}
 \DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_MSG(\textcolor{stringliteral}{"{}<Registry.h>\ (RemoveComponent)\ Entity\ [\ \{\}\ ]\ does\ not\ contain\ \{\}\ component,\ removed\ nothing"{}},\ entityID,\ \textcolor{keyword}{typeid}(t).name());}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ViperLOG\_MSG(\textcolor{stringliteral}{"{}<Registry.h>\ (RemoveComponent)\ Entity\ [\ \{\}\ ]\ does\ not\ contain\ \{\}\ component,\ removed\ nothing"{}},\ entityID,\ \textcolor{keyword}{typeid}(t).name());}
 \DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00079\ }
 \DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ t>}
 \DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ t*\ GetComponent(EntityID\ entityID)}
 \DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool}{ComponentPool<t>}}*\ pool\ =\ GetPool<t>();}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool}{ComponentPool<t>}}*\ pool\ =\ GetPool<t>();}
 \DoxyCodeLine{00084\ }
 \DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pool-\/>HasComponent(entityID))}
 \DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ pool-\/>GetComponent<t>(entityID);}
@@ -101,7 +101,7 @@
 \DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ t>}
 \DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<EntityID>*\ GetAllEntitiesWithComponent()}
 \DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool}{ComponentPool<t>}}*\ pool\ =\ GetPool<t>();}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool}{ComponentPool<t>}}*\ pool\ =\ GetPool<t>();}
 \DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&pool-\/>denseEntities;}
 \DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00103\ }
@@ -110,9 +110,9 @@
 \DoxyCodeLine{00106\ \ \ \ \ }
 \DoxyCodeLine{00107\ \ \ \ \ \textcolor{keyword}{protected}:}
 \DoxyCodeLine{00108\ }
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool}{InheritPool}}\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool}{InheritPool}}\ \{}
 \DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool}{\string~InheritPool}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool}{\string~InheritPool}}()\ =\ \textcolor{keywordflow}{default};}
 \DoxyCodeLine{00112\ }
 \DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//need\ to\ add\ these\ as\ the\ inherit\ so\ it\ can\ be\ accessed\ without\ the\ cast}}
 \DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//since\ the\ component\ pool\ needs\ to\ represent\ any\ type\ of\ component}}
@@ -124,7 +124,7 @@
 \DoxyCodeLine{00120\ }
 \DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{comment}{//sparse\ set\ implementation\ that\ I\ think\ works}}
 \DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ t>}
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }ComponentPool\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool}{InheritPool}}}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }ComponentPool\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_inherit_pool}{InheritPool}}}
 \DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ ComponentPool()}
@@ -220,7 +220,7 @@
 \DoxyCodeLine{00216\ \ \ \ \ \textcolor{keyword}{private}:}
 \DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{comment}{//this\ the\ culptrit\ I\ was\ ranting\ about\ at\ the\ top}}
 \DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ t>}
-\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool}{ComponentPool<t>}}*\ GetPool()}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool}{ComponentPool<t>}}*\ GetPool()}
 \DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ std::type\_index\ poolID(\textcolor{keyword}{typeid}(t));}
 \DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ foundPoolIt\ =\ m\_Components.find(poolID);}
@@ -230,7 +230,7 @@
 \DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (foundPoolIt\ ==\ m\_Components.end())}
 \DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::unique\_ptr<ComponentPool<t>>\ pool\ =\ std::make\_unique<ComponentPool<t>>();}
-\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool}{ComponentPool<t>}}*\ poolPtr\ =\ pool.get();}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_registry_1_1_component_pool}{ComponentPool<t>}}*\ poolPtr\ =\ pool.get();}
 \DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_Components.emplace(poolID,\ std::move(pool));}
 \DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ poolPtr;}
 \DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \}}

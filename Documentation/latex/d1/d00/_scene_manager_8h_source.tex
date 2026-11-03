@@ -27,7 +27,7 @@
 \DoxyCodeLine{00023\ \textcolor{comment}{//I\ would\ like\ to\ add\ level\ streaming\ eventually\ and\ have\ scenes\ that\ can\ be\ loaded\ and\ closed\ during\ runtime\ which\ would\ allow\ the\ player\ to\ }}
 \DoxyCodeLine{00024\ \textcolor{comment}{//transition\ through\ scenes\ and\ not\ even\ realize\ it}}
 \DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \textcolor{keyword}{namespace\ }Engine::Scene}
+\DoxyCodeLine{00026\ \textcolor{keyword}{namespace\ }Viper::Scene}
 \DoxyCodeLine{00027\ \{}
 \DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{class\ }SceneManager}
 \DoxyCodeLine{00029\ \ \ \ \ \{}
@@ -39,14 +39,14 @@
 \DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ LoadScene(std::string\_view\ sceneName);}
 \DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ SaveCurrentScene();}
 \DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_scene}{Scene}}*\ GetCurrentScene()\ \{\ \textcolor{keywordflow}{return}\ m\_CurrentScene.get();\ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \doxymbox{\hyperlink{class_viper_1_1_scene_1_1_scene}{Scene}}*\ GetCurrentScene()\ \{\ \textcolor{keywordflow}{return}\ m\_CurrentScene.get();\ \}}
 \DoxyCodeLine{00039\ }
 \DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{//NOTE:\ this\ should\ eventually\ be\ a\ unique\_ptr\ because\ the\ overall\ game\ should\ only\ hold\ this,\ may\ already\ need\ to\ add\ it}}
 \DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ keeping\ it\ shared\ for\ now\ just\ in\ case\ though}}
 \DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//}}
 \DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{comment}{//The\ different\ GameObject\ types\ only\ do\ constructor\ stuff,\ so\ can\ just\ simply\ return\ the\ base\ GameObject\ for\ the\ id}}
 \DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ t,\ \textcolor{keyword}{typename}...\ Args>}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_game_object}{ECS::GameObject}}*\ CreateEntity(Args\&\&...\ args)}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_game_object}{ECS::GameObject}}*\ CreateEntity(Args\&\&...\ args)}
 \DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_CurrentScene)}
 \DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \{}

@@ -132,14 +132,14 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d7/d00/_buffer
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;limits&gt;</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">//ENGINE</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;Core/Core.h&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="../../d4/d00/_core_8h.html">Core/Core.h</a>&quot;</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">namespace </span>Engine::Renderer</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">namespace </span>Viper::Renderer</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>{</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="comment">//currently working on this, but just pushing this since I have the editor updated</span></div>
 <div class="foldopen" id="foldopen00027" data-start="{" data-end="};">
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="../../d2/d00/class_engine_1_1_renderer_1_1_base_buffer.html">   27</a></span>    <span class="keyword">class </span>BaseBuffer</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="../../dc/d00/class_viper_1_1_renderer_1_1_base_buffer.html">   27</a></span>    <span class="keyword">class </span>BaseBuffer</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {   </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">protected</span>:</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        BaseBuffer() = <span class="keywordflow">default</span>;</div>
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d7/d00/_buffer
 </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
 <div class="foldopen" id="foldopen00045" data-start="{" data-end="};">
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="../../d9/d00/class_engine_1_1_renderer_1_1_vertex_buffer.html">   45</a></span>    <span class="keyword">class </span>VertexBuffer : <span class="keyword">public</span> BaseBuffer</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="../../d0/d00/class_viper_1_1_renderer_1_1_vertex_buffer.html">   45</a></span>    <span class="keyword">class </span>VertexBuffer : <span class="keyword">public</span> BaseBuffer</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    {</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        VertexBuffer() = <span class="keywordflow">default</span>;</div>
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d7/d00/_buffer
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    </div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="comment">//Index buffer requires a VAO to be bound</span></div>
 <div class="foldopen" id="foldopen00068" data-start="{" data-end="};">
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="../../dd/d00/class_engine_1_1_renderer_1_1_index_buffer.html">   68</a></span>    <span class="keyword">class </span>IndexBuffer : <span class="keyword">public</span> BaseBuffer</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="../../d1/d00/class_viper_1_1_renderer_1_1_index_buffer.html">   68</a></span>    <span class="keyword">class </span>IndexBuffer : <span class="keyword">public</span> BaseBuffer</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    {</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        IndexBuffer() = <span class="keywordflow">default</span>;</div>
@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d7/d00/_buffer
 </div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
 <div class="foldopen" id="foldopen00090" data-start="{" data-end="};">
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="../../d1/d00/class_engine_1_1_renderer_1_1_frame_buffer.html">   90</a></span>    <span class="keyword">class </span>FrameBuffer : <span class="keyword">public</span> BaseBuffer</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="../../df/d00/class_viper_1_1_renderer_1_1_frame_buffer.html">   90</a></span>    <span class="keyword">class </span>FrameBuffer : <span class="keyword">public</span> BaseBuffer</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    {</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        FrameBuffer() = <span class="keywordflow">default</span>;</div>
@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d7/d00/_buffer
 </div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
 <div class="foldopen" id="foldopen00112" data-start="{" data-end="};">
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="../../d0/d00/class_engine_1_1_renderer_1_1_render_buffer.html">  112</a></span>    <span class="keyword">class </span>RenderBuffer : <span class="keyword">public</span> BaseBuffer</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="../../d4/d00/class_viper_1_1_renderer_1_1_render_buffer.html">  112</a></span>    <span class="keyword">class </span>RenderBuffer : <span class="keyword">public</span> BaseBuffer</div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    {</div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        RenderBuffer() = <span class="keywordflow">default</span>;</div>
@@ -255,6 +255,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d7/d00/_buffer
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    };</div>
 </div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>}</div>
+<div class="ttc" id="a_core_8h_html"><div class="ttname"><a href="../../d4/d00/_core_8h.html">Core.h</a></div><div class="ttdoc">Contains global types, macros, and values for the engine, game, and editor.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

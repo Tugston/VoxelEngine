@@ -1,0 +1,97 @@
+\doxysection{Viper::Logger Class Reference}
+\hypertarget{class_viper_1_1_logger}{}\label{class_viper_1_1_logger}\index{Viper::Logger@{Viper::Logger}}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_logger_a0f40c292525892c5613afaedb95b2577}\label{class_viper_1_1_logger_a0f40c292525892c5613afaedb95b2577} 
+enum class \doxymbox{\hyperlink{class_viper_1_1_logger_a0f40c292525892c5613afaedb95b2577}{Log\+Type}} \{ {\bfseries Message}
+, {\bfseries Warning}
+, {\bfseries Error}
+, {\bfseries Critical}
+ \}
+\begin{DoxyCompactList}\small\item\em Type to specify what type of log to output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \doxymbox{\hyperlink{class_viper_1_1_logger_a24ec88e61e45bf78e07cda65a597d832}{Init}} ()
+\begin{DoxyCompactList}\small\item\em Formats and setus up spd\+\_\+log and verifies setup. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Args$>$ }\\static void \doxymbox{\hyperlink{class_viper_1_1_logger_ae51f8a4d6b68251ce7433e824ff3ddab}{Log\+Message}} (\doxymbox{\hyperlink{class_viper_1_1_logger_a0f40c292525892c5613afaedb95b2577}{Log\+Type}} type, std::\+string\+\_\+view message, Args \&\&... args)
+\begin{DoxyCompactList}\small\item\em Prints the provided message to the screen with args based on \doxylink{class_viper_1_1_logger_a0f40c292525892c5613afaedb95b2577}{Log\+Type}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_logger_a9bbeecdb1bdf281c6f78cd7a8d228e00}\label{class_viper_1_1_logger_a9bbeecdb1bdf281c6f78cd7a8d228e00} 
+static std::\+shared\+\_\+ptr$<$ spdlog::\+logger $>$ {\bfseries Get\+Engine\+Logger} ()
+\begin{DoxyCompactList}\small\item\em Return \doxylink{class_viper_1_1_logger_accd524e475a9385f87a76d39c43b8452}{s\+\_\+\+Engine\+Logger} and utilized for the macro to make them look nice. \end{DoxyCompactList}\item 
+\Hypertarget{class_viper_1_1_logger_ad1e05bfc8c54ce4790a67f1df4345ac7}\label{class_viper_1_1_logger_ad1e05bfc8c54ce4790a67f1df4345ac7} 
+static std::\+shared\+\_\+ptr$<$ spdlog::\+logger $>$ {\bfseries Get\+Game\+Logger} ()
+\begin{DoxyCompactList}\small\item\em Return \doxylink{class_viper_1_1_logger_a1cd358e284a9c2e11dd12e1a360aaa71}{s\+\_\+\+Game\+Logger} and utilized for the macro to make them look nice. \end{DoxyCompactList}\item 
+\Hypertarget{class_viper_1_1_logger_a9e2dd44b786c3a0fa28dcc964dc34ee9}\label{class_viper_1_1_logger_a9e2dd44b786c3a0fa28dcc964dc34ee9} 
+static std::\+shared\+\_\+ptr$<$ spdlog::\+logger $>$ {\bfseries Get\+Editor\+Logger} ()
+\begin{DoxyCompactList}\small\item\em Return \doxylink{class_viper_1_1_logger_a156714ed52d0ea280c4efa8cbb9b47f5}{s\+\_\+\+Editor\+Logger} and utilized for the macro to make them look nice. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_logger_accd524e475a9385f87a76d39c43b8452}\label{class_viper_1_1_logger_accd524e475a9385f87a76d39c43b8452} 
+static std::\+shared\+\_\+ptr$<$ spdlog::\+logger $>$ {\bfseries s\+\_\+\+Engine\+Logger}
+\begin{DoxyCompactList}\small\item\em Configured to specify the message originated form the Engine. \end{DoxyCompactList}\item 
+\Hypertarget{class_viper_1_1_logger_a1cd358e284a9c2e11dd12e1a360aaa71}\label{class_viper_1_1_logger_a1cd358e284a9c2e11dd12e1a360aaa71} 
+static std::\+shared\+\_\+ptr$<$ spdlog::\+logger $>$ {\bfseries s\+\_\+\+Game\+Logger}
+\begin{DoxyCompactList}\small\item\em Configured to specify the message originated from the Game. \end{DoxyCompactList}\item 
+\Hypertarget{class_viper_1_1_logger_a156714ed52d0ea280c4efa8cbb9b47f5}\label{class_viper_1_1_logger_a156714ed52d0ea280c4efa8cbb9b47f5} 
+static std::\+shared\+\_\+ptr$<$ spdlog::\+logger $>$ {\bfseries s\+\_\+\+Editor\+Logger}
+\begin{DoxyCompactList}\small\item\em Configured to specify the message originated from the Editor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{class_viper_1_1_logger_doc-func-members}
+\Hypertarget{class_viper_1_1_logger_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_viper_1_1_logger_a24ec88e61e45bf78e07cda65a597d832}\index{Viper::Logger@{Viper::Logger}!Init@{Init}}
+\index{Init@{Init}!Viper::Logger@{Viper::Logger}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_viper_1_1_logger_a24ec88e61e45bf78e07cda65a597d832} 
+bool Viper::\+\+Logger::\+\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Formats and setus up spd\+\_\+log and verifies setup. 
+
+Sets the pattern of the spd\+\_\+log \doxylink{class_viper_1_1_logger_accd524e475a9385f87a76d39c43b8452}{s\+\_\+\+Engine\+Logger}, assigns a multithreaded logger object to the \doxylink{class_viper_1_1_logger_accd524e475a9385f87a76d39c43b8452}{s\+\_\+\+Engine\+Logger}, sets the level to trace. Proceeds to do the same for the \doxylink{class_viper_1_1_logger_a1cd358e284a9c2e11dd12e1a360aaa71}{s\+\_\+\+Game\+Logger} and \doxylink{class_viper_1_1_logger_a156714ed52d0ea280c4efa8cbb9b47f5}{s\+\_\+\+Editor\+Logger}. All loggers have the same patters setup of being highlighted by their severity color, displaying time in brackets, outputting logger name, and finally the formatted message.
+
+\begin{DoxyPostcond}{Postcondition}
+Loggers are fully setup and initialized to print outputs.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+True if all loggers are successfully created and initialized. Return false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_viper_1_1_logger_ae51f8a4d6b68251ce7433e824ff3ddab}\index{Viper::Logger@{Viper::Logger}!LogMessage@{LogMessage}}
+\index{LogMessage@{LogMessage}!Viper::Logger@{Viper::Logger}}
+\doxysubsubsection{\texorpdfstring{LogMessage()}{LogMessage()}}
+{\footnotesize\ttfamily \label{class_viper_1_1_logger_ae51f8a4d6b68251ce7433e824ff3ddab} 
+template$<$typename... Args$>$ \\
+void Viper::\+\+Logger::\+\+Log\+Message (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_viper_1_1_logger_a0f40c292525892c5613afaedb95b2577}{Log\+Type}}}]{type}{, }\item[{std::\+string\+\_\+view}]{message}{, }\item[{Args \&\&...}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Prints the provided message to the screen with args based on \doxylink{class_viper_1_1_logger_a0f40c292525892c5613afaedb95b2577}{Log\+Type}. 
+
+Utilizes std::\+vformat to emplace the arg values into the printed message. Checks to see what \doxylink{class_viper_1_1_logger_a0f40c292525892c5613afaedb95b2577}{Log\+Type} value was provided and utilizes a series of macros to print the appropriate severity through the correct logger.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em type} & The severity of the log to be printed. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em message} & String to be printed to the console. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em args} & Variable values to display in the string.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+In order to display the args, add a \{\} for each value where it should be displayed. Then add the args in the order of the required printing. 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Core/\doxymbox{\hyperlink{_logger_8h}{Logger.\+h}}\item 
+Engine/\+src/\+\+Core/Logger.\+cpp\end{DoxyCompactItemize}

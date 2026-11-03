@@ -1,12 +1,7 @@
 var searchData=
 [
-  ['setframesize_0',['SetFrameSize',['../dd/d00/class_engine_1_1_window.html#a6ad269dc64e2c560f9dfe072b32744c8',1,'Engine::Window']]],
-  ['setupwindow_1',['SetupWindow',['../dd/d00/class_engine_1_1_window.html#a83026e1959db722fede5bb24a6bb1b49',1,'Engine::Window']]],
-  ['setviewtargetcamera_2',['SetViewTargetCamera',['../da/d00/class_engine_1_1_application.html#afcb4d929b975056af03a69d9d8fa2ea9',1,'Engine::Application']]],
-  ['setwindowbordercolor_3',['SetWindowBorderColor',['../dd/d00/class_engine_1_1_window.html#a6bbed0fc522df6a64d1689db8dafe2fc',1,'Engine::Window']]],
-  ['setwindowheadingcolor_4',['SetWindowHeadingColor',['../dd/d00/class_engine_1_1_window.html#ad947456c53169934e2b5696e81bfd8cf',1,'Engine::Window']]],
-  ['shouldrun_5',['ShouldRun',['../da/d00/class_engine_1_1_application.html#a463c6b35c62f2ee778917b9d99af65ec',1,'Engine::Application']]],
-  ['start_6',['Start',['../da/d00/class_engine_1_1_application.html#aa473bd543c92402f19ce0d4ff4002442',1,'Engine::Application']]],
-  ['swapbuffer_7',['SwapBuffer',['../da/d00/class_engine_1_1_application.html#a69aeb77e8f654c7d11ff64eed9004233',1,'Engine::Application']]],
-  ['swapbuffers_8',['SwapBuffers',['../dd/d00/class_engine_1_1_window.html#abb7acac18eb1edff6779c9746cb2baa2',1,'Engine::Window']]]
+  ['operator_2a_0',['operator*',['../db/d00/struct_viper_1_1_maths_1_1_vector3.html#a56d8d7b2b406f57876303456354d4a99',1,'Viper::Maths::Vector3::operator*(const Vector3&lt; t &gt; &amp;other) const'],['../db/d00/struct_viper_1_1_maths_1_1_vector3.html#a3ef38e2ad422d0a9dfa123829b5ec6df',1,'Viper::Maths::Vector3::operator*(float scalar) const']]],
+  ['operator_2b_1',['operator+',['../dc/d00/struct_viper_1_1_maths_1_1_vector2.html#a7557fa31eee9757a2c86cc095c13b322',1,'Viper::Maths::Vector2::operator+()'],['../db/d00/struct_viper_1_1_maths_1_1_vector3.html#a7f935248f6764a382dd12262d7b9e66e',1,'Viper::Maths::Vector3::operator+()']]],
+  ['operator_2d_2',['operator-',['../dc/d00/struct_viper_1_1_maths_1_1_vector2.html#ac32a87f48ea24849781c778d9c0e7a6f',1,'Viper::Maths::Vector2::operator-()'],['../db/d00/struct_viper_1_1_maths_1_1_vector3.html#a3732a521eeb29dc19c5c118fc8eb6dbd',1,'Viper::Maths::Vector3::operator-()']]],
+  ['operator_3d_3',['operator=',['../dc/d00/struct_viper_1_1_maths_1_1_vector2.html#ab7a040f87c8ae3645811eb2d35d8fa90',1,'Viper::Maths::Vector2::operator=()'],['../db/d00/struct_viper_1_1_maths_1_1_vector3.html#abb51f5ae6c98043da5ac74bd4f542da8',1,'Viper::Maths::Vector3::operator=()']]]
 ];

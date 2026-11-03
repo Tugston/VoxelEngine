@@ -1,0 +1,79 @@
+\doxysection{Viper::Renderer::Renderer Class Reference}
+\hypertarget{class_viper_1_1_renderer_1_1_renderer}{}\label{class_viper_1_1_renderer_1_1_renderer}\index{Viper::Renderer::Renderer@{Viper::Renderer::Renderer}}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_renderer_1_1_renderer_abdfe8aca416c905c0f2eae50093b16eb}\label{class_viper_1_1_renderer_1_1_renderer_abdfe8aca416c905c0f2eae50093b16eb} 
+enum class {\bfseries Render\+Target} : UINT8 \{ {\bfseries Window}
+, {\bfseries Frame\+Buffer\+Texture}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_renderer_1_1_renderer_ac3b5c0e8746f0bab656e2ad73799788e}\label{class_viper_1_1_renderer_1_1_renderer_ac3b5c0e8746f0bab656e2ad73799788e} 
+{\bfseries Renderer} (View\+Size viewport\+Size)
+\item 
+\Hypertarget{class_viper_1_1_renderer_1_1_renderer_a62d5ab91c4b3d855e2f30e57ac7ad080}\label{class_viper_1_1_renderer_1_1_renderer_a62d5ab91c4b3d855e2f30e57ac7ad080} 
+{\bfseries Renderer} (View\+Size viewport\+Size, Render\+Target target)
+\item 
+\Hypertarget{class_viper_1_1_renderer_1_1_renderer_aed742c683e6e91d5d58b75bed6943fba}\label{class_viper_1_1_renderer_1_1_renderer_aed742c683e6e91d5d58b75bed6943fba} 
+void {\bfseries Begin\+Render} (\doxymbox{\hyperlink{class_viper_1_1_camera_1_1_editor_camera}{Viper::\+\+Camera::\+\+Editor\+Camera}} \texorpdfstring{$\ast$}{*}camera)
+\item 
+\Hypertarget{class_viper_1_1_renderer_1_1_renderer_a999d5a44ecfc13ab1bcc0b80f191d4ad}\label{class_viper_1_1_renderer_1_1_renderer_a999d5a44ecfc13ab1bcc0b80f191d4ad} 
+void {\bfseries End\+Render} ()
+\item 
+\Hypertarget{class_viper_1_1_renderer_1_1_renderer_aca1d58e4349421a0cec7b4cf2593cf8e}\label{class_viper_1_1_renderer_1_1_renderer_aca1d58e4349421a0cec7b4cf2593cf8e} 
+void {\bfseries Submit\+Object} (\doxymbox{\hyperlink{struct_viper_1_1_renderer_1_1_render_object}{Render\+Object}} \&render\+Object)
+\item 
+\Hypertarget{class_viper_1_1_renderer_1_1_renderer_a6e69f77b5b09869c2e9503956b8eb58d}\label{class_viper_1_1_renderer_1_1_renderer_a6e69f77b5b09869c2e9503956b8eb58d} 
+std::\+function$<$ void(int, int)$>$ {\bfseries Resize} (\doxymbox{\hyperlink{class_viper_1_1_camera_1_1_editor_camera}{Camera::\+\+Editor\+Camera}} \texorpdfstring{$\ast$}{*}camera=nullptr)
+\item 
+\Hypertarget{class_viper_1_1_renderer_1_1_renderer_a071880976760f2486dfc3c72094c76ea}\label{class_viper_1_1_renderer_1_1_renderer_a071880976760f2486dfc3c72094c76ea} 
+unsigned int {\bfseries Get\+Render\+Texture} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_renderer_1_1_renderer_af4da09e7d12ce5345eaf4fb2d2d16f82}\label{class_viper_1_1_renderer_1_1_renderer_af4da09e7d12ce5345eaf4fb2d2d16f82} 
+void {\bfseries Setup\+Render\+Texture} ()
+\item 
+\Hypertarget{class_viper_1_1_renderer_1_1_renderer_aeaf6f1e73e19d06288d9efbd9b24ae39}\label{class_viper_1_1_renderer_1_1_renderer_aeaf6f1e73e19d06288d9efbd9b24ae39} 
+void {\bfseries Clear\+Screen} ()
+\item 
+\Hypertarget{class_viper_1_1_renderer_1_1_renderer_a5795a73bececd1eaadaeb4dd1753633c}\label{class_viper_1_1_renderer_1_1_renderer_a5795a73bececd1eaadaeb4dd1753633c} 
+void {\bfseries Clear\+Queues} ()
+\item 
+\Hypertarget{class_viper_1_1_renderer_1_1_renderer_a2554b89aff2b56bb9e948271c517053f}\label{class_viper_1_1_renderer_1_1_renderer_a2554b89aff2b56bb9e948271c517053f} 
+void {\bfseries Register\+Opaque\+Object} (Opaque\+Packets mesh)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_renderer_1_1_renderer_ac61fffdf5ecffcdba108f57fdcfe9bde}\label{class_viper_1_1_renderer_1_1_renderer_ac61fffdf5ecffcdba108f57fdcfe9bde} 
+Render\+Target {\bfseries m\+\_\+\+Render\+Target}
+\item 
+\Hypertarget{class_viper_1_1_renderer_1_1_renderer_a071fd024b70931f7187fcf5979a9672f}\label{class_viper_1_1_renderer_1_1_renderer_a071fd024b70931f7187fcf5979a9672f} 
+std::\+queue$<$ Opaque\+Packets $>$ {\bfseries m\+\_\+\+Opaque\+Scene\+Objects}
+\item 
+\Hypertarget{class_viper_1_1_renderer_1_1_renderer_a3030eb575e8430c6b62a79359393f1ce}\label{class_viper_1_1_renderer_1_1_renderer_a3030eb575e8430c6b62a79359393f1ce} 
+\doxymbox{\hyperlink{class_viper_1_1_renderer_1_1_frame_buffer}{Frame\+Buffer}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+\+Frame\+Buffer}
+\item 
+\Hypertarget{class_viper_1_1_renderer_1_1_renderer_aa6e28046c6dc4d9d116ace9078b1e1af}\label{class_viper_1_1_renderer_1_1_renderer_aa6e28046c6dc4d9d116ace9078b1e1af} 
+\doxymbox{\hyperlink{class_viper_1_1_utility_1_1_texture2_d}{Utility::\+\+Texture2D}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+\+Texture\+Color\+Buffer}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_renderer_1_1_renderer_a2e7a067a11a390323553aad855ef35bd}\label{class_viper_1_1_renderer_1_1_renderer_a2e7a067a11a390323553aad855ef35bd} 
+struct {\bfseries Mesh\+Object}
+\item 
+\Hypertarget{class_viper_1_1_renderer_1_1_renderer_a95841b23a894fa885069b2d1414bbb0d}\label{class_viper_1_1_renderer_1_1_renderer_a95841b23a894fa885069b2d1414bbb0d} 
+struct {\bfseries Instance\+Mesh\+Object}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Renderer/\+\+Core/Renderer.\+h\item 
+Engine/\+src/\+\+Renderer/\+\+Core/Renderer.\+cpp\end{DoxyCompactItemize}

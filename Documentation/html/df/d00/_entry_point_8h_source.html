@@ -133,15 +133,15 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('df/d00/_entry_
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">//ENGINE</span></div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#include &quot;<a class="code" href="../../d9/d00/_application_8h.html">Application.h</a>&quot;</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#include &quot;Logger.h&quot;</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#include &quot;<a class="code" href="../../d6/d00/_logger_8h.html">Logger.h</a>&quot;</span></div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#ifdef ENGINE_PLATFORM_WINDOWS</span></div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span></div>
 <div class="foldopen" id="foldopen00060" data-start="{" data-end="}">
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="../../df/d00/_entry_point_8h.html#a1fa3253ca11014c1b01923a1674ff19c">   60</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="../../df/d00/_entry_point_8h.html#a1fa3253ca11014c1b01923a1674ff19c">main</a>(<span class="keywordtype">int</span> arc, <span class="keywordtype">char</span>** argv)</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>{</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    Engine::Logger::Init();</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keyword">auto</span>* game = <a class="code hl_function" href="../../d9/d00/_application_8h.html#a35016cfcb578c1f00f887ab607ff7fb9">Engine::CreateApplication</a>();</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <a class="code hl_function" href="../../d3/d00/class_viper_1_1_logger.html#a24ec88e61e45bf78e07cda65a597d832">Viper::Logger::Init</a>();</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keyword">auto</span>* game = <a class="code hl_function" href="../../d9/d00/_application_8h.html#aca6e31aa2e27cb997913f2142d6380fc">Viper::CreateApplication</a>();</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    game-&gt;Start();</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keyword">delete</span> game;</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>}</div>
@@ -149,8 +149,10 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('df/d00/_entry_
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="a_application_8h_html"><div class="ttname"><a href="../../d9/d00/_application_8h.html">Application.h</a></div><div class="ttdoc">The overarching class for engine processes.</div></div>
-<div class="ttc" id="a_application_8h_html_a35016cfcb578c1f00f887ab607ff7fb9"><div class="ttname"><a href="../../d9/d00/_application_8h.html#a35016cfcb578c1f00f887ab607ff7fb9">Engine::CreateApplication</a></div><div class="ttdeci">Application * CreateApplication()</div><div class="ttdoc">Application creation.</div></div>
+<div class="ttc" id="a_application_8h_html_aca6e31aa2e27cb997913f2142d6380fc"><div class="ttname"><a href="../../d9/d00/_application_8h.html#aca6e31aa2e27cb997913f2142d6380fc">Viper::CreateApplication</a></div><div class="ttdeci">Application * CreateApplication()</div><div class="ttdoc">Application creation.</div></div>
 <div class="ttc" id="a_entry_point_8h_html_a1fa3253ca11014c1b01923a1674ff19c"><div class="ttname"><a href="../../df/d00/_entry_point_8h.html#a1fa3253ca11014c1b01923a1674ff19c">main</a></div><div class="ttdeci">int main(int arc, char **argv)</div><div class="ttdoc">Starting point.</div><div class="ttdef"><b>Definition</b> EntryPoint.h:60</div></div>
+<div class="ttc" id="a_logger_8h_html"><div class="ttname"><a href="../../d6/d00/_logger_8h.html">Logger.h</a></div><div class="ttdoc">Handles logging text to the console window.</div></div>
+<div class="ttc" id="aclass_viper_1_1_logger_html_a24ec88e61e45bf78e07cda65a597d832"><div class="ttname"><a href="../../d3/d00/class_viper_1_1_logger.html#a24ec88e61e45bf78e07cda65a597d832">Viper::Logger::Init</a></div><div class="ttdeci">static bool Init()</div><div class="ttdoc">Formats and setus up spd_log and verifies setup.</div><div class="ttdef"><b>Definition</b> Logger.cpp:25</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

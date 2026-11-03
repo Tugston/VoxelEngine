@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['width_0',['width',['../d3/d00/struct_engine_1_1_window_1_1_window_info.html#a411ed3a2124ad5b3687475cf681d92f7',1,'Engine::Window::WindowInfo']]],
-  ['window_1',['Window',['../dd/d00/class_engine_1_1_window.html',1,'Engine::Window'],['../dd/d00/class_engine_1_1_window.html#a3b1292c8f06176ebcea484f2ccb7c3d5',1,'Engine::Window::Window()'],['../dd/d00/class_engine_1_1_window.html#a90b07fc3b446ca64dfa1cad4c49ee708',1,'Engine::Window::Window(const std::string &amp;name)'],['../dd/d00/class_engine_1_1_window.html#a47df49ab1f25fb542ca39cea5ef3908f',1,'Engine::Window::Window(const std::string &amp;name, unsigned short width, unsigned short height)']]],
-  ['window_2eh_2',['Window.h',['../de/d00/_window_8h.html',1,'']]],
-  ['windowinfo_3',['WindowInfo',['../d3/d00/struct_engine_1_1_window_1_1_window_info.html',1,'Engine::Window']]],
-  ['windowresizecallback_4',['WindowResizeCallback',['../de/d00/_window_8h.html#a5156aa16c2af225cc7dee34cb6ad065e',1,'Engine']]],
-  ['worldlayer_5',['WorldLayer',['../d3/d00/class_engine_1_1_world_layer.html',1,'Engine']]]
+  ['vector2_0',['Vector2',['../dc/d00/struct_viper_1_1_maths_1_1_vector2.html',1,'Viper::Maths::Vector2&lt; t &gt;'],['../dc/d00/struct_viper_1_1_maths_1_1_vector2.html#a7b7b39d07dbe3a284c08ed8f87e7af35',1,'Viper::Maths::Vector2::Vector2()=default'],['../dc/d00/struct_viper_1_1_maths_1_1_vector2.html#a63da5872ffb034f4435abc068e36565e',1,'Viper::Maths::Vector2::Vector2(t x, t y)']]],
+  ['vector2_3c_20float_20_3e_1',['Vector2&lt; float &gt;',['../dc/d00/struct_viper_1_1_maths_1_1_vector2.html',1,'Viper::Maths']]],
+  ['vector3_2',['Vector3',['../db/d00/struct_viper_1_1_maths_1_1_vector3.html',1,'Viper::Maths::Vector3&lt; t &gt;'],['../db/d00/struct_viper_1_1_maths_1_1_vector3.html#a6dbd36e05a57e9f670145faf126d4630',1,'Viper::Maths::Vector3::Vector3()=default'],['../db/d00/struct_viper_1_1_maths_1_1_vector3.html#aaf0fffc30073a75e10ed262d002db3c3',1,'Viper::Maths::Vector3::Vector3(t x, t y, t z)'],['../db/d00/struct_viper_1_1_maths_1_1_vector3.html#a63104a409108cd011c232d60e91ce23c',1,'Viper::Maths::Vector3::Vector3(const Vector2&lt; t &gt; &amp;vec2)']]],
+  ['vector3_3c_20float_20_3e_3',['Vector3&lt; float &gt;',['../db/d00/struct_viper_1_1_maths_1_1_vector3.html',1,'Viper::Maths']]],
+  ['vertexbuffer_4',['VertexBuffer',['../d0/d00/class_viper_1_1_renderer_1_1_vertex_buffer.html',1,'Viper::Renderer']]],
+  ['viper_20engine_5',['Viper Engine',['../index.html',1,'']]],
+  ['visualization_20of_20operation_6',['Visualization of Operation',['../db/d00/struct_viper_1_1_maths_1_1_vector3.html#autotoc_md1',1,'Visualization of Operation'],['../db/d00/struct_viper_1_1_maths_1_1_vector3.html#autotoc_md2',1,'Visualization of Operation']]]
 ];

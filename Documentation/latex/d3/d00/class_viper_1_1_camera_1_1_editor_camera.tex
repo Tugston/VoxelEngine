@@ -1,0 +1,117 @@
+\doxysection{Viper::Camera::Editor\+Camera Class Reference}
+\hypertarget{class_viper_1_1_camera_1_1_editor_camera}{}\label{class_viper_1_1_camera_1_1_editor_camera}\index{Viper::Camera::EditorCamera@{Viper::Camera::EditorCamera}}
+Inheritance diagram for Viper::Camera::Editor\+Camera:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d3/d00/class_viper_1_1_camera_1_1_editor_camera}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_ae486b04d17e9256905916e44235b289b}\label{class_viper_1_1_camera_1_1_editor_camera_ae486b04d17e9256905916e44235b289b} 
+enum class {\bfseries Move\+Direction} : UINT8 \{ {\bfseries Forward} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 0
+, {\bfseries Backwards} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 2
+, {\bfseries Left} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 3
+, {\bfseries Right} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 4
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_aa230edfe1ed9c2996dcfc0a85d388b0c}\label{class_viper_1_1_camera_1_1_editor_camera_aa230edfe1ed9c2996dcfc0a85d388b0c} 
+virtual void {\bfseries Process\+Rotation} (const glm::\+vec2 \&mouse\+Delta, bool constrain\+Pitch)=0
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_aeaff519ec1ae97ad03b05d2341e19d35}\label{class_viper_1_1_camera_1_1_editor_camera_aeaff519ec1ae97ad03b05d2341e19d35} 
+virtual void {\bfseries Process\+Location} (Move\+Direction direction, float delta\+Time)=0
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_a724651b66dde165b60d8ae26246ce548}\label{class_viper_1_1_camera_1_1_editor_camera_a724651b66dde165b60d8ae26246ce548} 
+virtual void {\bfseries Update\+Projection} (float width, float height)=0
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_ae23b3f2bccc7a25afc2a41a2a541d029}\label{class_viper_1_1_camera_1_1_editor_camera_ae23b3f2bccc7a25afc2a41a2a541d029} 
+void {\bfseries Set\+Speed} (float speed)
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_a531dde98c6e4ae724bf7f59e08c7d729}\label{class_viper_1_1_camera_1_1_editor_camera_a531dde98c6e4ae724bf7f59e08c7d729} 
+void {\bfseries Set\+Sensitivity} (float sensitivity)
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_a230fe685c825ca2e0abeb67ce846e4bc}\label{class_viper_1_1_camera_1_1_editor_camera_a230fe685c825ca2e0abeb67ce846e4bc} 
+glm::\+mat4 {\bfseries Get\+Projection\+Matrix} () const
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_a9e9e356f6c609329e0667f53d208e3d3}\label{class_viper_1_1_camera_1_1_editor_camera_a9e9e356f6c609329e0667f53d208e3d3} 
+glm::\+mat4 {\bfseries Get\+View\+Matrix} () const
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_a190760e65ecf5fbc8ec574d80fdc03a9}\label{class_viper_1_1_camera_1_1_editor_camera_a190760e65ecf5fbc8ec574d80fdc03a9} 
+glm::\+vec3 {\bfseries Get\+Forward\+Vector} () const
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_ae102bcb6755644d2b149594e83c0f173}\label{class_viper_1_1_camera_1_1_editor_camera_ae102bcb6755644d2b149594e83c0f173} 
+glm::\+vec3 {\bfseries Get\+Up\+Vector} () const
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_a49b401692b7e8c39016690e2d77c9309}\label{class_viper_1_1_camera_1_1_editor_camera_a49b401692b7e8c39016690e2d77c9309} 
+glm::\+vec3 {\bfseries Get\+Right\+Vector} () const
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_a4b811fe6b88d85228038f15124446b38}\label{class_viper_1_1_camera_1_1_editor_camera_a4b811fe6b88d85228038f15124446b38} 
+glm::\+vec3 {\bfseries Get\+Euler\+Rotation} () const
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_a39d4f63da59c66358ebf1ae3802c8920}\label{class_viper_1_1_camera_1_1_editor_camera_a39d4f63da59c66358ebf1ae3802c8920} 
+glm::\+quat {\bfseries Get\+Quat\+Rotation} () const
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_a2acf0a12d484e657fafa7272181f4d8f}\label{class_viper_1_1_camera_1_1_editor_camera_a2acf0a12d484e657fafa7272181f4d8f} 
+\doxymbox{\hyperlink{struct_viper_1_1_camera_1_1_camera_settings}{Camera\+Settings}} {\bfseries Get\+Settings} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_a62054ded586c9b69f389792fd92e2440}\label{class_viper_1_1_camera_1_1_editor_camera_a62054ded586c9b69f389792fd92e2440} 
+{\bfseries Editor\+Camera} (const glm::\+vec3 \&position)
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_a732acfe4e7be052f341c54d9fac27d8b}\label{class_viper_1_1_camera_1_1_editor_camera_a732acfe4e7be052f341c54d9fac27d8b} 
+{\bfseries Editor\+Camera} (const glm::\+vec3 \&position, const glm::\+vec3 \&rotation, float speed)
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_a30184e60d0952558f0d768979f43e9c5}\label{class_viper_1_1_camera_1_1_editor_camera_a30184e60d0952558f0d768979f43e9c5} 
+void {\bfseries Update\+Vectors} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_ad46468f1267ee8f0081839007026bd27}\label{class_viper_1_1_camera_1_1_editor_camera_ad46468f1267ee8f0081839007026bd27} 
+\doxymbox{\hyperlink{struct_viper_1_1_camera_1_1_camera_settings}{Camera\+Settings}} {\bfseries m\+\_\+\+Settings}
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_a83ab6177bf0a65b3ed11f6cc876ae495}\label{class_viper_1_1_camera_1_1_editor_camera_a83ab6177bf0a65b3ed11f6cc876ae495} 
+glm::\+quat {\bfseries m\+\_\+\+Rotation} = glm::\+quat(glm::\+vec3(0.f, 0.f, 0.f))
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_acfceee25948fb6cf811dccac8fe9d0e7}\label{class_viper_1_1_camera_1_1_editor_camera_acfceee25948fb6cf811dccac8fe9d0e7} 
+glm::\+vec3 {\bfseries m\+\_\+\+Euler\+Rotation} = glm::\+vec3(0.f, 0.f, 0.f)
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_a1bdd8113876da054cf6d8d095f208aae}\label{class_viper_1_1_camera_1_1_editor_camera_a1bdd8113876da054cf6d8d095f208aae} 
+glm::\+vec3 {\bfseries m\+\_\+\+Location}
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_ae90874b3386eb3aa68e2e05ec9f1c4af}\label{class_viper_1_1_camera_1_1_editor_camera_ae90874b3386eb3aa68e2e05ec9f1c4af} 
+glm::\+vec3 {\bfseries m\+\_\+\+Forward\+Vector} = glm::\+vec3(0.f, 0.f, -\/1.f)
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_aad2bc7efe794e2b95d5bef0fde6fd496}\label{class_viper_1_1_camera_1_1_editor_camera_aad2bc7efe794e2b95d5bef0fde6fd496} 
+glm::\+vec3 {\bfseries m\+\_\+\+Right\+Vector}
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_a86a5f6b42d0c7b703176ef4b28ed26a3}\label{class_viper_1_1_camera_1_1_editor_camera_a86a5f6b42d0c7b703176ef4b28ed26a3} 
+glm::\+vec3 {\bfseries m\+\_\+\+Up\+Vector} = glm::\+vec3(0.f, 1.f, 0.f)
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_a02edef1a2a85e43ffa33456c17e06e64}\label{class_viper_1_1_camera_1_1_editor_camera_a02edef1a2a85e43ffa33456c17e06e64} 
+glm::\+mat4 {\bfseries m\+\_\+\+Projection\+Matrix}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_ac552da5fbfd86916bc50c27fb3b00cdb}\label{class_viper_1_1_camera_1_1_editor_camera_ac552da5fbfd86916bc50c27fb3b00cdb} 
+void {\bfseries Update\+Rotation} (const glm::\+vec3 \&new\+Rotation)
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_ae6fb7fb183de3c70b880020d433f386d}\label{class_viper_1_1_camera_1_1_editor_camera_ae6fb7fb183de3c70b880020d433f386d} 
+glm::\+vec3 {\bfseries Calculate\+Up\+Vector} () const
+\item 
+\Hypertarget{class_viper_1_1_camera_1_1_editor_camera_adc8e6c7741b59d566e8d1f572496ce31}\label{class_viper_1_1_camera_1_1_editor_camera_adc8e6c7741b59d566e8d1f572496ce31} 
+glm::\+vec3 {\bfseries Calculate\+Right\+Vector} () const
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Core/\+\+Cameras/Editor\+Camera.\+h\item 
+Engine/\+src/\+\+Core/\+\+Cameras/Editor\+Camera.\+cpp\end{DoxyCompactItemize}

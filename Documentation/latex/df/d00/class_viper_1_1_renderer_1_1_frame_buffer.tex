@@ -1,0 +1,99 @@
+\doxysection{Viper::Renderer::Frame\+Buffer Class Reference}
+\hypertarget{class_viper_1_1_renderer_1_1_frame_buffer}{}\label{class_viper_1_1_renderer_1_1_frame_buffer}\index{Viper::Renderer::FrameBuffer@{Viper::Renderer::FrameBuffer}}
+Inheritance diagram for Viper::Renderer::Frame\+Buffer:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{df/d00/class_viper_1_1_renderer_1_1_frame_buffer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_renderer_1_1_frame_buffer_abd7104211852308dca18760c0d44853d}\label{class_viper_1_1_renderer_1_1_frame_buffer_abd7104211852308dca18760c0d44853d} 
+{\bfseries Frame\+Buffer} (const Frame\+Buffer \&)=delete
+\item 
+\Hypertarget{class_viper_1_1_renderer_1_1_frame_buffer_a6624b3220455d5fde68f4c174d41b9be}\label{class_viper_1_1_renderer_1_1_frame_buffer_a6624b3220455d5fde68f4c174d41b9be} 
+Frame\+Buffer \& {\bfseries operator=} (const Frame\+Buffer \&)=delete
+\item 
+\Hypertarget{class_viper_1_1_renderer_1_1_frame_buffer_a023aa36c86e4682054c49dee22f5c54b}\label{class_viper_1_1_renderer_1_1_frame_buffer_a023aa36c86e4682054c49dee22f5c54b} 
+{\bfseries Frame\+Buffer} (Frame\+Buffer \&\&other) noexcept
+\item 
+\Hypertarget{class_viper_1_1_renderer_1_1_frame_buffer_a0cd6c9d68d7881d199c8df643b2e5f06}\label{class_viper_1_1_renderer_1_1_frame_buffer_a0cd6c9d68d7881d199c8df643b2e5f06} 
+Frame\+Buffer \& {\bfseries operator=} (Frame\+Buffer \&\&other) noexcept
+\item 
+virtual void \doxymbox{\hyperlink{class_viper_1_1_renderer_1_1_frame_buffer_a1a8aab8ccb01cf4dc73310494e7d3004}{Create}} () override
+\item 
+virtual void \doxymbox{\hyperlink{class_viper_1_1_renderer_1_1_frame_buffer_abaabf518ed3177c281e9c8a97bd0b37f}{Bind}} () const override
+\item 
+virtual void \doxymbox{\hyperlink{class_viper_1_1_renderer_1_1_frame_buffer_ae05a8745a1f3d642ad2ac3270066e12d}{Un\+Bind}} () const override
+\item 
+\Hypertarget{class_viper_1_1_renderer_1_1_frame_buffer_af2866c50a659f73a5b5637661297c578}\label{class_viper_1_1_renderer_1_1_frame_buffer_af2866c50a659f73a5b5637661297c578} 
+void {\bfseries Buffer\+Texture2D} (unsigned int attachment, unsigned int source, int mip\+Map) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_viper_1_1_renderer_1_1_base_buffer}{Viper::\+\+Renderer::\+\+Base\+Buffer}}}
+\begin{DoxyCompactItemize}
+\item 
+UINT32 {\bfseries Get\+ID} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{class_viper_1_1_renderer_1_1_frame_buffer_a282ccff13f7d0f7e49415252afecb62f}{Release}} () override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{class_viper_1_1_renderer_1_1_base_buffer}{Viper::\+\+Renderer::\+\+Base\+Buffer}}}
+\begin{DoxyCompactItemize}
+\item 
+UINT32 {\bfseries m\+\_\+\+ID} = (std::\+numeric\+\_\+limits$<$UINT32$>$::\+max)()
+\end{DoxyCompactItemize}
+
+
+\label{class_viper_1_1_renderer_1_1_frame_buffer_doc-func-members}
+\Hypertarget{class_viper_1_1_renderer_1_1_frame_buffer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_viper_1_1_renderer_1_1_frame_buffer_abaabf518ed3177c281e9c8a97bd0b37f}\index{Viper::Renderer::FrameBuffer@{Viper::Renderer::FrameBuffer}!Bind@{Bind}}
+\index{Bind@{Bind}!Viper::Renderer::FrameBuffer@{Viper::Renderer::FrameBuffer}}
+\doxysubsubsection{\texorpdfstring{Bind()}{Bind()}}
+{\footnotesize\ttfamily \label{class_viper_1_1_renderer_1_1_frame_buffer_abaabf518ed3177c281e9c8a97bd0b37f} 
+void Viper::\+\+Renderer::\+\+Frame\+Buffer::\+\+Bind (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_viper_1_1_renderer_1_1_base_buffer}{Viper::\+\+Renderer::\+\+Base\+Buffer}}.
+
+\Hypertarget{class_viper_1_1_renderer_1_1_frame_buffer_a1a8aab8ccb01cf4dc73310494e7d3004}\index{Viper::Renderer::FrameBuffer@{Viper::Renderer::FrameBuffer}!Create@{Create}}
+\index{Create@{Create}!Viper::Renderer::FrameBuffer@{Viper::Renderer::FrameBuffer}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily \label{class_viper_1_1_renderer_1_1_frame_buffer_a1a8aab8ccb01cf4dc73310494e7d3004} 
+void Viper::\+\+Renderer::\+\+Frame\+Buffer::\+\+Create (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_viper_1_1_renderer_1_1_base_buffer}{Viper::\+\+Renderer::\+\+Base\+Buffer}}.
+
+\Hypertarget{class_viper_1_1_renderer_1_1_frame_buffer_a282ccff13f7d0f7e49415252afecb62f}\index{Viper::Renderer::FrameBuffer@{Viper::Renderer::FrameBuffer}!Release@{Release}}
+\index{Release@{Release}!Viper::Renderer::FrameBuffer@{Viper::Renderer::FrameBuffer}}
+\doxysubsubsection{\texorpdfstring{Release()}{Release()}}
+{\footnotesize\ttfamily \label{class_viper_1_1_renderer_1_1_frame_buffer_a282ccff13f7d0f7e49415252afecb62f} 
+void Viper::\+\+Renderer::\+\+Frame\+Buffer::\+\+Release (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_viper_1_1_renderer_1_1_base_buffer}{Viper::\+\+Renderer::\+\+Base\+Buffer}}.
+
+\Hypertarget{class_viper_1_1_renderer_1_1_frame_buffer_ae05a8745a1f3d642ad2ac3270066e12d}\index{Viper::Renderer::FrameBuffer@{Viper::Renderer::FrameBuffer}!UnBind@{UnBind}}
+\index{UnBind@{UnBind}!Viper::Renderer::FrameBuffer@{Viper::Renderer::FrameBuffer}}
+\doxysubsubsection{\texorpdfstring{UnBind()}{UnBind()}}
+{\footnotesize\ttfamily \label{class_viper_1_1_renderer_1_1_frame_buffer_ae05a8745a1f3d642ad2ac3270066e12d} 
+void Viper::\+\+Renderer::\+\+Frame\+Buffer::\+\+Un\+Bind (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_viper_1_1_renderer_1_1_base_buffer}{Viper::\+\+Renderer::\+\+Base\+Buffer}}.
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Renderer/\+\+Architecture/Buffer.\+h\item 
+Engine/\+src/\+\+Renderer/\+\+Architecture/Buffer.\+cpp\end{DoxyCompactItemize}

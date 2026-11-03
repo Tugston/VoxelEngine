@@ -1,0 +1,56 @@
+\doxysection{Viper::Layer\+Stack Class Reference}
+\hypertarget{class_viper_1_1_layer_stack}{}\label{class_viper_1_1_layer_stack}\index{Viper::LayerStack@{Viper::LayerStack}}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_layer_stack_a1a67b00d65bb0f775c2d1c26b5e64654}\label{class_viper_1_1_layer_stack_a1a67b00d65bb0f775c2d1c26b5e64654} 
+static bool {\bfseries Init} ()
+\item 
+\Hypertarget{class_viper_1_1_layer_stack_afe9454059a041ce96a0a0ac5c23cc3ad}\label{class_viper_1_1_layer_stack_afe9454059a041ce96a0a0ac5c23cc3ad} 
+static void {\bfseries Destroy} ()
+\item 
+\Hypertarget{class_viper_1_1_layer_stack_a8cfd035ef860dd7682f0e00aed41d9d5}\label{class_viper_1_1_layer_stack_a8cfd035ef860dd7682f0e00aed41d9d5} 
+static void {\bfseries Push\+World\+Layer} (\doxymbox{\hyperlink{class_viper_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*}layer)
+\item 
+\Hypertarget{class_viper_1_1_layer_stack_a4dacbbb520c91e6dc942cb807539e57f}\label{class_viper_1_1_layer_stack_a4dacbbb520c91e6dc942cb807539e57f} 
+static void {\bfseries Push\+UILayer} (\doxymbox{\hyperlink{class_viper_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*}layer)
+\item 
+\Hypertarget{class_viper_1_1_layer_stack_a5d386812e2e917b4fe1b927b964523ea}\label{class_viper_1_1_layer_stack_a5d386812e2e917b4fe1b927b964523ea} 
+static void {\bfseries Clear} ()
+\item 
+\Hypertarget{class_viper_1_1_layer_stack_ad50cf51ddb8f5a111de2e829ef1c3a88}\label{class_viper_1_1_layer_stack_ad50cf51ddb8f5a111de2e829ef1c3a88} 
+static void {\bfseries Remove\+Layer} (const std::\+vector$<$ \doxymbox{\hyperlink{class_viper_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*} $>$::\+iterator \&Layer\+Position)
+\item 
+\Hypertarget{class_viper_1_1_layer_stack_a31c196a84756b48d0cb6dae9c64ca4ca}\label{class_viper_1_1_layer_stack_a31c196a84756b48d0cb6dae9c64ca4ca} 
+static const bool {\bfseries Check\+Layer\+Exists} (Layer\+ID id)
+\item 
+\Hypertarget{class_viper_1_1_layer_stack_a3067a5602735b50d38b51d3fd5868607}\label{class_viper_1_1_layer_stack_a3067a5602735b50d38b51d3fd5868607} 
+static std::\+vector$<$ \doxymbox{\hyperlink{class_viper_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*} $>$::\+iterator {\bfseries Top} ()
+\item 
+\Hypertarget{class_viper_1_1_layer_stack_a8cecf1148c5d2dfe87ddf125f8982a31}\label{class_viper_1_1_layer_stack_a8cecf1148c5d2dfe87ddf125f8982a31} 
+static std::\+vector$<$ \doxymbox{\hyperlink{class_viper_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*} $>$::\+iterator {\bfseries Bottom} ()
+\item 
+\Hypertarget{class_viper_1_1_layer_stack_ab229e1f56db0c7987cb9c2907d8c7fa6}\label{class_viper_1_1_layer_stack_ab229e1f56db0c7987cb9c2907d8c7fa6} 
+static std::\+vector$<$ \doxymbox{\hyperlink{class_viper_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*} $>$::\+iterator {\bfseries Current\+Location} ()
+\item 
+\Hypertarget{class_viper_1_1_layer_stack_a4ad91a56cc5b0a67f2615d1cfaf719c6}\label{class_viper_1_1_layer_stack_a4ad91a56cc5b0a67f2615d1cfaf719c6} 
+static unsigned int {\bfseries Current\+Location\+Val} ()
+\item 
+\Hypertarget{class_viper_1_1_layer_stack_ae897add742be99cff56f82d4e6c425c7}\label{class_viper_1_1_layer_stack_ae897add742be99cff56f82d4e6c425c7} 
+static const std::\+vector$<$ \doxymbox{\hyperlink{class_viper_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries Get\+Layers} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_layer_stack_a5c363aab7d48e972a61b3f5c81fe1043}\label{class_viper_1_1_layer_stack_a5c363aab7d48e972a61b3f5c81fe1043} 
+static std::\+vector$<$ \doxymbox{\hyperlink{class_viper_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries m\+\_\+\+Layers} = \{\}
+\item 
+\Hypertarget{class_viper_1_1_layer_stack_a99e8fbae3bf6c7eecc92dc4bef38497e}\label{class_viper_1_1_layer_stack_a99e8fbae3bf6c7eecc92dc4bef38497e} 
+static unsigned int {\bfseries m\+\_\+emplace\+Idex} = 0
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Core/\+\+Layers/Layer\+Stack.\+h\item 
+Engine/\+src/\+\+Core/\+\+Layers/Layer\+Stack.\+cpp\end{DoxyCompactItemize}

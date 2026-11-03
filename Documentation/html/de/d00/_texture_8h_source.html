@@ -129,11 +129,11 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('de/d00/_textur
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">//ENGINE</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;Core/Core.h&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="../../d4/d00/_core_8h.html">Core/Core.h</a>&quot;</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;stb/stb_image.h&gt;</span></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">namespace </span>Engine::Utility</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">namespace </span>Viper::Utility</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="comment">//these values were sourced from the gl constants data sheet</span></div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="comment">//raw.githubusercontent.com/KhronosGroup/OpenGL-Registry/master/xml/gl.xml?utm</span></div>
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('de/d00/_textur
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">//empty texture will return empty file name!</span></div>
 <div class="foldopen" id="foldopen00052" data-start="{" data-end="};">
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="../../d2/d00/struct_engine_1_1_utility_1_1_texture_default_params.html">   52</a></span>    <span class="keyword">struct </span>TextureDefaultParams</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="../../d7/d00/struct_viper_1_1_utility_1_1_texture_default_params.html">   52</a></span>    <span class="keyword">struct </span>TextureDefaultParams</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    {</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        TextureDefaultParams(std::string_view fileName = <span class="stringliteral">&quot;&quot;</span>, <span class="keywordtype">int</span> width = 1280, <span class="keywordtype">int</span> height = 720): fileName(fileName), width(width), height(height) {}</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
@@ -175,12 +175,12 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('de/d00/_textur
 </div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
 <div class="foldopen" id="foldopen00061" data-start="{" data-end="};">
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="../../dd/d00/class_engine_1_1_utility_1_1_texture.html">   61</a></span>    <span class="keyword">class </span>Texture</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="../../de/d00/class_viper_1_1_utility_1_1_texture.html">   61</a></span>    <span class="keyword">class </span>Texture</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    {</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="comment">//create is utilized to source an image for the texture and create empty is just passed params</span></div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> Create(std::string_view filename) = 0;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> CreateEmpty(<a class="code hl_struct" href="../../d2/d00/struct_engine_1_1_utility_1_1_texture_default_params.html">TextureDefaultParams</a> params) = 0;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> CreateEmpty(<a class="code hl_struct" href="../../d7/d00/struct_viper_1_1_utility_1_1_texture_default_params.html">TextureDefaultParams</a> params) = 0;</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> Bind() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> UnBind() <span class="keyword">const</span> = 0;</div>
@@ -196,14 +196,14 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('de/d00/_textur
 </div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
 <div class="foldopen" id="foldopen00080" data-start="{" data-end="};">
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="../../d7/d00/class_engine_1_1_utility_1_1_texture2_d.html">   80</a></span>    <span class="keyword">class </span>Texture2D : <span class="keyword">public</span> Texture</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="../../d5/d00/class_viper_1_1_utility_1_1_texture2_d.html">   80</a></span>    <span class="keyword">class </span>Texture2D : <span class="keyword">public</span> Texture</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    {</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        Texture2D() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        ~Texture2D();</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> Create(std::string_view filename) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> CreateEmpty(<a class="code hl_struct" href="../../d2/d00/struct_engine_1_1_utility_1_1_texture_default_params.html">TextureDefaultParams</a> params) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> CreateEmpty(<a class="code hl_struct" href="../../d7/d00/struct_viper_1_1_utility_1_1_texture_default_params.html">TextureDefaultParams</a> params) <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> Bind() <span class="keyword">const override</span>;</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> UnBind() <span class="keyword">const override</span>;</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
@@ -212,7 +212,8 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('de/d00/_textur
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    };</div>
 </div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>}</div>
-<div class="ttc" id="astruct_engine_1_1_utility_1_1_texture_default_params_html"><div class="ttname"><a href="../../d2/d00/struct_engine_1_1_utility_1_1_texture_default_params.html">Engine::Utility::TextureDefaultParams</a></div><div class="ttdef"><b>Definition</b> Texture.h:53</div></div>
+<div class="ttc" id="a_core_8h_html"><div class="ttname"><a href="../../d4/d00/_core_8h.html">Core.h</a></div><div class="ttdoc">Contains global types, macros, and values for the engine, game, and editor.</div></div>
+<div class="ttc" id="astruct_viper_1_1_utility_1_1_texture_default_params_html"><div class="ttname"><a href="../../d7/d00/struct_viper_1_1_utility_1_1_texture_default_params.html">Viper::Utility::TextureDefaultParams</a></div><div class="ttdef"><b>Definition</b> Texture.h:53</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

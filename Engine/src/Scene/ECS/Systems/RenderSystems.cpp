@@ -33,7 +33,7 @@ namespace Viper::Scene::ECS::Systems
 	{
 		if (!scene)
 		{
-			LOG_FATAL("<RenderSystems.cpp> (SysRenderOpaqueMesh) Scene is invalid for unknown reason!");
+			LOG_CRIT("<RenderSystems.cpp> (SysRenderOpaqueMesh) Scene is invalid for unknown reason!");
 			return;
 		}
 
@@ -48,7 +48,7 @@ namespace Viper::Scene::ECS::Systems
 
 			if (transform == nullptr)
 			{
-				LOG_ERROR("<RenderSystems> (SysRenderOpaqueMesh) Transform Component invalid!");
+				LOG_ERR("<RenderSystems> (SysRenderOpaqueMesh) Transform Component invalid!");
 				continue;
 			}
 

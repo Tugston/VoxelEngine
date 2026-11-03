@@ -1,6 +1,6 @@
 \doxysection{Engine.\+h}
 \hypertarget{_engine_8h_source}{}\label{_engine_8h_source}\index{Engine/src/Engine.h@{Engine/src/Engine.h}}
-
+\doxymbox{\hyperlink{_engine_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{comment}{/*}}
 \DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ Engine.h}}
@@ -17,61 +17,63 @@
 \DoxyCodeLine{00013\ \textcolor{comment}{*/}}
 \DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{comment}{//STND}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ \ \ \ <numbers>}}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \textcolor{comment}{//ENGINE\ CORE}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ \ \ \ "{}\doxymbox{\hyperlink{_application_8h}{Core/Application.h}}"{}}\ \ \ \ \ \ \ \ \textcolor{comment}{//Required\ Application\ Class}}
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Core/Logger.h"{}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Logging\ System}}
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Core/ScriptModule.h"{}}\ \ \ \ \ \ \ \textcolor{comment}{//Scripting\ System}}
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Core/RandNumGen.h"{}}\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Random\ Number\ Generator}}
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Core/Maths/Math.h"{}}\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Math\ Class\ Types}}
-\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Core/Maths/Conversions.h"{}}\ \ \textcolor{comment}{//Common\ Conversions\ Needed}}
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \textcolor{comment}{//ENGINE\ ACCESSORIES}}
-\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Input/Input.h"{}}\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Input\ System}}
-\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Scene/Scene.h"{}}\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Level\ /\ Scene\ (scene\ includes\ ecs\ registry\ which\ includes\ all\ components)}}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \textcolor{comment}{//add\ all\ the\ default\ game\ objects}}
-\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Scene/ECS/GameObjects/GameObject.h"{}}\ \ \ \ \ \ \ \ \textcolor{comment}{//Base\ Game\ Objects\ for\ 2D\ and\ 3D}}
-\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Scene/ECS/GameObjects/SpriteObject.h"{}}\ \ \ \ \ \ \textcolor{comment}{//Game\ Objects\ with\ Sprites\ already\ setup}}
-\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Scene/ECS/GameObjects/MeshObject.h"{}}\ \ \ \ \ \ \ \ \textcolor{comment}{//Game\ Object\ that\ has\ Meshes\ already\ setup}}
-\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Scene/ECS/GameObjects/ScriptableObject.h"{}}\ \ \textcolor{comment}{//Game\ Objects\ that\ pretty\ much\ just\ add\ a\ script\ to\ all\ other\ object\ types}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//STND}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ \ \ \ <numbers>}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{//ENGINE\ CORE}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ \ \ \ "{}\doxymbox{\hyperlink{_application_8h}{Core/Application.h}}"{}}\ \ \ \ \ \ \ \ \textcolor{comment}{//Required\ Application\ Class}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ \ \ \ "{}\doxymbox{\hyperlink{_logger_8h}{Core/Logger.h}}"{}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Logging\ System}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Core/ScriptModule.h"{}}\ \ \ \ \ \ \ \textcolor{comment}{//Scripting\ System}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ \ \ \ "{}\doxymbox{\hyperlink{_rand_num_gen_8h}{Core/RandNumGen.h}}"{}}\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Random\ Number\ Generator}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ \ \ \ "{}\doxymbox{\hyperlink{_math_8h}{Core/Maths/Math.h}}"{}}\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Math\ Class\ Types}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Core/Maths/Conversions.h"{}}\ \ \textcolor{comment}{//Common\ Conversions\ Needed}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{comment}{//ENGINE\ ACCESSORIES}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Input/Input.h"{}}\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Input\ System}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Scene/Scene.h"{}}\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Level\ /\ Scene\ (scene\ includes\ ecs\ registry\ which\ includes\ all\ components)}}
 \DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \textcolor{comment}{//Components}}
-\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Scene/ECS/Components/Data/TransformComponent.h"{}}}
-\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Scene/ECS/Components/Data/ScriptComponent.h"{}}}
-\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Scene/ECS/Components/Renders/SpriteComponent.h"{}}}
-\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Scene/ECS/Components/Renders/MeshComponent.h"{}}}
-\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Scene/ECS/Components/Renders/InstancedMeshComponent.h"{}}}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \textcolor{comment}{//Base\ Meshes}}
-\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#include\ \ \ \ "{}SharedResources/PrimitiveShapes/ThreeDimensions/Cone.h"{}}}
-\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#include\ \ \ \ "{}SharedResources/PrimitiveShapes/ThreeDimensions/Cyllinder.h"{}}}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#include\ \ \ \ "{}SharedResources/PrimitiveShapes/TwoDimensions/Triangle.h"{}}}
-\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#include\ \ \ \ "{}SharedResources/PrimitiveShapes/TwoDimensions/Quad.h"{}}}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \textcolor{comment}{//MISC\ Stuff}}
-\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#include\ \ \ \ "{}SharedResources/MiscShared/StringMethods.h"{}}}
+\DoxyCodeLine{00037\ \textcolor{comment}{//add\ all\ the\ default\ game\ objects}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Scene/ECS/GameObjects/GameObject.h"{}}\ \ \ \ \ \ \ \ \textcolor{comment}{//Base\ Game\ Objects\ for\ 2D\ and\ 3D}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Scene/ECS/GameObjects/SpriteObject.h"{}}\ \ \ \ \ \ \textcolor{comment}{//Game\ Objects\ with\ Sprites\ already\ setup}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Scene/ECS/GameObjects/MeshObject.h"{}}\ \ \ \ \ \ \ \ \textcolor{comment}{//Game\ Object\ that\ has\ Meshes\ already\ setup}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Scene/ECS/GameObjects/ScriptableObject.h"{}}\ \ \textcolor{comment}{//Game\ Objects\ that\ pretty\ much\ just\ add\ a\ script\ to\ all\ other\ object\ types}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{comment}{//Components}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Scene/ECS/Components/Data/TransformComponent.h"{}}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Scene/ECS/Components/Data/ScriptComponent.h"{}}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Scene/ECS/Components/Renders/SpriteComponent.h"{}}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Scene/ECS/Components/Renders/MeshComponent.h"{}}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Scene/ECS/Components/Renders/InstancedMeshComponent.h"{}}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{comment}{//Base\ Meshes}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#include\ \ \ \ "{}SharedResources/PrimitiveShapes/ThreeDimensions/Cone.h"{}}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#include\ \ \ \ "{}SharedResources/PrimitiveShapes/ThreeDimensions/Cyllinder.h"{}}}
 \DoxyCodeLine{00053\ }
-\DoxyCodeLine{00054\ \textcolor{comment}{//TESTING}}
-\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#include\ \ \ \ "{}SharedResources/GenericResources/Shader.h"{}}}
-\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Core/Cameras/PerspectiveCamera.h"{}}}
-\DoxyCodeLine{00057\ }
-\DoxyCodeLine{00058\ \textcolor{comment}{//VENDOR}}
-\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#include\ \ \ \ "{}glm/glm.hpp"{}}}
-\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#include\ \ \ \ "{}glm/gtx/string\_cast.hpp"{}}}
-\DoxyCodeLine{00061\ }
-\DoxyCodeLine{00062\ \textcolor{comment}{//may\ update\ these\ in\ the\ future,\ since\ types\ could\ have\ conflations\ with\ games}}
-\DoxyCodeLine{00063\ \textcolor{comment}{//or\ it\ may\ be\ better\ to\ have\ the\ game\ be\ in\ a\ game\ namespace\ actually,\ idk.\ Still\ deciding.}}
-\DoxyCodeLine{00064\ \textcolor{keyword}{using\ namespace\ }Engine;}
-\DoxyCodeLine{00065\ \textcolor{keyword}{using\ namespace\ }Engine::Utility;}
-\DoxyCodeLine{00066\ \textcolor{keyword}{using\ namespace\ }Engine::Scene::ECS;}
-\DoxyCodeLine{00067\ \textcolor{keyword}{using\ namespace\ }Engine::Scene::ECS::Components;}
-\DoxyCodeLine{00068\ \textcolor{keyword}{using\ namespace\ }Engine::Camera;}
-\DoxyCodeLine{00069\ }
-\DoxyCodeLine{00070\ }
-\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#include\ \ \ \ "{}SharedResources/PrimitiveShapes/TwoDimensions/Triangle.h"{}}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#include\ \ \ \ "{}SharedResources/PrimitiveShapes/TwoDimensions/Quad.h"{}}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{comment}{//MISC\ Stuff}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#include\ \ \ \ "{}SharedResources/MiscShared/StringMethods.h"{}}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{comment}{//TESTING}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#include\ \ \ \ "{}SharedResources/GenericResources/Shader.h"{}}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#include\ \ \ \ "{}Core/Cameras/PerspectiveCamera.h"{}}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{comment}{//VENDOR}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#include\ \ \ \ "{}glm/glm.hpp"{}}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#include\ \ \ \ "{}glm/gtx/string\_cast.hpp"{}}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{comment}{//may\ update\ these\ in\ the\ future,\ since\ types\ could\ have\ conflations\ with\ games}}
+\DoxyCodeLine{00069\ \textcolor{comment}{//or\ it\ may\ be\ better\ to\ have\ the\ game\ be\ in\ a\ game\ namespace\ actually,\ idk.\ Still\ deciding.}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#ifdef\ NAMESPACE\_VIPER}}
+\DoxyCodeLine{00071\ \textcolor{keyword}{using\ namespace\ }Viper;}
+\DoxyCodeLine{00072\ \textcolor{keyword}{using\ namespace\ }Viper::Utility;}
+\DoxyCodeLine{00073\ \textcolor{keyword}{using\ namespace\ }Viper::Scene::ECS;}
+\DoxyCodeLine{00074\ \textcolor{keyword}{using\ namespace\ }Viper::Scene::ECS::Components;}
+\DoxyCodeLine{00075\ \textcolor{keyword}{using\ namespace\ }Viper::Camera;}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ }
 
 \end{DoxyCode}

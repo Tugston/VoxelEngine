@@ -1,6 +1,20 @@
 var searchData=
 [
-  ['initialize_0',['Initialize',['../da/d00/class_engine_1_1_application.html#af1f8ad5ad0b74bebe8c745a561d8ca36',1,'Engine::Application']]],
-  ['initializeenginerootsystems_1',['InitializeEngineRootSystems',['../da/d00/class_engine_1_1_application.html#ab8954479e3ad2b140aef49930b776e93',1,'Engine::Application']]],
-  ['initializeglfw_2',['InitializeGLFW',['../dd/d00/class_engine_1_1_window.html#a89447a0d9637db70d1eede8e339705a2',1,'Engine::Window']]]
+  ['getbuffersize_0',['GetBufferSize',['../d6/d00/class_viper_1_1_window.html#abaababe7116a16c61baee4f30f0249c4',1,'Viper::Window']]],
+  ['getcamera_1',['GetCamera',['../d0/d00/class_viper_1_1_application.html#a5d73ce8ac25e09f19eae4e9dfb6a88aa',1,'Viper::Application']]],
+  ['getdeltatime_2',['GetDeltaTime',['../d0/d00/class_viper_1_1_application.html#a6f05fd75e0d52d97b8379c97165d779e',1,'Viper::Application']]],
+  ['geteditorlogger_3',['GetEditorLogger',['../d3/d00/class_viper_1_1_logger.html#a9e2dd44b786c3a0fa28dcc964dc34ee9',1,'Viper::Logger']]],
+  ['getenginelogger_4',['GetEngineLogger',['../d3/d00/class_viper_1_1_logger.html#a9bbeecdb1bdf281c6f78cd7a8d228e00',1,'Viper::Logger']]],
+  ['getframerate_5',['GetFrameRate',['../d0/d00/class_viper_1_1_application.html#ad94900f7f0b0a1bf2e66397df4f7a2ab',1,'Viper::Application']]],
+  ['getgamelogger_6',['GetGameLogger',['../d3/d00/class_viper_1_1_logger.html#ad1e05bfc8c54ce4790a67f1df4345ac7',1,'Viper::Logger']]],
+  ['getglfwwindow_7',['GetGLFWWindow',['../d6/d00/class_viper_1_1_window.html#a25e748c5ba0651aa58803f4ec4ab98cf',1,'Viper::Window']]],
+  ['getheight_8',['GetHeight',['../d6/d00/class_viper_1_1_window.html#a1d8364c5cd3ec0a48786b9313d896b3c',1,'Viper::Window']]],
+  ['getname_9',['GetName',['../d6/d00/class_viper_1_1_window.html#ae3e465e7f39868824e849f6b9e926d3b',1,'Viper::Window']]],
+  ['getowner_10',['GetOwner',['../d4/d00/class_viper_1_1_script_module.html#af23638aefe5161810264c8d12df27ed9',1,'Viper::ScriptModule']]],
+  ['getrenderscreentexture_11',['GetRenderScreenTexture',['../d0/d00/class_viper_1_1_application.html#a585a737d8d33ec8632d392292615e322',1,'Viper::Application']]],
+  ['getresizecallback_12',['GetResizeCallback',['../d6/d00/class_viper_1_1_window.html#ae7844d7ff0c7aba5407ff5ad46195a77',1,'Viper::Window']]],
+  ['getwidth_13',['GetWidth',['../d6/d00/class_viper_1_1_window.html#a397c7ba70d5e2d9ecf8c1157a76c7998',1,'Viper::Window']]],
+  ['getwindow_14',['GetWindow',['../d0/d00/class_viper_1_1_application.html#a4cac9d2619ccfad4cc5df1e655b1925b',1,'Viper::Application']]],
+  ['getwindowname_15',['GetWindowName',['../d0/d00/class_viper_1_1_application.html#acac65200216b10fd6a7f5fd834aab4a2',1,'Viper::Application']]],
+  ['getworld_16',['GetWorld',['../d0/d00/class_viper_1_1_application.html#a5882e3613d03b9ecd474155b13859827',1,'Viper::Application']]]
 ];

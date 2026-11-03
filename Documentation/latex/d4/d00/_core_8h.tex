@@ -1,0 +1,55 @@
+\doxysection{Engine/\+src/\+\+Core/\+\+Core.h File Reference}
+\hypertarget{_core_8h}{}\label{_core_8h}\index{Engine/src/Core/Core.h@{Engine/src/Core/Core.h}}
+
+
+Contains global types, macros, and values for the engine, game, and editor.  
+
+
+{\ttfamily \+\#include $<$cassert$>$}\newline
+{\ttfamily \+\#include $<$numbers$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_core_8h_a97ea6cdaaea9ca01367e5aeabc77d561}\label{_core_8h_a97ea6cdaaea9ca01367e5aeabc77d561} 
+\+\#define {\bfseries EG\+\_\+\+PRJ}
+\item 
+\Hypertarget{_core_8h_a77cb46516e4e2fe309c547317cf859f2}\label{_core_8h_a77cb46516e4e2fe309c547317cf859f2} 
+\+\#define {\bfseries EG\+\_\+\+ASSERT}(x)
+\item 
+\Hypertarget{_core_8h_a088324ad8995e3eb76024e3e79083d48}\label{_core_8h_a088324ad8995e3eb76024e3e79083d48} 
+\+\#define {\bfseries GLFW\+\_\+\+INCLUDE\+\_\+\+NONE}
+\item 
+\Hypertarget{_core_8h_a2f4980102fadd5021d24e7f8aad0664a}\label{_core_8h_a2f4980102fadd5021d24e7f8aad0664a} 
+\+\#define {\bfseries EG\+\_\+\+PI}~std::\+numbers::\+pi
+\item 
+\Hypertarget{_core_8h_a287ab6813401dfe374c8ea7edf722fc4}\label{_core_8h_a287ab6813401dfe374c8ea7edf722fc4} 
+\+\#define {\bfseries EG\+\_\+\+PI\+\_\+\+FLOAT}~(float)std::\+numbers::\+pi
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_core_8h_a6445754ee0b0ca21402ea15dc2773d30}\label{_core_8h_a6445754ee0b0ca21402ea15dc2773d30} 
+using {\bfseries Viper::\+\+UINT8} = uint8\+\_\+t
+\item 
+\Hypertarget{_core_8h_a91cd408743261de1f306d4e6a9fb6707}\label{_core_8h_a91cd408743261de1f306d4e6a9fb6707} 
+using {\bfseries Viper::\+\+UINT16} = uint16\+\_\+t
+\item 
+\Hypertarget{_core_8h_aa57fbec5d038f6bdb787897ceecf2b5b}\label{_core_8h_aa57fbec5d038f6bdb787897ceecf2b5b} 
+using {\bfseries Viper::\+\+UINT32} = uint32\+\_\+t
+\item 
+\Hypertarget{_core_8h_adce05eb11ffcb56e4d78a908ff4a8a11}\label{_core_8h_adce05eb11ffcb56e4d78a908ff4a8a11} 
+using {\bfseries Viper::\+\+UINT64} = uint64\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains global types, macros, and values for the engine, game, and editor. 
+
+Detects the os through premake build, currently only supported on Windows. Adds the assertion macro for major fatal errors that are better for the application to crash than continue. Defines GLFW\+\_\+\+INCLUDE\+\_\+\+NONE to allow application to handle gl.\+h. Defines various types and provides base utility macros.
+
+\begin{DoxyAuthor}{Author}
+Vincent Pierce 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+February 15, 2025 
+\end{DoxyDate}

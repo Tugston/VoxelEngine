@@ -1,0 +1,106 @@
+\doxysection{Engine/\+src/\+\+Core/\+\+Rand\+Num\+Gen.h File Reference}
+\hypertarget{_rand_num_gen_8h}{}\label{_rand_num_gen_8h}\index{Engine/src/Core/RandNumGen.h@{Engine/src/Core/RandNumGen.h}}
+
+
+Utility functions for generating various random values.  
+
+
+{\ttfamily \+\#include "{}Logger.\+h"{}}\newline
+{\ttfamily \+\#include $<$random$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{_rand_num_gen_8cpp_a260f0cd0e6ae25d741a3ecf28cec5592}{Viper::\+\+Utility::\+\+Initialize\+Random\+Generators}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the random number generators used by the application. \end{DoxyCompactList}\item 
+double \doxymbox{\hyperlink{_rand_num_gen_8cpp_a70bea49065aa9737d36cd40c755402c5}{Viper::\+\+Utility::\+\+Random\+Float\+In\+Range}} (const double min, const double max)
+\begin{DoxyCompactList}\small\item\em Generates a uniformly distributed random floating value within specified range. \end{DoxyCompactList}\item 
+long \doxymbox{\hyperlink{_rand_num_gen_8cpp_ab7e05eeb528ce56fd39a1901945ac121}{Viper::\+\+Utility::\+\+Random\+Number\+In\+Range}} (const long min, const long max)
+\begin{DoxyCompactList}\small\item\em Generate a uniformly distributed random integer value within the specified range. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Utility functions for generating various random values. 
+
+Available functions for Generating random floats, random integers, and random characters in range. These functions also provide a scaled variant that allow a value from 0 -\/ 1 for example. Also have functions for random characters, booleans, and these have scaled alternative functions as well.
+
+\begin{DoxyAuthor}{Author}
+Vincent Pierce 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+January 15, 2026 
+\end{DoxyDate}
+
+
+\label{_rand_num_gen_8h_doc-func-members}
+\Hypertarget{_rand_num_gen_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_rand_num_gen_8cpp_a260f0cd0e6ae25d741a3ecf28cec5592}\index{RandNumGen.h@{RandNumGen.h}!InitializeRandomGenerators@{InitializeRandomGenerators}}
+\index{InitializeRandomGenerators@{InitializeRandomGenerators}!RandNumGen.h@{RandNumGen.h}}
+\doxysubsubsection{\texorpdfstring{InitializeRandomGenerators()}{InitializeRandomGenerators()}}
+{\footnotesize\ttfamily \label{_rand_num_gen_8cpp_a260f0cd0e6ae25d741a3ecf28cec5592} 
+bool Viper::\+\+Utility::\+\+Initialize\+Random\+Generators (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the random number generators used by the application. 
+
+Seeds the standard library random number generator using the current system time and initializes the Mersenne Twister engine using a seed obtained from std::\+random\+\_\+device.
+
+\begin{DoxyReturn}{Returns}
+True upon completion 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+This is for internal engine use setup only! Please do not override or call in any derived applications. The function is exposed to do so, but it will reset the generators and cause unpredictable behaviour. 
+\end{DoxyWarning}
+\Hypertarget{_rand_num_gen_8cpp_a70bea49065aa9737d36cd40c755402c5}\index{RandNumGen.h@{RandNumGen.h}!RandomFloatInRange@{RandomFloatInRange}}
+\index{RandomFloatInRange@{RandomFloatInRange}!RandNumGen.h@{RandNumGen.h}}
+\doxysubsubsection{\texorpdfstring{RandomFloatInRange()}{RandomFloatInRange()}}
+{\footnotesize\ttfamily \label{_rand_num_gen_8cpp_a70bea49065aa9737d36cd40c755402c5} 
+double Viper::\+\+Utility::\+\+Random\+Float\+In\+Range (\begin{DoxyParamCaption}\item[{const double}]{min}{, }\item[{const double}]{max}{}\end{DoxyParamCaption})}
+
+
+
+Generates a uniformly distributed random floating value within specified range. 
+
+\begin{DoxyPrecond}{Precondition}
+The Initialize\+Random\+Generators() function must be called before executing this function.
+\end{DoxyPrecond}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em min} & The inclusive lower bound of the random range. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em max} & The inclusive upper bound of the random range.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A randomly generated floating value within the specified range. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Returns 0 if min is greater than the max. 
+\end{DoxyNote}
+\Hypertarget{_rand_num_gen_8cpp_ab7e05eeb528ce56fd39a1901945ac121}\index{RandNumGen.h@{RandNumGen.h}!RandomNumberInRange@{RandomNumberInRange}}
+\index{RandomNumberInRange@{RandomNumberInRange}!RandNumGen.h@{RandNumGen.h}}
+\doxysubsubsection{\texorpdfstring{RandomNumberInRange()}{RandomNumberInRange()}}
+{\footnotesize\ttfamily \label{_rand_num_gen_8cpp_ab7e05eeb528ce56fd39a1901945ac121} 
+long Viper::\+\+Utility::\+\+Random\+Number\+In\+Range (\begin{DoxyParamCaption}\item[{const long}]{min}{, }\item[{const long}]{max}{}\end{DoxyParamCaption})}
+
+
+
+Generate a uniformly distributed random integer value within the specified range. 
+
+\begin{DoxyPrecond}{Precondition}
+The Initialize\+Random\+Generators() function must be called before executing this function.
+\end{DoxyPrecond}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em min} & The inclusing lower bound of the random range. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em max} & The inclusing upper bound of the random range.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A randomly generated integral value within the specified range. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Returns 0 if the min is greater than the max. 
+\end{DoxyNote}

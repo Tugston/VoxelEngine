@@ -1,0 +1,51 @@
+\doxysection{Engine/\+src/\+\+Core/\+\+Logger.h File Reference}
+\hypertarget{_logger_8h}{}\label{_logger_8h}\index{Engine/src/Core/Logger.h@{Engine/src/Core/Logger.h}}
+
+
+Handles logging text to the console window.  
+
+
+{\ttfamily \+\#include "{}Core/\+\+Core.\+h"{}}\newline
+{\ttfamily \+\#include $<$spdlog/\+spdlog.\+h$>$}\newline
+{\ttfamily \+\#include $<$memory$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_viper_1_1_logger}{Viper::\+\+Logger}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_logger_8h_a7a9ef5ad6bbfc36e5017b5d7964ef2a8}\label{_logger_8h_a7a9ef5ad6bbfc36e5017b5d7964ef2a8} 
+\+\#define {\bfseries GET\+\_\+\+LOGGER}(x)
+\item 
+\Hypertarget{_logger_8h_adf51f4cbbd63a77d46329be6609e407c}\label{_logger_8h_adf51f4cbbd63a77d46329be6609e407c} 
+\+\#define {\bfseries LOG\+\_\+\+MESSAGE}(x)
+\item 
+\Hypertarget{_logger_8h_a4cac45cb284ff3cb61992bde9d30e69c}\label{_logger_8h_a4cac45cb284ff3cb61992bde9d30e69c} 
+\+\#define {\bfseries LOG\+\_\+\+WARNING}(x)
+\item 
+\Hypertarget{_logger_8h_aa047c38edeac5f6a168cdfc571bc3e36}\label{_logger_8h_aa047c38edeac5f6a168cdfc571bc3e36} 
+\+\#define {\bfseries LOG\+\_\+\+ERROR}(x)
+\item 
+\Hypertarget{_logger_8h_a43a295c89e49803d4b5e0d66ca8ae120}\label{_logger_8h_a43a295c89e49803d4b5e0d66ca8ae120} 
+\+\#define {\bfseries LOG\+\_\+\+FATAL}(x)
+\item 
+\Hypertarget{_logger_8h_a82499e7f0ef5272566e3578a05c29369}\label{_logger_8h_a82499e7f0ef5272566e3578a05c29369} 
+\+\#define {\bfseries LOG\+\_\+\+MSG}(...)
+\item 
+\Hypertarget{_logger_8h_ab90ee65de2f4782ededc28073ade7e05}\label{_logger_8h_ab90ee65de2f4782ededc28073ade7e05} 
+\+\#define {\bfseries LOG\+\_\+\+Warn}(...)
+\item 
+\Hypertarget{_logger_8h_ad6db28c61c838c1f7316417e1e4847f2}\label{_logger_8h_ad6db28c61c838c1f7316417e1e4847f2} 
+\+\#define {\bfseries LOG\+\_\+\+ERR}(...)
+\item 
+\Hypertarget{_logger_8h_a0929e7b2b643a94ddeea4863983c499d}\label{_logger_8h_a0929e7b2b643a94ddeea4863983c499d} 
+\+\#define {\bfseries LOG\+\_\+\+CRIT}(...)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles logging text to the console window. 
+
+Logs various color text to the console representing the severity of the text. Each log also outputs the project it has been reported from. The time stamp for each log is also listed to indicate the exact frame it was called. 

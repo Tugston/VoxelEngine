@@ -18,20 +18,20 @@
 \DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00015\ }
 \DoxyCodeLine{00016\ \textcolor{comment}{//ENGINE}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}Core/Core.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_core_8h}{Core/Core.h}}"{}}}
 \DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}Scene/ECS/Registry.h"{}}}
 \DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}Renderer/Core/RenderPasses.h"{}}}
 \DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}LayerID.h"{}}}
 \DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}Scene/ECS/Components/Tags/RenderComponent.h"{}}}
 \DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }Engine}
+\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }Viper}
 \DoxyCodeLine{00024\ \{}
 \DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{class\ }Layer}
 \DoxyCodeLine{00026\ \ \ \ \ \{}
 \DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }ECSRegistry\ =\ \doxymbox{\hyperlink{class_engine_1_1_scene_1_1_e_c_s_1_1_registry}{Scene::ECS::Registry}};}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }ECSRegistry\ =\ \doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_registry}{Scene::ECS::Registry}};}
 \DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }EntityID\ =\ Scene::ECS::EntityID;}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }RenderComponent\ =\ \doxymbox{\hyperlink{struct_engine_1_1_scene_1_1_e_c_s_1_1_components_1_1_renderable}{Scene::ECS::Components::Renderable}};\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }RenderComponent\ =\ \doxymbox{\hyperlink{struct_viper_1_1_scene_1_1_e_c_s_1_1_components_1_1_renderable}{Scene::ECS::Components::Renderable}};\ }
 \DoxyCodeLine{00031\ }
 \DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ Layer()\ =\ \textcolor{keywordflow}{default};}
 \DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ Layer(LayerID\ \textcolor{keywordtype}{id})\ :\ m\_ID(\textcolor{keywordtype}{id})\ \{\};}

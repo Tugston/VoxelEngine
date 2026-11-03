@@ -19,8 +19,8 @@
 \DoxyCodeLine{00015\ }
 \DoxyCodeLine{00016\ \textcolor{comment}{//ENGINE}}
 \DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}Input/KeyDefines.h"{}}}
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}Core/Logger.h"{}}}
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}Core/Core.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_logger_8h}{Core/Logger.h}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_core_8h}{Core/Core.h}}"{}}}
 \DoxyCodeLine{00020\ }
 \DoxyCodeLine{00021\ \textcolor{comment}{//STND}}
 \DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
@@ -31,10 +31,10 @@
 \DoxyCodeLine{00027\ \textcolor{keyword}{struct\ }GLFWwindow;}
 \DoxyCodeLine{00028\ }
 \DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \textcolor{keyword}{namespace\ }Engine}
+\DoxyCodeLine{00030\ \textcolor{keyword}{namespace\ }Viper}
 \DoxyCodeLine{00031\ \{}
 \DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_engine_1_1_input_system}{InputSystem}}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_viper_1_1_input_system}{InputSystem}}}
 \DoxyCodeLine{00034\ \ \ \ \ \{}
 \DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{enum\ class}\ InputMode}
@@ -118,10 +118,10 @@
 \DoxyCodeLine{00114\ \}}
 \DoxyCodeLine{00115\ }
 \DoxyCodeLine{00116\ \textcolor{comment}{//these\ appropriately\ simplify\ the\ api\ (\ imo\ :/\ )}}
-\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#define\ ENGINE\_MOUSE\_IDLE\ \ \ Engine::InputSystem::GetRawMouseDirection()\ ==\ 0}}
-\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#define\ ENGINE\_MOUSE\_UP\ \ \ \ \ Engine::InputSystem::GetRawMouseDirection()\ \&\ (char)Engine::InputSystem::MouseMoveDirection::Up}}
-\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#define\ ENGINE\_MOUSE\_DOWN\ \ \ Engine::InputSystem::GetRawMouseDirection()\ \&\ (char)Engine::InputSystem::MouseMoveDirection::Down}}
-\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#define\ ENGINE\_MOUSE\_LEFT\ \ \ Engine::InputSystem::GetRawMouseDirection()\ \&\ (char)Engine::InputSystem::MouseMoveDirection::Left}}
-\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#define\ ENGINE\_MOUSE\_RIGHT\ \ Engine::InputSystem::GetRawMouseDirection()\ \&\ (char)Engine::InputSystem::MouseMoveDirection::Right}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#define\ ENGINE\_MOUSE\_IDLE\ \ \ Viper::InputSystem::GetRawMouseDirection()\ ==\ 0}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#define\ ENGINE\_MOUSE\_UP\ \ \ \ \ Viper::InputSystem::GetRawMouseDirection()\ \&\ (char)Viper::InputSystem::MouseMoveDirection::Up}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#define\ ENGINE\_MOUSE\_DOWN\ \ \ Viper::InputSystem::GetRawMouseDirection()\ \&\ (char)Viper::InputSystem::MouseMoveDirection::Down}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#define\ ENGINE\_MOUSE\_LEFT\ \ \ Viper::InputSystem::GetRawMouseDirection()\ \&\ (char)Viper::InputSystem::MouseMoveDirection::Left}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#define\ ENGINE\_MOUSE\_RIGHT\ \ Viper::InputSystem::GetRawMouseDirection()\ \&\ (char)Viper::InputSystem::MouseMoveDirection::Right}}
 
 \end{DoxyCode}

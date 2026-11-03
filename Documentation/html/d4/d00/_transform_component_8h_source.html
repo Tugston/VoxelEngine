@@ -129,39 +129,40 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d4/d00/_transf
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">//ENGN</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;./Core/Maths/Math.h&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="../../da/d00/_math_8h.html">./Core/Maths/Math.h</a>&quot;</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">namespace </span>Engine::Scene::ECS::Components</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">namespace </span>Viper::Scene::ECS::Components</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
 <div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="../../d2/d00/struct_engine_1_1_scene_1_1_e_c_s_1_1_components_1_1_transform_component2_d.html">   23</a></span>    <span class="keyword">struct </span>TransformComponent2D</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="../../df/d00/struct_viper_1_1_scene_1_1_e_c_s_1_1_components_1_1_transform_component2_d.html">   23</a></span>    <span class="keyword">struct </span>TransformComponent2D</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    {</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        TransformComponent2D() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        TransformComponent2D(<a class="code hl_struct" href="../../df/d00/struct_engine_1_1_maths_1_1_vector2.html">Maths::Vector2&lt;float&gt;</a> location, <a class="code hl_struct" href="../../df/d00/struct_engine_1_1_maths_1_1_vector2.html">Maths::Vector2&lt;float&gt;</a> rotation, <a class="code hl_struct" href="../../df/d00/struct_engine_1_1_maths_1_1_vector2.html">Maths::Vector2&lt;float&gt;</a> scale) :</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        TransformComponent2D(<a class="code hl_struct" href="../../dc/d00/struct_viper_1_1_maths_1_1_vector2.html">Maths::Vector2&lt;float&gt;</a> location, <a class="code hl_struct" href="../../dc/d00/struct_viper_1_1_maths_1_1_vector2.html">Maths::Vector2&lt;float&gt;</a> rotation, <a class="code hl_struct" href="../../dc/d00/struct_viper_1_1_maths_1_1_vector2.html">Maths::Vector2&lt;float&gt;</a> scale) :</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            location(location), rotation(rotation), scale(scale) {}</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <a class="code hl_struct" href="../../df/d00/struct_engine_1_1_maths_1_1_vector2.html">Maths::Vector2&lt;float&gt;</a> location{ 0.f, 0.f};</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <a class="code hl_struct" href="../../df/d00/struct_engine_1_1_maths_1_1_vector2.html">Maths::Vector2&lt;float&gt;</a> rotation{ 0.f, 0.f };</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <a class="code hl_struct" href="../../df/d00/struct_engine_1_1_maths_1_1_vector2.html">Maths::Vector2&lt;float&gt;</a> scale{ 1.f, 1.f };</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <a class="code hl_struct" href="../../dc/d00/struct_viper_1_1_maths_1_1_vector2.html">Maths::Vector2&lt;float&gt;</a> location{ 0.f, 0.f};</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <a class="code hl_struct" href="../../dc/d00/struct_viper_1_1_maths_1_1_vector2.html">Maths::Vector2&lt;float&gt;</a> rotation{ 0.f, 0.f };</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <a class="code hl_struct" href="../../dc/d00/struct_viper_1_1_maths_1_1_vector2.html">Maths::Vector2&lt;float&gt;</a> scale{ 1.f, 1.f };</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    };</div>
 </div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
 <div class="foldopen" id="foldopen00034" data-start="{" data-end="};">
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="../../d2/d00/struct_engine_1_1_scene_1_1_e_c_s_1_1_components_1_1_transform_component3_d.html">   34</a></span>    <span class="keyword">struct </span>TransformComponent3D</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="../../d3/d00/struct_viper_1_1_scene_1_1_e_c_s_1_1_components_1_1_transform_component3_d.html">   34</a></span>    <span class="keyword">struct </span>TransformComponent3D</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    {</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        TransformComponent3D() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        TransformComponent3D(<a class="code hl_struct" href="../../d0/d00/struct_engine_1_1_maths_1_1_vector3.html">Maths::Vector3&lt;float&gt;</a> location, <a class="code hl_struct" href="../../d0/d00/struct_engine_1_1_maths_1_1_vector3.html">Maths::Vector3&lt;float&gt;</a> rotation, <a class="code hl_struct" href="../../d0/d00/struct_engine_1_1_maths_1_1_vector3.html">Maths::Vector3&lt;float&gt;</a> scale) :</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        TransformComponent3D(<a class="code hl_struct" href="../../db/d00/struct_viper_1_1_maths_1_1_vector3.html">Maths::Vector3&lt;float&gt;</a> location, <a class="code hl_struct" href="../../db/d00/struct_viper_1_1_maths_1_1_vector3.html">Maths::Vector3&lt;float&gt;</a> rotation, <a class="code hl_struct" href="../../db/d00/struct_viper_1_1_maths_1_1_vector3.html">Maths::Vector3&lt;float&gt;</a> scale) :</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            location(location), rotation(rotation), scale(scale) {}</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <a class="code hl_struct" href="../../d0/d00/struct_engine_1_1_maths_1_1_vector3.html">Maths::Vector3&lt;float&gt;</a> location{ 0.f, 0.f, 0.f };</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <a class="code hl_struct" href="../../d0/d00/struct_engine_1_1_maths_1_1_vector3.html">Maths::Vector3&lt;float&gt;</a> rotation{ 0.f, 0.f, 0.f };</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <a class="code hl_struct" href="../../d0/d00/struct_engine_1_1_maths_1_1_vector3.html">Maths::Vector3&lt;float&gt;</a> scale{ 1.f, 1.f, 1.f };</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <a class="code hl_struct" href="../../db/d00/struct_viper_1_1_maths_1_1_vector3.html">Maths::Vector3&lt;float&gt;</a> location{ 0.f, 0.f, 0.f };</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <a class="code hl_struct" href="../../db/d00/struct_viper_1_1_maths_1_1_vector3.html">Maths::Vector3&lt;float&gt;</a> rotation{ 0.f, 0.f, 0.f };</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <a class="code hl_struct" href="../../db/d00/struct_viper_1_1_maths_1_1_vector3.html">Maths::Vector3&lt;float&gt;</a> scale{ 1.f, 1.f, 1.f };</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    };</div>
 </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>}</div>
-<div class="ttc" id="astruct_engine_1_1_maths_1_1_vector2_html"><div class="ttname"><a href="../../df/d00/struct_engine_1_1_maths_1_1_vector2.html">Engine::Maths::Vector2</a></div><div class="ttdef"><b>Definition</b> Math.h:24</div></div>
-<div class="ttc" id="astruct_engine_1_1_maths_1_1_vector3_html"><div class="ttname"><a href="../../d0/d00/struct_engine_1_1_maths_1_1_vector3.html">Engine::Maths::Vector3</a></div><div class="ttdef"><b>Definition</b> Math.h:75</div></div>
+<div class="ttc" id="a_math_8h_html"><div class="ttname"><a href="../../da/d00/_math_8h.html">Math.h</a></div><div class="ttdoc">Viper&#39;s own math library implementation which supports only the supported types used by the engine.</div></div>
+<div class="ttc" id="astruct_viper_1_1_maths_1_1_vector2_html"><div class="ttname"><a href="../../dc/d00/struct_viper_1_1_maths_1_1_vector2.html">Viper::Maths::Vector2</a></div><div class="ttdef"><b>Definition</b> Math.h:34</div></div>
+<div class="ttc" id="astruct_viper_1_1_maths_1_1_vector3_html"><div class="ttname"><a href="../../db/d00/struct_viper_1_1_maths_1_1_vector3.html">Viper::Maths::Vector3</a></div><div class="ttdef"><b>Definition</b> Math.h:155</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

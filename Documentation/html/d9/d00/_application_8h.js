@@ -1,5 +1,5 @@
 var _application_8h =
 [
-    [ "Engine::Application", "da/d00/class_engine_1_1_application.html", "da/d00/class_engine_1_1_application" ],
-    [ "Engine::CreateApplication", "d9/d00/_application_8h.html#a35016cfcb578c1f00f887ab607ff7fb9", null ]
+    [ "Viper::Application", "d0/d00/class_viper_1_1_application.html", "d0/d00/class_viper_1_1_application" ],
+    [ "Viper::CreateApplication", "d9/d00/_application_8h.html#aca6e31aa2e27cb997913f2142d6380fc", null ]
 ];

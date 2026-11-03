@@ -1,0 +1,107 @@
+\doxysection{Viper::Engine\+UILayer Class Reference}
+\hypertarget{class_viper_1_1_engine_u_i_layer}{}\label{class_viper_1_1_engine_u_i_layer}\index{Viper::EngineUILayer@{Viper::EngineUILayer}}
+Inheritance diagram for Viper::Engine\+UILayer:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d4/d00/class_viper_1_1_engine_u_i_layer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{class_viper_1_1_engine_u_i_layer_a48a81b86912df3edf11a250c37d853ac}{Attach}} () override
+\item 
+virtual void \doxymbox{\hyperlink{class_viper_1_1_engine_u_i_layer_af70022b1d4e4f104cfc130cb72c07cff}{Detach}} () override
+\item 
+virtual std::\+vector$<$ Entity\+ID $>$ \doxymbox{\hyperlink{class_viper_1_1_engine_u_i_layer_a20dc68213e090ae83b0fe30a8be18d73}{Get\+Draw\+Data}} (Renderer::\+\+Render\+Passes pass, ECSRegistry \&registry) override
+\item 
+virtual void \doxymbox{\hyperlink{class_viper_1_1_engine_u_i_layer_a1c699f9898adc7659fb162b3a808dc08}{Input\+Event}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_viper_1_1_layer}{Viper::\+\+Layer}}}
+\begin{DoxyCompactItemize}
+\item 
+Layer\+ID {\bfseries Get\+ID} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_viper_1_1_engine_u_i_layer_adfc05de72c5426b3d4f16db85acaed5e}\label{class_viper_1_1_engine_u_i_layer_adfc05de72c5426b3d4f16db85acaed5e} 
+bool {\bfseries m\+\_\+\+Show\+All\+Data} = false
+\item 
+\Hypertarget{class_viper_1_1_engine_u_i_layer_ab3497b06dfd96f15929e9ef41964e1fb}\label{class_viper_1_1_engine_u_i_layer_ab3497b06dfd96f15929e9ef41964e1fb} 
+int {\bfseries m\+\_\+\+Test\+Int} = 0
+\item 
+\Hypertarget{class_viper_1_1_engine_u_i_layer_ab4f993c02af28f2bd36e3c0e2651376b}\label{class_viper_1_1_engine_u_i_layer_ab4f993c02af28f2bd36e3c0e2651376b} 
+float {\bfseries m\+\_\+\+Test\+Float} = 0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Types inherited from \doxymbox{\hyperlink{class_viper_1_1_layer}{Viper::\+\+Layer}}}
+\begin{DoxyCompactItemize}
+\item 
+using {\bfseries ECSRegistry} = \doxymbox{\hyperlink{class_viper_1_1_scene_1_1_e_c_s_1_1_registry}{Scene::\+\+ECS::\+\+Registry}}
+\item 
+using {\bfseries Entity\+ID} = Scene::\+\+ECS::\+\+Entity\+ID
+\item 
+using {\bfseries Render\+Component} = \doxymbox{\hyperlink{struct_viper_1_1_scene_1_1_e_c_s_1_1_components_1_1_renderable}{Scene::\+\+ECS::\+\+Components::\+\+Renderable}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{class_viper_1_1_layer}{Viper::\+\+Layer}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Layer} (Layer\+ID id)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{class_viper_1_1_layer}{Viper::\+\+Layer}}}
+\begin{DoxyCompactItemize}
+\item 
+Layer\+ID {\bfseries m\+\_\+\+ID} = Layer\+ID::\+\+Unknown
+\end{DoxyCompactItemize}
+
+
+\label{class_viper_1_1_engine_u_i_layer_doc-func-members}
+\Hypertarget{class_viper_1_1_engine_u_i_layer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_viper_1_1_engine_u_i_layer_a48a81b86912df3edf11a250c37d853ac}\index{Viper::EngineUILayer@{Viper::EngineUILayer}!Attach@{Attach}}
+\index{Attach@{Attach}!Viper::EngineUILayer@{Viper::EngineUILayer}}
+\doxysubsubsection{\texorpdfstring{Attach()}{Attach()}}
+{\footnotesize\ttfamily \label{class_viper_1_1_engine_u_i_layer_a48a81b86912df3edf11a250c37d853ac} 
+void Viper::\+\+Engine\+UILayer::\+\+Attach (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_viper_1_1_layer}{Viper::\+\+Layer}}.
+
+\Hypertarget{class_viper_1_1_engine_u_i_layer_af70022b1d4e4f104cfc130cb72c07cff}\index{Viper::EngineUILayer@{Viper::EngineUILayer}!Detach@{Detach}}
+\index{Detach@{Detach}!Viper::EngineUILayer@{Viper::EngineUILayer}}
+\doxysubsubsection{\texorpdfstring{Detach()}{Detach()}}
+{\footnotesize\ttfamily \label{class_viper_1_1_engine_u_i_layer_af70022b1d4e4f104cfc130cb72c07cff} 
+void Viper::\+\+Engine\+UILayer::\+\+Detach (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_viper_1_1_layer}{Viper::\+\+Layer}}.
+
+\Hypertarget{class_viper_1_1_engine_u_i_layer_a20dc68213e090ae83b0fe30a8be18d73}\index{Viper::EngineUILayer@{Viper::EngineUILayer}!GetDrawData@{GetDrawData}}
+\index{GetDrawData@{GetDrawData}!Viper::EngineUILayer@{Viper::EngineUILayer}}
+\doxysubsubsection{\texorpdfstring{GetDrawData()}{GetDrawData()}}
+{\footnotesize\ttfamily \label{class_viper_1_1_engine_u_i_layer_a20dc68213e090ae83b0fe30a8be18d73} 
+std::\+vector$<$ Engine\+UILayer::\+\+Entity\+ID $>$ Viper::\+\+Engine\+UILayer::\+\+Get\+Draw\+Data (\begin{DoxyParamCaption}\item[{Renderer::\+\+Render\+Passes}]{pass}{, }\item[{ECSRegistry \&}]{registry}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_viper_1_1_layer}{Viper::\+\+Layer}}.
+
+\Hypertarget{class_viper_1_1_engine_u_i_layer_a1c699f9898adc7659fb162b3a808dc08}\index{Viper::EngineUILayer@{Viper::EngineUILayer}!InputEvent@{InputEvent}}
+\index{InputEvent@{InputEvent}!Viper::EngineUILayer@{Viper::EngineUILayer}}
+\doxysubsubsection{\texorpdfstring{InputEvent()}{InputEvent()}}
+{\footnotesize\ttfamily \label{class_viper_1_1_engine_u_i_layer_a1c699f9898adc7659fb162b3a808dc08} 
+void Viper::\+\+Engine\+UILayer::\+\+Input\+Event (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_viper_1_1_layer}{Viper::\+\+Layer}}.
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Engine/\+src/\+\+Core/\+\+Layers/Engine\+Layers.\+h\item 
+Engine/\+src/\+\+Core/\+\+Layers/Engine\+Layers.\+cpp\end{DoxyCompactItemize}
