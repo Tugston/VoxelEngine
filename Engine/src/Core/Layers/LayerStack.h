@@ -13,17 +13,23 @@
 */
 #pragma once
 
+/**
+* @file LayerStack.h
+* @brief Controls and groups the rendering and input order.
+*
+* @details The layer system is a very simple setup. Each scene consists of the same four layers in non dist builds. The dist build does not need engine features, so these are removed and only the game layers are present. The layer orders are as follows...
+* 
+* Viper::WorldLayer (Game World) -> Viper::EngineWorldLayer (line traces, collision boxes, etc) -> Viper::UILayer -> Viper::EngineUILayer (Engine details)
+* 
+* This system is primarily meant to render the Game's UI on top of the Game's scene rendering. Every scene follows this same order and process, so the LayerStack class is static.
+* 
+*/
+
 //ENGINE
 #include "Core/Layers/Layer.h"
 
 //STND
 #include<vector>
-
-//I am going for a simple setup where each scene will have the same layers
-//my current idea for layers is as so
-//Game -> Engine Debug Graphics -> Game UI -> Engine UI Debug
-//this is really only a system for the Game's UI to be layered on top of the Game's 3d rendering
-//and it will be like that in every scene, which is why I made this static
 
 namespace Viper
 {
@@ -33,10 +39,37 @@ namespace Viper
 		static bool Init();
 		static void Destroy();
 
-		static void PushWorldLayer(Layer* layer);	//actual 3d layers for both engine debug 3d and game world
-		static void PushUILayer(Layer* layer);		//ui layers
-		static void Clear();						//clear all layers
+		/**
+		* @brief Add a Layer object to the stack of a world type.
+		* @details Inserts a new Layer right before the CurrentLocation() iterator. Then the function calls the pure virtual Layer::Attach() function to setup the layer itself. If the setup is successful, incriment m_EmplaceIndex by one and log success. Otherwise, log a failure message.
+		* 
+		* @note These are the actual scene layers for both engine debug and game world.
+		* 
+		* @param[in, out] layer The specific layer type to be added, must be a type of WorldLayer or EngineWorldLayer.
+		* 
+		* @return True if the layer was successfully setup and added, false otherwise.
+		*/
+		static void PushWorldLayer(Layer* layer);
 
+		/**
+		* @brief Add a Layer object to the stack of a UI type.
+		* @details Pushes back a new Layer at the very end of #m_Layers. Then the pure virtual Layer::Attach() function is called to setup the layer itself. The #m_EmplaceIndex does not require being updated because this adds layers to the very back anyways. Log a message to state if everything attached and setup properly.
+		* 
+		* @note These are the UI layers for both the engine debug, game, and game debug.
+		* 
+		* @param[in, out] layer The specific layer type to be added, must be a child of UILayer, UIDebugLayer, or EngineUILayer.
+		* 
+		* @return True if the layer was successfully setup and added, false otherwise.
+		*/
+		static void PushUILayer(Layer* layer);
+
+		/**
+		* @brief Clear all layers entirely.
+		* @details Checks if #m_Layers actually has layers, if not return. If it does, loop through each layer deleting the pointer. Then finally clear the vector itself.
+		* 
+		* @post #m_Layers is full cleared completely.
+		*/
+		static void Clear();
 		static void RemoveLayer(const std::vector<Layer*>::iterator& LayerPosition);
 
 
@@ -48,12 +81,12 @@ namespace Viper
 
 		//current location stores the halfway point, ie, where Space and UI layers meet
 		static std::vector<Layer*>::iterator CurrentLocation();
-		static inline unsigned int CurrentLocationVal() { return m_emplaceIdex; };
+		static inline unsigned int CurrentLocationVal() { return m_insertIdex; };
 
 		static const inline std::vector<Layer*> GetLayers() { return m_Layers; };
 	private:
 		static std::vector<Layer*> m_Layers; //Layer Stack will have full control over layers, so not worrying about smart pointers
-		static unsigned int m_emplaceIdex;
+		static unsigned int m_insertIdex;
 	};
 
 

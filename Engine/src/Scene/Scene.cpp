@@ -49,7 +49,7 @@ namespace Viper::Scene
 			std::vector<ECS::EntityID> currentData = layers.at(i)->GetDrawData(type, GetRegistry());
 
 			//layers not rendering anything will return one id and it is maxed
-			if (currentData[0] == (std::numeric_limits<UINT32>::max)())
+			if (currentData.empty() || currentData[0] == (std::numeric_limits<UINT32>::max)())
 				continue;
 			
 			sortedData.insert(std::end(sortedData), std::begin(currentData), std::end(currentData));

@@ -18,7 +18,7 @@
 namespace Viper
 {
 	std::vector<Layer*> LayerStack::m_Layers = {};
-	unsigned int LayerStack::m_emplaceIdex = 0;
+	unsigned int LayerStack::m_insertIdex = 0;
 
 	//maybe init needs something in the future, just temporarily returning true
 	bool LayerStack::Init()
@@ -29,22 +29,22 @@ namespace Viper
 	void LayerStack::Destroy()
 	{
 		Clear();
-		Logger::LogMessage(Logger::LogType::Warning, "Layer Stack Destroyed!");
+		LOG_MSG("<LayerStack.cpp> (Destroy) Layer Stack Destroyed!");
 	}
 
 	void LayerStack::PushWorldLayer(Layer* layer)
 	{
-		m_Layers.emplace(CurrentLocation(), layer);
+		m_Layers.insert(CurrentLocation(), layer);
 		layer->Attach();
-		m_emplaceIdex++;
-		Logger::LogMessage(Logger::LogType::Message, "World Layer Added (Total of: {} Layers)", m_Layers.size());
+		m_insertIdex++;
+		LOG_MSG("<LayerStack.cpp> (PushWorldLayer) World Layer Added Successfully (Total of: {} Layers)", m_Layers.size());
 	}
 
 	void LayerStack::PushUILayer(Layer* layer)
 	{
-		m_Layers.emplace_back(layer);
+		m_Layers.push_back(layer);
 		layer->Attach();
-		Logger::LogMessage(Logger::LogType::Message, "UI Layer Added (Total of: {} Layers)", m_Layers.size());
+		LOG_MSG("<LayerStack.cpp> (PushUILayer) UI Layer Added Successfully (Total of: {} Layers)", m_Layers.size());
 	}
 
 	void LayerStack::Clear()
@@ -53,9 +53,7 @@ namespace Viper
 			return;
 
 		for (auto i : m_Layers)
-		{
 			delete i;
-		}
 
 		m_Layers.clear();
 	}
@@ -69,8 +67,8 @@ namespace Viper
 		m_Layers.erase(LayerPosition);
 
 		//if the layer is a world layer, reduce the emplace index
-		if(index < m_emplaceIdex)
-			m_emplaceIdex--;
+		if(index < m_insertIdex)
+			m_insertIdex--;
 	}
 
 	const bool LayerStack::CheckLayerExists(LayerID id)
@@ -85,7 +83,7 @@ namespace Viper
 		}
 		
 		//could be a serious issue in some cases if the layer with the id does not exist, but in some cases it's ok, so guess this log covers that??
-		Logger::LogMessage(Logger::LogType::Critical, "LAYER NOT FOUND! Ignore if it was intended to not be found.");
+		LOG_CRIT("<LayerStack.cpp> (CheckLayerExists) Layer not found! If this was intentional, please ignore.");
 		return false;
 	}
 
@@ -103,7 +101,7 @@ namespace Viper
 
 	std::vector<Layer*>::iterator LayerStack::CurrentLocation()
 	{
-		std::vector<Layer*>::iterator it = m_Layers.begin() + m_emplaceIdex;
+		std::vector<Layer*>::iterator it = m_Layers.begin() + m_insertIdex;
 		return it;
 	}
 }

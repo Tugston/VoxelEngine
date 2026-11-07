@@ -163,8 +163,11 @@ namespace Viper
 			}
 		};
 
+		//need to create level by default, see github issues.
+		//need to check the entire scene manager....
+		InitializeCheck(LayerStack::Init(), "Layer Stack"); //this currently does nothing, layers return nothing. 
+
 		InitializeCheck(InputSystem::Init(), "Input System");
-		InitializeCheck(LayerStack::Init(), "Layer Stack");
 		//InitializeCheck(Debug::UI::Init(), "Debug UI");
 		InitializeCheck(Utility::InitializeRandomGenerators(), "Random Number Generator");
 	}

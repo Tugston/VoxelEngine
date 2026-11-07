@@ -1,0 +1,56 @@
+\doxysection{Engine/\+src/\+\+Core/\+\+Layers/\+\+Layer\+Stack.h File Reference}
+\hypertarget{_layer_stack_8h}{}\label{_layer_stack_8h}\index{Engine/src/Core/Layers/LayerStack.h@{Engine/src/Core/Layers/LayerStack.h}}
+
+
+Controls and groups the rendering and input order.  
+
+
+{\ttfamily \+\#include "{}Core/\+\+Layers/\+\+Layer.\+h"{}}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_viper_1_1_layer_stack}{Viper::\+\+Layer\+Stack}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_layer_stack_8h_ad22be69ed45b0d9f79a5b663e040b30d}\label{_layer_stack_8h_ad22be69ed45b0d9f79a5b663e040b30d} 
+\+\#define {\bfseries REMOVE\+\_\+\+ENGINE\+\_\+\+UI\+\_\+\+LAYER}
+\item 
+\Hypertarget{_layer_stack_8h_ab07e075e62734e41e01604cd84b78b56}\label{_layer_stack_8h_ab07e075e62734e41e01604cd84b78b56} 
+\+\#define {\bfseries REMOVE\+\_\+\+ENGINE\+\_\+\+DEBUG\+\_\+\+LAYER}
+\item 
+\Hypertarget{_layer_stack_8h_a1cb3aa2635d0f42b87d3a86ff327c382}\label{_layer_stack_8h_a1cb3aa2635d0f42b87d3a86ff327c382} 
+\+\#define {\bfseries REMOVE\+\_\+\+GAME\+\_\+\+WORLD\+\_\+\+LAYER}(x)
+\item 
+\+\#define \doxymbox{\hyperlink{_layer_stack_8h_a17a29b8b9a274135185e81b1b7b561de}{REMOVE\+\_\+\+UI}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Controls and groups the rendering and input order. 
+
+The layer system is a very simple setup. Each scene consists of the same four layers in non dist builds. The dist build does not need engine features, so these are removed and only the game layers are present. The layer orders are as follows...
+
+\doxylink{class_viper_1_1_world_layer}{Viper::\+\+World\+Layer} (Game World) -\/\texorpdfstring{$>$}{>} \doxylink{class_viper_1_1_engine_world_layer}{Viper::\+\+Engine\+World\+Layer} (line traces, collision boxes, etc) -\/\texorpdfstring{$>$}{>} \doxylink{class_viper_1_1_u_i_layer}{Viper::\+\+UILayer} -\/\texorpdfstring{$>$}{>} \doxylink{class_viper_1_1_engine_u_i_layer}{Viper::\+\+Engine\+UILayer} (Engine details)
+
+This system is primarily meant to render the Game\textquotesingle{}s UI on top of the Game\textquotesingle{}s scene rendering. Every scene follows this same order and process, so the Layer\+Stack class is static. 
+
+\label{_layer_stack_8h_doc-define-members}
+\Hypertarget{_layer_stack_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_layer_stack_8h_a17a29b8b9a274135185e81b1b7b561de}\index{LayerStack.h@{LayerStack.h}!REMOVE\_UI@{REMOVE\_UI}}
+\index{REMOVE\_UI@{REMOVE\_UI}!LayerStack.h@{LayerStack.h}}
+\doxysubsubsection{\texorpdfstring{REMOVE\_UI}{REMOVE\_UI}}
+{\footnotesize\ttfamily \label{_layer_stack_8h_a17a29b8b9a274135185e81b1b7b561de} 
+\+\#define REMOVE\+\_\+\+UI}
+
+{\bfseries Value:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for}(std::vector<Layer*>::iterator\ i\ =\ Viper::LayerStack::CurrentLocation();\ i\ <\ Viper::LayerStack::Bottom();\ i++)\{\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ Viper::LayerStack::RemoveLayer(i);\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{break};\(\backslash\)}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}

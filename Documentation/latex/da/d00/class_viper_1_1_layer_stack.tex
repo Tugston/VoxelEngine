@@ -9,15 +9,12 @@ static bool {\bfseries Init} ()
 \Hypertarget{class_viper_1_1_layer_stack_afe9454059a041ce96a0a0ac5c23cc3ad}\label{class_viper_1_1_layer_stack_afe9454059a041ce96a0a0ac5c23cc3ad} 
 static void {\bfseries Destroy} ()
 \item 
-\Hypertarget{class_viper_1_1_layer_stack_a8cfd035ef860dd7682f0e00aed41d9d5}\label{class_viper_1_1_layer_stack_a8cfd035ef860dd7682f0e00aed41d9d5} 
-static void {\bfseries Push\+World\+Layer} (\doxymbox{\hyperlink{class_viper_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*}layer)
-\item 
-\Hypertarget{class_viper_1_1_layer_stack_a4dacbbb520c91e6dc942cb807539e57f}\label{class_viper_1_1_layer_stack_a4dacbbb520c91e6dc942cb807539e57f} 
-static void {\bfseries Push\+UILayer} (\doxymbox{\hyperlink{class_viper_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*}layer)
-\item 
-\Hypertarget{class_viper_1_1_layer_stack_a5d386812e2e917b4fe1b927b964523ea}\label{class_viper_1_1_layer_stack_a5d386812e2e917b4fe1b927b964523ea} 
-static void {\bfseries Clear} ()
-\item 
+static void \doxymbox{\hyperlink{class_viper_1_1_layer_stack_a8cfd035ef860dd7682f0e00aed41d9d5}{Push\+World\+Layer}} (\doxymbox{\hyperlink{class_viper_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*}layer)
+\begin{DoxyCompactList}\small\item\em Add a \doxylink{class_viper_1_1_layer}{Layer} object to the stack of a world type. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{class_viper_1_1_layer_stack_a4dacbbb520c91e6dc942cb807539e57f}{Push\+UILayer}} (\doxymbox{\hyperlink{class_viper_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*}layer)
+\begin{DoxyCompactList}\small\item\em Add a \doxylink{class_viper_1_1_layer}{Layer} object to the stack of a UI type. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{class_viper_1_1_layer_stack_a5d386812e2e917b4fe1b927b964523ea}{Clear}} ()
+\begin{DoxyCompactList}\small\item\em Clear all layers entirely. \end{DoxyCompactList}\item 
 \Hypertarget{class_viper_1_1_layer_stack_ad50cf51ddb8f5a111de2e829ef1c3a88}\label{class_viper_1_1_layer_stack_ad50cf51ddb8f5a111de2e829ef1c3a88} 
 static void {\bfseries Remove\+Layer} (const std::\+vector$<$ \doxymbox{\hyperlink{class_viper_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*} $>$::\+iterator \&Layer\+Position)
 \item 
@@ -45,12 +42,78 @@ static const std::\+vector$<$ \doxymbox{\hyperlink{class_viper_1_1_layer}{Layer}
 \Hypertarget{class_viper_1_1_layer_stack_a5c363aab7d48e972a61b3f5c81fe1043}\label{class_viper_1_1_layer_stack_a5c363aab7d48e972a61b3f5c81fe1043} 
 static std::\+vector$<$ \doxymbox{\hyperlink{class_viper_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries m\+\_\+\+Layers} = \{\}
 \item 
-\Hypertarget{class_viper_1_1_layer_stack_a99e8fbae3bf6c7eecc92dc4bef38497e}\label{class_viper_1_1_layer_stack_a99e8fbae3bf6c7eecc92dc4bef38497e} 
-static unsigned int {\bfseries m\+\_\+emplace\+Idex} = 0
+\Hypertarget{class_viper_1_1_layer_stack_a0d3465b5a5893b7282c85cc801fb69ca}\label{class_viper_1_1_layer_stack_a0d3465b5a5893b7282c85cc801fb69ca} 
+static unsigned int {\bfseries m\+\_\+insert\+Idex} = 0
 \end{DoxyCompactItemize}
+
+
+\label{class_viper_1_1_layer_stack_doc-func-members}
+\Hypertarget{class_viper_1_1_layer_stack_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_viper_1_1_layer_stack_a5d386812e2e917b4fe1b927b964523ea}\index{Viper::LayerStack@{Viper::LayerStack}!Clear@{Clear}}
+\index{Clear@{Clear}!Viper::LayerStack@{Viper::LayerStack}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily \label{class_viper_1_1_layer_stack_a5d386812e2e917b4fe1b927b964523ea} 
+void Viper::\+\+Layer\+Stack::\+\+Clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Clear all layers entirely. 
+
+Checks if m\+\_\+\+Layers actually has layers, if not return. If it does, loop through each layer deleting the pointer. Then finally clear the vector itself.
+
+\begin{DoxyPostcond}{Postcondition}
+m\+\_\+\+Layers is full cleared completely. 
+\end{DoxyPostcond}
+\Hypertarget{class_viper_1_1_layer_stack_a4dacbbb520c91e6dc942cb807539e57f}\index{Viper::LayerStack@{Viper::LayerStack}!PushUILayer@{PushUILayer}}
+\index{PushUILayer@{PushUILayer}!Viper::LayerStack@{Viper::LayerStack}}
+\doxysubsubsection{\texorpdfstring{PushUILayer()}{PushUILayer()}}
+{\footnotesize\ttfamily \label{class_viper_1_1_layer_stack_a4dacbbb520c91e6dc942cb807539e57f} 
+void Viper::\+\+Layer\+Stack::\+\+Push\+UILayer (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_viper_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*}}]{layer}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Add a \doxylink{class_viper_1_1_layer}{Layer} object to the stack of a UI type. 
+
+Pushes back a new \doxylink{class_viper_1_1_layer}{Layer} at the very end of m\+\_\+\+Layers. Then the pure virtual Layer::\+\+Attach() function is called to setup the layer itself. The m\+\_\+\+Emplace\+Index does not require being updated because this adds layers to the very back anyways. Log a message to state if everything attached and setup properly.
+
+\begin{DoxyNote}{Note}
+These are the UI layers for both the engine debug, game, and game debug.
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in,out}}  & {\em layer} & The specific layer type to be added, must be a child of \doxylink{class_viper_1_1_u_i_layer}{UILayer}, UIDebug\+Layer, or \doxylink{class_viper_1_1_engine_u_i_layer}{Engine\+UILayer}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the layer was successfully setup and added, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_viper_1_1_layer_stack_a8cfd035ef860dd7682f0e00aed41d9d5}\index{Viper::LayerStack@{Viper::LayerStack}!PushWorldLayer@{PushWorldLayer}}
+\index{PushWorldLayer@{PushWorldLayer}!Viper::LayerStack@{Viper::LayerStack}}
+\doxysubsubsection{\texorpdfstring{PushWorldLayer()}{PushWorldLayer()}}
+{\footnotesize\ttfamily \label{class_viper_1_1_layer_stack_a8cfd035ef860dd7682f0e00aed41d9d5} 
+void Viper::\+\+Layer\+Stack::\+\+Push\+World\+Layer (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_viper_1_1_layer}{Layer}} \texorpdfstring{$\ast$}{*}}]{layer}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Add a \doxylink{class_viper_1_1_layer}{Layer} object to the stack of a world type. 
+
+Inserts a new \doxylink{class_viper_1_1_layer}{Layer} right before the Current\+Location() iterator. Then the function calls the pure virtual Layer::\+\+Attach() function to setup the layer itself. If the setup is successful, incriment m\+\_\+\+Emplace\+Index by one and log success. Otherwise, log a failure message.
+
+\begin{DoxyNote}{Note}
+These are the actual scene layers for both engine debug and game world.
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in,out}}  & {\em layer} & The specific layer type to be added, must be a type of \doxylink{class_viper_1_1_world_layer}{World\+Layer} or \doxylink{class_viper_1_1_engine_world_layer}{Engine\+World\+Layer}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the layer was successfully setup and added, false otherwise. 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
 \item 
-Engine/\+src/\+\+Core/\+\+Layers/Layer\+Stack.\+h\item 
+Engine/\+src/\+\+Core/\+\+Layers/\doxymbox{\hyperlink{_layer_stack_8h}{Layer\+Stack.\+h}}\item 
 Engine/\+src/\+\+Core/\+\+Layers/Layer\+Stack.\+cpp\end{DoxyCompactItemize}

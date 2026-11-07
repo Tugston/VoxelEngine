@@ -19,7 +19,7 @@
 \DoxyCodeLine{00015\ }
 \DoxyCodeLine{00016\ \textcolor{comment}{//ENGINE}}
 \DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_core_8h}{Core/Core.h}}"{}}}
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}Core/Layers/LayerStack.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_layer_stack_8h}{Core/Layers/LayerStack.h}}"{}}}
 \DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}Core/Layers/EngineLayers.h"{}}}
 \DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}./ECS/Registry.h"{}}}
 \DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}../Renderer/Core/RenderPasses.h"{}}}
@@ -56,9 +56,9 @@
 \DoxyCodeLine{00052\ }
 \DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{comment}{//DEBUG\ ONLY}}
 \DoxyCodeLine{00054\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(EG\_DEBUG)\ ||\ (APP\_DEBUG)}}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ EnableFullDebugView()\textcolor{keyword}{\ const\ }\{\ LayerStack::PushWorldLayer(\textcolor{keyword}{new}\ \doxymbox{\hyperlink{class_viper_1_1_engine_world_layer}{EngineWorldLayer}}());\ LayerStack::PushUILayer(\textcolor{keyword}{new}\ \doxymbox{\hyperlink{class_viper_1_1_engine_u_i_layer}{EngineUILayer}}());\ \};}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ EnableDebugUI()\textcolor{keyword}{\ const\ }\{\ LayerStack::PushUILayer(\textcolor{keyword}{new}\ \doxymbox{\hyperlink{class_viper_1_1_engine_u_i_layer}{EngineUILayer}}());\ \};}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ EnableDebugGeometry()\textcolor{keyword}{\ const\ }\{\ LayerStack::PushWorldLayer(\textcolor{keyword}{new}\ \doxymbox{\hyperlink{class_viper_1_1_engine_world_layer}{EngineWorldLayer}}());\ \};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ EnableFullDebugView()\textcolor{keyword}{\ const\ }\{\ \doxymbox{\hyperlink{class_viper_1_1_layer_stack_a8cfd035ef860dd7682f0e00aed41d9d5}{LayerStack::PushWorldLayer}}(\textcolor{keyword}{new}\ \doxymbox{\hyperlink{class_viper_1_1_engine_world_layer}{EngineWorldLayer}}());\ \doxymbox{\hyperlink{class_viper_1_1_layer_stack_a4dacbbb520c91e6dc942cb807539e57f}{LayerStack::PushUILayer}}(\textcolor{keyword}{new}\ \doxymbox{\hyperlink{class_viper_1_1_engine_u_i_layer}{EngineUILayer}}());\ \};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ EnableDebugUI()\textcolor{keyword}{\ const\ }\{\ \doxymbox{\hyperlink{class_viper_1_1_layer_stack_a4dacbbb520c91e6dc942cb807539e57f}{LayerStack::PushUILayer}}(\textcolor{keyword}{new}\ \doxymbox{\hyperlink{class_viper_1_1_engine_u_i_layer}{EngineUILayer}}());\ \};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ EnableDebugGeometry()\textcolor{keyword}{\ const\ }\{\ \doxymbox{\hyperlink{class_viper_1_1_layer_stack_a8cfd035ef860dd7682f0e00aed41d9d5}{LayerStack::PushWorldLayer}}(\textcolor{keyword}{new}\ \doxymbox{\hyperlink{class_viper_1_1_engine_world_layer}{EngineWorldLayer}}());\ \};}
 \DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DisableFullDebugView()\textcolor{keyword}{\ const\ }\{\ REMOVE\_ENGINE\_UI\_LAYER;\ REMOVE\_ENGINE\_DEBUG\_LAYER;\ \};}
 \DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DisableDebugUI()\textcolor{keyword}{\ const\ }\{\ REMOVE\_ENGINE\_UI\_LAYER;\ \};}
 \DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DisableDebugGeometry()\textcolor{keyword}{\ const\ }\{\ REMOVE\_ENGINE\_DEBUG\_LAYER;\ \};}

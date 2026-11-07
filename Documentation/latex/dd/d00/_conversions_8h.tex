@@ -1,0 +1,51 @@
+\doxysection{Engine/\+src/\+\+Core/\+\+Maths/\+\+Conversions.h File Reference}
+\hypertarget{_conversions_8h}{}\label{_conversions_8h}\index{Engine/src/Core/Maths/Conversions.h@{Engine/src/Core/Maths/Conversions.h}}
+
+
+Helpful functions for converting unit measurements and other conversions.  
+
+
+{\ttfamily \+\#include "{}Math.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \doxymbox{\hyperlink{_conversions_8cpp_a8936fbdcd56eff65756d20d07d8a3e64}{Viper::\+\+Maths::\+\+RGBto\+Hex}} (const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3}{Vector3}}$<$ uint8\+\_\+t $>$ \&color)
+\begin{DoxyCompactList}\small\item\em Convert a general rgb color to a Hexadecimal representation of the same color. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Helpful functions for converting unit measurements and other conversions. 
+
+These functions are mostly utilized internally and by the editor, but exposed in the public engine. As of version 0.\+0.\+2 there are not very many conversions (1 total) and this file will be update with more details then.
+
+\begin{DoxyAuthor}{Author}
+Vincent Pierce 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+January 27, 2026 
+\end{DoxyDate}
+
+
+\label{_conversions_8h_doc-func-members}
+\Hypertarget{_conversions_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_conversions_8cpp_a8936fbdcd56eff65756d20d07d8a3e64}\index{Conversions.h@{Conversions.h}!RGBtoHex@{RGBtoHex}}
+\index{RGBtoHex@{RGBtoHex}!Conversions.h@{Conversions.h}}
+\doxysubsubsection{\texorpdfstring{RGBtoHex()}{RGBtoHex()}}
+{\footnotesize\ttfamily \label{_conversions_8cpp_a8936fbdcd56eff65756d20d07d8a3e64} 
+unsigned int Viper::\+\+Maths::\+\+RGBto\+Hex (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_viper_1_1_maths_1_1_vector3}{Vector3}}$<$ uint8\+\_\+t $>$ \&}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Convert a general rgb color to a Hexadecimal representation of the same color. 
+
+Converts the Vector3 holding rgb values to hexadecimal by bit shifting the x (red) over 2 bytes, the y (green) over 1 byte, and the z (blue) over by a single byte.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em color} & The rgb color needing to be converted.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A compacted hexadecimal color inside an integer. 
+\end{DoxyReturn}

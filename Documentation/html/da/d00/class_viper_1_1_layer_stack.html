@@ -119,12 +119,12 @@ Static Public Member Functions</h2></td></tr>
 static bool&#160;</td><td class="memItemRight"><b>Init</b> ()</td></tr>
 <tr class="memitem:afe9454059a041ce96a0a0ac5c23cc3ad" id="r_afe9454059a041ce96a0a0ac5c23cc3ad"><td class="memItemLeft"><a id="afe9454059a041ce96a0a0ac5c23cc3ad" name="afe9454059a041ce96a0a0ac5c23cc3ad"></a>
 static void&#160;</td><td class="memItemRight"><b>Destroy</b> ()</td></tr>
-<tr class="memitem:a8cfd035ef860dd7682f0e00aed41d9d5" id="r_a8cfd035ef860dd7682f0e00aed41d9d5"><td class="memItemLeft"><a id="a8cfd035ef860dd7682f0e00aed41d9d5" name="a8cfd035ef860dd7682f0e00aed41d9d5"></a>
-static void&#160;</td><td class="memItemRight"><b>PushWorldLayer</b> (<a class="el" href="../../de/d00/class_viper_1_1_layer.html">Layer</a> *layer)</td></tr>
-<tr class="memitem:a4dacbbb520c91e6dc942cb807539e57f" id="r_a4dacbbb520c91e6dc942cb807539e57f"><td class="memItemLeft"><a id="a4dacbbb520c91e6dc942cb807539e57f" name="a4dacbbb520c91e6dc942cb807539e57f"></a>
-static void&#160;</td><td class="memItemRight"><b>PushUILayer</b> (<a class="el" href="../../de/d00/class_viper_1_1_layer.html">Layer</a> *layer)</td></tr>
-<tr class="memitem:a5d386812e2e917b4fe1b927b964523ea" id="r_a5d386812e2e917b4fe1b927b964523ea"><td class="memItemLeft"><a id="a5d386812e2e917b4fe1b927b964523ea" name="a5d386812e2e917b4fe1b927b964523ea"></a>
-static void&#160;</td><td class="memItemRight"><b>Clear</b> ()</td></tr>
+<tr class="memitem:a8cfd035ef860dd7682f0e00aed41d9d5" id="r_a8cfd035ef860dd7682f0e00aed41d9d5"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a8cfd035ef860dd7682f0e00aed41d9d5">PushWorldLayer</a> (<a class="el" href="../../de/d00/class_viper_1_1_layer.html">Layer</a> *layer)</td></tr>
+<tr class="memdesc:a8cfd035ef860dd7682f0e00aed41d9d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a <a class="el" href="../../de/d00/class_viper_1_1_layer.html">Layer</a> object to the stack of a world type.  <br /></td></tr>
+<tr class="memitem:a4dacbbb520c91e6dc942cb807539e57f" id="r_a4dacbbb520c91e6dc942cb807539e57f"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a4dacbbb520c91e6dc942cb807539e57f">PushUILayer</a> (<a class="el" href="../../de/d00/class_viper_1_1_layer.html">Layer</a> *layer)</td></tr>
+<tr class="memdesc:a4dacbbb520c91e6dc942cb807539e57f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a <a class="el" href="../../de/d00/class_viper_1_1_layer.html">Layer</a> object to the stack of a UI type.  <br /></td></tr>
+<tr class="memitem:a5d386812e2e917b4fe1b927b964523ea" id="r_a5d386812e2e917b4fe1b927b964523ea"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a5d386812e2e917b4fe1b927b964523ea">Clear</a> ()</td></tr>
+<tr class="memdesc:a5d386812e2e917b4fe1b927b964523ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear all layers entirely.  <br /></td></tr>
 <tr class="memitem:ad50cf51ddb8f5a111de2e829ef1c3a88" id="r_ad50cf51ddb8f5a111de2e829ef1c3a88"><td class="memItemLeft"><a id="ad50cf51ddb8f5a111de2e829ef1c3a88" name="ad50cf51ddb8f5a111de2e829ef1c3a88"></a>
 static void&#160;</td><td class="memItemRight"><b>RemoveLayer</b> (const std::vector&lt; <a class="el" href="../../de/d00/class_viper_1_1_layer.html">Layer</a> * &gt;::iterator &amp;LayerPosition)</td></tr>
 <tr class="memitem:a31c196a84756b48d0cb6dae9c64ca4ca" id="r_a31c196a84756b48d0cb6dae9c64ca4ca"><td class="memItemLeft"><a id="a31c196a84756b48d0cb6dae9c64ca4ca" name="a31c196a84756b48d0cb6dae9c64ca4ca"></a>
@@ -144,9 +144,111 @@ static const std::vector&lt; <a class="el" href="../../de/d00/class_viper_1_1_la
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:a5c363aab7d48e972a61b3f5c81fe1043" id="r_a5c363aab7d48e972a61b3f5c81fe1043"><td class="memItemLeft"><a id="a5c363aab7d48e972a61b3f5c81fe1043" name="a5c363aab7d48e972a61b3f5c81fe1043"></a>
 static std::vector&lt; <a class="el" href="../../de/d00/class_viper_1_1_layer.html">Layer</a> * &gt;&#160;</td><td class="memItemRight"><b>m_Layers</b> = {}</td></tr>
-<tr class="memitem:a99e8fbae3bf6c7eecc92dc4bef38497e" id="r_a99e8fbae3bf6c7eecc92dc4bef38497e"><td class="memItemLeft"><a id="a99e8fbae3bf6c7eecc92dc4bef38497e" name="a99e8fbae3bf6c7eecc92dc4bef38497e"></a>
-static unsigned int&#160;</td><td class="memItemRight"><b>m_emplaceIdex</b> = 0</td></tr>
+<tr class="memitem:a0d3465b5a5893b7282c85cc801fb69ca" id="r_a0d3465b5a5893b7282c85cc801fb69ca"><td class="memItemLeft"><a id="a0d3465b5a5893b7282c85cc801fb69ca" name="a0d3465b5a5893b7282c85cc801fb69ca"></a>
+static unsigned int&#160;</td><td class="memItemRight"><b>m_insertIdex</b> = 0</td></tr>
 </table>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a5d386812e2e917b4fe1b927b964523ea" name="a5d386812e2e917b4fe1b927b964523ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d386812e2e917b4fe1b927b964523ea">&#9670;&#160;</a></span>Clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Viper::LayerStack::Clear </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Clear all layers entirely. </p>
+<p>Checks if m_Layers actually has layers, if not return. If it does, loop through each layer deleting the pointer. Then finally clear the vector itself.</p>
+<dl class="section post"><dt>Postcondition</dt><dd>m_Layers is full cleared completely. </dd></dl>
+
+</div>
+</div>
+<a id="a4dacbbb520c91e6dc942cb807539e57f" name="a4dacbbb520c91e6dc942cb807539e57f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dacbbb520c91e6dc942cb807539e57f">&#9670;&#160;</a></span>PushUILayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Viper::LayerStack::PushUILayer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../de/d00/class_viper_1_1_layer.html">Layer</a> *</td>          <td class="paramname"><span class="paramname"><em>layer</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add a <a class="el" href="../../de/d00/class_viper_1_1_layer.html">Layer</a> object to the stack of a UI type. </p>
+<p>Pushes back a new <a class="el" href="../../de/d00/class_viper_1_1_layer.html">Layer</a> at the very end of m_Layers. Then the pure virtual Layer::Attach() function is called to setup the layer itself. The m_EmplaceIndex does not require being updated because this adds layers to the very back anyways. Log a message to state if everything attached and setup properly.</p>
+<dl class="section note"><dt>Note</dt><dd>These are the UI layers for both the engine debug, game, and game debug.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">layer</td><td>The specific layer type to be added, must be a child of <a class="el" href="../../d1/d00/class_viper_1_1_u_i_layer.html">UILayer</a>, UIDebugLayer, or <a class="el" href="../../d4/d00/class_viper_1_1_engine_u_i_layer.html">EngineUILayer</a>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the layer was successfully setup and added, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a8cfd035ef860dd7682f0e00aed41d9d5" name="a8cfd035ef860dd7682f0e00aed41d9d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cfd035ef860dd7682f0e00aed41d9d5">&#9670;&#160;</a></span>PushWorldLayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Viper::LayerStack::PushWorldLayer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../de/d00/class_viper_1_1_layer.html">Layer</a> *</td>          <td class="paramname"><span class="paramname"><em>layer</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add a <a class="el" href="../../de/d00/class_viper_1_1_layer.html">Layer</a> object to the stack of a world type. </p>
+<p>Inserts a new <a class="el" href="../../de/d00/class_viper_1_1_layer.html">Layer</a> right before the CurrentLocation() iterator. Then the function calls the pure virtual Layer::Attach() function to setup the layer itself. If the setup is successful, incriment m_EmplaceIndex by one and log success. Otherwise, log a failure message.</p>
+<dl class="section note"><dt>Note</dt><dd>These are the actual scene layers for both engine debug and game world.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">layer</td><td>The specific layer type to be added, must be a type of <a class="el" href="../../da/d00/class_viper_1_1_world_layer.html">WorldLayer</a> or <a class="el" href="../../d3/d00/class_viper_1_1_engine_world_layer.html">EngineWorldLayer</a>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the layer was successfully setup and added, false otherwise. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Engine/src/Core/Layers/<a class="el" href="../../db/d00/_layer_stack_8h_source.html">LayerStack.h</a></li>
 <li>Engine/src/Core/Layers/<b>LayerStack.cpp</b></li>
